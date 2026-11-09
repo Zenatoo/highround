@@ -1,0 +1,7 @@
+# Security updates only come from the repo setting; this file just keeps pinned Actions current.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

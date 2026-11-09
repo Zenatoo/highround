@@ -1,0 +1,27 @@
+name: Erreur dans un guide / Error in a guide
+description: Une étape fausse, une image mal placée, un lien cassé… / A wrong step, misplaced image, broken link…
+labels: [content-error]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Rempli automatiquement depuis le site. / Filled in automatically from the site.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Le problème / The problem
+      description: Quelle étape ou quelle partie, et qu'est-ce qui ne va pas ? / Which step or part, and what is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: La correction / The fix
+      description: Si tu la connais (avec une source si possible). / If you know it (with a source if possible).
+  - type: markdown
+    attributes:
+      value: |
+        ⚠ Cette issue est publique : n'y mets aucune information personnelle. / This issue is public: do not include personal information.
