@@ -5,16 +5,17 @@
 - **Site & UI:** [Astro](https://astro.build) + TypeScript — static pages, minimal JavaScript.
 - **Windows app:** [Tauri v2](https://tauri.app) wraps the same Astro build → `.exe` installer published in GitHub Releases.
 - **Mobile:** website only, no store app.
-- **Hosting:** GitHub Pages, deployed by GitHub Actions on every merge to `main`.
+- **Hosting:** GitHub Pages, deployed by GitHub Actions on every push to `main`.
 - **Content:** Markdown/MDX in `content/en/` and `content/fr/`, validated by a schema.
 - **Package manager:** pnpm.
 
 ## Branches
 
-- `main` is protected: **no direct push**, everything goes through a Pull Request.
+- Contributors work on a branch and open a **Pull Request** to `main`.
+- The maintainer may push directly to `main`.
 - Branch prefixes: `feat/…`, `fix/…`, `content/…`, `i18n/…`, `docs/…`, `chore/…`
 - Merge with **squash merge** only.
-- CI (lint + type check + build) must pass before merging.
+- CI (lint + type check + build) must pass before merging. A failed build is never deployed.
 
 ## Commits
 
@@ -82,6 +83,42 @@ Mobile-first CSS, fluid sizes, touch targets of at least 44 px, no horizontal sc
 - Images in AVIF/WebP, sized per screen, lazy-loaded below the fold.
 - Lighthouse performance and accessibility scores ≥ 95 on mobile.
 - Windows installer kept as small as possible (no bundled browser — Tauri uses the system WebView).
+
+### Images & memory
+
+A decoded image uses `width × height × 4` bytes of RAM whatever its file format (a 1920×1080 screenshot ≈ 8 MB). So:
+
+- Always serve images at their **displayed size** (`srcset`), never the original.
+- Guide pages and grids show **thumbnails**; the full-size image opens only on click (lightbox).
+- `loading="lazy"` and `decoding="async"` on every image below the fold.
+- Long pages use `content-visibility: auto` per section so off-screen parts are not rendered.
+
+## Security
+
+See also [SECURITY.md](SECURITY.md).
+
+**Site**
+- Strict Content Security Policy: only HighRound's own files; the single allowed frame is `youtube-nocookie.com`.
+- No inline scripts, no `eval`, no third-party scripts.
+- Guides may only use the provided components — no raw `<script>`, `<iframe>` or HTML in content files.
+- External links use `rel="noopener noreferrer"`.
+
+**Windows app (Tauri)**
+- Minimum permissions: no file system, shell or process access unless a feature truly needs it.
+- Loads only its bundled files and images from the official site — never remote code.
+- Release `.exe` published only through GitHub Actions, with its SHA-256 checksum.
+- If auto-update is added, updates are signed and the private key never enters the repository.
+
+**Dependencies**
+- As few dependencies as possible; every new one must be justified in its PR.
+- `pnpm-lock.yaml` and `Cargo.lock` are always committed.
+- New package versions are not installed until they are a few days old (pnpm `minimumReleaseAge`), to avoid compromised releases.
+- Dependabot alerts and security updates enabled; `cargo audit` runs in CI.
+
+**Repository**
+- No secret, token or key ever committed. Secret scanning and push protection enabled.
+- GitHub Actions pinned to a commit SHA, with minimal `permissions:`.
+- Two-factor authentication enabled on the maintainer account.
 
 ## Content rules
 
