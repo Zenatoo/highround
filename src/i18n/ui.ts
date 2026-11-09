@@ -50,6 +50,8 @@ const fr = {
   'videos.otherLang': 'En anglais',
   'videos.empty': 'Aucune vidéo pour ce guide.',
   'videos.opensYoutube': 'Ouvre YouTube',
+  'videos.disclaimer':
+    'Ces vidéos sont des suggestions. HighRound n’est affilié à aucun de leurs créateurs et n’est pas responsable de leur contenu, ni de ce qui y est proposé ou mis en avant (liens, codes promo, produits…).',
   'report.button': 'Signaler une erreur',
   'footer.credits': 'Crédits',
   'footer.privacy': 'Confidentialité',
@@ -129,6 +131,8 @@ const en: Record<Key, string> = {
   'videos.otherLang': 'In French',
   'videos.empty': 'No videos for this guide.',
   'videos.opensYoutube': 'Opens YouTube',
+  'videos.disclaimer':
+    'These videos are suggestions. HighRound is not affiliated with any of their creators and is not responsible for their content or for anything offered or promoted in them (links, promo codes, products…).',
   'report.button': 'Report an error',
   'footer.credits': 'Credits',
   'footer.privacy': 'Privacy',

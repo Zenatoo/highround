@@ -5,7 +5,8 @@ import type { Locale } from '../i18n/config';
 import { t } from '../i18n/ui';
 
 interface Props {
-  src: ImageMetadata;
+  /** An imported image, or a path inside `content/media/` (e.g. "iw/zombies-in-spaceland/power/power_spawn.webp"). */
+  src: ImageMetadata | string;
   alt: string;
   /** Author, or at least the site the image was found on. */
   credit: string;
@@ -13,11 +14,23 @@ interface Props {
   source: string;
 }
 
-const { src, alt, credit, source } = Astro.props;
+const media = import.meta.glob<{ default: ImageMetadata }>('/content/media/**/*.{webp,png,jpg,jpeg}');
+
+const { src: given, alt, credit, source } = Astro.props;
 
 // Fails the build: an image without a visible source is never published.
 if (!credit?.trim() || !source?.trim()) {
-  throw new Error(`Screenshot "${src?.src ?? alt}" needs both "credit" and "source".`);
+  throw new Error(`Screenshot "${typeof given === 'string' ? given : given?.src ?? alt}" needs both "credit" and "source".`);
+}
+
+let src: ImageMetadata;
+if (typeof given === 'string') {
+  const load = media[`/content/media/${given}`];
+  // Fails the build on a typo instead of publishing a broken image.
+  if (!load) throw new Error(`Screenshot: no image at content/media/${given}`);
+  src = (await load()).default;
+} else {
+  src = given;
 }
 
 const lang = (Astro.currentLocale ?? 'fr') as Locale;

@@ -259,9 +259,8 @@ const { lang, mapName, guideTitle } = Astro.props;
     font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
     line-height: 1.5;
   }
-  .play-body :global(.shots > .shot) {
-    max-width: 22rem;
-    flex-basis: 14rem;
+  .play-body :global(.shots) {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
   }
   .play-body :global(.shot img) {
     max-height: clamp(10rem, 30vh, 16rem);

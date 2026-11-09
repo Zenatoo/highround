@@ -8,9 +8,11 @@ interface Props {
   map: CollectionEntry<'maps'>;
   size: 'hero' | 'tile';
   lang: Locale;
+  /** The art sits inside a link: the credit can't be a second link (nested links break the layout). */
+  inLink?: boolean;
 }
 
-const { map, size, lang } = Astro.props;
+const { map, size, lang, inLink = false } = Astro.props;
 const { banner, color, name } = map.data;
 // Big outlined word in the generated art: the most recognisable word of the map name.
 const word = name.split(' ').sort((a, b) => b.length - a.length)[0];
@@ -35,11 +37,16 @@ const widths = size === 'tile' ? [320, 480, 640] : [640, 960, 1280, 1600];
   }
   <div class="art-content"><slot /></div>
   {
-    banner && (
-      <a class="art-credit" href={banner.source} target="_blank" rel="noopener noreferrer">
-        {t(lang, 'media.source')} : {banner.credit}
-      </a>
-    )
+    banner &&
+      (inLink ? (
+        <span class="art-credit">
+          {t(lang, 'media.source')} : {banner.credit}
+        </span>
+      ) : (
+        <a class="art-credit" href={banner.source} target="_blank" rel="noopener noreferrer">
+          {t(lang, 'media.source')} : {banner.credit}
+        </a>
+      ))
   }
 </div>
 

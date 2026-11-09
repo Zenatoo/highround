@@ -85,11 +85,53 @@ const { lang } = guide;
     padding: 0;
     overflow-y: auto;
     list-style: none;
-    counter-reset: toc;
+  }
+  .toc :global(li) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+  /* The number ticks or unticks the step; the 2.25rem button keeps a comfortable hit area around the small circle. */
+  .toc :global(.toc-toggle) {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: -0.3rem 0 -0.3rem -0.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .toc :global(.toc-toggle) {
+    position: relative;
+    isolation: isolate;
+  }
+  .toc :global(.toc-toggle)::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transition: border-color 0.15s, background-color 0.15s;
+  }
+  .toc :global(.toc-toggle:hover)::after {
+    border-color: var(--accent);
+  }
+  .toc :global(.toc-toggle:focus-visible) {
+    outline: none;
+  }
+  .toc :global(.toc-toggle:focus-visible)::after {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
   }
   .toc :global(a) {
-    display: flex;
-    gap: 0.5rem;
+    flex: 1;
     padding: 0.3rem 0.4rem;
     border-radius: var(--r-sm);
     color: var(--muted);
@@ -101,28 +143,15 @@ const { lang } = guide;
     background: var(--raised);
     color: var(--text);
   }
-  .toc :global(a::before) {
-    counter-increment: toc;
-    content: counter(toc);
-    display: grid;
-    place-items: center;
-    flex: none;
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    font-size: 0.65rem;
-    font-weight: 800;
-  }
-  .toc :global(a.is-done) {
-    color: var(--muted);
+  .toc :global(li.is-done a) {
     text-decoration: line-through;
   }
-  .toc :global(a.is-done::before) {
-    content: '✓';
+  .toc :global(li.is-done .toc-toggle) {
+    color: var(--bg);
+  }
+  .toc :global(li.is-done .toc-toggle)::after {
     border-color: var(--ok);
     background: var(--ok);
-    color: var(--bg);
   }
   .reset {
     display: inline-flex;

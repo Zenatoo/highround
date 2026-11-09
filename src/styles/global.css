@@ -322,3 +322,31 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
   background: var(--accent);
 }
+
+/* Tables in guides: scroll inside themselves on narrow screens, never widen the page. */
+.guide-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.guide-body th,
+.guide-body td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.guide-body th {
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.guide-body tbody tr:hover {
+  background: var(--surface);
+}

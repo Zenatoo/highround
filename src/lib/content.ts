@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { LOCALES, type Locale } from '../i18n/config';
+import { CATEGORIES, LOCALES, type Locale } from '../i18n/config';
 
 export type Guide = CollectionEntry<'guides'> & {
   lang: Locale;
@@ -47,5 +47,7 @@ export async function getMapGuides(lang: Locale, game: string, map: string) {
   for (const g of guides) {
     if (g.lang === lang || !bySlug.has(g.slug)) bySlug.set(g.slug, g);
   }
-  return [...bySlug.values()].sort((a, b) => a.data.order - b.data.order);
+  // Same order as the side bar: by category, then by the guide's own order.
+  const rank = (g: Guide) => CATEGORIES.indexOf(g.data.category);
+  return [...bySlug.values()].sort((a, b) => rank(a) - rank(b) || a.data.order - b.data.order);
 }

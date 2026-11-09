@@ -19,7 +19,10 @@ const games = [
   ...byYear.filter((g) => g.data.status === 'soon'),
 ];
 const maps = await getMaps();
-const featured = maps.find((m) => m.data.status === 'in-progress');
+// The map being written, otherwise the last finished one.
+const featured =
+  maps.find((m) => m.data.status === 'in-progress') ?? maps.findLast((m) => m.data.status === 'complete');
+const done = featured?.data.status === 'complete';
 const featuredGame = featured && games.find((g) => g.id === featured.data.game);
 const featuredCount = featured ? (await getMapGuides(lang, featured.data.game, featured.id)).length : 0;
 const other = otherLocale(lang);
@@ -45,10 +48,10 @@ const other = otherLocale(lang);
     {
       featured && featuredGame && (
         <a class="featured" href={href(lang, featuredGame.id, featured.id)}>
-          <MapArt map={featured} size="hero" lang={lang}>
+          <MapArt map={featured} size="hero" lang={lang} inLink>
             <div class="badges">
               <span class={`badge badge-${featured.data.status}`}>
-                <Icon name="clock" /> {t(lang, 'home.current')}
+                <Icon name={done ? 'badge-check' : 'clock'} /> {t(lang, done ? 'status.complete' : 'home.current')}
               </span>
               <span class="badge">
                 <Icon name="gamepad-2" /> {featuredGame.data.name}

@@ -86,6 +86,13 @@ const groups = [
           </section>
         ))
       }
+      {
+        groups.length > 0 && (
+          <p class="disclaimer">
+            <Icon name="triangle-alert" /> {t(lang, 'videos.disclaimer')}
+          </p>
+        )
+      }
     </div>
     <GuideRail guide={guide} />
   </div>
@@ -171,6 +178,20 @@ const groups = [
     gap: 0.35rem;
     color: var(--muted);
     font-size: var(--fs-xs);
+  }
+  .disclaimer {
+    display: flex;
+    gap: 0.6rem;
+    max-width: var(--measure);
+    margin: 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .disclaimer :global(.icon) {
+    margin-top: 0.15rem;
   }
   .empty {
     display: flex;

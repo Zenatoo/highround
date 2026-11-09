@@ -47,7 +47,7 @@ const other = otherLocale(lang);
         return (
           <li>
             <a class="map-card" href={href(lang, game.id, map.id)}>
-              <MapArt map={map} size="tile" lang={lang}>
+              <MapArt map={map} size="tile" lang={lang} inLink>
                 <span class="map-name">{map.data.name}</span>
                 <span class="badges">
                   <span class={`badge badge-${map.data.status}`}>{t(lang, `status.${map.data.status}`)}</span>

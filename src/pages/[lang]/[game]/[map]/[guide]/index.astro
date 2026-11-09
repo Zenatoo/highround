@@ -74,6 +74,11 @@ const { Content } = await render(guide);
   }
   .guide-body {
     min-width: 0;
+    /* One step count for the whole guide, even when it is split into several checklists. */
+    counter-reset: step;
+  }
+  .guide-body > :global(h2) {
+    margin: 2.25rem 0 1rem;
   }
   /* Room for the play button fixed at the bottom of phone screens. */
   @media (max-width: 40rem) {
