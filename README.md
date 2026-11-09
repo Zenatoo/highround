@@ -42,6 +42,7 @@ See [CREDITS.md](CREDITS.md). Every screenshot and video shown on the site is cr
 - Code: [MIT](LICENSE)
 - Written guides: [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
 - Game screenshots, logos and names belong to their respective owners. Videos remain the property of their creators.
+- Videos are only suggested. HighRound is not affiliated with their creators and is not responsible for their content or for anything a creator offers or promotes in them.
 
 > HighRound is a fan project. It is not affiliated with or endorsed by Activision, Treyarch, Sledgehammer Games or Infinity Ward. Call of Duty is a trademark of Activision Publishing, Inc.
 
@@ -66,5 +67,6 @@ Aucune statistique, aucun cookie, aucune pub, aucun compte. Tes favoris restent 
 - Code : [MIT](LICENSE)
 - Guides écrits : [CC BY-NC-SA 4.0](LICENSE-CONTENT.md)
 - Les captures, logos et noms des jeux appartiennent à leurs propriétaires respectifs. Les vidéos restent la propriété de leurs créateurs.
+- Les vidéos sont seulement proposées. HighRound n'est pas affilié à leurs créateurs et n'est pas responsable de leur contenu, ni de ce qu'un créateur y propose ou met en avant.
 
 > HighRound est un projet de fan, non affilié à Activision, Treyarch, Sledgehammer Games ou Infinity Ward, et non approuvé par eux. Call of Duty est une marque d'Activision Publishing, Inc.

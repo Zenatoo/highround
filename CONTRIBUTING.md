@@ -28,9 +28,9 @@ A Windows release is published by pushing a tag: `git tag v0.2.0 && git push --t
 
 ## Writing a guide
 
-- File: `content/guides/<lang>/<game>/<map>/<slug>.mdx` (e.g. `content/guides/fr/iw/zombies-in-spaceland/easter-egg.mdx`). The same slug in `fr/` and `en/` links the two translations.
+- File: `content/guides/<lang>/<game>/<map>/<slug>.mdx` (e.g. `content/guides/fr/iw/zombies-in-spaceland/easter-egg-principal.mdx`). The same slug in `fr/` and `en/` links the two translations.
 - Images: `content/media/<game>/<map>/`, shared by both languages.
-- Start from the template `content/guides/fr/iw/zombies-in-spaceland/exemple.mdx`, which shows every component: `Checklist`, `Step`, `Screenshot`, `Shots`, `Tips`, `Tip`.
+- Use an existing guide as a model, for example `content/guides/fr/iw/zombies-in-spaceland/dischord.mdx`: it uses every component (`Checklist`, `Step`, `Screenshot`, `Shots`, `Tips`, `Tip`). `Screenshot` takes either an imported image or a path inside `content/media/`.
 - `draft: true` keeps a guide visible in `pnpm dev` only.
 - Games and maps are listed in `content/games.yaml` and `content/maps.yaml`.
 
@@ -152,7 +152,7 @@ See also [SECURITY.md](SECURITY.md).
 3. **Show, don't just tell:** add images of locations, items and steps whenever one is available.
 4. **Source always visible:** every image shows its author/source **on the page**, right under it, with a link. If the original author is unknown, credit at least the site where the image was found, with the link. An image with no source at all is rejected.
 5. Also add every new source to [CREDITS.md](CREDITS.md).
-6. **Videos tab:** each guide has a separate *Videos* tab listing related videos as links (thumbnail, title, creator, language). Videos in the user's language come first. Videos are never embedded, cut or re-uploaded.
+6. **Videos tab:** each guide has a separate *Videos* tab listing related videos as links (thumbnail, title, creator, language). Videos in the user's language come first. Videos are never embedded, cut or re-uploaded. Videos are suggestions only: HighRound is not affiliated with their creators and is not responsible for their content or for anything they offer or promote. The Videos tab says so to readers.
 7. No heavy media committed to Git: optimize images (WebP/AVIF) before adding them.
 8. **Community tips** (faster way, tech, common mistake, glitch) are attached to the step they concern, **collapsed by default**, labelled by type and credited. The main steps must work without them. Glitches are clearly labelled; nothing that requires mods or cheats.
 9. Verify every step in-game or with at least **two independent reliable sources** before publishing.
