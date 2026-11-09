@@ -9,8 +9,9 @@ zombies-in-spaceland:
   color: pink
   banner:
     image: ./media/iw/zombies-in-spaceland/banner.webp
-    credit: mmmrkennedy
-    source: https://mmmrkennedyzombiesguides.pages.dev/games/IW/zombies_in_spaceland/zombies_in_spaceland_guide
+    # Thumbnail of the official reveal trailer.
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=-hA3tlz8Mgo
 rave-in-the-redwoods: { game: iw, name: Rave in the Redwoods, order: 2, status: soon, color: green }
 shaolin-shuffle: { game: iw, name: Shaolin Shuffle, order: 3, status: soon, color: amber }
 attack-of-the-radioactive-thing: { game: iw, name: Attack of the Radioactive Thing, order: 4, status: soon, color: teal }

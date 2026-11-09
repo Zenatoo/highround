@@ -87,6 +87,8 @@ const widths = size === 'tile' ? [320, 480, 640] : [640, 960, 1280, 1600];
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Wide banners crop the bottom first: faces and signs sit in the upper part of key art. */
+    object-position: 50% 25%;
   }
   .art-word {
     position: absolute;

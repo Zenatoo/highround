@@ -34,6 +34,7 @@ Videos are only suggested, as links. HighRound is not affiliated with these crea
 | Author / source | Link | Used in |
 |---|---|---|
 | mmmrkennedy | [Zombies in Spaceland Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/zombies_in_spaceland/zombies_in_spaceland_guide) | Zombies in Spaceland (IW) |
+| Call of Duty (Activision) | [Zombies in Spaceland Reveal Trailer](https://www.youtube.com/watch?v=-hA3tlz8Mgo) (video thumbnail) | Zombies in Spaceland map banner |
 
 ### Community references
 
