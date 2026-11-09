@@ -1,5 +1,7 @@
 # Contributing to HighRound
 
+Interface rules are in [DESIGN.md](DESIGN.md).
+
 ## Tech stack
 
 - **Site & UI:** [Astro](https://astro.build) + TypeScript — static pages, minimal JavaScript.
@@ -8,6 +10,29 @@
 - **Hosting:** GitHub Pages, deployed by GitHub Actions on every push to `main`.
 - **Content:** Markdown/MDX in `content/en/` and `content/fr/`, validated by a schema.
 - **Package manager:** pnpm.
+
+## Getting started
+
+Requirements: Node 24, pnpm, and for the Windows app Rust + Visual Studio C++ build tools.
+
+```sh
+pnpm install
+pnpm dev          # site on http://localhost:4321/highround/ (drafts visible)
+pnpm check        # type check
+pnpm build        # production site in dist/ (drafts excluded)
+pnpm app:dev      # Windows app in dev mode
+pnpm app:build    # Windows .exe installer in src-tauri/target/release/bundle/nsis/
+```
+
+A Windows release is published by pushing a tag: `git tag v0.2.0 && git push --tags`.
+
+## Writing a guide
+
+- File: `content/guides/<lang>/<game>/<map>/<slug>.mdx` (e.g. `content/guides/fr/iw/zombies-in-spaceland/easter-egg.mdx`). The same slug in `fr/` and `en/` links the two translations.
+- Images: `content/media/<game>/<map>/`, shared by both languages.
+- Start from the template `content/guides/fr/iw/zombies-in-spaceland/exemple.mdx`, which shows every component: `Checklist`, `Step`, `Screenshot`, `Shots`, `Tips`, `Tip`.
+- `draft: true` keeps a guide visible in `pnpm dev` only.
+- Games and maps are listed in `content/games.yaml` and `content/maps.yaml`.
 
 ## Branches
 
@@ -122,14 +147,15 @@ See also [SECURITY.md](SECURITY.md).
 
 ## Content rules
 
-1. **Bilingual:** every guide exists in English **and** French. A guide missing a language gets the `needs-translation` label and is not published in that language.
+1. **Bilingual:** guides are written in French first, then translated into English. A guide missing a language gets the `needs-translation` label and is not published in that language.
 2. **Written by us:** the guide itself is our own text — clear, step by step, understandable without watching a video.
 3. **Show, don't just tell:** add images of locations, items and steps whenever one is available.
 4. **Source always visible:** every image shows its author/source **on the page**, right under it, with a link. If the original author is unknown, credit at least the site where the image was found, with the link. An image with no source at all is rejected.
 5. Also add every new source to [CREDITS.md](CREDITS.md).
 6. **Videos tab:** each guide has a separate *Videos* tab listing related videos as links (thumbnail, title, creator, language). Videos in the user's language come first. Videos are never embedded, cut or re-uploaded.
 7. No heavy media committed to Git: optimize images (WebP/AVIF) before adding them.
-8. Verify every step in-game or with at least **two independent reliable sources** before publishing.
+8. **Community tips** (faster way, tech, common mistake, glitch) are attached to the step they concern, **collapsed by default**, labelled by type and credited. The main steps must work without them. Glitches are clearly labelled; nothing that requires mods or cheats.
+9. Verify every step in-game or with at least **two independent reliable sources** before publishing.
 
 ## Using sources
 
