@@ -19,7 +19,7 @@ Your language choice, favorites and offline guides are stored **only on your dev
 
 ## Videos
 
-Videos are **not loaded until you click them**. Before that, only a static thumbnail hosted by HighRound is shown, so no request is made to YouTube. Once you click, the video is played through `youtube-nocookie.com`, and YouTube's own privacy policy applies.
+Videos are **links**, not embedded players. Their thumbnails are hosted by HighRound, so no request is made to YouTube while you browse. Clicking a video opens it on YouTube, where YouTube's own privacy policy applies.
 
 ## Error reports
 
@@ -56,7 +56,7 @@ Ta langue, tes favoris et tes guides hors ligne sont enregistrés **uniquement s
 
 ### Vidéos
 
-Les vidéos **ne se chargent pas tant que tu ne cliques pas dessus**. Avant, seule une miniature hébergée par HighRound est affichée : aucune requête n'est envoyée à YouTube. Après le clic, la vidéo passe par `youtube-nocookie.com` et la politique de confidentialité de YouTube s'applique.
+Les vidéos sont des **liens**, pas des lecteurs intégrés. Leurs miniatures sont hébergées par HighRound : aucune requête n'est envoyée à YouTube pendant que tu navigues. Cliquer sur une vidéo l'ouvre sur YouTube, où la politique de confidentialité de YouTube s'applique.
 
 ### Signalements d'erreur
 

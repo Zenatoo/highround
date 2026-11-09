@@ -98,7 +98,7 @@ A decoded image uses `width × height × 4` bytes of RAM whatever its file forma
 See also [SECURITY.md](SECURITY.md).
 
 **Site**
-- Strict Content Security Policy: only HighRound's own files; the single allowed frame is `youtube-nocookie.com`.
+- Strict Content Security Policy: only HighRound's own files, no frames at all.
 - No inline scripts, no `eval`, no third-party scripts.
 - Guides may only use the provided components — no raw `<script>`, `<iframe>` or HTML in content files.
 - External links use `rel="noopener noreferrer"`.
@@ -123,12 +123,32 @@ See also [SECURITY.md](SECURITY.md).
 ## Content rules
 
 1. **Bilingual:** every guide exists in English **and** French. A guide missing a language gets the `needs-translation` label and is not published in that language.
-2. **Show, don't just tell:** use screenshots directly in the guide as much as possible.
-3. **Source always visible:** every screenshot and video shows its author/source **on the page**, right under the media. A media item without a source is rejected.
-4. Also add every new source to [CREDITS.md](CREDITS.md).
-5. Videos are **embedded** (YouTube, etc.), never re-uploaded.
-6. No heavy media committed to Git: optimize images (WebP/AVIF) before adding them.
-7. Verify every step in-game or with a reliable source before publishing.
+2. **Written by us:** the guide itself is our own text — clear, step by step, understandable without watching a video.
+3. **Show, don't just tell:** add images of locations, items and steps whenever one is available.
+4. **Source always visible:** every image shows its author/source **on the page**, right under it, with a link. If the original author is unknown, credit at least the site where the image was found, with the link. An image with no source at all is rejected.
+5. Also add every new source to [CREDITS.md](CREDITS.md).
+6. **Videos tab:** each guide has a separate *Videos* tab listing related videos as links (thumbnail, title, creator, language). Videos in the user's language come first. Videos are never embedded, cut or re-uploaded.
+7. No heavy media committed to Git: optimize images (WebP/AVIF) before adding them.
+8. Verify every step in-game or with at least **two independent reliable sources** before publishing.
+
+## Using sources
+
+**Text — never copied.** Facts (steps, locations, codes) are free to use; someone else's wording is not. Every guide is written in our own words. Wiki text (e.g. Call of Duty Wiki, CC BY-SA 3.0) is used as a reference to check facts, never pasted: its share-alike license is not compatible with our content license.
+
+**Images found online** (wikis, community posts, guide sites) may be used, under these conditions:
+- Credit the author or site **and link to the exact source page**, under the image.
+- Never remove or crop out a watermark or signature.
+- Do not use images from a source that explicitly forbids reuse, nor from paid content.
+- When the author is easy to reach (Discord, Reddit, X), ask first.
+- Remove immediately on request (see **Removal**).
+
+Community members can also send their own screenshots (issue or PR); they are credited by name.
+
+**Videos:** only linked, never embedded or cut. The thumbnail is downloaded at build time and served by HighRound, so the page never contacts YouTube; the link opens the video on YouTube.
+
+**Reliable sources:** well-known community references and creators with a track record. Avoid auto-generated pages, mirror sites and sites selling in-game items or boosting.
+
+**Removal:** if a creator or rights holder asks for removal, remove first, discuss after.
 
 ## No tracking
 
@@ -137,7 +157,7 @@ See [PRIVACY.md](PRIVACY.md). Any change that breaks it is rejected:
 - No analytics, ad, social or tracking script — ever.
 - No cookies.
 - No third-party resource loaded on page load: fonts, icons and images are self-hosted.
-- Videos use a click-to-load thumbnail, then `youtube-nocookie.com`.
+- Videos are plain links with self-hosted thumbnails: nothing is loaded from YouTube until the user clicks.
 - User data (favorites, language, offline guides) stays on the device.
 - Error reports are pre-filled GitHub issue links: no form backend, nothing sent by the site itself.
 
