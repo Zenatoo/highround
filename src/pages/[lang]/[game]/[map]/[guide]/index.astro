@@ -1,0 +1,94 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Checklist from '../../../../../components/Checklist.astro';
+import GuideHeader from '../../../../../components/GuideHeader.astro';
+import GuideRail from '../../../../../components/GuideRail.astro';
+import PlayMode from '../../../../../components/PlayMode.astro';
+import Screenshot from '../../../../../components/Screenshot.astro';
+import Shots from '../../../../../components/Shots.astro';
+import Step from '../../../../../components/Step.astro';
+import Tip from '../../../../../components/Tip.astro';
+import Tips from '../../../../../components/Tips.astro';
+import { categoryLabel } from '../../../../../i18n/ui';
+import { getGames, getGuides, getMaps } from '../../../../../lib/content';
+import { href } from '../../../../../lib/url';
+
+export async function getStaticPaths() {
+  const guides = await getGuides();
+  const maps = await getMaps();
+  const games = await getGames();
+  return guides.map((guide) => ({
+    params: { lang: guide.lang, game: guide.game, map: guide.map, guide: guide.slug },
+    props: {
+      guide,
+      map: maps.find((m) => m.id === guide.map)!,
+      game: games.find((g) => g.id === guide.game)!,
+      translation: guides.find(
+        (g) => g.lang !== guide.lang && g.game === guide.game && g.map === guide.map && g.slug === guide.slug,
+      ),
+    },
+  }));
+}
+
+const { guide, map, game, translation } = Astro.props;
+const gameName = game.data.name;
+const { lang } = guide;
+const { Content } = await render(guide);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${guide.data.title} – ${map.data.name}`}
+  alternate={translation && {
+    lang: translation.lang,
+    href: href(translation.lang, translation.game, translation.map, translation.slug),
+  }}
+  crumbs={[
+    { label: gameName, href: href(lang, guide.game) },
+    { label: map.data.name, href: href(lang, guide.game, map.id) },
+    { label: guide.data.title, href: href(lang, guide.game, map.id, guide.slug) },
+  ]}
+  sidebar={{ game, map, current: guide.slug }}
+>
+  <GuideHeader guide={guide} map={map} active="guide" />
+  <div class="guide-layout">
+    <article
+      class="guide-body"
+      data-guide-id={`${guide.game}/${guide.map}/${guide.slug}`}
+      data-pagefind-meta={`map:${gameName} / ${map.data.name}`}
+    >
+      <span hidden data-pagefind-filter="game">{gameName}</span>
+      <span hidden data-pagefind-filter="category">{categoryLabel(lang, guide.data.category)}</span>
+      <Content components={{ Checklist, Step, Screenshot, Shots, Tips, Tip }} />
+    </article>
+    <GuideRail guide={guide} progress />
+  </div>
+  <PlayMode lang={lang} mapName={map.data.name} guideTitle={guide.data.title} />
+</BaseLayout>
+
+<style>
+  .guide-layout {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .guide-body {
+    min-width: 0;
+  }
+  /* Room for the play button fixed at the bottom of phone screens. */
+  @media (max-width: 40rem) {
+    .guide-layout {
+      padding-bottom: 4.5rem;
+    }
+  }
+  .guide-body > :global(p) {
+    max-width: var(--measure);
+  }
+  @media (min-width: 75rem) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 19rem;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+</style>

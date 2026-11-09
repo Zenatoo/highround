@@ -1,0 +1,224 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<div
+  class="search"
+  data-search
+  data-base={import.meta.env.BASE_URL}
+  data-empty={t(lang, 'search.empty')}
+  data-unavailable={t(lang, 'search.unavailable')}
+>
+  <label for="search-input" class="visually-hidden">{t(lang, 'search.label')}</label>
+  <Icon name="search" class="search-icon" />
+  <input
+    id="search-input"
+    type="search"
+    placeholder={t(lang, 'search.placeholder')}
+    autocomplete="off"
+    spellcheck="false"
+    aria-controls="search-results"
+  />
+  <kbd aria-hidden="true">/</kbd>
+  <ol id="search-results" class="results" aria-live="polite" hidden></ol>
+</div>
+
+<script>
+  type PagefindResult = {
+    url: string;
+    excerpt: string;
+    meta: { title?: string; map?: string };
+  };
+  type Pagefind = {
+    options: (o: object) => Promise<void>;
+    debouncedSearch: (q: string) => Promise<{ results: { data: () => Promise<PagefindResult> }[] } | null>;
+  };
+
+  const root = document.querySelector<HTMLElement>('[data-search]')!;
+  const input = root.querySelector('input')!;
+  const list = root.querySelector('ol')!;
+  let pagefind: Pagefind | null | undefined;
+
+  // The index only exists in a production build (`pnpm build`), not in `pnpm dev`.
+  async function load() {
+    if (pagefind !== undefined) return pagefind;
+    try {
+      const base = root.dataset.base!.replace(/\/?$/, '/');
+      pagefind = (await import(/* @vite-ignore */ `${base}pagefind/pagefind.js`)) as Pagefind;
+      await pagefind.options({ baseUrl: base });
+    } catch {
+      pagefind = null;
+    }
+    return pagefind;
+  }
+
+  function message(text: string) {
+    list.replaceChildren(Object.assign(document.createElement('li'), { className: 'note', textContent: text }));
+  }
+
+  input.addEventListener('focus', load, { once: true });
+  input.addEventListener('input', async () => {
+    const query = input.value.trim();
+    list.hidden = query.length === 0;
+    if (!query) return;
+
+    const engine = await load();
+    if (!engine) return message(root.dataset.unavailable!);
+    const search = await engine.debouncedSearch(query);
+    if (!search || input.value.trim() !== query) return;
+    if (search.results.length === 0) return message(root.dataset.empty!);
+
+    const items = await Promise.all(search.results.slice(0, 8).map((r) => r.data()));
+    list.replaceChildren(
+      ...items.map((item) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.url;
+        const title = document.createElement('strong');
+        title.textContent = item.meta.title ?? item.url;
+        const where = document.createElement('span');
+        where.className = 'where';
+        where.textContent = item.meta.map ?? '';
+        const excerpt = document.createElement('span');
+        excerpt.className = 'excerpt';
+        // Pagefind excerpts come from our own indexed pages and only wrap matches in <mark>.
+        excerpt.innerHTML = item.excerpt;
+        a.append(title, where, excerpt);
+        li.append(a);
+        return li;
+      }),
+    );
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      input.value = '';
+      list.hidden = true;
+      input.blur();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!root.contains(e.target as Node)) list.hidden = true;
+  });
+
+  // "/" focuses search from anywhere.
+  document.addEventListener('keydown', (e) => {
+    const target = e.target as HTMLElement;
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(target.tagName)) {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+</script>
+
+<style>
+  .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min(100%, 34rem);
+  }
+  .search :global(.search-icon) {
+    position: absolute;
+    left: 0.85rem;
+    color: var(--muted);
+    pointer-events: none;
+  }
+  input {
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 2.5rem 0 2.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+  input::placeholder {
+    color: var(--muted);
+  }
+  input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+  kbd {
+    position: absolute;
+    right: 0.6rem;
+    padding: 0 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: var(--fs-xs);
+  }
+  @media (hover: none), (max-width: 40rem) {
+    kbd {
+      display: none;
+    }
+    input {
+      padding-right: 0.75rem;
+    }
+  }
+  .results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    z-index: 40;
+    max-height: min(70vh, 32rem);
+    margin: 0;
+    padding: 0.4rem;
+    overflow-y: auto;
+    list-style: none;
+    background: var(--raised);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.45);
+  }
+  .results :global(a) {
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--r-sm);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .results :global(a:hover),
+  .results :global(a:focus-visible) {
+    background: var(--hover);
+  }
+  .results :global(strong) {
+    font-family: var(--font-head);
+    font-size: var(--fs-md);
+  }
+  .results :global(.where) {
+    color: var(--accent-text);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .results :global(.excerpt) {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .results :global(mark) {
+    background: none;
+    color: var(--text);
+    font-weight: 800;
+  }
+  .results :global(.note) {
+    padding: 0.6rem 0.75rem;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+</style>

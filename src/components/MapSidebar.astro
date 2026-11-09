@@ -1,0 +1,154 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { CATEGORIES, type Locale } from '../i18n/config';
+import { categoryLabel, count, t } from '../i18n/ui';
+import { getMapGuides } from '../lib/content';
+import { categoryIcon } from '../lib/icons';
+import { href } from '../lib/url';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Locale;
+  game: CollectionEntry<'games'>;
+  map: CollectionEntry<'maps'>;
+  /** Slug of the guide being read, if any. */
+  current?: string;
+}
+
+const { lang, game, map, current } = Astro.props;
+const guides = await getMapGuides(lang, game.id, map.id);
+const groups = CATEGORIES.map((category) => ({
+  category,
+  guides: guides.filter((g) => g.data.category === category),
+})).filter((g) => g.guides.length > 0);
+---
+
+<aside class="sidebar" id="sidebar" aria-label={map.data.name}>
+  <a class="back" href={href(lang, game.id)}>
+    <Icon name="arrow-left" /> {game.data.name}
+  </a>
+  <a class="map-name" href={href(lang, game.id, map.id)} aria-current={current ? undefined : 'page'}>
+    {map.data.name}
+  </a>
+  <p class="map-count">{count(lang, guides.length, 'guide')}</p>
+
+  <nav class="groups" aria-label={t(lang, 'map.guides')}>
+    {
+      groups.map((group) => (
+        <div class="group">
+          <p class="group-title">
+            <Icon name={categoryIcon[group.category]} /> {categoryLabel(lang, group.category)}
+          </p>
+          <ul>
+            {group.guides.map((g) => (
+              <li>
+                <a
+                  href={href(g.lang, game.id, map.id, g.slug)}
+                  hreflang={g.lang}
+                  aria-current={g.slug === current ? 'page' : undefined}
+                >
+                  {g.data.title}
+                  {g.lang !== lang && <span class="tag">{g.lang.toUpperCase()}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+    {groups.length === 0 && <p class="empty">{t(lang, 'map.empty')}</p>}
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem 2rem;
+    overflow-y: auto;
+    background: var(--sunken);
+    border-right: 1px solid var(--border);
+    font-size: var(--fs-sm);
+  }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-start;
+    min-height: 2.25rem;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .back:hover {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .map-name {
+    margin-top: 0.75rem;
+    color: var(--text);
+    font-family: var(--font-head);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .map-count {
+    margin: 0.15rem 0 1.25rem;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+  }
+  .groups {
+    display: grid;
+    gap: 1.1rem;
+  }
+  .group-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.3rem;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .group-title :global(.icon) {
+    color: var(--accent);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0.35rem 0.6rem 0.35rem 1.7rem;
+    border-radius: var(--r-sm);
+    color: var(--text-soft);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  li a:hover {
+    background: var(--raised);
+    color: var(--text);
+    text-decoration: none;
+  }
+  li a[aria-current='page'] {
+    background: color-mix(in oklab, var(--accent) 14%, transparent);
+    color: var(--accent-text);
+    font-weight: 700;
+  }
+  .tag {
+    margin-left: auto;
+    padding: 0 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+  }
+  .empty {
+    color: var(--muted);
+  }
+</style>

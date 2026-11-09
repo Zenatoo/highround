@@ -1,0 +1,330 @@
+---
+// Fonts are bundled with the site: no request to a font service.
+import '@fontsource-variable/sora';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import type { CollectionEntry } from 'astro:content';
+import Icon from '../components/Icon.astro';
+import Lightbox from '../components/Lightbox.astro';
+import MapSidebar from '../components/MapSidebar.astro';
+import Search from '../components/Search.astro';
+import Settings from '../components/Settings.astro';
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import { href } from '../lib/url';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description?: string;
+  /** Same page in the other language; defaults to the other language's home. */
+  alternate?: { lang: Locale; href: string };
+  /** Breadcrumb after "Home"; the last item is the current page. */
+  crumbs?: { label: string; href: string }[];
+  /** Map pages and guides get the map's own side bar. */
+  sidebar?: { game: CollectionEntry<'games'>; map: CollectionEntry<'maps'>; current?: string };
+}
+
+const { lang, title, description = t(lang, 'site.tagline'), alternate, crumbs = [], sidebar } = Astro.props;
+const other: Locale = lang === 'fr' ? 'en' : 'fr';
+const alternateHref = alternate?.href ?? href(other);
+const repo = 'https://github.com/Zenatoo/highround/blob/main';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#121314" />
+    <title>{title === 'HighRound' ? title : `${title} – HighRound`}</title>
+    <meta name="description" content={description} />
+    {alternate && <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />}
+    <!-- Applies the saved color palette before the first paint, so the page never flashes red then violet. -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('highround:theme') === 'aether') document.documentElement.dataset.theme = 'aether';
+      } catch {}
+    </script>
+  </head>
+  <body class:list={{ 'has-sidebar': sidebar }}>
+    <!-- Mobile menu: a checkbox drives the drawer, so it works without JavaScript. -->
+    {sidebar && <input type="checkbox" id="menu-toggle" class="menu-toggle visually-hidden" />}
+
+    <header class="topbar">
+      {
+        sidebar && (
+          <label for="menu-toggle" class="icon-button menu-button">
+            <Icon name="menu" label={t(lang, 'nav.menu')} />
+          </label>
+        )
+      }
+      <a class="brand" href={href(lang)}>
+        <span class="brand-mark" aria-hidden="true">HR</span>
+        <span class="brand-name">HighRound</span>
+      </a>
+      <nav class="topnav" aria-label={t(lang, 'nav.games')}>
+        <a href={`${href(lang)}#games`}>{t(lang, 'nav.games')}</a>
+      </nav>
+      <Search lang={lang} />
+      <Settings lang={lang} alternateHref={alternateHref} />
+      <div class="lang" role="group" aria-label={t(lang, 'nav.language')}>
+        <a href={lang === 'fr' ? undefined : alternateHref} aria-current={lang === 'fr' ? 'true' : undefined} hreflang="fr" lang="fr">FR</a>
+        <a href={lang === 'en' ? undefined : alternateHref} aria-current={lang === 'en' ? 'true' : undefined} hreflang="en" lang="en">EN</a>
+      </div>
+    </header>
+
+    <div class="body">
+      {
+        sidebar && (
+          <>
+            <label for="menu-toggle" class="scrim" aria-hidden="true" />
+            <MapSidebar lang={lang} game={sidebar.game} map={sidebar.map} current={sidebar.current} />
+          </>
+        )
+      }
+      <main class="main" data-pagefind-body>
+        {
+          crumbs.length > 0 && (
+            <nav aria-label={t(lang, 'nav.crumbs')}>
+              <ol class="crumbs">
+                <li>
+                  <a href={href(lang)}>{t(lang, 'nav.home')}</a>
+                </li>
+                {crumbs.map((c, i) =>
+                  i === crumbs.length - 1 ? (
+                    <li aria-current="page">{c.label}</li>
+                  ) : (
+                    <li>
+                      <a href={c.href}>{c.label}</a>
+                    </li>
+                  ),
+                )}
+              </ol>
+            </nav>
+          )
+        }
+        <slot />
+      </main>
+    </div>
+
+    <footer class="footer" data-pagefind-ignore>
+      <p>{t(lang, 'footer.disclaimer')}</p>
+      <p class="footer-links">
+        <a href={`${repo}/CREDITS.md`} target="_blank" rel="noopener noreferrer">{t(lang, 'footer.credits')}</a>
+        <a href={`${repo}/PRIVACY.md`} target="_blank" rel="noopener noreferrer">{t(lang, 'footer.privacy')}</a>
+        <span>{t(lang, 'footer.noTracking')}</span>
+      </p>
+    </footer>
+    <Lightbox lang={lang} />
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: var(--topbar);
+    padding: 0 var(--gutter);
+    background: color-mix(in oklab, var(--surface) 94%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex: none;
+    color: var(--text);
+    font-family: var(--font-head);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    background: var(--accent-fill);
+    color: var(--on-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  .topnav {
+    display: flex;
+    margin-left: 0.75rem;
+  }
+  .topnav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0 0.75rem;
+    border-radius: var(--r-sm);
+    color: var(--text-soft);
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+  .topnav a:hover {
+    background: var(--raised);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .topbar :global(.search) {
+    flex: 0 1 30rem;
+    margin-left: auto;
+  }
+  .lang {
+    display: flex;
+    flex: none;
+    padding: 0.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+  }
+  .lang a {
+    display: grid;
+    place-items: center;
+    min-width: 2.25rem;
+    min-height: 2.15rem;
+    border-radius: var(--r-sm);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .lang a[href]:hover {
+    color: var(--text);
+  }
+  .lang a[aria-current] {
+    background: var(--raised);
+    color: var(--text);
+  }
+  .icon-button {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    cursor: pointer;
+  }
+  .menu-button,
+  .scrim {
+    display: none;
+  }
+
+  .body {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+  }
+  .main {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: 88rem;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 0.8rem + 1.5vw, 2.25rem) var(--gutter) 4rem;
+  }
+  .has-sidebar .main {
+    margin: 0;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding: 1.25rem var(--gutter) 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: var(--fs-xs);
+  }
+  .footer p {
+    margin: 0;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  .footer a {
+    color: var(--muted);
+  }
+  .footer a:hover {
+    color: var(--text);
+  }
+
+  @media (min-width: 60rem) {
+    .body > :global(.sidebar) {
+      position: sticky;
+      top: var(--topbar);
+      flex: none;
+      width: var(--sidebar);
+      height: calc(100dvh - var(--topbar));
+    }
+  }
+
+  @media (max-width: 59.99rem) {
+    .menu-button {
+      display: grid;
+    }
+    .menu-toggle:focus-visible ~ .topbar .menu-button {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .body > :global(.sidebar) {
+      position: fixed;
+      inset: var(--topbar) auto 0 0;
+      z-index: 30;
+      width: min(85vw, var(--sidebar));
+      transform: translateX(-100%);
+      visibility: hidden;
+      transition:
+        transform 0.2s ease-out,
+        visibility 0.2s;
+    }
+    .menu-toggle:checked ~ .body > :global(.sidebar) {
+      transform: none;
+      visibility: visible;
+    }
+    .menu-toggle:checked ~ .body > .scrim {
+      display: block;
+      position: fixed;
+      inset: var(--topbar) 0 0;
+      z-index: 25;
+      background: rgb(0 0 0 / 0.55);
+    }
+    .topnav {
+      display: none;
+    }
+    .topbar :global(.search) {
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .topbar {
+      gap: 0.5rem;
+      padding: 0 0.75rem;
+    }
+    .brand-name,
+    .lang {
+      display: none;
+    }
+  }
+</style>

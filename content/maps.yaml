@@ -1,0 +1,8 @@
+# Key = map id used in URLs and in content/guides/<lang>/<game>/<map>/.
+# color = generated banner color until a real banner image is added:
+#   banner: { image: ./media/<game>/<map>/banner.webp, credit: Author, source: https://… }
+zombies-in-spaceland: { game: iw, name: Zombies in Spaceland, order: 1, status: in-progress, color: pink }
+rave-in-the-redwoods: { game: iw, name: Rave in the Redwoods, order: 2, status: soon, color: green }
+shaolin-shuffle: { game: iw, name: Shaolin Shuffle, order: 3, status: soon, color: amber }
+attack-of-the-radioactive-thing: { game: iw, name: Attack of the Radioactive Thing, order: 4, status: soon, color: teal }
+the-beast-from-beyond: { game: iw, name: The Beast from Beyond, order: 5, status: soon, color: blue }

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { href } from '../lib/url';
+---
+
+<BaseLayout lang="fr" title="HighRound">
+  <h1>HighRound</h1>
+  <ul class="choice" data-lang-choice>
+    <li><a href={href('fr')} hreflang="fr" lang="fr">Français</a></li>
+    <li><a href={href('en')} hreflang="en" lang="en">English</a></li>
+  </ul>
+</BaseLayout>
+
+<script>
+  // Sends visitors to their browser language; the links above stay as a no-JS fallback.
+  const lang = navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  const link = document.querySelector<HTMLAnchorElement>(`[data-lang-choice] a[hreflang="${lang}"]`);
+  if (link) location.replace(link.href);
+</script>
+
+<style>
+  .choice {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .choice a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 1.5rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--r-md);
+    font-size: var(--fs-lg);
+    text-decoration: none;
+  }
+</style>

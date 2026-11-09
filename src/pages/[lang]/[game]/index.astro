@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import MapArt from '../../../components/MapArt.astro';
+import { LOCALES, type Locale } from '../../../i18n/config';
+import { count, t } from '../../../i18n/ui';
+import { getGames, getGuides, getMaps, otherLocale } from '../../../lib/content';
+import { href } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  const games = (await getGames()).filter((g) => g.data.status !== 'soon');
+  return LOCALES.flatMap((lang) =>
+    games.map((game) => ({ params: { lang, game: game.id }, props: { game } })),
+  );
+}
+
+const lang = Astro.params.lang as Locale;
+const { game } = Astro.props;
+const maps = await getMaps(game.id);
+const guides = (await getGuides()).filter((g) => g.game === game.id);
+const other = otherLocale(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title={game.data.name}
+  alternate={{ lang: other, href: href(other, game.id) }}
+  crumbs={[{ label: game.data.name, href: href(lang, game.id) }]}
+>
+  <header class="head">
+    <span class={`head-badge c-${game.data.color}`} aria-hidden="true">{game.data.short}</span>
+    <div>
+      <h1>{game.data.name}</h1>
+      <div class="badges">
+        <span class={`badge badge-${game.data.status}`}>{t(lang, `status.${game.data.status}`)}</span>
+        <span class="badge"><Icon name="clock" /> {game.data.year}</span>
+        <span class="badge"><Icon name="map" /> {count(lang, maps.length, 'map')}</span>
+      </div>
+    </div>
+  </header>
+
+  <h2 class="section-title"><Icon name="map" /> {t(lang, 'game.maps')}</h2>
+  <ul class="map-grid">
+    {
+      maps.map((map) => {
+        const guideCount = new Set(guides.filter((g) => g.map === map.id).map((g) => g.slug)).size;
+        return (
+          <li>
+            <a class="map-card" href={href(lang, game.id, map.id)}>
+              <MapArt map={map} size="tile" lang={lang}>
+                <span class="map-name">{map.data.name}</span>
+                <span class="badges">
+                  <span class={`badge badge-${map.data.status}`}>{t(lang, `status.${map.data.status}`)}</span>
+                  {guideCount > 0 && (
+                    <span class="badge">
+                      <Icon name="list-checks" /> {count(lang, guideCount, 'guide')}
+                    </span>
+                  )}
+                </span>
+              </MapArt>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2.25rem;
+  }
+  .head h1 {
+    margin-bottom: 0.6rem;
+  }
+  .head-badge {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: clamp(4rem, 3rem + 3vw, 5.5rem);
+    aspect-ratio: 1;
+    border-radius: var(--r-lg);
+    background:
+      radial-gradient(circle at 80% 15%, color-mix(in oklab, var(--c1) 85%, transparent), transparent 60%),
+      linear-gradient(135deg, color-mix(in oklab, var(--c2) 85%, black), var(--raised));
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .map-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .map-card:hover {
+    text-decoration: none;
+  }
+  .map-card:hover :global(.art) {
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
+  }
+  .map-name {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-head);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+</style>

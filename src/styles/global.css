@@ -1,0 +1,324 @@
+:root {
+  /* Default palette "Rouge sang": charcoal greys, blood-red accent. */
+  --bg: #121314;
+  --sunken: #161719;
+  --surface: #1b1d20;
+  --raised: #232529;
+  --hover: #2a2d31;
+  --border: #2e3136;
+  --text: #f1f1f2;
+  --text-soft: #d2d4d8;
+  --muted: #a3a7ad;
+  /* --accent marks bars, icons and borders; --accent-fill is darker so white text on it passes WCAG AA. */
+  --accent: #e5484d;
+  --accent-fill: #d4383e;
+  --accent-text: #ff8589;
+  --on-accent: #ffffff;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --info: #60a5fa;
+
+  --font-head: 'Sora Variable', system-ui, sans-serif;
+  --font-body: 'Manrope Variable', system-ui, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.6rem, 1.2rem + 1.4vw, 2.125rem);
+  --fs-3xl: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+
+  --sidebar: 17.5rem;
+  --topbar: 3.75rem;
+  --gutter: clamp(1rem, 0.4rem + 2vw, 2.25rem);
+  --measure: 70ch;
+
+  color-scheme: dark;
+}
+
+/* Palette "Aether", chosen in the settings panel. */
+:root[data-theme='aether'] {
+  --bg: #0e0f1c;
+  --sunken: #121327;
+  --surface: #171932;
+  --raised: #1f2240;
+  --hover: #272a4c;
+  --border: #2b2e52;
+  --text: #eceefe;
+  --text-soft: #cfd2ee;
+  --muted: #9ea3c9;
+  --accent: #8b6cff;
+  --accent-fill: #7352ee;
+  --accent-text: #b3a1ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 450;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+}
+
+h2 {
+  font-size: var(--fs-xl);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+svg.icon {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Badges: short facts (status, difficulty, players…). */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.badge-in-progress {
+  border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  color: var(--accent-text);
+}
+
+.badge-complete,
+.badge-easy {
+  border-color: color-mix(in oklab, var(--ok) 40%, transparent);
+  background: color-mix(in oklab, var(--ok) 10%, transparent);
+  color: var(--ok);
+}
+
+.badge-medium {
+  border-color: color-mix(in oklab, var(--warn) 40%, transparent);
+  color: var(--warn);
+}
+
+.badge-hard {
+  border-color: color-mix(in oklab, var(--danger) 40%, transparent);
+  color: var(--danger);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Generated art colors (map banners, game tiles) until real images exist. */
+.c-amber { --c1: #ffb020; --c2: #ff5e3a; }
+.c-violet { --c1: #9b7bff; --c2: #4f46e5; }
+.c-teal { --c1: #2dd4bf; --c2: #0ea5e9; }
+.c-red { --c1: #f87171; --c2: #b91c1c; }
+.c-blue { --c1: #60a5fa; --c2: #3730a3; }
+.c-green { --c1: #4ade80; --c2: #0f766e; }
+.c-pink { --c1: #f472b6; --c2: #7c3aed; }
+
+/* Off-screen sections are skipped by the renderer until scrolled near (RAM + CPU). */
+.guide-body section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+}
+
+.section-title .icon {
+  color: var(--accent);
+}
+
+/* Buttons: one filled primary action per screen, the rest outlined. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--raised);
+  text-decoration: none;
+}
+
+.button-primary {
+  border-color: var(--accent-fill);
+  background: var(--accent-fill);
+  color: var(--on-accent);
+  font-weight: 800;
+}
+
+.button-primary:hover {
+  background: color-mix(in oklab, var(--accent-fill) 88%, white);
+}
+
+/* Breadcrumb at the top of the content. */
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.crumbs a {
+  color: var(--muted);
+}
+
+.crumbs a:hover {
+  color: var(--text);
+}
+
+.crumbs li + li::before {
+  content: '/';
+  margin-right: 0.5rem;
+  opacity: 0.6;
+}
+
+.crumbs [aria-current] {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Components set their own display; the hidden attribute must still win. */
+[hidden] {
+  display: none !important;
+}
+
+progress {
+  appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--raised);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background: var(--raised);
+}
+
+progress::-webkit-progress-value {
+  background: var(--accent);
+  transition: width 0.25s ease-out;
+}
+
+progress::-moz-progress-bar {
+  background: var(--accent);
+}

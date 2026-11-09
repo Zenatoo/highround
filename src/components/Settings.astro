@@ -1,0 +1,232 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Locale;
+  alternateHref: string;
+}
+
+const { lang, alternateHref } = Astro.props;
+const themes = [
+  { id: 'blood', label: t(lang, 'settings.theme.blood') },
+  { id: 'aether', label: t(lang, 'settings.theme.aether') },
+];
+---
+
+<button type="button" class="settings-button" popovertarget="settings" aria-label={t(lang, 'settings.title')}>
+  <Icon name="settings" />
+</button>
+
+<div id="settings" class="settings" popover>
+  <div class="settings-head">
+    <h2>{t(lang, 'settings.title')}</h2>
+    <button type="button" class="close" popovertarget="settings" popovertargetaction="hide" aria-label={t(lang, 'lightbox.close')}>
+      <Icon name="x" />
+    </button>
+  </div>
+
+  <fieldset class="themes" data-theme-picker>
+    <legend>{t(lang, 'settings.colors')}</legend>
+    {
+      themes.map((theme, i) => (
+        <label class="theme">
+          <input type="radio" name="theme" value={theme.id} checked={i === 0} />
+          <span class="swatches" aria-hidden="true">
+            {[0, 1, 2].map((j) => (
+              <span class={`swatch swatch-${theme.id}-${j}`} />
+            ))}
+          </span>
+          <span class="theme-name">
+            {theme.label}
+            {i === 0 && <span class="muted"> ({t(lang, 'settings.default')})</span>}
+          </span>
+          <Icon name="check" class="theme-check" />
+        </label>
+      ))
+    }
+  </fieldset>
+
+  <div class="langs" role="group" aria-label={t(lang, 'nav.language')}>
+    <p class="legend">{t(lang, 'nav.language')}</p>
+    <div class="lang-row">
+      <a href={lang === 'fr' ? undefined : alternateHref} aria-current={lang === 'fr' ? 'true' : undefined} hreflang="fr" lang="fr">Français</a>
+      <a href={lang === 'en' ? undefined : alternateHref} aria-current={lang === 'en' ? 'true' : undefined} hreflang="en" lang="en">English</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // The choice stays on this device (localStorage). The <head> script applies it before first paint.
+  const KEY = 'highround:theme';
+  const picker = document.querySelector<HTMLFieldSetElement>('[data-theme-picker]');
+  const current = document.documentElement.dataset.theme ?? 'blood';
+  picker?.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
+    input.checked = input.value === current;
+  });
+  picker?.addEventListener('change', (event) => {
+    const value = (event.target as HTMLInputElement).value;
+    if (value === 'blood') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = value;
+    try {
+      if (value === 'blood') localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, value);
+    } catch {
+      // Storage blocked: the theme still applies until the page is left.
+    }
+  });
+</script>
+
+<style>
+  .settings-button {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .settings-button:hover {
+    background: var(--raised);
+    color: var(--text);
+  }
+  .settings {
+    inset: calc(var(--topbar) + 0.5rem) var(--gutter) auto auto;
+    width: min(22rem, calc(100vw - 2rem));
+    margin: 0;
+    padding: 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 24px 60px rgb(0 0 0 / 0.5);
+  }
+  .settings-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+  }
+  .settings-head h2 {
+    font-size: var(--fs-lg);
+  }
+  .close {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: -0.6rem -0.6rem -0.6rem 0;
+    border: 0;
+    border-radius: var(--r-md);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .close:hover {
+    background: var(--raised);
+    color: var(--text);
+  }
+  .themes {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  legend,
+  .legend {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .theme {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .theme:hover {
+    background: var(--raised);
+  }
+  .theme input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .theme:has(input:checked) {
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 10%, transparent);
+  }
+  .theme:has(input:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .swatches {
+    display: flex;
+    flex: none;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: var(--r-sm);
+  }
+  .swatch {
+    width: 1rem;
+    height: 1.75rem;
+  }
+  /* Swatches show the palettes themselves, so they use fixed colors rather than the live tokens. */
+  .swatch-blood-0 { background: #121314; }
+  .swatch-blood-1 { background: #1b1d20; }
+  .swatch-blood-2 { background: #e5484d; }
+  .swatch-aether-0 { background: #0e0f1c; }
+  .swatch-aether-1 { background: #171932; }
+  .swatch-aether-2 { background: #8b6cff; }
+  .theme-name {
+    flex: 1;
+  }
+  .theme-name .muted {
+    font-weight: 500;
+  }
+  .theme :global(.theme-check) {
+    visibility: hidden;
+    color: var(--accent);
+  }
+  .theme:has(input:checked) :global(.theme-check) {
+    visibility: visible;
+  }
+  .langs {
+    margin-top: 1.1rem;
+  }
+  .lang-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .lang-row a {
+    display: grid;
+    place-items: center;
+    min-height: 2.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .lang-row a[href]:hover {
+    background: var(--raised);
+  }
+  .lang-row a[aria-current] {
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 10%, transparent);
+  }
+</style>

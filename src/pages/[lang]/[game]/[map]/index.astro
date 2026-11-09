@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Icon from '../../../../components/Icon.astro';
+import MapArt from '../../../../components/MapArt.astro';
+import { LOCALES, type Locale } from '../../../../i18n/config';
+import { categoryLabel, count, t } from '../../../../i18n/ui';
+import { getGames, getMapGuides, getMaps, otherLocale, stepCount, type Guide } from '../../../../lib/content';
+import { categoryIcon } from '../../../../lib/icons';
+import { href } from '../../../../lib/url';
+
+export async function getStaticPaths() {
+  const games = (await getGames()).filter((g) => g.data.status !== 'soon');
+  const maps = (await getMaps()).filter((m) => games.some((g) => g.id === m.data.game));
+  return LOCALES.flatMap((lang) =>
+    maps.map((map) => ({
+      params: { lang, game: map.data.game, map: map.id },
+      props: { map, game: games.find((g) => g.id === map.data.game)! },
+    })),
+  );
+}
+
+const lang = Astro.params.lang as Locale;
+const { map, game } = Astro.props;
+const other = otherLocale(lang);
+const guides = await getMapGuides(lang, game.id, map.id);
+const main = guides.find((g) => g.data.category === 'main-quest');
+const rest = guides.filter((g) => g !== main);
+const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: 'medium' });
+
+// Short facts shown under a guide title.
+function facts(g: Guide) {
+  const steps = stepCount(g);
+  return [
+    g.data.difficulty && { cls: `badge-${g.data.difficulty}`, icon: 'gauge', text: t(lang, `difficulty.${g.data.difficulty}`) },
+    g.data.players && { cls: '', icon: g.data.players === 'solo' ? 'user' : 'users', text: t(lang, `players.${g.data.players}`) },
+    steps > 0 && { cls: '', icon: 'list-checks', text: count(lang, steps, 'step') },
+    g.data.verified && { cls: 'badge-complete', icon: 'badge-check', text: `${t(lang, 'guide.verified')} ${dateFormat.format(g.data.verified.date)}` },
+    g.lang !== lang && { cls: 'badge-hard', icon: 'languages', text: `${t(lang, 'guide.notTranslated')} (${g.lang.toUpperCase()})` },
+  ].filter(Boolean) as { cls: string; icon: 'gauge' | 'user' | 'users' | 'list-checks' | 'badge-check' | 'languages'; text: string }[];
+}
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${map.data.name} – ${game.data.name}`}
+  alternate={{ lang: other, href: href(other, game.id, map.id) }}
+  crumbs={[
+    { label: game.data.name, href: href(lang, game.id) },
+    { label: map.data.name, href: href(lang, game.id, map.id) },
+  ]}
+  sidebar={{ game, map }}
+>
+  <MapArt map={map} size="hero" lang={lang}>
+    <h1 class="map-title">{map.data.name}</h1>
+    <div class="badges">
+      <span class={`badge badge-${map.data.status}`}>{t(lang, `status.${map.data.status}`)}</span>
+      <span class="badge"><Icon name="gamepad-2" /> {game.data.name} ({game.data.year})</span>
+      {guides.length > 0 && <span class="badge"><Icon name="list-checks" /> {count(lang, guides.length, 'guide')}</span>}
+    </div>
+  </MapArt>
+
+  {
+    guides.length === 0 && (
+      <div class="empty">
+        <Icon name="clock" />
+        <p>{t(lang, 'map.empty')}</p>
+      </div>
+    )
+  }
+
+  {
+    main && (
+      <section class="block" data-pagefind-ignore>
+        <h2 class="section-title">
+          <Icon name="trophy" /> {t(lang, 'map.mainQuest')}
+        </h2>
+        <a class="featured" href={href(main.lang, game.id, map.id, main.slug)} hreflang={main.lang}>
+          <span class="featured-icon" aria-hidden="true">
+            <Icon name="trophy" />
+          </span>
+          <span class="featured-text">
+            <span class="featured-title">{main.data.title}</span>
+            <span class="badges">
+              {facts(main).map((f) => (
+                <span class={`badge ${f.cls}`}>
+                  <Icon name={f.icon} /> {f.text}
+                </span>
+              ))}
+              {main.data.draft && <span class="badge">draft</span>}
+            </span>
+          </span>
+          <Icon name="chevron-right" class="go" />
+        </a>
+      </section>
+    )
+  }
+
+  {
+    rest.length > 0 && (
+      <section class="block" data-pagefind-ignore>
+        <h2 class="section-title">{main ? t(lang, 'map.otherGuides') : t(lang, 'map.guides')}</h2>
+        <ul class="cards">
+          {rest.map((g) => (
+            <li>
+              <a class="card" href={href(g.lang, game.id, map.id, g.slug)} hreflang={g.lang}>
+                <span class="card-cat">
+                  <Icon name={categoryIcon[g.data.category]} /> {categoryLabel(lang, g.data.category)}
+                </span>
+                <span class="card-title">{g.data.title}</span>
+                <span class="card-meta">{facts(g).map((f) => f.text).join(', ')}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .map-title {
+    font-size: var(--fs-3xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .map-title + .badges {
+    margin-top: 0.75rem;
+  }
+  .block {
+    margin-top: 2.25rem;
+  }
+  .empty {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--r-md);
+    color: var(--muted);
+  }
+  .empty p {
+    margin: 0;
+  }
+
+  .featured {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .featured:hover {
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    text-decoration: none;
+  }
+  .featured-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--r-md);
+    background: color-mix(in oklab, var(--accent) 14%, transparent);
+    color: var(--accent);
+    font-size: 1.5rem;
+  }
+  .featured-text {
+    display: grid;
+    gap: 0.55rem;
+    flex: 1;
+    min-width: 0;
+  }
+  .featured-title {
+    font-family: var(--font-head);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .featured :global(.go),
+  .card :global(.icon) {
+    color: var(--muted);
+  }
+  .featured :global(.go) {
+    font-size: 1.25rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .card {
+    display: grid;
+    gap: 0.3rem;
+    height: 100%;
+    padding: 0.95rem 1.05rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .card:hover {
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    text-decoration: none;
+  }
+  .card-cat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-text);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+  }
+  .card .card-cat :global(.icon) {
+    color: var(--accent);
+  }
+  .card-title {
+    font-family: var(--font-head);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .card-meta {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+
+  @media (max-width: 40rem) {
+    .featured {
+      align-items: flex-start;
+      padding: 1rem;
+    }
+    .featured-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      font-size: 1.2rem;
+    }
+    .featured :global(.go) {
+      display: none;
+    }
+  }
+</style>

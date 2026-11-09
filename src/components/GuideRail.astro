@@ -1,0 +1,167 @@
+---
+import { t } from '../i18n/ui';
+import type { Guide } from '../lib/content';
+import { reportUrl } from '../lib/url';
+import Icon from './Icon.astro';
+
+interface Props {
+  guide: Guide;
+  /** Show the progress panel (guide tab only). */
+  progress?: boolean;
+}
+
+const { guide, progress = false } = Astro.props;
+const { lang } = guide;
+---
+
+<aside class="rail">
+  {
+    progress && (
+      <section class="panel" data-progress-panel hidden>
+        <h2 class="panel-title">
+          <Icon name="list-checks" /> {t(lang, 'progress.title')}
+        </h2>
+        <div class="progress-line">
+          <progress value="0" max="1" data-progress-bar></progress>
+          <span class="progress-count">
+            <strong data-progress-count>0 / 0</strong> {t(lang, 'progress.done')}
+          </span>
+        </div>
+        <ol class="toc" data-progress-toc></ol>
+        <button type="button" class="reset" data-progress-reset>
+          <Icon name="rotate-ccw" /> {t(lang, 'checklist.reset')}
+        </button>
+      </section>
+    )
+  }
+  <a
+    class="report"
+    href={reportUrl(new URL(Astro.url.pathname, Astro.site).href, guide.data.title)}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Icon name="flag" /> {t(lang, 'report.button')}
+  </a>
+</aside>
+
+<style>
+  .rail {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+  .panel {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+  }
+  .panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--fs-md);
+  }
+  .panel-title :global(.icon) {
+    color: var(--accent);
+  }
+  .progress-line {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .progress-count {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .progress-count strong {
+    color: var(--text);
+  }
+  .toc {
+    display: grid;
+    gap: 0.1rem;
+    max-height: 50vh;
+    margin: 0.9rem 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc :global(a) {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: var(--r-sm);
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    line-height: 1.35;
+    text-decoration: none;
+  }
+  .toc :global(a:hover) {
+    background: var(--raised);
+    color: var(--text);
+  }
+  .toc :global(a::before) {
+    counter-increment: toc;
+    content: counter(toc);
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 800;
+  }
+  .toc :global(a.is-done) {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .toc :global(a.is-done::before) {
+    content: '✓';
+    border-color: var(--ok);
+    background: var(--ok);
+    color: var(--bg);
+  }
+  .reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    justify-content: center;
+    min-height: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--raised);
+    color: var(--muted);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .reset:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  .report {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--r-md);
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .report:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+    text-decoration: none;
+  }
+  @media (min-width: 75rem) {
+    .rail {
+      position: sticky;
+      top: calc(var(--topbar) + 1rem);
+    }
+  }
+</style>

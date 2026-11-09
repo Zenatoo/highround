@@ -1,0 +1,322 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Locale;
+  mapName: string;
+  guideTitle: string;
+}
+
+const { lang, mapName, guideTitle } = Astro.props;
+---
+
+<!-- Phones: the play button stays at the bottom of the screen. -->
+<button type="button" class="button button-primary play-fab" data-play-open hidden>
+  <Icon name="play" /> {t(lang, 'play.start')}
+</button>
+
+<dialog class="play" aria-labelledby="play-title" data-pagefind-ignore>
+  <header class="play-head">
+    <button type="button" class="button" data-play-quit aria-label={t(lang, 'play.quit')}>
+      <Icon name="x" /> <span class="quit-label">{t(lang, 'play.quit')}</span>
+    </button>
+    <div class="play-guide">
+      <p class="play-map">{mapName}</p>
+      <p class="play-guide-title">{guideTitle}</p>
+    </div>
+    <p class="play-count">
+      {t(lang, 'play.step')} <strong data-play-current>1</strong>{' '}
+      <span class="muted">{t(lang, 'play.of')} <span data-play-total>1</span></span>
+    </p>
+  </header>
+  <progress class="play-progress" value="0" max="1" data-play-progress></progress>
+
+  <div class="play-main">
+    <div class="play-step">
+      <p class="play-state" data-play-state hidden>
+        <Icon name="check" /> {t(lang, 'play.done')}
+      </p>
+      <h2 id="play-title" class="play-title" data-play-title></h2>
+      <div class="play-body" data-play-body></div>
+    </div>
+  </div>
+
+  <footer class="play-foot">
+    <button type="button" class="button" data-play-prev aria-label={t(lang, 'play.prev')}>
+      <Icon name="arrow-left" /> <span>{t(lang, 'play.prev')}</span>
+    </button>
+    <p class="keys" aria-hidden="true">
+      <span><kbd>{t(lang, 'play.space')}</kbd> {t(lang, 'play.keys.done')}</span>
+      <span><kbd>←</kbd> <kbd>→</kbd> {t(lang, 'play.keys.move')}</span>
+    </p>
+    <button
+      type="button"
+      class="button button-primary"
+      data-play-next
+      data-next-label={t(lang, 'play.next')}
+      data-finish-label={t(lang, 'play.finish')}
+    >
+      <Icon name="check" /> <span data-play-next-label>{t(lang, 'play.next')}</span>
+    </button>
+  </footer>
+</dialog>
+
+<script>
+  // Shows the guide one step at a time, in big type, for a second screen or a phone next to the game.
+  // It reads the steps already on the page and ticks the same checkboxes, so progress stays in sync.
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.play');
+  const steps = [...document.querySelectorAll<HTMLLIElement>('.guide-body li.step')];
+
+  if (dialog && steps.length) {
+    const $ = <T extends Element>(sel: string) => dialog.querySelector<T>(sel)!;
+    const title = $<HTMLElement>('[data-play-title]');
+    const body = $<HTMLElement>('[data-play-body]');
+    const state = $<HTMLElement>('[data-play-state]');
+    const current = $<HTMLElement>('[data-play-current]');
+    const progress = $<HTMLProgressElement>('[data-play-progress]');
+    const prev = $<HTMLButtonElement>('[data-play-prev]');
+    const next = $<HTMLButtonElement>('[data-play-next]');
+    const nextLabel = $<HTMLElement>('[data-play-next-label]');
+    const box = (i: number) => steps[i].querySelector<HTMLInputElement>('input[data-step]')!;
+    let index = 0;
+
+    $<HTMLElement>('[data-play-total]').textContent = String(steps.length);
+    progress.max = steps.length;
+
+    function render() {
+      const step = steps[index];
+      title.textContent = step.querySelector('.step-title-text')?.textContent ?? '';
+      body.replaceChildren(...[...(step.querySelector('.step-body')?.childNodes ?? [])].map((n) => n.cloneNode(true)));
+      current.textContent = String(index + 1);
+      progress.value = steps.filter((_, i) => box(i).checked).length;
+      state.hidden = !box(index).checked;
+      prev.disabled = index === 0;
+      const last = index === steps.length - 1;
+      nextLabel.textContent = (last ? next.dataset.finishLabel : next.dataset.nextLabel) ?? '';
+      dialog!.querySelector('.play-main')!.scrollTop = 0;
+    }
+
+    function go(i: number) {
+      index = Math.max(0, Math.min(steps.length - 1, i));
+      render();
+    }
+
+    function done() {
+      const input = box(index);
+      if (!input.checked) {
+        input.checked = true;
+        // The checklist listens for this to save progress and update the side panel.
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (index === steps.length - 1) {
+        dialog!.close();
+        steps[index].scrollIntoView({ block: 'center' });
+      } else go(index + 1);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-play-open]').forEach((button) => {
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const firstOpen = steps.findIndex((_, i) => !box(i).checked);
+        go(firstOpen === -1 ? 0 : firstOpen);
+        dialog.showModal();
+      });
+    });
+
+    prev.addEventListener('click', () => go(index - 1));
+    next.addEventListener('click', done);
+    $<HTMLButtonElement>('[data-play-quit]').addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('keydown', (e) => {
+      const onControl = (e.target as HTMLElement).closest('button, a, summary, input');
+      if (e.key === ' ' && !onControl) {
+        e.preventDefault();
+        done();
+      } else if (e.key === 'ArrowRight') go(index + 1);
+      else if (e.key === 'ArrowLeft') go(index - 1);
+    });
+
+    // Leaving play mode lands on the step you stopped at.
+    dialog.addEventListener('close', () => steps[index].scrollIntoView({ block: 'center' }));
+  }
+</script>
+
+<style>
+  .play-fab {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    z-index: 15;
+    min-height: 3.25rem;
+    border-radius: var(--r-lg);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+  }
+  @media (min-width: 40.01rem) {
+    .play-fab {
+      display: none !important;
+    }
+  }
+
+  .play {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .play[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .play::backdrop {
+    background: var(--bg);
+  }
+
+  .play-head {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.9rem var(--gutter);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .play-guide {
+    min-width: 0;
+  }
+  .play-map {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .play-guide-title {
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-head);
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .play-count {
+    flex: none;
+    margin: 0 0 0 auto;
+    font-family: var(--font-head);
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .play-count .muted {
+    font-weight: 600;
+  }
+  .play-progress {
+    flex: none;
+    height: 0.375rem;
+    border-radius: 0;
+  }
+
+  .play-main {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+  }
+  .play-step {
+    width: 100%;
+    max-width: 62rem;
+    margin: auto;
+    padding: clamp(1.5rem, 1rem + 3vw, 3.5rem) var(--gutter);
+  }
+  .play-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.75rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--ok) 14%, transparent);
+    color: var(--ok);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .play-title {
+    max-width: 24ch;
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+  }
+  .play-body {
+    max-width: 52rem;
+    margin-top: 1.25rem;
+    color: var(--text-soft);
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+    line-height: 1.5;
+  }
+  .play-body :global(.shots > .shot) {
+    max-width: 22rem;
+    flex-basis: 14rem;
+  }
+  .play-body :global(.shot img) {
+    max-height: clamp(10rem, 30vh, 16rem);
+  }
+
+  .play-foot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem var(--gutter) max(1rem, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .play-foot .button {
+    min-height: 3.25rem;
+    padding: 0 1.4rem;
+    font-size: var(--fs-md);
+  }
+  .play-foot .button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .play-foot .button-primary {
+    margin-left: auto;
+  }
+  .keys {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  kbd {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-family: inherit;
+  }
+
+  @media (max-width: 48rem), (hover: none) {
+    .keys {
+      display: none;
+    }
+  }
+  @media (max-width: 40rem) {
+    .play-head {
+      gap: 0.75rem;
+    }
+    .quit-label,
+    .play-guide,
+    .play-foot [data-play-prev] span {
+      display: none;
+    }
+    .play-foot .button-primary {
+      flex: 1;
+    }
+  }
+</style>

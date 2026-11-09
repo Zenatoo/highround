@@ -1,0 +1,191 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
+import GuideHeader from '../../../../../../components/GuideHeader.astro';
+import GuideRail from '../../../../../../components/GuideRail.astro';
+import Icon from '../../../../../../components/Icon.astro';
+import { t } from '../../../../../../i18n/ui';
+import { getGames, getGuides, getMaps } from '../../../../../../lib/content';
+import { href } from '../../../../../../lib/url';
+
+export async function getStaticPaths() {
+  const guides = await getGuides();
+  const maps = await getMaps();
+  const games = await getGames();
+  return guides.map((guide) => ({
+    params: { lang: guide.lang, game: guide.game, map: guide.map, guide: guide.slug },
+    props: {
+      guide,
+      map: maps.find((m) => m.id === guide.map)!,
+      game: games.find((g) => g.id === guide.game)!,
+    },
+  }));
+}
+
+const { guide, map, game } = Astro.props;
+const gameName = game.data.name;
+const { lang } = guide;
+const videos = guide.data.videos;
+// Videos in the reader's language first.
+const groups = [
+  { label: t(lang, 'videos.inLang'), items: videos.filter((v) => v.lang === lang) },
+  { label: t(lang, 'videos.otherLang'), items: videos.filter((v) => v.lang !== lang) },
+].filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${t(lang, 'guide.tab.videos')} – ${guide.data.title}`}
+  crumbs={[
+    { label: gameName, href: href(lang, guide.game) },
+    { label: map.data.name, href: href(lang, guide.game, map.id) },
+    { label: guide.data.title, href: href(lang, guide.game, map.id, guide.slug) },
+    { label: t(lang, 'guide.tab.videos'), href: href(lang, guide.game, map.id, guide.slug, 'videos') },
+  ]}
+  sidebar={{ game, map, current: guide.slug }}
+>
+  <GuideHeader guide={guide} map={map} active="videos" />
+  <div class="guide-layout">
+    <div class="videos-body">
+      {
+        groups.length === 0 && (
+          <p class="empty">
+            <Icon name="play" /> {t(lang, 'videos.empty')}
+          </p>
+        )
+      }
+      {
+        groups.map((group) => (
+          <section>
+            <h2 class="section-title">
+              <Icon name="languages" /> {group.label}
+            </h2>
+            <ul class="videos">
+              {group.items.map((video) => (
+                <li>
+                  <a href={video.url} rel="noopener noreferrer" target="_blank" class="video">
+                    <span class="thumb">
+                      {video.thumbnail && (
+                        <Image src={video.thumbnail} alt="" width={480} loading="lazy" decoding="async" />
+                      )}
+                      <span class="play-icon" aria-hidden="true">
+                        <Icon name="play" />
+                      </span>
+                    </span>
+                    <span class="video-text">
+                      <span class="video-title">{video.title}</span>
+                      <span class="muted">{video.creator}</span>
+                      <span class="opens">
+                        <Icon name="external-link" /> {t(lang, 'videos.opensYoutube')}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+    <GuideRail guide={guide} />
+  </div>
+</BaseLayout>
+
+<style>
+  .guide-layout {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .videos-body {
+    display: grid;
+    gap: 2rem;
+    align-content: start;
+    min-width: 0;
+  }
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .video {
+    display: grid;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+  }
+  .video:hover {
+    border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
+    text-decoration: none;
+  }
+  .thumb {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(circle at 70% 20%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%),
+      var(--raised);
+  }
+  .thumb :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .play-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: color-mix(in oklab, var(--bg) 75%, transparent);
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  .video:hover .play-icon {
+    background: var(--accent-fill);
+    color: var(--on-accent);
+  }
+  .video-text {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.8rem 0.9rem 0.9rem;
+  }
+  .video-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .opens {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+  }
+  .empty {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--r-md);
+    color: var(--muted);
+  }
+  @media (min-width: 75rem) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+</style>

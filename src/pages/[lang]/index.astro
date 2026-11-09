@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import MapArt from '../../components/MapArt.astro';
+import { LOCALES, type Locale } from '../../i18n/config';
+import { count, t } from '../../i18n/ui';
+import { getGames, getMapGuides, getMaps, otherLocale } from '../../lib/content';
+import { href } from '../../lib/url';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const byYear = [...(await getGames())].reverse();
+// Playable games first, then the ones coming soon.
+const games = [
+  ...byYear.filter((g) => g.data.status !== 'soon'),
+  ...byYear.filter((g) => g.data.status === 'soon'),
+];
+const maps = await getMaps();
+const featured = maps.find((m) => m.data.status === 'in-progress');
+const featuredGame = featured && games.find((g) => g.id === featured.data.game);
+const featuredCount = featured ? (await getMapGuides(lang, featured.data.game, featured.id)).length : 0;
+const other = otherLocale(lang);
+---
+
+<BaseLayout lang={lang} title="HighRound" alternate={{ lang: other, href: href(other) }}>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>{t(lang, 'home.title')}</h1>
+      <p class="lead">{t(lang, 'home.lead')}</p>
+      <div class="actions">
+        {
+          featured && featuredGame && (
+            <a class="button button-primary" href={href(lang, featuredGame.id, featured.id)}>
+              {t(lang, 'home.start')} {featured.data.name}
+            </a>
+          )
+        }
+        <a class="button" href="#games">{t(lang, 'home.allGames')}</a>
+      </div>
+    </div>
+
+    {
+      featured && featuredGame && (
+        <a class="featured" href={href(lang, featuredGame.id, featured.id)}>
+          <MapArt map={featured} size="hero" lang={lang}>
+            <div class="badges">
+              <span class={`badge badge-${featured.data.status}`}>
+                <Icon name="clock" /> {t(lang, 'home.current')}
+              </span>
+              <span class="badge">
+                <Icon name="gamepad-2" /> {featuredGame.data.name}
+              </span>
+              {featuredCount > 0 && (
+                <span class="badge">
+                  <Icon name="list-checks" /> {count(lang, featuredCount, 'guide')}
+                </span>
+              )}
+            </div>
+            <p class="featured-name">{featured.data.name}</p>
+          </MapArt>
+        </a>
+      )
+    }
+  </section>
+
+  <section class="games" id="games">
+    <h2 class="section-title">{t(lang, 'home.games')}</h2>
+    <ul class="game-grid">
+      {
+        games.map((game) => {
+          const mapCount = maps.filter((m) => m.data.game === game.id).length;
+          const soon = game.data.status === 'soon';
+          const inner = (
+            <>
+              <span class={`tile-art c-${game.data.color}`} aria-hidden="true">
+                <span>{game.data.short}</span>
+              </span>
+              <span class="tile-body">
+                <span class="tile-name">{game.data.name}</span>
+                <span class="tile-meta">
+                  <span class="muted">
+                    {game.data.year}
+                    {mapCount > 0 && `, ${count(lang, mapCount, 'map')}`}
+                  </span>
+                  <span class={`badge badge-${game.data.status}`}>{t(lang, `status.${game.data.status}`)}</span>
+                </span>
+              </span>
+            </>
+          );
+          return (
+            <li>
+              {soon ? (
+                <div class="tile is-soon">{inner}</div>
+              ) : (
+                <a class="tile" href={href(lang, game.id)}>
+                  {inner}
+                </a>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 2rem 3rem;
+    align-items: center;
+    padding-block: clamp(0.5rem, 2vw, 2rem) 0;
+  }
+  .hero h1 {
+    max-width: 16ch;
+    font-size: clamp(2.1rem, 1.3rem + 2.8vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+  .lead {
+    margin: 1.1rem 0 0;
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: var(--fs-lg);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .actions .button {
+    min-height: 3rem;
+    padding: 0 1.3rem;
+  }
+  .featured {
+    display: block;
+    color: var(--text);
+  }
+  .featured:hover {
+    text-decoration: none;
+  }
+  .featured :global(.art) {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    transition: border-color 0.15s;
+  }
+  .featured:hover :global(.art) {
+    border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+  }
+  .featured-name {
+    margin: 0.6rem 0 0;
+    font-family: var(--font-head);
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  @media (min-width: 64rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+  }
+
+  .games {
+    margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
+  }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    color: var(--text);
+  }
+  a.tile:hover {
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    text-decoration: none;
+  }
+  .tile.is-soon {
+    color: var(--muted);
+  }
+  .tile-art {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(120% 140% at 100% 0%, color-mix(in oklab, var(--c1) 60%, transparent), transparent 60%),
+      radial-gradient(90% 120% at 0% 100%, color-mix(in oklab, var(--c2) 60%, transparent), transparent 60%),
+      var(--raised);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+  .is-soon .tile-art {
+    filter: grayscale(0.85) brightness(0.75);
+  }
+  .tile-body {
+    display: grid;
+    gap: 0.5rem;
+    flex: 1;
+    padding: 0.8rem 0.95rem 0.95rem;
+  }
+  .tile-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .tile-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-self: end;
+    font-size: var(--fs-sm);
+  }
+</style>

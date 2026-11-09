@@ -1,0 +1,53 @@
+---
+title: Guide d'exemple (modèle)
+category: main-quest
+draft: true
+verified:
+  date: 2026-11-09
+  gameVersion: "exemple"
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/
+    title: Titre de la vidéo d'exemple
+    creator: Créateur d'exemple
+    lang: fr
+  - url: https://www.youtube.com/
+    title: Example video title
+    creator: Example creator
+    lang: en
+---
+
+import placeholder from '../../../../media/_example/placeholder.webp';
+
+{/* Template guide: shows every component. Draft = never published. */}
+
+Ce guide sert de **modèle** : il montre chaque élément disponible. Le texte ci-dessous n'est pas un vrai guide.
+
+<Checklist>
+  <Step title="Première étape d'exemple">
+    Une ou deux phrases courtes qui expliquent l'action.
+
+    <Shots>
+      <Screenshot src={placeholder} alt="Emplacement d'exemple" credit="HighRound" source="https://github.com/Zenatoo/highround" />
+      <Screenshot src={placeholder} alt="Deuxième image d'exemple" credit="HighRound" source="https://github.com/Zenatoo/highround" />
+    </Shots>
+
+    <Tips>
+      <Tip type="faster" author="Pseudo d'exemple" source="https://github.com/Zenatoo/highround">
+        Une astuce pour aller plus vite.
+      </Tip>
+      <Tip type="mistake" author="Pseudo d'exemple">
+        Le piège classique à éviter.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Deuxième étape d'exemple">
+    Une autre action, sans image.
+  </Step>
+
+  <Step title="Troisième étape d'exemple">
+    <Screenshot src={placeholder} alt="Image seule" credit="HighRound" source="https://github.com/Zenatoo/highround" />
+  </Step>
+</Checklist>

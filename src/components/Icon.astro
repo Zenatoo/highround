@@ -1,0 +1,32 @@
+---
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import type { IconName } from '../lib/icons';
+
+// Lucide icons are inlined at build time: no icon font, no request, nothing for the CSP to allow.
+interface Props {
+  name: IconName;
+  class?: string;
+  label?: string;
+}
+
+const require = createRequire(import.meta.url);
+const cache = ((globalThis as any).__hrIcons ??= new Map<string, string>()) as Map<string, string>;
+
+const { name, class: className, label } = Astro.props;
+let svg = cache.get(name);
+if (!svg) {
+  svg = readFileSync(require.resolve(`lucide-static/icons/${name}.svg`), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\s(width|height|class)="[^"]*"/g, '')
+    .trim();
+  cache.set(name, svg);
+}
+const attrs = [
+  `class="icon${className ? ` ${className}` : ''}"`,
+  label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"',
+].join(' ');
+const html = svg.replace('<svg', `<svg ${attrs}`);
+---
+
+<Fragment set:html={html} />

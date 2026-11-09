@@ -1,0 +1,161 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<dialog class="lightbox" aria-label={t(lang, 'lightbox.label')}>
+  <figure>
+    <img alt="" />
+    <figcaption></figcaption>
+  </figure>
+  <button type="button" class="lb-close" data-close aria-label={t(lang, 'lightbox.close')}>✕</button>
+  <button type="button" class="lb-nav lb-prev" data-prev aria-label={t(lang, 'lightbox.prev')}>‹</button>
+  <button type="button" class="lb-nav lb-next" data-next aria-label={t(lang, 'lightbox.next')}>›</button>
+</dialog>
+
+<script>
+  // Opens images over the page instead of navigating to the file: the app has no back button,
+  // and closing returns to the exact same scroll position.
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
+  const img = dialog.querySelector('img')!;
+  const caption = dialog.querySelector('figcaption')!;
+  let group: HTMLAnchorElement[] = [];
+  let index = 0;
+  let opener: HTMLElement | null = null;
+
+  function show(i: number) {
+    index = (i + group.length) % group.length;
+    const link = group[index];
+    const thumb = link.querySelector('img');
+    img.src = link.href;
+    img.alt = thumb?.alt ?? '';
+    caption.innerHTML = link.closest('figure')?.querySelector('figcaption')?.innerHTML ?? '';
+    dialog.toggleAttribute('data-single', group.length < 2);
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[data-lightbox]');
+    if (!link) return;
+    e.preventDefault();
+    const scope = link.closest('.step, [data-play-body], article') ?? document;
+    group = [...scope.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]')];
+    opener = link;
+    show(group.indexOf(link));
+    dialog.showModal();
+  });
+
+  dialog.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('[data-prev]')) return show(index - 1);
+    if (target.closest('[data-next]')) return show(index + 1);
+    // Click on the backdrop or the close button.
+    if (target === dialog || target.closest('[data-close]')) dialog.close();
+  });
+
+  dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(index - 1);
+    if (e.key === 'ArrowRight') show(index + 1);
+  });
+
+  let startX = 0;
+  dialog.addEventListener('pointerdown', (e) => (startX = e.clientX));
+  dialog.addEventListener('pointerup', (e) => {
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 60 && group.length > 1) show(index + (dx < 0 ? 1 : -1));
+  });
+
+  dialog.addEventListener('close', () => {
+    img.removeAttribute('src');
+    opener?.focus();
+  });
+</script>
+
+<style>
+  .lightbox {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 3.5rem 4rem 1rem;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+  }
+  .lightbox::backdrop {
+    background: rgb(5 7 10 / 0.92);
+  }
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+  }
+  figure {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    margin: 0;
+    max-height: 100%;
+    pointer-events: none;
+  }
+  img {
+    max-width: 100%;
+    max-height: calc(100dvh - 7rem);
+    object-fit: contain;
+  }
+  figcaption {
+    font-size: var(--fs-sm);
+    color: var(--muted);
+    pointer-events: auto;
+  }
+  button {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .lb-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 1.1rem;
+  }
+  .lb-nav {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lb-prev {
+    left: 0.75rem;
+  }
+  .lb-next {
+    right: 0.75rem;
+  }
+  .lightbox[data-single] .lb-nav {
+    display: none;
+  }
+  @media (max-width: 40rem) {
+    .lightbox {
+      padding: 3.5rem 0.5rem 1rem;
+    }
+    .lb-nav {
+      top: auto;
+      bottom: 0.75rem;
+      transform: none;
+    }
+  }
+</style>

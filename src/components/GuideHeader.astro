@@ -1,0 +1,168 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categoryLabel, count, t } from '../i18n/ui';
+import { stepCount, type Guide } from '../lib/content';
+import { categoryIcon } from '../lib/icons';
+import { href } from '../lib/url';
+import Icon from './Icon.astro';
+
+interface Props {
+  guide: Guide;
+  map: CollectionEntry<'maps'>;
+  active: 'guide' | 'videos';
+}
+
+const { guide, map, active } = Astro.props;
+const { lang, game, slug } = guide;
+const { difficulty, players, verified, category, videos } = guide.data;
+const base = href(lang, game, map.id, slug);
+const steps = stepCount(guide);
+const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: 'long' });
+---
+
+<div class="head">
+  <div class="head-text">
+    <p class="category">
+      <Icon name={categoryIcon[category]} /> {categoryLabel(lang, category)}
+    </p>
+    <h1 class="guide-title">{guide.data.title}</h1>
+  </div>
+  {
+    active === 'guide' && steps > 0 && (
+      <button type="button" class="button button-primary play-button" data-play-open hidden>
+        <Icon name="play" /> {t(lang, 'play.start')}
+      </button>
+    )
+  }
+</div>
+
+<div class="meta">
+  <div class="badges">
+    {
+      difficulty && (
+        <span class={`badge badge-${difficulty}`}>
+          <Icon name="gauge" /> {t(lang, 'guide.difficulty')} : {t(lang, `difficulty.${difficulty}`)}
+        </span>
+      )
+    }
+    {
+      players && (
+        <span class="badge">
+          <Icon name={players === 'solo' ? 'user' : 'users'} /> {t(lang, `players.${players}`)}
+        </span>
+      )
+    }
+    {
+      steps > 0 && (
+        <span class="badge">
+          <Icon name="list-checks" /> {count(lang, steps, 'step')}
+        </span>
+      )
+    }
+    {
+      verified && (
+        <span class="badge badge-complete">
+          <Icon name="badge-check" /> {t(lang, 'guide.verified')}{' '}
+          <time datetime={verified.date.toISOString().slice(0, 10)}>{dateFormat.format(verified.date)}</time>
+        </span>
+      )
+    }
+    {
+      verified && (
+        <span class="badge">
+          <Icon name="gamepad-2" /> {t(lang, 'guide.version')} {verified.gameVersion}
+        </span>
+      )
+    }
+  </div>
+</div>
+
+<nav class="tabs" aria-label={guide.data.title}>
+  <a href={base} aria-current={active === 'guide' ? 'page' : undefined}>
+    <Icon name="list-checks" /> {t(lang, 'guide.tab.guide')}
+  </a>
+  <a href={`${base}videos/`} aria-current={active === 'videos' ? 'page' : undefined}>
+    <Icon name="play" /> {t(lang, 'guide.tab.videos')}
+    <span class="count">{videos.length}</span>
+  </a>
+</nav>
+
+<style>
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+  }
+  .head-text {
+    min-width: 0;
+    flex: 1 1 28rem;
+  }
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 0.35rem;
+    color: var(--accent-text);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .guide-title {
+    max-width: 30ch;
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .play-button {
+    flex: none;
+    min-height: 3rem;
+    padding: 0 1.4rem;
+    font-size: var(--fs-md);
+  }
+  .meta {
+    margin: 0.9rem 0 0;
+  }
+  .tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin: 1.25rem 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tabs a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .tabs a:hover {
+    color: var(--text);
+  }
+  .tabs a[aria-current='page'] {
+    border-bottom-color: var(--accent);
+    color: var(--text);
+  }
+  .tabs a[aria-current='page'] :global(.icon) {
+    color: var(--accent);
+  }
+  /* On phones the play button sits at the bottom of the screen instead (see PlayMode). */
+  @media (max-width: 40rem) {
+    .play-button {
+      display: none;
+    }
+  }
+  .count {
+    min-width: 1.4rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: var(--raised);
+    font-size: var(--fs-xs);
+    text-align: center;
+  }
+</style>

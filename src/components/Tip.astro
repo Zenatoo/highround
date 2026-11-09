@@ -1,0 +1,74 @@
+---
+import type { Locale, TipType } from '../i18n/config';
+import { tipLabel } from '../i18n/ui';
+import { tipIcon } from '../lib/icons';
+import Icon from './Icon.astro';
+
+interface Props {
+  type: TipType;
+  author: string;
+  source?: string;
+}
+
+const { type, author, source } = Astro.props;
+if (!author?.trim()) throw new Error('Every tip must credit its author.');
+
+const lang = (Astro.currentLocale ?? 'fr') as Locale;
+---
+
+<aside class={`tip tip-${type}`}>
+  <p class="tip-head">
+    <span class="tip-type"><Icon name={tipIcon[type]} /> {tipLabel(lang, type)}</span>
+    {
+      source ? (
+        <a href={source} rel="noopener noreferrer" target="_blank">
+          {author}
+        </a>
+      ) : (
+        <span>{author}</span>
+      )
+    }
+  </p>
+  <slot />
+</aside>
+
+<style>
+  .tip {
+    --tone: var(--accent);
+    padding: 0.7rem 0.9rem;
+    border: 1px solid color-mix(in oklab, var(--tone) 30%, var(--border));
+    border-left: 3px solid var(--tone);
+    border-radius: var(--r-sm);
+    background: color-mix(in oklab, var(--bg) 85%, var(--tone));
+  }
+  .tip-tech {
+    --tone: #60a5fa;
+  }
+  .tip-mistake,
+  .tip-glitch {
+    --tone: var(--danger);
+  }
+  .tip-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.75rem;
+    margin: 0 0 0.25rem;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .tip-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--tone);
+    font-size: var(--fs-sm);
+  }
+  .tip-head a {
+    color: var(--muted);
+  }
+  .tip :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

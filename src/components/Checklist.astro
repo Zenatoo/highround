@@ -1,0 +1,145 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+
+const lang = (Astro.currentLocale ?? 'fr') as Locale;
+---
+
+<div class="checklist" data-checklist data-confirm={t(lang, 'checklist.resetConfirm')}>
+  <!-- Compact progress for narrow screens; wide screens use the side panel. -->
+  <div class="mini-bar" data-js-only hidden>
+    <progress value="0" max="1" data-progress-bar></progress>
+    <strong data-progress-count>0 / 0</strong>
+    <button type="button" data-progress-reset aria-label={t(lang, 'checklist.reset')}>
+      <Icon name="rotate-ccw" />
+    </button>
+  </div>
+  <ol>
+    <slot />
+  </ol>
+</div>
+
+<script>
+  // Progress is stored on the device only (localStorage), one entry per checklist.
+  const PREFIX = 'highround:checklist:';
+
+  function load(key: string): number[] {
+    try {
+      return JSON.parse(localStorage.getItem(key) ?? '[]');
+    } catch {
+      return [];
+    }
+  }
+
+  function save(key: string, value: number[]) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      // Storage blocked (private mode): the checklist still works for this visit.
+    }
+  }
+
+  const lists = [...document.querySelectorAll<HTMLElement>('[data-checklist]')];
+  if (lists.length) {
+    const guide = lists[0].closest<HTMLElement>('[data-guide-id]')?.dataset.guideId ?? location.pathname;
+    const groups = lists.map((list, index) => ({
+      key: `${PREFIX}${guide}:${index}`,
+      boxes: [...list.querySelectorAll<HTMLInputElement>(':scope > ol > li input[data-step]')],
+    }));
+    const boxes = groups.flatMap((g) => g.boxes);
+
+    groups.forEach(({ key, boxes }) => {
+      const saved = new Set(load(key));
+      boxes.forEach((box, i) => (box.checked = saved.has(i)));
+    });
+
+    // Step list in the side panel, built from the step titles.
+    const toc = document.querySelector<HTMLOListElement>('[data-progress-toc]');
+    const tocLinks = boxes.map((box) => {
+      const step = box.closest('li')!;
+      const a = document.createElement('a');
+      a.href = `#${step.id}`;
+      a.textContent = step.querySelector('.step-title-text')?.textContent ?? '';
+      const li = document.createElement('li');
+      li.append(a);
+      toc?.append(li);
+      return a;
+    });
+
+    const update = () => {
+      const done = boxes.filter((b) => b.checked).length;
+      document.querySelectorAll<HTMLProgressElement>('[data-progress-bar]').forEach((bar) => {
+        bar.max = Math.max(boxes.length, 1);
+        bar.value = done;
+      });
+      document
+        .querySelectorAll<HTMLElement>('[data-progress-count]')
+        .forEach((el) => (el.textContent = `${done} / ${boxes.length}`));
+      boxes.forEach((b, i) => tocLinks[i].classList.toggle('is-done', b.checked));
+      groups.forEach(({ key, boxes }) => save(key, boxes.flatMap((b, i) => (b.checked ? [i] : []))));
+    };
+
+    lists.forEach((list) => list.addEventListener('change', update));
+    document.querySelectorAll('[data-progress-reset]').forEach((button) =>
+      button.addEventListener('click', () => {
+        if (!confirm(lists[0].dataset.confirm)) return;
+        boxes.forEach((b) => (b.checked = false));
+        update();
+      }),
+    );
+
+    document
+      .querySelectorAll<HTMLElement>('[data-js-only], [data-progress-panel]')
+      .forEach((el) => (el.hidden = false));
+    update();
+  }
+</script>
+
+<style>
+  .checklist > ol {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .mini-bar {
+    position: sticky;
+    top: calc(var(--topbar) + 0.5rem);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: color-mix(in oklab, var(--surface) 95%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .mini-bar progress {
+    flex: 1;
+  }
+  .mini-bar strong {
+    font-size: var(--fs-sm);
+    font-variant-numeric: tabular-nums;
+  }
+  .mini-bar button {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--raised);
+    color: var(--muted);
+    cursor: pointer;
+  }
+  @media (min-width: 75rem) {
+    .mini-bar {
+      display: none;
+    }
+  }
+</style>

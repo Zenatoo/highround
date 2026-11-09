@@ -1,0 +1,6 @@
+# Supply-chain protection: never install a package version published less than 3 days ago.
+minimumReleaseAge: 4320
+
+overrides:
+  # @napi-rs/wasm-runtime resolves its peer to a 2.0 beta that crashes @astrojs/check.
+  '@emnapi/runtime': 1.11.3

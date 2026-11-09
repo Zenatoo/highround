@@ -1,0 +1,15 @@
+# Key = game id used in URLs and in content/guides/<lang>/<game>/.
+# short = badge text, color = generated art color (amber, violet, teal, red, blue, green, pink).
+waw: { name: World at War, short: WaW, year: 2008, status: soon, color: red }
+bo1: { name: Black Ops, short: BO1, year: 2010, status: soon, color: amber }
+bo2: { name: Black Ops II, short: BO2, year: 2012, status: soon, color: blue }
+aw: { name: Advanced Warfare, short: AW, year: 2014, status: soon, color: teal }
+bo3: { name: Black Ops III, short: BO3, year: 2015, status: soon, color: violet }
+iw: { name: Infinite Warfare, short: IW, year: 2016, status: in-progress, color: pink }
+ww2: { name: WWII, short: WW2, year: 2017, status: soon, color: red }
+bo4: { name: Black Ops 4, short: BO4, year: 2018, status: soon, color: amber }
+bocw: { name: Black Ops Cold War, short: CW, year: 2020, status: soon, color: blue }
+vg: { name: Vanguard, short: VG, year: 2021, status: soon, color: green }
+mw3: { name: Modern Warfare III, short: MW3, year: 2023, status: soon, color: teal }
+bo6: { name: Black Ops 6, short: BO6, year: 2024, status: soon, color: violet }
+bo7: { name: Black Ops 7, short: BO7, year: 2025, status: soon, color: red }
