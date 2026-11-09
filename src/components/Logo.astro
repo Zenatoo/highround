@@ -1,0 +1,34 @@
+---
+// HighRound mark: H and R sharing one stem, with two drips. Colors follow the active palette.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg class:list={['logo', className]} viewBox="0 0 64 64" aria-hidden="true">
+  <rect class="logo-bg" width="64" height="64" rx="14"></rect>
+  <g class="logo-ink">
+    <rect x="11" y="14" width="8" height="36"></rect>
+    <rect x="19" y="28.5" width="12" height="7"></rect>
+    <rect x="31" y="14" width="8" height="36"></rect>
+    <path d="M39 14h4a10.5 10.5 0 0 1 0 21h-4v-7h4a3.5 3.5 0 0 0 0-7h-4z"></path>
+    <path d="M41 35h7.5l7 15h-8z"></path>
+    <path d="M22 35h5v7a2.5 2.5 0 0 1-5 0z"></path>
+    <path d="M13 50h4v3.5a2 2 0 0 1-4 0z"></path>
+  </g>
+</svg>
+
+<style>
+  .logo {
+    display: block;
+    flex: none;
+  }
+  .logo-bg {
+    fill: var(--raised);
+  }
+  .logo-ink {
+    fill: var(--accent);
+  }
+</style>

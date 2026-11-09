@@ -6,6 +6,7 @@ import '../styles/global.css';
 import type { CollectionEntry } from 'astro:content';
 import Icon from '../components/Icon.astro';
 import Lightbox from '../components/Lightbox.astro';
+import Logo from '../components/Logo.astro';
 import MapSidebar from '../components/MapSidebar.astro';
 import Search from '../components/Search.astro';
 import Settings from '../components/Settings.astro';
@@ -40,6 +41,7 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
     <meta name="theme-color" content="#121314" />
     <title>{title === 'HighRound' ? title : `${title} – HighRound`}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`} type="image/svg+xml" />
     {alternate && <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />}
     <!-- Applies the saved color palette before the first paint, so the page never flashes red then violet. -->
     <script is:inline>
@@ -61,7 +63,7 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
         )
       }
       <a class="brand" href={href(lang)}>
-        <span class="brand-mark" aria-hidden="true">HR</span>
+        <Logo class="brand-mark" />
         <span class="brand-name">HighRound</span>
       </a>
       <nav class="topnav" aria-label={t(lang, 'nav.games')}>
@@ -152,17 +154,9 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
     letter-spacing: -0.02em;
     text-decoration: none;
   }
-  .brand-mark {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 8px;
-    background: var(--accent-fill);
-    color: var(--on-accent);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0;
+  .brand :global(.brand-mark) {
+    width: 2.25rem;
+    height: 2.25rem;
   }
   .topnav {
     display: flex;
