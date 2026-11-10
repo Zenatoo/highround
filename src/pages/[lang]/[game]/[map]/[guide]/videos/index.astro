@@ -55,18 +55,24 @@ const groups = [
         )
       }
       {
-        groups.map((group) => (
+        groups.map((group, g) => (
           <section>
             <h2 class="section-title">
               <Icon name="languages" /> {group.label}
             </h2>
             <ul class="videos">
-              {group.items.map((video) => (
+              {group.items.map((video, i) => (
                 <li>
                   <a href={video.url} rel="noopener noreferrer" target="_blank" class="video">
                     <span class="thumb">
                       {video.thumbnail && (
-                        <Image src={video.thumbnail} alt="" width={480} loading="lazy" decoding="async" />
+                        <Image
+                          src={video.thumbnail}
+                          alt=""
+                          width={480}
+                          loading={g === 0 && i < 3 ? 'eager' : 'lazy'}
+                          decoding="async"
+                        />
                       )}
                       <span class="play-icon" aria-hidden="true">
                         <Icon name="play" />

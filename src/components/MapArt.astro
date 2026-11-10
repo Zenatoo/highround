@@ -10,9 +10,11 @@ interface Props {
   lang: Locale;
   /** The art sits inside a link: the credit can't be a second link (nested links break the layout). */
   inLink?: boolean;
+  /** Shown when the page opens: load it right away. Hero art always is. */
+  eager?: boolean;
 }
 
-const { map, size, lang, inLink = false } = Astro.props;
+const { map, size, lang, inLink = false, eager = size === 'hero' } = Astro.props;
 const { banner, color, name } = map.data;
 // Big outlined word in the generated art: the most recognisable word of the map name.
 const word = name.split(' ').sort((a, b) => b.length - a.length)[0];
@@ -27,7 +29,7 @@ const widths = size === 'tile' ? [320, 480, 640] : [640, 960, 1280, 1600];
         alt=""
         widths={widths}
         sizes={size === 'tile' ? '(min-width: 60rem) 20rem, 90vw' : '(min-width: 60rem) 70vw, 100vw'}
-        loading={size === 'hero' ? 'eager' : 'lazy'}
+        loading={eager ? 'eager' : 'lazy'}
         decoding="async"
         class="art-img"
       />

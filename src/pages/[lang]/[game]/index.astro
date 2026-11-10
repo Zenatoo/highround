@@ -42,12 +42,12 @@ const other = otherLocale(lang);
   <h2 class="section-title"><Icon name="map" /> {t(lang, 'game.maps')}</h2>
   <ul class="map-grid">
     {
-      maps.map((map) => {
+      maps.map((map, i) => {
         const guideCount = new Set(guides.filter((g) => g.map === map.id).map((g) => g.slug)).size;
         return (
           <li>
             <a class="map-card" href={href(lang, game.id, map.id)}>
-              <MapArt map={map} size="tile" lang={lang} inLink>
+              <MapArt map={map} size="tile" lang={lang} inLink eager={i < 2}>
                 <span class="map-name">{map.data.name}</span>
                 <span class="badges">
                   <span class={`badge badge-${map.data.status}`}>{t(lang, `status.${map.data.status}`)}</span>
