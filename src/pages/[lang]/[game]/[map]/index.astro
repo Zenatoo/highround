@@ -25,6 +25,8 @@ const other = otherLocale(lang);
 const guides = await getMapGuides(lang, game.id, map.id);
 const main = guides.find((g) => g.data.category === 'main-quest');
 const rest = guides.filter((g) => g !== main);
+// getMapGuides already sorts by category, so groups come out in the site's category order.
+const groups = [...Map.groupBy(rest, (g) => g.data.category)];
 const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: 'medium' });
 
 // Short facts shown under a guide title.
@@ -48,7 +50,6 @@ function facts(g: Guide) {
     { label: game.data.name, href: href(lang, game.id) },
     { label: map.data.name, href: href(lang, game.id, map.id) },
   ]}
-  sidebar={{ game, map }}
 >
   <MapArt map={map} size="hero" lang={lang}>
     <h1 class="map-title">{map.data.name}</h1>
@@ -99,19 +100,30 @@ function facts(g: Guide) {
     rest.length > 0 && (
       <section class="block" data-pagefind-ignore>
         <h2 class="section-title">{main ? t(lang, 'map.otherGuides') : t(lang, 'map.guides')}</h2>
-        <ul class="cards">
-          {rest.map((g) => (
-            <li>
-              <a class="card" href={href(g.lang, game.id, map.id, g.slug)} hreflang={g.lang}>
-                <span class="card-cat">
-                  <Icon name={categoryIcon[g.data.category]} /> {categoryLabel(lang, g.data.category)}
-                </span>
-                <span class="card-title">{g.data.title}</span>
-                <span class="card-meta">{facts(g).map((f) => f.text).join(', ')}</span>
-              </a>
-            </li>
+        <div class="groups">
+          {groups.map(([category, items]) => (
+            <section class="group" aria-labelledby={`cat-${category}`}>
+              <h3 class="group-title" id={`cat-${category}`}>
+                <Icon name={categoryIcon[category]} />
+                {categoryLabel(lang, category)}
+                <span class="group-count">{items.length}</span>
+              </h3>
+              <ul class="rows">
+                {items.map((g) => (
+                  <li>
+                    <a class="row" href={href(g.lang, game.id, map.id, g.slug)} hreflang={g.lang}>
+                      <span class="row-text">
+                        <span class="row-title">{g.data.title}</span>
+                        <span class="row-meta">{facts(g).map((f) => f.text).join(', ')}</span>
+                      </span>
+                      <Icon name="chevron-right" class="go" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       </section>
     )
   }
@@ -181,56 +193,89 @@ function facts(g: Guide) {
     letter-spacing: -0.02em;
     line-height: 1.2;
   }
-  .featured :global(.go),
-  .card :global(.icon) {
+  .featured :global(.go) {
     color: var(--muted);
   }
   .featured :global(.go) {
     font-size: 1.25rem;
   }
 
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
-    gap: 0.9rem;
+  /* Category blocks flow in two balanced columns; a block never splits across them. */
+  .groups {
+    columns: 2 22rem;
+    column-gap: 1rem;
+  }
+  .group {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .group-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.8rem 1.05rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--raised);
+    font-size: var(--fs-md);
+    font-weight: 700;
+  }
+  .group-title :global(.icon) {
+    color: var(--accent);
+  }
+  .group-count {
+    margin-left: auto;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+  .rows {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .card {
-    display: grid;
-    gap: 0.3rem;
-    height: 100%;
-    padding: 0.95rem 1.05rem;
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    background: var(--surface);
-    color: var(--text);
+  .rows li + li {
+    border-top: 1px solid var(--border);
   }
-  .card:hover {
-    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
-    text-decoration: none;
-  }
-  .card-cat {
+  .row {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    color: var(--accent-text);
-    font-size: var(--fs-xs);
-    font-weight: 800;
+    gap: 0.75rem;
+    padding: 0.8rem 1.05rem;
+    color: var(--text);
   }
-  .card .card-cat :global(.icon) {
-    color: var(--accent);
+  .row:hover {
+    background: var(--hover);
+    text-decoration: none;
   }
-  .card-title {
-    font-family: var(--font-head);
-    font-size: var(--fs-md);
+  .row:focus-visible {
+    outline-offset: -2px;
+  }
+  .row-text {
+    display: grid;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+  }
+  .row-title {
     font-weight: 700;
     line-height: 1.3;
   }
-  .card-meta {
+  .row-meta {
     color: var(--muted);
     font-size: var(--fs-sm);
+  }
+  .row :global(.go) {
+    flex: none;
+    color: var(--muted);
+  }
+  .row:hover :global(.go) {
+    color: var(--accent-text);
   }
 
   @media (max-width: 40rem) {
