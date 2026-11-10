@@ -51,8 +51,8 @@ const themes = [
   <div class="langs" role="group" aria-label={t(lang, 'nav.language')}>
     <p class="legend">{t(lang, 'nav.language')}</p>
     <div class="lang-row">
-      <a href={lang === 'fr' ? undefined : alternateHref} aria-current={lang === 'fr' ? 'true' : undefined} hreflang="fr" lang="fr">Français</a>
-      <a href={lang === 'en' ? undefined : alternateHref} aria-current={lang === 'en' ? 'true' : undefined} hreflang="en" lang="en">English</a>
+      {lang === 'fr' ? <span aria-current="true" lang="fr">Français</span> : <a href={alternateHref} hreflang="fr" lang="fr">Français</a>}
+      {lang === 'en' ? <span aria-current="true" lang="en">English</span> : <a href={alternateHref} hreflang="en" lang="en">English</a>}
     </div>
   </div>
 </div>
@@ -212,7 +212,7 @@ const themes = [
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
   }
-  .lang-row a {
+  .lang-row > * {
     display: grid;
     place-items: center;
     min-height: 2.75rem;
@@ -222,10 +222,10 @@ const themes = [
     font-weight: 700;
     text-decoration: none;
   }
-  .lang-row a[href]:hover {
+  .lang-row a:hover {
     background: var(--raised);
   }
-  .lang-row a[aria-current] {
+  .lang-row [aria-current] {
     border-color: var(--accent);
     background: color-mix(in oklab, var(--accent) 10%, transparent);
   }

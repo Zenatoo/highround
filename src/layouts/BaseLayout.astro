@@ -58,7 +58,8 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
       {
         sidebar && (
           <label for="menu-toggle" class="icon-button menu-button">
-            <Icon name="menu" label={t(lang, 'nav.menu')} />
+            <Icon name="menu" />
+            <span class="visually-hidden">{t(lang, 'nav.menu')}</span>
           </label>
         )
       }
@@ -72,8 +73,8 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
       <Search lang={lang} />
       <Settings lang={lang} alternateHref={alternateHref} />
       <div class="lang" role="group" aria-label={t(lang, 'nav.language')}>
-        <a href={lang === 'fr' ? undefined : alternateHref} aria-current={lang === 'fr' ? 'true' : undefined} hreflang="fr" lang="fr">FR</a>
-        <a href={lang === 'en' ? undefined : alternateHref} aria-current={lang === 'en' ? 'true' : undefined} hreflang="en" lang="en">EN</a>
+        {lang === 'fr' ? <span aria-current="true" lang="fr">FR</span> : <a href={alternateHref} hreflang="fr" lang="fr">FR</a>}
+        {lang === 'en' ? <span aria-current="true" lang="en">EN</span> : <a href={alternateHref} hreflang="en" lang="en">EN</a>}
       </div>
     </header>
 
@@ -81,7 +82,9 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
       {
         sidebar && (
           <>
-            <label for="menu-toggle" class="scrim" aria-hidden="true" />
+            <label for="menu-toggle" class="scrim" aria-hidden="true">
+              <span class="visually-hidden">{t(lang, 'nav.menu')}</span>
+            </label>
             <MapSidebar lang={lang} game={sidebar.game} map={sidebar.map} current={sidebar.current} />
           </>
         )
@@ -190,7 +193,7 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
     font-size: var(--fs-xs);
     font-weight: 800;
   }
-  .lang a {
+  .lang > * {
     display: grid;
     place-items: center;
     min-width: 2.25rem;
@@ -199,10 +202,10 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
     color: var(--muted);
     text-decoration: none;
   }
-  .lang a[href]:hover {
+  .lang a:hover {
     color: var(--text);
   }
-  .lang a[aria-current] {
+  .lang [aria-current] {
     background: var(--raised);
     color: var(--text);
   }
@@ -286,15 +289,21 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
       inset: var(--topbar) auto 0 0;
       z-index: 30;
       width: min(85vw, var(--sidebar));
+      /* display: none (not just invisible) so the closed menu's links are out of the page for everyone. */
+      display: none;
       transform: translateX(-100%);
-      visibility: hidden;
       transition:
         transform 0.2s ease-out,
-        visibility 0.2s;
+        display 0.2s allow-discrete;
     }
     .menu-toggle:checked ~ .body > :global(.sidebar) {
+      display: flex;
       transform: none;
-      visibility: visible;
+    }
+    @starting-style {
+      .menu-toggle:checked ~ .body > :global(.sidebar) {
+        transform: translateX(-100%);
+      }
     }
     .menu-toggle:checked ~ .body > .scrim {
       display: block;
@@ -316,9 +325,17 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
       gap: 0.5rem;
       padding: 0 0.75rem;
     }
-    .brand-name,
     .lang {
       display: none;
+    }
+    /* Hidden on screen only: it still names the logo link. */
+    .brand-name {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
   }
 </style>
