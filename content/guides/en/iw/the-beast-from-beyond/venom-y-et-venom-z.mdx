@@ -1,0 +1,121 @@
+---
+title: Upgrade the Venom-X into the Venom-Y, then the Venom-Z
+category: wonder-weapons
+order: 3
+draft: true
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=0BELmbjeB7w
+    title: "Venom Y Guide! How To Upgrade The Venom X (The Beast From Beyond)"
+    creator: "XGodz"
+    lang: en
+    thumbnail: ../../../../media/videos/0BELmbjeB7w.jpg
+  - url: https://www.youtube.com/watch?v=TDToPR8XL2I
+    title: "Venom Z Tutorial! How To Upgrade The Venom Y \"The Beast From Beyond\""
+    creator: "XGodz"
+    lang: en
+    thumbnail: ../../../../media/videos/TDToPR8XL2I.jpg
+  - url: https://www.youtube.com/watch?v=9BEFmH2CHrE
+    title: "VENOM X EASY UPGRADE GUIDE! - THE BEAST FROM BEYOND VENOM X WEAPON FULL PAP TUTORIAL!"
+    creator: "Ch0pper"
+    lang: en
+    thumbnail: ../../../../media/videos/9BEFmH2CHrE.jpg
+---
+
+{/* TO CHECK: the Morse + Vigenère mechanism is confirmed by XGodz and NGTZombies, but the possible numbers (15, 18, 20, 25, 30), the Morse openings, the "195#" console code, the 50 % stop and the 5 000 / 10 000 prices come from mmmrkennedy only. Check against the XGodz videos. */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide';
+export const m = 'iw/the-beast-from-beyond/';
+export const solver = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers';
+
+Both upgrades rely on **Morse code**: a key, a message encrypted with that key, then a number of enemies to kill. Upgrading the Venom-X twice unlocks the "Encryption Decryption" achievement.
+
+- **Venom-Y**: its gas freezes and kills zombies (about 5 seconds). Big Cryptids (Phantoms, Rhinos…) only take the explosion.
+- **Venom-Z**: the gas lasts longer and the weapon has more ammo.
+
+**Before you start:** you need the Venom-X (see [Get the Venom-X](../venom-x/)). In the options, set the **dialogue volume to 0**: your character won't talk over the beeps any more.
+
+## Venom-Y
+
+<Checklist>
+  <Step title="Listen to your key at the terminal right of Bang Bangs">
+    In the Ops Center, the terminal right of Bang Bangs plays a word in Morse code: **ARCHER** or **CROSS**. That's your key.
+
+    - ARCHER: `.- .-. -.-. .... . .-.`
+    - CROSS: `-.-. .-. --- ... ...`
+
+    <Screenshot src={m + 'venom_x/venom_y/key_terminal.webp'} alt="The key terminal right of Bang Bangs" credit={by} source={src} />
+  </Step>
+
+  <Step title="Find your number at the terminal at the bottom of the stairs">
+    The terminal at the bottom of the stairs near Bang Bangs plays a long message encrypted with your key. After the start of the message, listen to the **first two letters** of the number:
+
+    | Number | With the ARCHER key | With the CROSS key |
+    | --- | --- | --- |
+    | 15 | `.... .--.` | `-..- .-` |
+    | 18 | `--. .--.` | `.-- .-` |
+    | 20 or 25 | `...- -..` | `.-.. ---` |
+    | 30 | `...- ---` | `.-.. --..` |
+
+    The easiest is still **mmmrkennedy's solver**: you type the beeps as you go and it gives you the number.
+
+    <Screenshot src={m + 'venom_x/venom_y/code_terminal.webp'} alt="The message terminal at the bottom of the stairs" credit={by} source={src} />
+  </Step>
+
+  <Step title="Enter the number in Morse in the control room">
+    Go up to the control room above Bombstoppers. On the panel at the top of the stairs, the left button makes a short beep, the right one a long beep. Spell the number **in English**: FIFTEEN, EIGHTEEN, TWENTY or THIRTY. For 20 or 25: enter TWENTY, and if no success sound follows, enter FIVE.
+
+    - **Right**: a pickup sound.
+    - **Wrong**: an error sound at the end of the round. Start again.
+
+    <Screenshot src={m + 'venom_x/venom_y/morse_input_panel.webp'} alt="The Morse panel at the top of the stairs" credit={by} source={src} />
+  </Step>
+
+  <Step title="Kill that many Cryptids with the Venom-X">
+    Your progress shows in the bottom right of the scoreboard.
+  </Step>
+
+  <Step title="Put the Venom-X through Pack-a-Punch">
+    It becomes the **Venom-Y** for 5,000 points.
+  </Step>
+</Checklist>
+
+## Venom-Z
+
+**Before you start:** you need double Pack-a-Punch (see [Unlock Pack-a-Punch (and double Pack-a-Punch)](../pack-a-punch/)) and the Venom-Y.
+
+<Checklist>
+  <Step title="Swap your key">
+    Your key becomes the other word: ARCHER becomes CROSS, and the other way round. The terminal right of Bang Bangs gives it to you again if you're not sure.
+  </Step>
+
+  <Step title="Redo the message and the Morse code">
+    Listen to the terminal at the bottom of the stairs with your new key, then enter the new number on the control room panel, as for the Venom-Y. The number changes.
+  </Step>
+
+  <Step title="Kill special enemies with the Venom-Y">
+    This time, they have to be **special** enemies: any Cryptid, ninjas or clowns. The progress stops at **50%**.
+  </Step>
+
+  <Step title="Make the ghosts appear with the 195# console">
+    Outside, use the console near the Magic Wheel until it shows **195#**. Ghosts start floating around you.
+
+    <Screenshot src={m + 'message_sent/console.webp'} alt="The console in the snow near the Magic Wheel" credit={by} source={src} />
+  </Step>
+
+  <Step title="Shoot the ghosts near the Pack-a-Punch portal">
+    Go near the Pack-a-Punch portal and shoot as many ghosts as your number, with any weapon, **in the same round**. The progress goes up to 100%.
+  </Step>
+
+  <Step title="Put the Venom-Y through double Pack-a-Punch">
+    It becomes the **Venom-Z** for 10,000 points.
+  </Step>
+</Checklist>
+
+## Sources
+
+- [mmmrkennedy: The Beast From Beyond Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide) (steps, Morse codes, prices and screenshots) and [his solvers](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers)
+- [XGodz: Venom Y Guide](https://www.youtube.com/watch?v=0BELmbjeB7w) and [Venom Z Tutorial](https://www.youtube.com/watch?v=TDToPR8XL2I) (Morse principle and encryption key cross-checked)
+- [NGTZombies: Unlocking the Venom-Z Upgrade from Morse Code](https://www.youtube.com/watch?v=YBQ_SEL3H_g) (principle cross-checked)

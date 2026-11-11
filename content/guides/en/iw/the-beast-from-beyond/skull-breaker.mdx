@@ -1,0 +1,165 @@
+---
+title: Skull Breaker (every perk for good)
+category: side-quests
+order: 1
+draft: true
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=WhBEb8Au9TA
+    title: "ULTIMATE \"SKULLBREAKER\" CORRECT GUIDE - EVERY SKULL AND EASY PERKAHOLIC (The Beast From Beyond)"
+    creator: "MysteryHQ"
+    lang: en
+    thumbnail: ../../../../media/videos/WhBEb8Au9TA.jpg
+  - url: https://www.youtube.com/watch?v=bpHcOokLG8E
+    title: "SkullBreaker Easter Egg Guide (FREE Perkaholic) | The Beast From Beyond | DLC 4"
+    creator: "Flaash"
+    lang: en
+    thumbnail: ../../../../media/videos/bpHcOokLG8E.jpg
+  - url: https://www.youtube.com/watch?v=7x4UhkpMK7A
+    title: "ULTIMATE SKULLBREAKER GUIDE! Beast from Beyond PERKAHOLIC Easter Egg (COD: Infinite Warfare)"
+    creator: "Ray Pooperton III"
+    lang: en
+    thumbnail: ../../../../media/videos/7x4UhkpMK7A.jpg
+---
+
+{/* TO CHECK: no source says whether the 6 skulls must all be done in the same match (left unsaid). The reward wording (all perks + faster Fate & Fortune cards) is mmmrkennedy's; the videos only call it "Perkaholic". */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide';
+export const solver = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers';
+export const m = 'iw/the-beast-from-beyond/skull_breaker/';
+
+Skull Breaker is an arcade machine hidden in the **theatre's Arcade**. You need **six skulls** to unlock it. Finishing its mini-game gives you **every perk for the whole game** (except Up 'N Atoms in solo), and your Fate & Fortune cards recharge faster. The "Cracking Skulls" achievement unlocks.
+
+**Before you start:** the power and access to the theatre (see [Unlock Pack-a-Punch (and double Pack-a-Punch)](../pack-a-punch/)). The machine shows how many skulls you have, and each completed skull plays a confirmation sound.
+
+<Screenshot src={m + 'skull_breaker_machine.webp'} alt="The Skull Breaker machine in the theatre's Arcade" credit={by} source={src} />
+
+<Checklist>
+  <Step title="Skulls 1 and 2: get the Entangler">
+    The electrical box to blow open, then the defence on the red crosses in the Cargo Bay. See [Get the Entangler](../entangler/).
+  </Step>
+
+  <Step title="Skull 3: aim at the symbol that doesn't fit with the others">
+    Four symbols appear among these eight spots:
+
+    - **Cargo Bay**: behind a container, at the very bottom (roughly under the X-Eon wall weapon).
+    - **Cafeteria**: in the barricade right of the Freezer.
+    - **Spawn**: in the barricade left of N31L.
+    - **Medical Bay**: under the Cryptid lying on the table.
+    - **Ops Center**: at the top of the hole in the floor (go down, then look up).
+    - **Theatre**: in the barricade near the M.2187 wall weapon, in the Racin' Stripes alley.
+    - **Theatre**: in the ticket booth at the Arcade entrance.
+    - **Theatre**: left of the Magic Wheel.
+
+    In the chart below, three of the symbols are on the same row. **Aim with your weapon** at the one on a different row. A mistake makes the symbols disappear: try again next round.
+
+    <Screenshot src={m + 'skull_3/quick_ref_image.webp'} alt="The skull 3 symbol chart" credit={by} source={src} />
+
+    <Shots>
+      <Screenshot src={m + 'skull_3/symbol_cargo.webp'} alt="Cargo Bay symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_cafeteria.webp'} alt="Cafeteria symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_spawn.webp'} alt="Spawn symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_med_bay.webp'} alt="Medical Bay symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_ops.webp'} alt="Ops Center symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_racin_stripes.webp'} alt="Racin' Stripes alley symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_ticket_booth.webp'} alt="Arcade ticket booth symbol" credit={by} source={src} />
+      <Screenshot src={m + 'skull_3/symbol_magic_wheel.webp'} alt="Symbol left of the theatre Magic Wheel" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Skull 4: follow the skull's path">
+    From the Bang Bangs walkway, in the Ops Center, jump down into the spawn area: a small **red cross** is where you land. Stand on it: a **pink** or **green** skull appears in front of you. Go and get it, then follow the symbols of that colour on the ground to the next skull.
+
+    **Walk, don't run.** The game sometimes swaps the colours of the next symbols: look carefully. A wrong symbol or running out of time (the blue bar on screen) fails the step: try again next round.
+
+    <Shots>
+      <Screenshot src={m + 'skull_4/red_x.webp'} alt="The red cross in the spawn area" credit={by} source={src} />
+      <Screenshot src={m + 'skull_4/skull.webp'} alt="The coloured skull" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Skull 5: place the eight queens">
+    On a cafeteria table, a chessboard holds **one queen**. Find the other seven and place them so no queen threatens another (the eight queens puzzle). **mmmrkennedy's solver** gives the solution based on your first queen's square. You can carry several queens at once.
+
+    The queens are among these **twelve spots**:
+
+    - **Cafeteria**: right of a couch; on a counter right of the Freezer trap.
+    - **Cargo Bay**: on the right going down the stairs to the lowest level.
+    - **Proteus hallway**: on the way outside, left of the zombie entrance; upstairs, near the open railing closest to the Ops Center.
+    - **Ops Center**: at the foot of the big pillar, on the EBR-800 wall weapon side; in a corner left of Bombstoppers; in the room above Bombstoppers, in the corner closest to Bombstoppers.
+    - **Medical Bay**: on the floor under the dissected Cryptid's table, at the head end; on a scale, on the counter under the broken screen in the force field room (you need to have opened that room, see the main Easter Egg).
+    - **Spawn**: under the zombie entrance on the flooded room stairs; at the top of the ladder, across from Up 'N Atoms.
+
+    When all eight queens are placed correctly, confetti bursts out of the chessboard.
+
+    <Screenshot src={m + 'skull_5/chessboard.webp'} alt="The cafeteria chessboard" credit={by} source={src} />
+
+    <Shots>
+      <Screenshot src={m + 'skull_5/cafe_couch.webp'} alt="Queen right of the couch" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/cafe_counter.webp'} alt="Queen on the counter near the Freezer" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/cargo_stairs.webp'} alt="Queen on the Cargo Bay stairs" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/proteus_outside.webp'} alt="Queen on the way outside" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/proteus_railing.webp'} alt="Queen near the railing" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/ops_pillar.webp'} alt="Queen at the foot of the pillar" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/ops_bombstoppers.webp'} alt="Queen left of Bombstoppers" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/ops_above_bombstoppers.webp'} alt="Queen in the room above Bombstoppers" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/medbay_cryptid.webp'} alt="Queen under the Cryptid's table" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/medbay_scale.webp'} alt="Queen on the scale" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/spawn_flooded_room_barrier.webp'} alt="Queen on the flooded room stairs" credit={by} source={src} />
+      <Screenshot src={m + 'skull_5/spawn_ladder.webp'} alt="Queen at the top of the ladder" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Skull 6: enter the cheat code at the machine">
+    Three sheets with arrows are hidden among these **six spots**:
+
+    - **Cafeteria**: on a counter left of the Freezer trap, next to a tray.
+    - **Medical Bay**: on the counter, under the six green screens on the wall.
+    - **Medical Bay**: in the force field room, right of the floppy disk.
+    - **Projector Room**: on the red toolbox, left of the portal.
+    - **Theatre restrooms**: in the sink, right of a blood stain on the wall.
+    - **Theatre lobby**: on the candy counter, in front of the popcorn machine.
+
+    Each sheet matches one of the nine pieces in the chart below: group 1 is the **start** of the code, group 2 the **middle**, group 3 the **end**. Stand right up against the machine and enter the full code on the D-pad, **less than a second** between each arrow. A sound and a line from your character confirm it.
+
+    <Screenshot src={m + 'skull_6/all_skull_6_codes.webp'} alt="The nine possible code pieces" credit={by} source={src} />
+
+    <Shots>
+      <Screenshot src={m + 'skull_6/cafe_freezer.webp'} alt="Cafeteria sheet" credit={by} source={src} />
+      <Screenshot src={m + 'skull_6/medbay_six_green_monitors.webp'} alt="Sheet under the green screens" credit={by} source={src} />
+      <Screenshot src={m + 'skull_6/medbay_floppy.webp'} alt="Force field room sheet" credit={by} source={src} />
+      <Screenshot src={m + 'skull_6/proj_room_toolbox.webp'} alt="Sheet on the red toolbox" credit={by} source={src} />
+      <Screenshot src={m + 'skull_6/theatre_bathroom_sink.webp'} alt="Sheet in the sink" credit={by} source={src} />
+      <Screenshot src={m + 'skull_6/theatre_concession.webp'} alt="Sheet on the candy counter" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="MysteryHQ" source="https://www.youtube.com/watch?v=WhBEb8Au9TA">
+        Code not working? A sheet can be read the other way round. Copy its arrows and rotate them to find the right piece.
+      </Tip>
+      <Tip type="tech" author="mmmrkennedy" source={src}>
+        On PC, under Controls then Actions, bind "Use Souvenir" to left arrow, "Toggle Kung-Fu Mode" to right arrow, "Next Card" to up arrow and "Previous Card" to down arrow.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Win the mini-game's three rounds">
+    You have to destroy every skull before they reach the end, over **three rounds**. With the Entangler:
+
+    - grab a **coloured cube** and fire it at a skull to change its colour. Two skulls of the same colour side by side (or diagonally) form a group;
+    - grab a **bomb** of the same colour and fire it at the group to destroy it.
+
+    A bomb of the wrong colour turns the group red and it escapes: a red bomb destroys it. A group of **10 skulls or more** unlocks the "Super Duper Combo" achievement. If you fail, you can play again right away with the same code.
+
+    At the end, you're back in the Arcade with every perk.
+  </Step>
+</Checklist>
+
+## Sources
+
+- [mmmrkennedy: The Beast From Beyond Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide) (steps, locations, reward and screenshots) and [his solvers](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers)
+- [MysteryHQ: Ultimate Skullbreaker Correct Guide](https://www.youtube.com/watch?v=WhBEb8Au9TA) (each skull and the mini-game cross-checked, code tip)
+- [Flaash: SkullBreaker Easter Egg Guide](https://www.youtube.com/watch?v=bpHcOokLG8E) (twelve queens and skull 3 symbols cross-checked)
+- Zenato's own guide (skulls 1 and 2)
