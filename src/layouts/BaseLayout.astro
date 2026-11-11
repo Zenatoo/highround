@@ -20,15 +20,17 @@ interface Props {
   description?: string;
   /** Same page in the other language; defaults to the other language's home. */
   alternate?: { lang: Locale; href: string };
+  /** Where the language switch goes when there is no `alternate` (not announced as a translation). */
+  fallbackHref?: string;
   /** Breadcrumb after "Home"; the last item is the current page. */
   crumbs?: { label: string; href: string }[];
   /** Map pages and guides get the map's own side bar. */
   sidebar?: { game: CollectionEntry<'games'>; map: CollectionEntry<'maps'>; current?: string };
 }
 
-const { lang, title, description = t(lang, 'site.tagline'), alternate, crumbs = [], sidebar } = Astro.props;
+const { lang, title, description = t(lang, 'site.tagline'), alternate, fallbackHref, crumbs = [], sidebar } = Astro.props;
 const other: Locale = lang === 'fr' ? 'en' : 'fr';
-const alternateHref = alternate?.href ?? href(other);
+const alternateHref = alternate?.href ?? fallbackHref ?? href(other);
 const repo = 'https://github.com/Zenatoo/highround/blob/main';
 ---
 

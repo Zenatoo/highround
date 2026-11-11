@@ -47,6 +47,7 @@ const { Content } = await render(guide);
     lang: translation.lang,
     href: href(translation.lang, translation.game, translation.map, translation.slug),
   }}
+  fallbackHref={href(lang === 'fr' ? 'en' : 'fr', guide.game, map.id)}
   crumbs={[
     { label: gameName, href: href(lang, guide.game) },
     { label: map.data.name, href: href(lang, guide.game, map.id) },
