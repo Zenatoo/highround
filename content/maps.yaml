@@ -16,7 +16,7 @@ rave-in-the-redwoods:
   game: iw
   name: Rave in the Redwoods
   order: 2
-  status: soon
+  status: complete
   color: green
   banner:
     # Frame of the official trailer.
@@ -27,7 +27,7 @@ shaolin-shuffle:
   game: iw
   name: Shaolin Shuffle
   order: 3
-  status: soon
+  status: complete
   color: amber
   banner:
     # Frame of the official trailer.
@@ -38,7 +38,7 @@ attack-of-the-radioactive-thing:
   game: iw
   name: Attack of the Radioactive Thing
   order: 4
-  status: soon
+  status: complete
   color: teal
   banner:
     # Frame of the official trailer.
@@ -49,7 +49,7 @@ the-beast-from-beyond:
   game: iw
   name: The Beast from Beyond
   order: 5
-  status: soon
+  status: complete
   color: blue
   banner:
     # Frame of the official trailer.
