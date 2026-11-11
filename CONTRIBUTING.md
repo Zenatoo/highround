@@ -34,6 +34,23 @@ A Windows release is published by pushing a tag: `git tag v0.2.0 && git push --t
 - `draft: true` keeps a guide visible in `pnpm dev` only.
 - Games and maps are listed in `content/games.yaml` and `content/maps.yaml`.
 
+### When is a map complete?
+
+A map is marked `complete` in `content/maps.yaml` when it has everything below that exists on that map. Zombies in Spaceland is the reference.
+
+- [ ] Main Easter Egg
+- [ ] Power, Pack-a-Punch, perks (all machines with location and price)
+- [ ] Every wonder / special weapon and buildable
+- [ ] Side Easter Eggs and secrets (secret characters, side quests, mini-games)
+- [ ] Music Easter Eggs
+- [ ] Achievements / trophies of the map
+- [ ] Banner (official art preferred), credited in `maps.yaml` and `CREDITS.md`
+- [ ] Videos tab filled where good videos exist (French first), each one checked
+- [ ] Every image credited, every new source in `CREDITS.md`
+- [ ] Every step checked in game or against two independent sources
+- [ ] English translation of every guide
+- [ ] `pnpm build` and `pnpm astro check` pass, pages checked on desktop and mobile
+
 ## Branches
 
 - Contributors work on a branch and open a **Pull Request** to `main`.
