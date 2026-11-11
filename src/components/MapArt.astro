@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../i18n/config';
-import { t } from '../i18n/ui';
+import { colon, t } from '../i18n/ui';
 
 interface Props {
   map: CollectionEntry<'maps'>;
@@ -42,11 +42,11 @@ const widths = size === 'tile' ? [320, 480, 640] : [640, 960, 1280, 1600];
     banner &&
       (inLink ? (
         <span class="art-credit">
-          {t(lang, 'media.source')} : {banner.credit}
+          {t(lang, 'media.source')}{colon(lang)}{banner.credit}
         </span>
       ) : (
         <a class="art-credit" href={banner.source} target="_blank" rel="noopener noreferrer">
-          {t(lang, 'media.source')} : {banner.credit}
+          {t(lang, 'media.source')}{colon(lang)}{banner.credit}
         </a>
       ))
   }

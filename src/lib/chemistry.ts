@@ -69,10 +69,10 @@ export const WHERE: Partial<Record<ProductKey, Text>> = {
   drainOpener: { fr: 'Toilettes du RV Park, sur une cuvette', en: 'RV Park restrooms, on a toilet' },
 };
 
-/** Shared by the recipe picker and the calculator, so choosing a recipe in one selects it in the other. */
 // Anchor of the calculator, linked from the top of the guide and from the main Easter Egg.
 export const CALC_ID = { fr: 'calculatrice', en: 'calculator' } as const;
 
+/** Shared by the recipe picker and the calculator, so choosing a recipe in one selects it in the other. */
 export const CHEM_STORE = 'highround:chemistry';
 export const CHEM_EVENT = 'highround:chemistry-final';
 

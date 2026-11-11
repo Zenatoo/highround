@@ -4,7 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Icon from '../../../components/Icon.astro';
 import MapArt from '../../../components/MapArt.astro';
 import { LOCALES, type Locale } from '../../../i18n/config';
-import { count, t } from '../../../i18n/ui';
+import { colon, count, t } from '../../../i18n/ui';
 import { getGames, getGuides, getMaps, otherLocale } from '../../../lib/content';
 import { href } from '../../../lib/url';
 
@@ -31,7 +31,7 @@ const other = otherLocale(lang);
   <header class="head">
     {
       game.data.cover ? (
-        <a class="head-cover" href={game.data.cover.source} target="_blank" rel="noopener noreferrer" title={`${t(lang, 'media.source')} : ${game.data.cover.credit}`}>
+        <a class="head-cover" href={game.data.cover.source} target="_blank" rel="noopener noreferrer" title={`${t(lang, 'media.source')}${colon(lang)}${game.data.cover.credit}`}>
           <Image src={game.data.cover.image} alt={t(lang, 'game.cover')} widths={[120, 180, 240]} sizes="6rem" loading="eager" />
         </a>
       ) : (

@@ -203,6 +203,8 @@ const dictionaries: Record<Locale, Record<Key, string>> = { fr, en };
 export const t = (lang: Locale, key: Key) => dictionaries[lang][key];
 export const categoryLabel = (lang: Locale, category: Category) => categories[lang][category];
 export const tipLabel = (lang: Locale, type: TipType) => tipTypes[lang][type];
+/** French puts a (non-breaking) space before a colon, English doesn't. */
+export const colon = (lang: Locale) => (lang === 'fr' ? ' : ' : ': ');
 
 const units = {
   fr: { guide: ['guide', 'guides'], step: ['étape', 'étapes'], map: ['carte', 'cartes'] },
