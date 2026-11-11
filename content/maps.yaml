@@ -12,7 +12,47 @@ zombies-in-spaceland:
     # Thumbnail of the official reveal trailer.
     credit: Call of Duty
     source: https://www.youtube.com/watch?v=-hA3tlz8Mgo
-rave-in-the-redwoods: { game: iw, name: Rave in the Redwoods, order: 2, status: soon, color: green }
-shaolin-shuffle: { game: iw, name: Shaolin Shuffle, order: 3, status: soon, color: amber }
-attack-of-the-radioactive-thing: { game: iw, name: Attack of the Radioactive Thing, order: 4, status: soon, color: teal }
-the-beast-from-beyond: { game: iw, name: The Beast from Beyond, order: 5, status: soon, color: blue }
+rave-in-the-redwoods:
+  game: iw
+  name: Rave in the Redwoods
+  order: 2
+  status: soon
+  color: green
+  banner:
+    # Frame of the official trailer.
+    image: ./media/iw/rave-in-the-redwoods/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=n6Cbnm0HSLY
+shaolin-shuffle:
+  game: iw
+  name: Shaolin Shuffle
+  order: 3
+  status: soon
+  color: amber
+  banner:
+    # Frame of the official trailer.
+    image: ./media/iw/shaolin-shuffle/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=JeiLqaPoExc
+attack-of-the-radioactive-thing:
+  game: iw
+  name: Attack of the Radioactive Thing
+  order: 4
+  status: soon
+  color: teal
+  banner:
+    # Frame of the official trailer.
+    image: ./media/iw/attack-of-the-radioactive-thing/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=Lpr1lmaoDAA
+the-beast-from-beyond:
+  game: iw
+  name: The Beast from Beyond
+  order: 5
+  status: soon
+  color: blue
+  banner:
+    # Frame of the official trailer.
+    image: ./media/iw/the-beast-from-beyond/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=7GXQVGkevg4
