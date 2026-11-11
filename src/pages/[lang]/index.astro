@@ -181,6 +181,12 @@ const other = otherLocale(lang);
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     }
   }
+  /* Very wide screens: the art stops growing, so it doesn't push the games list off the screen. */
+  @media (min-width: 120rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 54rem);
+    }
+  }
 
   .games {
     margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
@@ -227,12 +233,6 @@ const other = otherLocale(lang);
     letter-spacing: -0.02em;
     text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
   }
-  .is-soon .tile-art {
-    filter: grayscale(0.85) brightness(0.75);
-  }
-  .tile-body {
-    display: grid;
-    gap: 0.5rem;
   .tile-cover {
     object-fit: cover;
     background: var(--raised);
@@ -241,13 +241,19 @@ const other = otherLocale(lang);
   a.tile:hover .tile-cover {
     transform: scale(1.03);
   }
-    flex: 1;
-    padding: 0.8rem 0.95rem 0.95rem;
+  .is-soon .tile-art {
+    filter: grayscale(0.85) brightness(0.75);
   }
   @media (prefers-reduced-motion: reduce) {
     .tile-cover {
       transition: none;
     }
+  }
+  .tile-body {
+    display: grid;
+    gap: 0.5rem;
+    flex: 1;
+    padding: 0.8rem 0.95rem 0.95rem;
   }
   .tile-name {
     font-family: var(--font-head);
