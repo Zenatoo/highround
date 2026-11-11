@@ -35,6 +35,7 @@ Videos are only suggested, as links. HighRound is not affiliated with these crea
 |---|---|---|
 | mmmrkennedy | [Zombies in Spaceland Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/zombies_in_spaceland/zombies_in_spaceland_guide) | Zombies in Spaceland (IW) |
 | Call of Duty (Activision) | [Zombies in Spaceland Reveal Trailer](https://www.youtube.com/watch?v=-hA3tlz8Mgo) (video thumbnail) | Zombies in Spaceland map banner |
+| Call of Duty (Activision) | Official box art, from each game's [Steam](https://store.steampowered.com/search/?term=call+of+duty) page ([Wikipedia](https://en.wikipedia.org/wiki/File:Call_of_Duty_Black_Ops_4_official_box_art.jpg) for Black Ops 4) | Game covers |
 
 ### Community references
 

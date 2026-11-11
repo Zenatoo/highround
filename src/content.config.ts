@@ -8,13 +8,18 @@ const color = z.enum(['amber', 'violet', 'teal', 'red', 'blue', 'green', 'pink']
 
 const games = defineCollection({
   loader: file('content/games.yaml'),
-  schema: z.object({
-    name: z.string(),
-    short: z.string().max(4),
-    year: z.number().int(),
-    status,
-    color,
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      short: z.string().max(4),
+      year: z.number().int(),
+      status,
+      color,
+      // Portrait box art (2:3). Credited like banners.
+      cover: z
+        .object({ image: image(), credit: z.string().min(1), source: z.url() })
+        .optional(),
+    }),
 });
 
 const maps = defineCollection({

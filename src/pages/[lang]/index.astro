@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import MapArt from '../../components/MapArt.astro';
@@ -78,9 +79,21 @@ const other = otherLocale(lang);
           const soon = game.data.status === 'soon';
           const inner = (
             <>
-              <span class={`tile-art c-${game.data.color}`} aria-hidden="true">
-                <span>{game.data.short}</span>
-              </span>
+              {game.data.cover ? (
+                <Image
+                  src={game.data.cover.image}
+                  alt=""
+                  widths={[240, 360, 480, 600]}
+                  sizes="(min-width: 40rem) 11rem, 45vw"
+                  loading="lazy"
+                  decoding="async"
+                  class="tile-art tile-cover"
+                />
+              ) : (
+                <span class={`tile-art c-${game.data.color}`} aria-hidden="true">
+                  <span>{game.data.short}</span>
+                </span>
+              )}
               <span class="tile-body">
                 <span class="tile-name">{game.data.name}</span>
                 <span class="tile-meta">
@@ -174,7 +187,7 @@ const other = otherLocale(lang);
   }
   .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
     gap: 1rem;
     margin: 0;
     padding: 0;
@@ -200,7 +213,9 @@ const other = otherLocale(lang);
   .tile-art {
     display: grid;
     place-items: center;
-    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
     background:
       radial-gradient(120% 140% at 100% 0%, color-mix(in oklab, var(--c1) 60%, transparent), transparent 60%),
       radial-gradient(90% 120% at 0% 100%, color-mix(in oklab, var(--c2) 60%, transparent), transparent 60%),
@@ -218,8 +233,21 @@ const other = otherLocale(lang);
   .tile-body {
     display: grid;
     gap: 0.5rem;
+  .tile-cover {
+    object-fit: cover;
+    background: var(--raised);
+    transition: transform 0.25s ease;
+  }
+  a.tile:hover .tile-cover {
+    transform: scale(1.03);
+  }
     flex: 1;
     padding: 0.8rem 0.95rem 0.95rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile-cover {
+      transition: none;
+    }
   }
   .tile-name {
     font-family: var(--font-head);

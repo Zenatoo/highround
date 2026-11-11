@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Icon from '../../../components/Icon.astro';
 import MapArt from '../../../components/MapArt.astro';
@@ -28,7 +29,15 @@ const other = otherLocale(lang);
   crumbs={[{ label: game.data.name, href: href(lang, game.id) }]}
 >
   <header class="head">
-    <span class={`head-badge c-${game.data.color}`} aria-hidden="true">{game.data.short}</span>
+    {
+      game.data.cover ? (
+        <a class="head-cover" href={game.data.cover.source} target="_blank" rel="noopener noreferrer" title={`${t(lang, 'media.source')} : ${game.data.cover.credit}`}>
+          <Image src={game.data.cover.image} alt={t(lang, 'game.cover')} widths={[120, 180, 240]} sizes="6rem" loading="eager" />
+        </a>
+      ) : (
+        <span class={`head-badge c-${game.data.color}`} aria-hidden="true">{game.data.short}</span>
+      )
+    }
     <div>
       <h1>{game.data.name}</h1>
       <div class="badges">
@@ -91,6 +100,19 @@ const other = otherLocale(lang);
     font-size: 1.5rem;
     font-weight: 800;
     text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+  .head-cover {
+    flex: none;
+    width: clamp(4.5rem, 3.5rem + 3vw, 6rem);
+  }
+  .head-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
   }
   .map-grid {
     display: grid;

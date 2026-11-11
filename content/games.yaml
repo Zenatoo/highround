@@ -1,15 +1,16 @@
 # Key = game id used in URLs and in content/guides/<lang>/<game>/.
 # short = badge text, color = generated art color (amber, violet, teal, red, blue, green, pink).
-waw: { name: World at War, short: WaW, year: 2008, status: soon, color: red }
-bo1: { name: Black Ops, short: BO1, year: 2010, status: soon, color: amber }
-bo2: { name: Black Ops II, short: BO2, year: 2012, status: soon, color: blue }
-aw: { name: Advanced Warfare, short: AW, year: 2014, status: soon, color: teal }
-bo3: { name: Black Ops III, short: BO3, year: 2015, status: soon, color: violet }
-iw: { name: Infinite Warfare, short: IW, year: 2016, status: in-progress, color: pink }
-ww2: { name: WWII, short: WW2, year: 2017, status: soon, color: red }
-bo4: { name: Black Ops 4, short: BO4, year: 2018, status: soon, color: amber }
-bocw: { name: Black Ops Cold War, short: CW, year: 2020, status: soon, color: blue }
-vg: { name: Vanguard, short: VG, year: 2021, status: soon, color: green }
-mw3: { name: Modern Warfare III, short: MW3, year: 2023, status: soon, color: teal }
-bo6: { name: Black Ops 6, short: BO6, year: 2024, status: soon, color: violet }
-bo7: { name: Black Ops 7, short: BO7, year: 2025, status: soon, color: red }
+# cover = official box art, 600x900 WebP in content/media/games/ (Steam library art; Black Ops 4 is not on Steam).
+waw: { name: World at War, short: WaW, year: 2008, status: soon, color: red, cover: { image: ./media/games/waw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/10090/' } }
+bo1: { name: Black Ops, short: BO1, year: 2010, status: soon, color: amber, cover: { image: ./media/games/bo1.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/42700/' } }
+bo2: { name: Black Ops II, short: BO2, year: 2012, status: soon, color: blue, cover: { image: ./media/games/bo2.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/202970/' } }
+aw: { name: Advanced Warfare, short: AW, year: 2014, status: soon, color: teal, cover: { image: ./media/games/aw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/209650/' } }
+bo3: { name: Black Ops III, short: BO3, year: 2015, status: soon, color: violet, cover: { image: ./media/games/bo3.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/311210/' } }
+iw: { name: Infinite Warfare, short: IW, year: 2016, status: in-progress, color: pink, cover: { image: ./media/games/iw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/292730/' } }
+ww2: { name: WWII, short: WW2, year: 2017, status: soon, color: red, cover: { image: ./media/games/ww2.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/476600/' } }
+bo4: { name: Black Ops 4, short: BO4, year: 2018, status: soon, color: amber, cover: { image: ./media/games/bo4.webp, credit: Call of Duty, source: 'https://en.wikipedia.org/wiki/File:Call_of_Duty_Black_Ops_4_official_box_art.jpg' } }
+bocw: { name: Black Ops Cold War, short: CW, year: 2020, status: soon, color: blue, cover: { image: ./media/games/bocw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/1985810/' } }
+vg: { name: Vanguard, short: VG, year: 2021, status: soon, color: green, cover: { image: ./media/games/vg.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/1985820/' } }
+mw3: { name: Modern Warfare III, short: MW3, year: 2023, status: soon, color: teal, cover: { image: ./media/games/mw3.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/3595270/' } }
+bo6: { name: Black Ops 6, short: BO6, year: 2024, status: soon, color: violet, cover: { image: ./media/games/bo6.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/4384550/' } }
+bo7: { name: Black Ops 7, short: BO7, year: 2025, status: soon, color: red, cover: { image: ./media/games/bo7.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/3606480/' } }
