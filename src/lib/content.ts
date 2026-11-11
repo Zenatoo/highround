@@ -38,6 +38,23 @@ export async function getMaps(game?: string) {
 // Counted from the MDX source so list pages can show it without rendering every guide.
 export const stepCount = (guide: Guide) => (guide.body?.match(/<Step\b/g) ?? []).length;
 
+/** The guide's first paragraph as plain text, for link previews and search engines. */
+export function excerpt(guide: Guide, max = 200): string | undefined {
+  const paragraph = (guide.body ?? '')
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .find((p) => p && !/^(export |import |<|#|-|\|)/.test(p));
+  if (!paragraph) return undefined;
+  const text = paragraph
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[*`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length <= max) return text;
+  return `${text.slice(0, text.lastIndexOf(' ', max - 1)).replace(/[\s,;:.(]+$/, '')}…`;
+}
+
 export const otherLocale = (lang: Locale): Locale => (lang === 'fr' ? 'en' : 'fr');
 
 /** Guides of one map, one per slug: the reader's language when it exists, otherwise the original. */

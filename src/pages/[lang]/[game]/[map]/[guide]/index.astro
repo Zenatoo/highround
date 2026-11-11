@@ -13,8 +13,8 @@ import Shots from '../../../../../components/Shots.astro';
 import Step from '../../../../../components/Step.astro';
 import Tip from '../../../../../components/Tip.astro';
 import Tips from '../../../../../components/Tips.astro';
-import { categoryLabel } from '../../../../../i18n/ui';
-import { getGames, getGuides, getMaps, otherLocale } from '../../../../../lib/content';
+import { categoryLabel, fill } from '../../../../../i18n/ui';
+import { excerpt, getGames, getGuides, getMaps, otherLocale } from '../../../../../lib/content';
 import { href } from '../../../../../lib/url';
 
 export async function getStaticPaths() {
@@ -43,6 +43,8 @@ const { Content } = await render(guide);
 <BaseLayout
   lang={lang}
   title={`${guide.data.title} – ${map.data.name}`}
+  description={excerpt(guide) ?? fill(lang, 'share.guide', { category: categoryLabel(lang, guide.data.category), map: map.data.name, game: gameName })}
+  share={map.data.banner && { image: map.data.banner.image, alt: map.data.name, large: true }}
   alternate={translation && {
     lang: translation.lang,
     href: href(translation.lang, translation.game, translation.map, translation.slug),

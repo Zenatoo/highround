@@ -3,7 +3,10 @@
 import '@fontsource-variable/sora';
 import '@fontsource-variable/manrope';
 import '../styles/global.css';
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import logo from '../assets/logo-512.png';
 import Icon from '../components/Icon.astro';
 import Lightbox from '../components/Lightbox.astro';
 import Logo from '../components/Logo.astro';
@@ -26,9 +29,18 @@ interface Props {
   crumbs?: { label: string; href: string }[];
   /** Map pages and guides get the map's own side bar. */
   sidebar?: { game: CollectionEntry<'games'>; map: CollectionEntry<'maps'>; current?: string };
+  /** Picture shown when the link is shared (Discord…): `large` for wide art, otherwise a small thumbnail. Defaults to the logo. */
+  share?: { image: ImageMetadata; alt: string; large?: boolean };
 }
 
-const { lang, title, description = t(lang, 'site.tagline'), alternate, fallbackHref, crumbs = [], sidebar } = Astro.props;
+const { lang, title, description = t(lang, 'site.tagline'), alternate, fallbackHref, crumbs = [], sidebar, share } = Astro.props;
+const isHome = title === 'HighRound';
+// Link previews need absolute URLs. JPEG for art (read everywhere); the logo keeps PNG for its transparent corners.
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const shareSource = share?.image ?? logo;
+const shareWidth = Math.min(1200, shareSource.width);
+const shareHeight = Math.round((shareSource.height * shareWidth) / shareSource.width);
+const shareImage = await getImage({ src: shareSource, width: shareWidth, format: share ? 'jpg' : 'png' });
 const other: Locale = lang === 'fr' ? 'en' : 'fr';
 const alternateHref = alternate?.href ?? fallbackHref ?? href(other);
 const repo = 'https://github.com/Zenatoo/highround/blob/main';
@@ -41,8 +53,20 @@ const repo = 'https://github.com/Zenatoo/highround/blob/main';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="theme-color" content="#121314" />
-    <title>{title === 'HighRound' ? title : `${title} – HighRound`}</title>
+    <title>{isHome ? title : `${title} – HighRound`}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HighRound" />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={isHome ? t(lang, 'home.title') : title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(shareImage.src, Astro.site).href} />
+    <meta property="og:image:width" content={String(shareWidth)} />
+    <meta property="og:image:height" content={String(shareHeight)} />
+    <meta property="og:image:alt" content={share?.alt ?? 'HighRound'} />
+    <meta name="twitter:card" content={share?.large ? 'summary_large_image' : 'summary'} />
     <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`} type="image/svg+xml" />
     {alternate && <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />}
     <!-- Applies the saved color palette before the first paint, so the page never flashes red then violet. -->

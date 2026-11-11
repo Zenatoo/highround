@@ -4,7 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Icon from '../../../components/Icon.astro';
 import MapArt from '../../../components/MapArt.astro';
 import { LOCALES, type Locale } from '../../../i18n/config';
-import { colon, count, t } from '../../../i18n/ui';
+import { colon, count, fill, t } from '../../../i18n/ui';
 import { getGames, getGuides, getMaps, otherLocale } from '../../../lib/content';
 import { href } from '../../../lib/url';
 
@@ -25,6 +25,12 @@ const other = otherLocale(lang);
 <BaseLayout
   lang={lang}
   title={game.data.name}
+  description={fill(lang, 'share.game', {
+    game: game.data.name,
+    maps: count(lang, maps.length, 'map'),
+    guides: count(lang, guides.filter((g) => g.lang === lang).length, 'guide'),
+  })}
+  share={game.data.cover && { image: game.data.cover.image, alt: game.data.name }}
   alternate={{ lang: other, href: href(other, game.id) }}
   crumbs={[{ label: game.data.name, href: href(lang, game.id) }]}
 >

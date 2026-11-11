@@ -78,6 +78,10 @@ const fr = {
   'play.space': 'Espace',
   'footer.disclaimer':
     'Projet de fan, non affilié à Activision, Treyarch, Sledgehammer Games ou Infinity Ward.',
+  // Link previews (Discord, social networks…). {x} is filled in by `fill`.
+  'share.game': 'Les guides Zombies de {game} : {maps}, {guides}, étape par étape avec captures et vidéos.',
+  'share.map': '{guides} pour {map} ({game}), étape par étape avec captures et vidéos.',
+  'share.guide': '{category} sur {map} ({game}), étape par étape.',
 } as const;
 
 type Key = keyof typeof fr;
@@ -160,6 +164,9 @@ const en: Record<Key, string> = {
   'play.space': 'Space',
   'footer.disclaimer':
     'Fan project, not affiliated with Activision, Treyarch, Sledgehammer Games or Infinity Ward.',
+  'share.game': '{game} Zombies guides: {maps}, {guides}, step by step with screenshots and videos.',
+  'share.map': '{guides} for {map} ({game}), step by step with screenshots and videos.',
+  'share.guide': '{category} on {map} ({game}), step by step.',
 };
 
 const categories: Record<Locale, Record<Category, string>> = {
@@ -201,6 +208,9 @@ const tipTypes: Record<Locale, Record<TipType, string>> = {
 const dictionaries: Record<Locale, Record<Key, string>> = { fr, en };
 
 export const t = (lang: Locale, key: Key) => dictionaries[lang][key];
+/** A text with {placeholders} filled in. */
+export const fill = (lang: Locale, key: Key, values: Record<string, string>) =>
+  t(lang, key).replace(/\{(\w+)\}/g, (_, name: string) => values[name] ?? '');
 export const categoryLabel = (lang: Locale, category: Category) => categories[lang][category];
 export const tipLabel = (lang: Locale, type: TipType) => tipTypes[lang][type];
 /** French puts a (non-breaking) space before a colon, English doesn't. */

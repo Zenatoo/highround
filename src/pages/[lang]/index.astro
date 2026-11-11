@@ -29,7 +29,7 @@ const featuredCount = featured ? (await getMapGuides(lang, featured.data.game, f
 const other = otherLocale(lang);
 ---
 
-<BaseLayout lang={lang} title="HighRound" alternate={{ lang: other, href: href(other) }}>
+<BaseLayout lang={lang} title="HighRound" description={t(lang, 'home.lead')} alternate={{ lang: other, href: href(other) }}>
   <section class="hero">
     <div class="hero-text">
       <h1>{t(lang, 'home.title')}</h1>
