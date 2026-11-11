@@ -1,6 +1,9 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import ChemistryCalculator from '../../../../../components/ChemistryCalculator.astro';
+import ChemistryRecipes from '../../../../../components/ChemistryRecipes.astro';
+import ChemistryShortcut from '../../../../../components/ChemistryShortcut.astro';
 import Checklist from '../../../../../components/Checklist.astro';
 import GuideHeader from '../../../../../components/GuideHeader.astro';
 import GuideRail from '../../../../../components/GuideRail.astro';
@@ -60,7 +63,7 @@ const { Content } = await render(guide);
     >
       <span hidden data-pagefind-filter="game">{gameName}</span>
       <span hidden data-pagefind-filter="category">{categoryLabel(lang, guide.data.category)}</span>
-      <Content components={{ Checklist, Step, Screenshot, Shots, Tips, Tip }} />
+      <Content components={{ Checklist, Step, Screenshot, Shots, Tips, Tip, ChemistryCalculator, ChemistryRecipes, ChemistryShortcut }} />
     </article>
     <GuideRail guide={guide} progress />
   </div>
@@ -96,10 +99,10 @@ const { Content } = await render(guide);
       align-items: start;
     }
   }
-</style>
   @media (min-width: 120rem) {
     .guide-layout {
       grid-template-columns: minmax(0, 1fr) 22rem;
       gap: 2.5rem;
     }
   }
+</style>

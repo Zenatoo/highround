@@ -5,6 +5,7 @@ export const ICONS = [
   'arrow-left',
   'badge-check',
   'box',
+  'calculator',
   'check',
   'chevron-right',
   'clock',

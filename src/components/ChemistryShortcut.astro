@@ -1,0 +1,99 @@
+---
+import type { Locale } from '../i18n/config';
+import { CALC_ID } from '../lib/chemistry';
+import Icon from './Icon.astro';
+
+// Players who already know the method only want the calculator: send them straight to it.
+const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const L = {
+  fr: {
+    title: 'Tu connais déjà la méthode ?',
+    text: 'Va directement à la calculatrice. Entre le produit final, O, M et les losanges : elle te donne le code de chaque réaction.',
+    go: 'Ouvrir la calculatrice',
+    first: 'Première fois : lis le guide dans l’ordre, juste en dessous.',
+  },
+  en: {
+    title: 'Already know how it works?',
+    text: 'Go straight to the calculator. Enter the final chemical, O, M and the diamonds: it gives you the code for each reaction.',
+    go: 'Open the calculator',
+    first: 'First time: read the guide in order, just below.',
+  },
+}[lang];
+---
+
+<aside class="shortcut" aria-label={L.go}>
+  <span class="shortcut-icon" aria-hidden="true"><Icon name="calculator" /></span>
+  <div class="shortcut-text">
+    <p class="shortcut-title">{L.title}</p>
+    <p>{L.text}</p>
+    <p class="shortcut-first">{L.first}</p>
+  </div>
+  <a class="button button-primary shortcut-go" href={`#${CALC_ID[lang]}`}>
+    <Icon name="calculator" /> {L.go}
+  </a>
+</aside>
+
+<style>
+  .shortcut {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem 1rem;
+    align-items: center;
+    margin: 1.5rem 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--border));
+    border-radius: var(--r-lg);
+    background: color-mix(in oklab, var(--accent) 7%, var(--surface));
+  }
+  /* Phones: no room for the icon tile beside the text. */
+  .shortcut-icon {
+    display: none;
+    place-items: center;
+    width: 2.75rem;
+    aspect-ratio: 1;
+    border-radius: var(--r-md);
+    background: color-mix(in oklab, var(--accent) 18%, var(--raised));
+    color: var(--accent);
+  }
+  .shortcut-icon :global(.icon) {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+  .shortcut-text p {
+    margin: 0;
+  }
+  .shortcut-text {
+    display: grid;
+    gap: 0.25rem;
+  }
+  .shortcut-title {
+    font-family: var(--font-head);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .shortcut-first {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .shortcut-go {
+    grid-column: 1 / -1;
+    justify-content: center;
+    min-height: 2.9rem;
+    text-decoration: none;
+  }
+  .shortcut-go:hover {
+    text-decoration: none;
+  }
+  @media (min-width: 48rem) {
+    .shortcut {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .shortcut-icon {
+      display: grid;
+    }
+    .shortcut-go {
+      grid-column: auto;
+    }
+  }
+</style>

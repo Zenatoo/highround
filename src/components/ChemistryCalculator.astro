@@ -1,0 +1,496 @@
+---
+import type { Locale } from '../i18n/config';
+import { CALC_ID, FINALS, O_VALUES, PRODUCTS } from '../lib/chemistry';
+
+const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const L = {
+  fr: {
+    title: 'Calculatrice de chimie',
+    lead: 'Chaque ingrédient a un losange sur les tableaux, avec quatre chiffres. Recopie le rouge (en haut) et le bleu (à gauche) : la calculatrice additionne et donne le code de chaque réaction, à taper une fois sur le clavier du garage. Elle ne fait que des additions : rien n’est lu dans le jeu.',
+    final: 'Produit final',
+    finalHint: 'Celui que nomme la radio, ou le prochain à essayer : ils sont rangés du plus rapide au plus long à fabriquer.',
+    o: 'Nombre O',
+    oHint: 'Celui qui garde « = » avec la carte en rouge, en vert et en bleu.',
+    m: 'Couleur de la carte',
+    mHint: 'Entre le nombre M lu au bureau du motel (mur à droite de la fenêtre). Compare O × M aux plages de la télé à côté d’Elvira.',
+    mLabel: 'Nombre M',
+    diamonds: 'Losanges à relever',
+    diamondsHint: 'Règle d’abord la console de la TV Station sur la couleur de la carte : seule cette couleur montre les bons chiffres.',
+    red: 'rouge',
+    blue: 'bleu',
+    steps: 'Réactions, dans l’ordre',
+    code: 'Code',
+    missing: 'Recopie le rouge et le bleu de chaque ingrédient.',
+    one: 'Un seul chiffre : appuie dessus une fois, puis sur le gros bouton.',
+    two: 'Appuie sur les deux chiffres, puis sur le gros bouton.',
+    bad: 'Le clavier ne peut pas prendre ce nombre : vérifie les chiffres et O.',
+    reset: 'Nouvelle partie',
+    pick: 'Choisis le produit final et le nombre O pour commencer. Ils changent à chaque partie, comme les tableaux.',
+  },
+  en: {
+    title: 'Chemistry calculator',
+    lead: 'Each ingredient has a diamond on the boards, with four digits. Copy the red one (top) and the blue one (left): the calculator adds them up and gives each reaction’s code, to type once on the garage keypad. It only adds: nothing is read from the game.',
+    final: 'Final chemical',
+    finalHint: 'The one the radio names, or the next one to try: they go from quickest to longest to make.',
+    o: 'Number O',
+    oHint: 'The one that keeps « = » with the map in red, green and blue.',
+    m: 'Map colour',
+    mHint: 'Enter the number M read in the motel office (wall right of the window). Compare O × M with the ranges on the TV beside Elvira.',
+    mLabel: 'Number M',
+    diamonds: 'Diamonds to read',
+    diamondsHint: 'Set the TV Station console to the map colour first: only that colour shows the right digits.',
+    red: 'red',
+    blue: 'blue',
+    steps: 'Reactions, in order',
+    code: 'Code',
+    missing: 'Copy the red and the blue of every ingredient.',
+    one: 'A single digit: press it once, then the big button.',
+    two: 'Press both digits, then the big button.',
+    bad: 'The keypad can’t take this number: check the digits and O.',
+    reset: 'New match',
+    pick: 'Pick the final chemical and the number O to start. They change every match, like the boards.',
+  },
+}[lang];
+---
+
+<section
+  class="chem"
+  id={CALC_ID[lang]}
+  data-chem
+  data-lang={lang}
+  data-labels={JSON.stringify({ red: L.red, blue: L.blue, code: L.code, missing: L.missing, one: L.one, two: L.two, bad: L.bad })}
+  hidden
+  aria-labelledby="chem-title"
+>
+  <header class="chem-head">
+    <h2 id="chem-title">{L.title}</h2>
+    <button type="button" class="button chem-reset" data-reset>{L.reset}</button>
+  </header>
+  <p class="chem-lead">{L.lead}</p>
+
+  <fieldset class="chem-choice">
+    <legend>{L.final}</legend>
+    <p class="hint">{L.finalHint}</p>
+    <div class="chips">
+      {
+        FINALS.map((key) => (
+          <label class="chip">
+            <input type="radio" name="chem-final" value={key} />
+            <span>{PRODUCTS[key].name[lang]}</span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+
+  <fieldset class="chem-choice">
+    <legend>{L.o}</legend>
+    <p class="hint">{L.oHint}</p>
+    <div class="chips chips-num">
+      {
+        O_VALUES.map((value) => (
+          <label class="chip">
+            <input type="radio" name="chem-o" value={value} />
+            <span>{value}</span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+
+  <fieldset class="chem-choice">
+    <legend>{L.m}</legend>
+    <p class="hint">{L.mHint}</p>
+    <div class="m-row">
+      <input class="m-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" aria-label={L.mLabel} placeholder="M" data-m />
+      <output class="m-out" data-m-out aria-live="polite"></output>
+    </div>
+  </fieldset>
+
+  <p class="chem-empty" data-empty>{L.pick}</p>
+
+  <div class="chem-work" data-work hidden>
+    <h3>{L.diamonds}</h3>
+    <p class="hint">{L.diamondsHint}</p>
+    <div data-diamonds></div>
+    <h3>{L.steps}</h3>
+    <ol class="chem-steps" data-steps></ol>
+  </div>
+
+</section>
+
+<script>
+  import { BOARDS, CHEM_EVENT, CHEM_STORE as KEY, chainOf, ingredientsOf, PRODUCTS, REACTIONS, reactionNumber, type ProductKey } from '../lib/chemistry';
+  import type { Locale } from '../i18n/config';
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-chem]')) {
+    const lang = root.dataset.lang as Locale;
+    const labels = JSON.parse(root.dataset.labels!) as Record<string, string>;
+    const work = root.querySelector<HTMLElement>('[data-work]')!;
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+    const diamondsBox = root.querySelector<HTMLElement>('[data-diamonds]')!;
+    const stepsBox = root.querySelector<HTMLElement>('[data-steps]')!;
+
+    // The numbers change every match: kept on this device only, until "Clear", so a reload mid-game loses nothing.
+    type State = { final?: string; o?: string; m?: string; d: Record<string, [string, string]> };
+    let state: State = { d: {} };
+    try {
+      state = { d: {}, ...JSON.parse(localStorage.getItem(KEY) ?? '{}') };
+    } catch {}
+    const save = () => {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+      } catch {}
+    };
+
+    const name = (key: ProductKey) => PRODUCTS[key].name[lang];
+    const value = (key: ProductKey): [number, number] | null => {
+      const [a, b] = state.d[key] ?? ['', ''];
+      return a !== '' && b !== '' ? [Number(a), Number(b)] : null;
+    };
+
+    function numberInput(key: ProductKey, i: 0 | 1, label: string) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.inputMode = 'numeric';
+      input.pattern = '[0-9]*';
+      input.maxLength = 1;
+      input.className = `num num-${i === 1 ? 'red' : 'blue'}`;
+      input.value = state.d[key]?.[i] ?? '';
+      input.setAttribute('aria-label', `${name(key)}, ${label}`);
+      input.placeholder = label;
+      input.addEventListener('focus', () => input.select());
+      input.addEventListener('input', () => {
+        input.value = input.value.replace(/\D/g, '').slice(-1);
+        const pair = state.d[key] ?? ['', ''];
+        pair[i] = input.value;
+        state.d[key] = pair;
+        save();
+        renderSteps();
+      });
+      return input;
+    }
+
+    function renderDiamonds(final: ProductKey) {
+      diamondsBox.replaceChildren();
+      const needed = ingredientsOf(final);
+      for (const board of BOARDS) {
+        const here = needed.filter((k) => PRODUCTS[k].board === board);
+        if (here.length === 0) continue;
+        const group = document.createElement('div');
+        group.className = 'board';
+        const title = document.createElement('p');
+        title.className = 'board-name';
+        title.textContent = board[lang];
+        group.append(title);
+        for (const key of here) {
+          const row = document.createElement('div');
+          row.className = 'diamond';
+          const label = document.createElement('span');
+          label.className = 'diamond-name';
+          label.textContent = name(key);
+          row.append(label, numberInput(key, 1, labels.red), numberInput(key, 0, labels.blue));
+          group.append(row);
+        }
+        diamondsBox.append(group);
+      }
+    }
+
+    function renderSteps() {
+      const final = state.final as ProductKey | undefined;
+      const o = state.o === undefined ? undefined : Number(state.o);
+      if (!final || o === undefined) return;
+      stepsBox.replaceChildren();
+      for (const product of chainOf(final)) {
+        const inputs = REACTIONS[product]!;
+        const values = inputs.map(value);
+        const li = document.createElement('li');
+        const text = document.createElement('span');
+        text.className = 'step-text';
+        const made = document.createElement('strong');
+        made.textContent = name(product);
+        text.append(made, ` = ${inputs.map(name).join(' + ')}`);
+        const code = document.createElement('span');
+        const hint = document.createElement('p');
+        hint.className = 'step-hint';
+        const ready = values.every(Boolean);
+        if (ready) {
+          const number = reactionNumber(values as [number, number][], o);
+          code.className = 'code';
+          code.textContent = `${labels.code} ${number}`;
+          hint.textContent = number < 0 || number > 99 ? labels.bad : number < 10 ? labels.one : labels.two;
+        } else {
+          code.className = 'code code-missing';
+          code.textContent = '–';
+          hint.textContent = labels.missing;
+        }
+        const row = document.createElement('div');
+        row.className = 'step-row';
+        row.append(text, code);
+        li.append(row, hint);
+        stepsBox.append(li);
+      }
+    }
+
+    const mInput = root.querySelector<HTMLInputElement>('[data-m]')!;
+    const mOut = root.querySelector<HTMLOutputElement>('[data-m-out]')!;
+    function renderM() {
+      const m = state.m ?? '';
+      mOut.textContent = state.o !== undefined && m !== '' ? `O × M = ${Number(state.o)} × ${m} = ${Number(state.o) * Number(m)}` : '';
+    }
+    mInput.addEventListener('input', () => {
+      mInput.value = mInput.value.replace(/\D/g, '');
+      state.m = mInput.value;
+      save();
+      renderM();
+    });
+
+    function render() {
+      mInput.value = state.m ?? '';
+      renderM();
+      const ready = Boolean(state.final && state.o !== undefined);
+      work.hidden = !ready;
+      empty.hidden = ready;
+      if (!ready) return;
+      renderDiamonds(state.final as ProductKey);
+      renderSteps();
+    }
+
+    for (const radio of root.querySelectorAll<HTMLInputElement>('input[type=radio]')) {
+      const field = radio.name === 'chem-final' ? 'final' : 'o';
+      radio.checked = state[field] === radio.value;
+      radio.addEventListener('change', () => {
+        state[field] = radio.value;
+        save();
+        render();
+        if (field === 'final') window.dispatchEvent(new CustomEvent(CHEM_EVENT, { detail: radio.value }));
+      });
+    }
+    // The recipe picker higher in the guide chose a recipe: follow it.
+    window.addEventListener(CHEM_EVENT, (event) => {
+      const final = (event as CustomEvent<string>).detail;
+      if (final === state.final) return;
+      state.final = final;
+      for (const radio of root.querySelectorAll<HTMLInputElement>('input[name=chem-final]')) radio.checked = radio.value === final;
+      render();
+    });
+    // A new match changes O, M and every diamond; the recipe being made stays chosen.
+    root.querySelector('[data-reset]')!.addEventListener('click', () => {
+      state = { final: state.final, d: {} };
+      save();
+      for (const radio of root.querySelectorAll<HTMLInputElement>('input[name=chem-o]')) radio.checked = false;
+      render();
+    });
+
+    root.hidden = false;
+    render();
+  }
+</script>
+
+<style>
+  .chem {
+    scroll-margin-top: calc(var(--topbar) + 1rem);
+    margin: 1.75rem 0;
+    padding: clamp(1rem, 0.7rem + 1vw, 1.5rem);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+  }
+  .chem-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .chem-head h2 {
+    margin: 0;
+  }
+  .chem-reset {
+    flex: none;
+  }
+  .chem-lead {
+    margin: 0.6rem 0 1.1rem;
+    max-width: var(--measure);
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .chem-choice {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+  }
+  .chem-choice legend {
+    font-weight: 700;
+  }
+  .hint {
+    margin: 0.1rem 0 0.5rem;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    position: relative;
+  }
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .chip span {
+    display: block;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--raised);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  .chips-num .chip span {
+    min-width: 2.75rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip input:checked + span {
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 14%, var(--raised));
+    color: var(--text);
+  }
+  .chip input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .m-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .m-input {
+    width: 5rem;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--sunken);
+    color: var(--text);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  .m-input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .m-out {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .chem-empty {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .chem-work h3 {
+    margin: 1.4rem 0 0.6rem;
+    font-size: var(--fs-md);
+  }
+  .chem-work :global(.board) {
+    margin-bottom: 0.9rem;
+  }
+  .chem-work :global(.board-name) {
+    margin: 0 0 0.35rem;
+    color: var(--accent-text);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .chem-work :global(.diamond) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 4.75rem 4.75rem;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .chem-work :global(.diamond-name) {
+    font-size: var(--fs-sm);
+  }
+  .chem-work :global(.num) {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--sunken);
+    color: var(--text);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  /* Same corners as the boards: red digit on top, blue on the left. */
+  .chem-work :global(.num-red) {
+    border-top: 3px solid #e5484d;
+  }
+  .chem-work :global(.num-blue) {
+    border-left: 3px solid #3e8bff;
+  }
+  .chem-work :global(.num::placeholder) {
+    color: var(--muted);
+    font-size: var(--fs-xs);
+  }
+  .chem-work :global(.num:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .chem-steps {
+    margin: 0;
+    padding-left: 1.4rem;
+  }
+  .chem-steps :global(li) {
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .chem-steps :global(li::marker) {
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .chem-steps :global(.step-row) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+  }
+  .chem-steps :global(.step-text) {
+    font-size: var(--fs-sm);
+  }
+  .chem-steps :global(.code) {
+    flex: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--r-sm);
+    background: color-mix(in oklab, var(--accent) 16%, transparent);
+    color: var(--text);
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .chem-steps :global(.step-hint) {
+    margin: 0.3rem 0 0;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+  }
+  .chem-steps :global(.code-missing) {
+    background: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: var(--fs-sm);
+  }
+</style>
