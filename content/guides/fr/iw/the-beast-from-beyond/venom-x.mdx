@@ -1,0 +1,109 @@
+---
+title: Obtenir le Venom-X
+category: wonder-weapons
+order: 2
+draft: true
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=lurnIzK-3kI
+    title: "[TUTO]-[FR] DÉBLOQUER LE VENOM-X SUR «THE BEAST FROM BEYOND»! DLC 4 INFINITE WARFARE ZOMBIES!"
+    creator: "Mabzouel"
+    lang: fr
+    thumbnail: ../../../../media/videos/lurnIzK-3kI.jpg
+  - url: https://www.youtube.com/watch?v=h_cidAaAWlY
+    title: "\"BEAST FROM BEYOND\" VENOM X WONDER WEAPON EASTER EGG TUTORIAL | EASTER EGG GUIDE | IW ZOMBIES"
+    creator: "CodeNamePizza"
+    lang: en
+    thumbnail: ../../../../media/videos/h_cidAaAWlY.jpg
+  - url: https://www.youtube.com/watch?v=kdPrLL7_Wtg
+    title: "HOW TO EASILY COMPLETE THE VENOM X FUSE BOX STEP! (The Beast from Beyond)"
+    creator: "TheDrShow"
+    lang: en
+    thumbnail: ../../../../media/videos/kdPrLL7_Wtg.jpg
+---
+
+{/* TO CHECK: the order of steps is confirmed by Mejoress, but the button rules, the chamber timer (300 s solo / 180 s co-op) and the number of mazes (4) come from mmmrkennedy only. Check against the Mabzouel or CodeNamePizza video. */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide';
+export const m = 'iw/the-beast-from-beyond/venom_x/';
+export const solver = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers';
+
+Le Venom-X tire un **œuf de Cryptid** qui éclate au bout de deux secondes (ou quand tu vises) en un nuage de gaz qui blesse les ennemis. Les Cryptids tués peuvent lâcher un œuf qui recharge un peu de munitions. Équiper le Venom-X débloque le succès « Egg Slayer ».
+
+**Avant de commencer :** le courant et le Pack-a-Punch. La première sortie du Pack-a-Punch fait apparaître un Phantom, utile pour la première étape.
+
+<Checklist>
+  <Step title="Attire un Phantom dans le piège à eau électrique">
+    Le piège est entre la zone de départ et le Medical Bay. Amène un **Phantom** (gros Cryptid bleu) dans l'eau et déclenche le piège pendant qu'il y est. Il doit juste prendre des dégâts, pas forcément mourir.
+
+    <Screenshot src={m + 'water_trap.webp'} alt="Le piège à eau électrique" credit={by} source={src} />
+  </Step>
+
+  <Step title="Appuie sur le bon bouton de couleur">
+    Dans l'Ops Center, le boîtier au mur en bas de l'escalier près de **Bang Bangs** est maintenant ouvert. Il contient **3 à 6 boutons** de couleur (rouge, vert, bleu, noir, jaune, blanc).
+
+    Le bon bouton dépend du nombre de boutons, de leurs couleurs et de ta manche. Le plus simple est le **solveur de mmmrkennedy** : choisis le nombre de boutons, ta manche, puis les couleurs de haut en bas. Le tableau ci-dessous donne les mêmes règles.
+
+    - **Bon bouton** : son de réussite, le boîtier se ferme.
+    - **Mauvais bouton** : son d'erreur, un Phantom apparaît. Le boîtier se rouvre avec de nouveaux boutons à la fin de la manche.
+
+    <Shots>
+      <Screenshot src={m + 'buttons.webp'} alt="Le boîtier ouvert avec ses boutons de couleur" credit={by} source={src} />
+      <Screenshot src={m + 'venom_x_button_info.webp'} alt="Le tableau des règles des boutons" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="tech" author="mmmrkennedy" source={solver}>
+        Le jeu suit mal une de ses propres variables : le solveur peut parfois se tromper. Ce n'est pas toi, c'est un bug du jeu.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Enferme un zombie dans la chambre de confinement">
+    Toujours dans l'Ops Center : quand un zombie est dans le **cercle au sol** de la chambre, utilise le panneau à gauche de la Magic Wheel. Le zombie est enfermé et un chrono s'affiche en haut de la chambre : **5 minutes en solo**, 3 minutes en coop.
+
+    <Shots>
+      <Screenshot src={m + 'containment_chamber.webp'} alt="La chambre de confinement" credit={by} source={src} />
+      <Screenshot src={m + 'containment_circle.webp'} alt="Le cercle au sol" credit={by} source={src} />
+      <Screenshot src={m + 'containment_activate.webp'} alt="Le panneau à gauche de la Magic Wheel" credit={by} source={src} />
+      <Screenshot src={m + 'containment_time.webp'} alt="Le chrono en haut de la chambre" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Allume les consoles au-dessus de Bombstoppers">
+    Pendant que le zombie est enfermé, monte dans la salle au-dessus de Bombstoppers et utilise la **console du milieu**. Les deux consoles de chaque côté s'allument.
+
+    <Screenshot src={m + 'middle_console.webp'} alt="La console du milieu" credit={by} source={src} />
+  </Step>
+
+  <Step title="Résous les quatre labyrinthes">
+    Sur l'écran du haut d'une console, il y a un carré rouge et un losange bleu. Vise le milieu de l'écran et déplace le carré rouge avec la **croix directionnelle** jusqu'au losange, sans toucher les murs invisibles. Le carré ne bouge qu'environ une fois par seconde : attends entre chaque appui.
+
+    Il faut **quatre labyrinthes** en tout : trois sur une console, un sur l'autre. Le solveur de mmmrkennedy trace le chemin.
+
+    Un échec tue le zombie de la chambre et fait apparaître un Phantom : réessaie à la manche suivante avec un nouveau zombie.
+
+    <Screenshot src={m + 'maze_screen.webp'} alt="L'écran d'un labyrinthe" credit={by} source={src} />
+
+    <Tips>
+      <Tip type="tech" author="mmmrkennedy" source={src}>
+        Sur PC, dans Commandes puis Actions, mets « Use Souvenir » sur flèche gauche, « Toggle Kung-Fu Mode » sur flèche droite, « Next Card » sur flèche haut et « Previous Card » sur flèche bas : tu joues alors aux flèches comme avec une croix.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Prends le Venom-X">
+    Une porte s'ouvre à gauche du boîtier à boutons : le Venom-X est derrière. Si tu comptes l'améliorer, **garde le zombie de la chambre en vie** pour le début de la suite.
+
+    <Screenshot src={m + 'venom_x_pickup.webp'} alt="Le Venom-X derrière la porte" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+Pour l'améliorer, voir [Améliorer le Venom-X en Venom-Y puis Venom-Z](../venom-y-et-venom-z/).
+
+## Sources
+
+- [mmmrkennedy : The Beast From Beyond Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide) (étapes, règles des boutons, chrono, labyrinthes, captures d'écran) et [ses solveurs](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers)
+- [Mejoress : Venom X en The Beast From Beyond](https://www.mejoress.com/es/venom-x-en-the-beast-from-beyond/) (ordre des étapes recoupé : Phantom, boutons, chambre, consoles, labyrinthes, porte)

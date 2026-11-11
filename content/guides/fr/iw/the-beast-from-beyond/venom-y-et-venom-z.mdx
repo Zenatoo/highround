@@ -1,0 +1,121 @@
+---
+title: Améliorer le Venom-X en Venom-Y puis Venom-Z
+category: wonder-weapons
+order: 3
+draft: true
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=0BELmbjeB7w
+    title: "Venom Y Guide! How To Upgrade The Venom X (The Beast From Beyond)"
+    creator: "XGodz"
+    lang: en
+    thumbnail: ../../../../media/videos/0BELmbjeB7w.jpg
+  - url: https://www.youtube.com/watch?v=TDToPR8XL2I
+    title: "Venom Z Tutorial! How To Upgrade The Venom Y \"The Beast From Beyond\""
+    creator: "XGodz"
+    lang: en
+    thumbnail: ../../../../media/videos/TDToPR8XL2I.jpg
+  - url: https://www.youtube.com/watch?v=9BEFmH2CHrE
+    title: "VENOM X EASY UPGRADE GUIDE! - THE BEAST FROM BEYOND VENOM X WEAPON FULL PAP TUTORIAL!"
+    creator: "Ch0pper"
+    lang: en
+    thumbnail: ../../../../media/videos/9BEFmH2CHrE.jpg
+---
+
+{/* TO CHECK: the Morse + Vigenère mechanism is confirmed by XGodz and NGTZombies, but the possible numbers (15, 18, 20, 25, 30), the Morse openings, the "195#" console code, the 50 % stop and the 5 000 / 10 000 prices come from mmmrkennedy only. Check against the XGodz videos. */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide';
+export const m = 'iw/the-beast-from-beyond/';
+export const solver = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers';
+
+Les deux améliorations reposent sur du **code Morse** : une clé, un message chiffré avec cette clé, puis un nombre d'ennemis à tuer. Améliorer deux fois le Venom-X débloque le succès « Encryption Decryption ».
+
+- **Venom-Y** : son gaz gèle et tue les zombies (environ 5 secondes). Les gros Cryptids (Phantoms, Rhinos…) ne prennent que l'explosion.
+- **Venom-Z** : le gaz dure plus longtemps et l'arme a plus de munitions.
+
+**Avant de commencer :** il te faut le Venom-X (voir [Obtenir le Venom-X](../venom-x/)). Dans les options, mets le **volume des voix à 0** : ton personnage ne parlera plus par-dessus les bips.
+
+## Venom-Y
+
+<Checklist>
+  <Step title="Écoute ta clé au terminal à droite de Bang Bangs">
+    Dans l'Ops Center, le terminal à droite de Bang Bangs joue un mot en Morse : **ARCHER** ou **CROSS**. C'est ta clé.
+
+    - ARCHER : `.- .-. -.-. .... . .-.`
+    - CROSS : `-.-. .-. --- ... ...`
+
+    <Screenshot src={m + 'venom_x/venom_y/key_terminal.webp'} alt="Le terminal de la clé à droite de Bang Bangs" credit={by} source={src} />
+  </Step>
+
+  <Step title="Trouve ton nombre au terminal en bas de l'escalier">
+    Le terminal en bas de l'escalier près de Bang Bangs joue un long message chiffré avec ta clé. Après le début du message, écoute les **deux premières lettres** du nombre :
+
+    | Nombre | Avec la clé ARCHER | Avec la clé CROSS |
+    | --- | --- | --- |
+    | 15 | `.... .--.` | `-..- .-` |
+    | 18 | `--. .--.` | `.-- .-` |
+    | 20 ou 25 | `...- -..` | `.-.. ---` |
+    | 30 | `...- ---` | `.-.. --..` |
+
+    Le plus simple reste le **solveur de mmmrkennedy** : tu tapes les bips au fur et à mesure et il te donne le nombre.
+
+    <Screenshot src={m + 'venom_x/venom_y/code_terminal.webp'} alt="Le terminal du message en bas de l'escalier" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tape le nombre en Morse dans la salle de contrôle">
+    Monte dans la salle de contrôle au-dessus de Bombstoppers. Sur le panneau en haut de l'escalier, le bouton de gauche fait un bip court, celui de droite un bip long. Écris le nombre **en anglais** : FIFTEEN, EIGHTEEN, TWENTY ou THIRTY. Pour 20 ou 25 : tape TWENTY, et si aucun son de réussite ne suit, tape FIVE.
+
+    - **Juste** : un son de ramassage.
+    - **Faux** : un son d'erreur à la fin de la manche. Recommence.
+
+    <Screenshot src={m + 'venom_x/venom_y/morse_input_panel.webp'} alt="Le panneau Morse en haut de l'escalier" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tue ce nombre de Cryptids avec le Venom-X">
+    Ta progression s'affiche en bas à droite du tableau des scores.
+  </Step>
+
+  <Step title="Passe le Venom-X au Pack-a-Punch">
+    Il devient le **Venom-Y** pour 5 000 points.
+  </Step>
+</Checklist>
+
+## Venom-Z
+
+**Avant de commencer :** il te faut le double Pack-a-Punch (voir [Débloquer le Pack-a-Punch (et le double)](../pack-a-punch/)) et le Venom-Y.
+
+<Checklist>
+  <Step title="Inverse ta clé">
+    Ta clé devient l'autre mot : ARCHER devient CROSS, et l'inverse. Le terminal à droite de Bang Bangs te la redonne si tu as un doute.
+  </Step>
+
+  <Step title="Refais le message et le code Morse">
+    Écoute le terminal en bas de l'escalier avec ta nouvelle clé, puis tape le nouveau nombre sur le panneau de la salle de contrôle, comme pour le Venom-Y. Le nombre change.
+  </Step>
+
+  <Step title="Tue des ennemis spéciaux avec le Venom-Y">
+    Cette fois, ce sont des ennemis **spéciaux** : n'importe quel Cryptid, des ninjas ou des clowns. La progression s'arrête à **50 %**.
+  </Step>
+
+  <Step title="Fais apparaître les fantômes avec la console 195#">
+    Dehors, utilise la console près de la Magic Wheel jusqu'à ce qu'elle affiche **195#**. Des fantômes se mettent à flotter autour de toi.
+
+    <Screenshot src={m + 'message_sent/console.webp'} alt="La console dans la neige près de la Magic Wheel" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tire sur les fantômes près du portail du Pack-a-Punch">
+    Va près du portail du Pack-a-Punch et tire sur autant de fantômes que ton nombre, avec n'importe quelle arme, **dans la même manche**. La progression passe à 100 %.
+  </Step>
+
+  <Step title="Passe le Venom-Y au double Pack-a-Punch">
+    Il devient le **Venom-Z** pour 10 000 points.
+  </Step>
+</Checklist>
+
+## Sources
+
+- [mmmrkennedy : The Beast From Beyond Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide) (étapes, codes Morse, prix et captures d'écran) et [ses solveurs](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/beast_solvers)
+- [XGodz : Venom Y Guide](https://www.youtube.com/watch?v=0BELmbjeB7w) et [Venom Z Tutorial](https://www.youtube.com/watch?v=TDToPR8XL2I) (principe Morse et clé de chiffrement recoupés)
+- [NGTZombies : Unlocking the Venom-Z Upgrade from Morse Code](https://www.youtube.com/watch?v=YBQ_SEL3H_g) (principe recoupé)

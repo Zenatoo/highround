@@ -1,0 +1,389 @@
+---
+title: Easter Egg principal (Pest Control)
+category: main-quest
+order: 1
+draft: true
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=mIjzJiIbUjc
+    title: "[TUTO] Shaolin Shuffle | LE SECRET COMPLET"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/mIjzJiIbUjc.jpg
+  - url: https://www.youtube.com/watch?v=8EtEYUYm9II
+    title: "[TUTO] Shaolin Shuffle | Secret (Easter Egg) : Les premières étapes"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/8EtEYUYm9II.jpg
+  - url: https://www.youtube.com/watch?v=_bvrKI3nOEY
+    title: "SHAOLIN SHUFFLE - TUTO SECRET 100% COMPLET, ÉTAPE PAR ÉTAPE [1ER FR] (voir description)"
+    creator: "DDB"
+    lang: fr
+    thumbnail: ../../../../media/videos/_bvrKI3nOEY.jpg
+---
+
+{/* TO CHECK: (1) ringing payphone: mmmrkennedy, codzombiesguides and the Steam guide say it is the one NOT lit red; COD Zombified, Accelerated Ideas and The Escapist say red. (2) "Soul Brother": the newspaper pictures of the inventory seem to fill in with the quest items (DizzyOP, Accelerated Ideas screenshot); no guide says it in full. (3) Eight ninjas after the circle and the "second shot on the same symbol" reset: Zenato's guide only. */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/shaolin_shuffle/shaolin_shuffle_guide';
+export const m = 'iw/shaolin-shuffle/';
+
+Le but : vaincre le Rat King, le chef des égouts, pour récupérer un morceau de la clé des âmes. La quête a **trois parties** (l'Œil, le Cerveau et le Cœur), chacune finie par un combat contre lui, puis un dernier combat dans son repaire. Le succès « Pest Control » se débloque à la fin.
+
+**Avant de commencer :**
+
+- Compte **1 h à 1 h 30** en solo.
+- Active les **quatre interrupteurs** et ouvre le **Pack-a-Punch** : voir [Rétablir le courant](../courant/) et [Débloquer le Pack-a-Punch](../pack-a-punch/).
+- Il te faut un **pouvoir Chi au niveau 2** : c'est lui qui donne les shurikens. Voir [Pouvoirs Chi, portes de voyage et portails Torii](../pouvoirs-chi/).
+- Garde des **explosifs** pour la deuxième partie, et une **arme à balles avec beaucoup de munitions** pour le combat final (par exemple une NV4 améliorée au Pack-a-Punch).
+
+<Screenshot src={m + 'pam.webp'} alt="Pam Grier dans le Black Cat Dojo" credit={by} source={src} />
+
+## Première partie : l'Œil
+
+<Checklist>
+  <Step title="Fais parler Pam des rues terrorisées">
+    Parle à Pam Grier dans le Dojo jusqu'à ce qu'elle dise la réplique qui commence par « The one who terrorizes these streets… ». Des cages à rats apparaissent sur la carte.
+
+    Attends qu'elle ait fini de parler pour lui reparler : tant qu'elle parle, tu ne peux pas interagir avec elle.
+  </Step>
+
+  <Step title="Suis le rat de cage en cage">
+    Lance un shuriken sur n'importe quelle cage : le rat s'échappe et court vers une autre cage. Suis-le et casse cette cage au shuriken, et ainsi de suite.
+
+    Tu casses **six cages** en tout : le rat s'échappe des cinq premières, et la sixième disparaît sans rat. Un grand cercle jaune apparaît alors à côté.
+
+    Deux cages proches du Dojo pour commencer : en haut de la rampe qui part de la rue devant le Dojo, et dans le couloir latéral du Heebie Geebies.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/eye/rat_cage_ramp.webp'} alt="Cage en haut de la rampe du Dojo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/eye/rat_cage_heebie.webp'} alt="Cage dans le couloir du Heebie Geebies" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="faster" author="Zenato">
+        Ouvre la plupart des portes avant de libérer le rat : tu ne le perdras pas en route.
+      </Tip>
+      <Tip type="mistake" author="Zenato">
+        Ne casse que la cage où le rat vient d'entrer : en toucher une autre fait recommencer la poursuite.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Tue 15 zombies dans le cercle jaune">
+    Ce sont les zombies qui doivent être dans le cercle, pas toi. Après le 15e, le cercle disparaît et des ninjas arrivent (huit). Tue-les tous : une clé apparaît à la place du cercle. Ramasse-la.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/eye/glowing_circle_key.webp'} alt="Le cercle jaune" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/eye/key.webp'} alt="La clé" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Ouvre le casier à symboles">
+    Dans la station de métro de Main Street (celle de Bang Bangs), ouvre avec la clé le casier couvert de symboles.
+
+    <Screenshot src={m + 'main_ee/eye/locker.webp'} alt="Le casier à symboles" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tire sur les quatre symboles dans l'ordre">
+    **Une seule balle par symbole**, dans cet ordre. Un gong confirme chaque bon tir. Un mauvais symbole, ou une deuxième balle sur le même, fait tout recommencer au premier.
+
+    1. À droite du Dojo : le symbole de **gauche**.
+    2. Toilettes du rez-de-chaussée du Disco Inferno : le **deuxième** en partant de la gauche.
+    3. À droite de l'arme murale Volk, près de Deadeye Dewdrops : le **premier** en partant de la gauche.
+    4. Même mur : le **deuxième** en partant de la gauche.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/eye/symbols_1.webp'} alt="Symbole 1, à droite du Dojo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/eye/symbols_2.webp'} alt="Symbole 2, toilettes du disco" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/eye/symbols_3.webp'} alt="Symboles 3 et 4, à droite de la Volk" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Bats le Rat King devant le Dojo">
+    Utilise le cercle au symbole du Rat King devant le Black Cat Dojo : il arrive. Tue-le et ramasse l'**Œil** qu'il lâche.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/eye/eye_fight_symbol.webp'} alt="Le cercle devant le Dojo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/eye/eye.webp'} alt="L'Œil" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Deuxième partie : le Cerveau
+
+<Checklist>
+  <Step title="Fais parler Pam de l'ennemi à affronter">
+    Parle à Pam jusqu'à la réplique qui commence par « You must once again face your enemy… ».
+  </Step>
+
+  <Step title="Trouve six symboles orange avec l'Œil">
+    L'Œil est dans ton emplacement tactique. Utilise-le pour révéler les symboles orange du Rat King, puis tire dessus. Il n'y en a qu'**un à la fois**, six en tout, pris parmi ces 13 endroits. L'Œil se recharge en quelques secondes.
+
+    - Au-dessus du train, au métro du départ.
+    - Vitrine du barbier, à gauche du Dojo.
+    - Dans le Dojo, au-dessus de la porte principale.
+    - Derrière une enceinte, à gauche de la scène du Heebie Geebies.
+    - Portière de la voiture de police, derrière Bombstoppers.
+    - En haut de la rampe du Heebie Geebies, premier point d'apparition de zombies à droite.
+    - Immeuble au loin, à droite de l'arme murale RPR Evo (près de Deadeye Dewdrops).
+    - Corde à linge près de la roue magique de Deadeye Dewdrops.
+    - Sol de la salle bleue, dans le couloir de Trail Blazers (saute pour le voir).
+    - Château d'eau à gauche de la KBS Longbow, sur le toit du disco.
+    - Conduit d'air, vu à travers la verrière du toit du disco.
+    - Enseigne Disco Inferno au-dessus de la roue magique de Main Street.
+    - Métro de Main Street, derrière l'escalier côté Bang Bangs.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_example.webp'} alt="Exemple de symbole orange" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_spawn.webp'} alt="Au-dessus du train du départ" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_barbershop.webp'} alt="Vitrine du barbier" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_dojo.webp'} alt="Au-dessus de la porte du Dojo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_heebie.webp'} alt="Derrière l'enceinte du Heebie Geebies" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_police_car.webp'} alt="Voiture de police derrière Bombstoppers" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_up_the_ramp.webp'} alt="En haut de la rampe du Heebie Geebies" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_rpr_evo.webp'} alt="Immeuble à droite de la RPR Evo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_clothsline.webp'} alt="Corde à linge près de la roue magique" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_blue_room.webp'} alt="Sol de la salle bleue" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_water_tower.webp'} alt="Château d'eau du toit du disco" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_skylight.webp'} alt="Conduit d'air sous la verrière" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_disco_sign.webp'} alt="Enseigne Disco Inferno" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/eye_symbols/symbol_bang_bangs.webp'} alt="Derrière l'escalier côté Bang Bangs" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Écoute le message en morse au téléphone">
+    Après le sixième symbole, un téléphone public sonne dans l'une des deux stations de métro : c'est celui qui **n'est pas éclairé en rouge**. {/* TO CHECK: not lit red (mmmrkennedy, codzombiesguides, Steam) vs red (COD Zombified, Accelerated Ideas, Escapist). */} Décroche et écoute **jusqu'au bout** : si tu raccroches trop tôt ou qu'un zombie te touche, il faut réécouter.
+
+    Le message est un nombre à **trois chiffres en morse** : 15 bips, cinq par chiffre. Note les bips courts (·) et longs (−). Il n'existe que **six nombres possibles** :
+
+| 1er chiffre | 2e chiffre | 3e chiffre | Nombre |
+| --- | --- | --- | --- |
+| · · − − − | − − − · · | · − − − − | **281** |
+| · · · · − | − − − − − | − − · · · | **407** |
+| · · · · − | · · − − − | − − − − − | **420** |
+| · · · · · | − − − − · | − · · · · | **596** |
+| − − · · · | · − − − − | · · · − − | **713** |
+| − − − · · | · − − − − | − − − · · | **818** |
+
+    Les cinq premiers bips suffisent presque toujours : cherche-les dans la première colonne. Seuls **407 et 420** commencent pareil. Écoute alors le **sixième bip** : long pour 407, court pour 420. Autre repère : 420 finit par cinq bips longs.
+
+    <Screenshot src={m + 'main_ee/brain/phone_morse_code_map.webp'} alt="Les six nombres possibles en morse" credit={by} source={src} />
+  </Step>
+
+  <Step title="Prends l'affiche avec le bon numéro">
+    Trouve l'affiche **Nightmare Summer** dont le numéro « Film Registration », en bas à gauche, est celui du message. Si tu prends la mauvaise, Willard Wyler rit : il faut retirer sur six symboles orange pour obtenir un nouveau numéro.
+
+    Les six affiches :
+
+    - Métro du départ, du côté du train où est Up 'N Atoms.
+    - À gauche du Dojo.
+    - En haut de la rampe du Dojo, à droite de la roue magique.
+    - Ruelle de Bombstoppers.
+    - Toit du disco, près de la verrière par laquelle on descend.
+    - Métro de Main Street, en bas de l'escalier.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/brain/poster_example.webp'} alt="Exemple d'affiche avec son numéro" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_spawn.webp'} alt="Affiche du métro du départ" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_dojo.webp'} alt="Affiche à gauche du Dojo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_ramp.webp'} alt="Affiche en haut de la rampe" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_alley.webp'} alt="Affiche de la ruelle de Bombstoppers" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_roof.webp'} alt="Affiche du toit du disco" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/poster_bang_bangs.webp'} alt="Affiche du métro de Main Street" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose l'affiche sur le projecteur du toit">
+    Sur le toit du disco, pose l'affiche sur le gros projecteur de lumière. Un **X** apparaît sur une fenêtre. Fais-le sauter avec n'importe quel explosif, puis tue les ninjas qui arrivent.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/brain/spotlight.webp'} alt="Le projecteur du toit" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/x_window.webp'} alt="Le X sur la fenêtre" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Écris le mot caché avec l'alphabet de Wyler">
+    Une lettre apparaît sur le mur, à droite de la descente vers la rue, et **six symboles** apparaissent autour du toit. Ces symboles sont l'alphabet inventé de Willard Wyler : chacun vaut une lettre. Il te faut un tableau de correspondance : la page de mmmrkennedy (lien dans les sources) en montre un, avec un outil qui filtre les mots.
+
+    La lettre du mur est la **première lettre d'un mot caché**, tiré d'une des listes ci-dessous. Tire sur le symbole qui donne la lettre suivante :
+
+    - **Bon tir** : la lettre s'ajoute sur le mur.
+    - **Mauvais tir** : le mot s'efface et un autre est tiré dans la même liste. Tu peux recommencer tout de suite.
+    - Après **dix mots ratés** dans la manche, attends la manche suivante : une autre liste est alors choisie.
+    - Un **gong** marque la fin du mot.
+
+| Liste | Mots |
+| --- | --- |
+| Spaceland | ARCADE, BRUTE, BUMPERCARS, FORGEFREEZE, GEYSER, OCTONIAN, ROLLERCOASTER, SLIDE, YETIEYES, ZAPPER |
+| Rave | BASEMENT, BOAT, CHARMS, DANCE, FAIRIES, HARPOON, KEVINSMITH, MEMORIES, SLASHER, TREES |
+| Shaolin 1 | ARTHUR, CRANE, DRAGON, KATANA, KUNGFU, NUNCHUCKS, PAMGRIER, ROLLERSKATES, SNAKE, TIGER |
+| Shaolin 2 | BLACKCAT, DISCO, INFERNO, MCINTOSH, PINKCAT, PUNKS, RATKING, SHIELD, STAFF, SUBWAY |
+| Extinction | ANCESTOR, BREEDER, CRYPTID, DAVIDARCHER, DRCROSS, HIVES, KRAKEN, NIGHTFALL, OBELISK, SAMANTHA |
+| Willard | AFTERLIFE, DEATH, DIRECTOR, MEPHISTOPHELES, REDWOODS, SHAOLIN, SHUFFLE, SIXTYMILLION, SPACELAND, WINONAWYLER |
+| Personnages | ACTORS, AUDITION, BEVERLYHILLS, BROADWAY, COMICBOOKS, GHETTO, LOSANGELES, NEWYORK, REALITYTV, WEREWOLFPOETS |
+
+    Un mot bonus rare, **SAVAGEMADETHIS**, peut sortir hors de ces listes.
+
+    Les six symboles sont toujours aux mêmes endroits : à gauche du mot sur le mur ; après l'angle du point d'apparition de zombies derrière Quickies ; sous l'échafaudage à droite de la roue magique ; dans le point d'apparition à côté de l'horloge murale ; sur le mur du coin arrière gauche du toit, en face de l'horloge ; sur une table blanche à gauche de la KBS Longbow.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/brain/letter_on_wall.webp'} alt="La lettre sur le mur" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_word.webp'} alt="Symbole à gauche du mot" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_around_the_corner.webp'} alt="Symbole derrière Quickies" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_magic_wheel.webp'} alt="Symbole sous l'échafaudage" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_clock.webp'} alt="Symbole près de l'horloge" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_back_left_corner.webp'} alt="Symbole du coin arrière gauche" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/letter/letter_white_table.webp'} alt="Symbole sur la table blanche" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="faster" author="mmmrkennedy" source={src}>
+        Tu tombes sur un mot très long comme ROLLERCOASTER ou ROLLERSKATES ? Rate exprès pour en tirer un autre, sans doute plus court.
+      </Tip>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Avec Blue Bolts, la décharge de ton rechargement peut toucher un symbole près de toi et compter comme un tir.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Bats le Rat King près de la RPR Evo">
+    Va à l'arme murale RPR Evo près de Deadeye Dewdrops et utilise le symbole du Rat King. Tue-le et ramasse le **Cerveau**.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/brain/brain_fight.webp'} alt="Le symbole près de la RPR Evo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/brain/brain.webp'} alt="Le Cerveau" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Troisième partie : le Cœur
+
+<Checklist>
+  <Step title="Fais parler Pam du dernier ingrédient">
+    Parle à Pam jusqu'à la réplique qui commence par « The enemy you face possess the final ingredient… ».
+  </Step>
+
+  <Step title="Survis à la rue en feu">
+    Au début des trois manches suivantes, une **brûlure de pellicule** s'affiche en haut à droite de l'écran. Ensuite, le jeu saute trois manches d'un coup et t'enferme dans la rue devant le Dojo, derrière des flammes. Tue tout ce qui arrive : une **pièce de tourniquet** tombe et le feu disparaît.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/heart/cigarette_burn.webp'} alt="La brûlure en haut à droite" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/turnstile.webp'} alt="La pièce de tourniquet" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Répare le tourniquet du métro du départ">
+    Pose la pièce sur le tourniquet cassé du métro du départ. C'est cette étape qui débloque le succès « Message Received ».
+
+    <Screenshot src={m + 'main_ee/heart/broken_turnstile.webp'} alt="Le tourniquet cassé" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tire sur le symbole de la fenêtre">
+    Monte à l'échelle en bois de la ruelle près de Mule Munchies et tire sur le symbole du Rat King dans la fenêtre d'en face. La fenêtre se ferme et un cercle lumineux apparaît quelque part sur la carte.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/heart/wooden_ladder.webp'} alt="L'échelle en bois" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/symbol_in_window.webp'} alt="Le symbole dans la fenêtre" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Vide les six cercles lumineux">
+    Tue quelques zombies dans le cercle (environ 6 à 10) : il disparaît et le suivant apparaît ailleurs. Il y a **six cercles** en tout, puis un gong. Un cercle peut revenir à un endroit déjà fait, mais jamais deux fois de suite au même.
+
+    Endroits possibles : ruelle de Mule Munchies et Bombstoppers ; salon privé du disco (derrière la borne d'arcade) ; allée du parc près de Deadeye Dewdrops ; à côté de la RPR Evo ; métro du départ, près de l'arme murale Hornet.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/heart/glowing_circle_mule.webp'} alt="Cercle de la ruelle de Mule Munchies" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/glowing_circle_private_room.webp'} alt="Cercle du salon privé du disco" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/glowing_circle_park_path.webp'} alt="Cercle de l'allée du parc" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/glowing_circle_rpr_evo.webp'} alt="Cercle près de la RPR Evo" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/glowing_circle_hornet.webp'} alt="Cercle près de la Hornet" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Passe la boule à facettes dix fois">
+    Utilise la cabine de DJ au 2e étage du disco. Un zombie danseur, une boule à facettes lumineuse au-dessus de la tête, apparaît sur la piste en bas. Il ne t'attaque pas.
+
+    Tue-le **pendant qu'un autre zombie est sur la piste** : la boule passe sur ce zombie. Recommence **dix fois**, jusqu'au gong.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/heart/dj_booth.webp'} alt="La cabine de DJ" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/disco_ball_zombie.webp'} alt="Le zombie à la boule à facettes" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Le tuer quand la piste est vide remet le compte à zéro. Et s'il est le dernier zombie de la manche, tu es obligé de le tuer : garde toujours d'autres zombies en vie.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Bats le Rat King devant le Pink Cat">
+    Un symbole du Rat King apparaît dans la rue devant le Pink Cat. Utilise-le, tue-le et ramasse le **Cœur**. Il prend la place de ton arme létale.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/heart/heart_fight.webp'} alt="Le symbole devant le Pink Cat" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/heart/heart.webp'} alt="Le Cœur" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Dernier combat : le repaire du Rat King
+
+<Checklist>
+  <Step title="Descends dans le repaire">
+    Quand tu es prêt, parle à Pam dans le Dojo, puis entre dans le repaire du Rat King, dans les égouts. Prends ton arme aux grosses réserves de munitions.
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Pendant le défi de l'Œil, il n'y a aucun moyen de récupérer des munitions. Si tu tombes à sec, la partie est bloquée et il faut quitter.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Blesse-le jusqu'à ce qu'il monte aux poutres">
+    Ses attaques : il lance son bouclier, envoie une onde au sol vers toi et fait venir des rats ninjas. Parfois il se protège derrière son bouclier (une icône d'armure jaune apparaît quand tu tires) : plus tu tires dedans, plus il le garde.
+
+    Un shuriken sur son **bâton** le casse ; il revient au bout d'une ou deux minutes.
+
+    Quand il a pris assez de dégâts, il grimpe dans les poutres et l'**Œil**, le **Cerveau** et le **Cœur** apparaissent au sol.
+  </Step>
+
+  <Step title="Réussis les trois défis">
+    Prends un des trois organes, puis utilise le grand symbole au centre de la salle : son défi commence. L'ordre est libre. Après chaque défi, un gong sonne : blesse-le de nouveau jusqu'à ce qu'il remonte aux poutres.
+
+    - **Œil** : toutes les 10 secondes environ, l'Œil scanne la salle et montre des symboles roses sur les murs et le plafond (tu peux aussi scanner avec ton propre Œil). Tire sur tous. Si tu traînes, il lance son bouclier et chaque impact crée d'autres symboles.
+    - **Cœur** : de l'acide tombe tout autour de l'arène. Tue un zombie dans une flaque pour la faire disparaître, et nettoie tout le tour avant la vague suivante. Rester dans l'acide te blesse.
+    - **Cerveau** : le Cerveau est au centre. Des zombies aux yeux bleus l'attaquent sans s'en prendre à toi. **Ne les tue pas** et protège-les du Rat King : lui casser son bâton aide beaucoup. Si l'un meurt, un autre le remplace.
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Chaque défi laisse des munitions max au centre, qui ne disparaissent pas. Ne les prends que quand tu en as vraiment besoin.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Achève le Rat King et prends la Soul Key">
+    Après le troisième défi, tu peux le tuer. La cinématique de fin se joue et la **Soul Key** apparaît au centre de la salle : ramasse-la. Le succès « Pest Control » s'affiche.
+
+    En mode Director's Cut, c'est un **Talisman** qui apparaît à sa place. Voir [Director's Cut : le Talisman](../director-s-cut-secrets/).
+
+    <Screenshot src={m + 'main_ee/soul_key.webp'} alt="La Soul Key au centre du repaire" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+Terminer la quête une fois débloque aussi le **katana** du Dojo et le **code de Pam Grier**. Voir [Katana Kirisute Gomen](../katana/) et [Jouer Pam Grier](../personnages-secrets/).
+
+## Sources
+
+Guide écrit par HighRound à partir du guide de Zenato (étapes, tableau du morse et listes de mots), recoupé avec :
+
+- [mmmrkennedy : Shaolin Shuffle Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/shaolin_shuffle/shaolin_shuffle_guide) (toutes les étapes, captures d'écran, tableau de l'alphabet et outil pour les mots)
+- [codzombiesguides : Shaolin Shuffle](https://www.codzombiesguides.com/main-quests/infinite-warfare/shaolin-shuffle/) (étapes, nombre de cercles, téléphone gris)
+- [Gameranx : The Complete Easter Egg Guide](https://gameranx.com/features/id/103727/article/infinite-warfare-shaolin-shuffle-the-complete-easter-egg-guide/) (étapes recoupées)
+- [The Escapist : Full Easter Egg Guide](https://www.escapistmagazine.com/everything-you-need-to-know-about-shaolin-shuffle-full-easter-egg-guide/) (étapes recoupées)
+- [COD Zombified : Shaolin Shuffle Easter Egg Guide](https://codzombified.blogspot.com/2017/07/shaolin-shuffle-easter-egg-guide-for.html) (étapes recoupées)
+- [Accelerated Ideas : All Easter Egg Steps](https://www.accelerated-ideas.com/news/shaolin-shuffle-all-easter-egg-steps.aspx) (succès « Message Received » au tourniquet)
+- [DizzyOP : vidéo des succès Pest Control et Soul Brother](https://www.youtube.com/watch?v=i33lfBEK3hI) (succès liés à la quête)

@@ -1,0 +1,162 @@
+---
+title: Débloquer le Pack-a-Punch (et le double)
+category: pack-a-punch
+order: 1
+draft: true
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=tJ8FL4p_ZXs
+    title: "[TUTO] The Beast From Beyond | Pack a Punch, Courant, Masto.."
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/tJ8FL4p_ZXs.jpg
+  - url: https://www.youtube.com/watch?v=eaABret_2vw
+    title: "THE BEAST FROM BEYOND PACK A PUNCH TUTO FR"
+    creator: "Origine v1"
+    lang: fr
+    thumbnail: ../../../../media/videos/eaABret_2vw.jpg
+  - url: https://www.youtube.com/watch?v=9xRxfCQoP4Q
+    title: "DOUBLE PACK A PUNCH THE BEAST FROM BEYOND TUTO FR"
+    creator: "Origine v1"
+    lang: fr
+    thumbnail: ../../../../media/videos/9xRxfCQoP4Q.jpg
+---
+
+{/* TO CHECK: the two Theatre exit portals (street -> hallway near the Medical Bay, side alley -> spawn) are from mmmrkennedy only. The 10 000 price of the second upgrade is mmmrkennedy only on this map (same price on the other IW maps). */}
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide';
+export const m = 'iw/the-beast-from-beyond/';
+
+Le Pack-a-Punch est dans la salle du projecteur. On y va par un portail de l'extérieur, une fois le pont réparé avec **trois morceaux de métal**. L'un d'eux est dans le cinéma : il faut donc d'abord ouvrir le portail du cinéma.
+
+**Avant de commencer :** rétablis le courant (voir [Rétablir le courant (la tête de N31L)](../courant/)).
+
+## Ouvrir le cinéma
+
+<Checklist>
+  <Step title="Appuie sur le bouton de la passerelle du Cargo Bay">
+    Dans le Cargo Bay, le bouton est sur le mur de la **passerelle du haut**. Une tourelle entre dans la salle et tire sur le mur d'en face : un **portail vers le cinéma** s'ouvre. Le passer la première fois débloque le succès « Double Feature ».
+
+    <Shots>
+      <Screenshot src={m + 'theatre/button.webp'} alt="Le bouton sur la passerelle du Cargo Bay" credit={by} source={src} />
+      <Screenshot src={m + 'theatre/portal_cargo.webp'} alt="Le portail du Cargo Bay vers le cinéma" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Active les portails de retour du cinéma">
+    Deux autres portails relient le cinéma à la base. Pour en activer un, utilise le symbole au sol devant lui.
+
+    - **Rue devant le cinéma** : mène au couloir près du Medical Bay.
+    - **Ruelle à gauche du cinéma** : mène à la zone de départ.
+
+    <Shots>
+      <Screenshot src={m + 'theatre/portal_street.webp'} alt="Le portail de la rue" credit={by} source={src} />
+      <Screenshot src={m + 'theatre/portal_hallway.webp'} alt="La sortie dans le couloir près du Medical Bay" credit={by} source={src} />
+      <Screenshot src={m + 'theatre/portal_alley.webp'} alt="Le portail de la ruelle" credit={by} source={src} />
+      <Screenshot src={m + 'theatre/portal_spawn.webp'} alt="La sortie dans la zone de départ" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Le Pack-a-Punch
+
+<Checklist>
+  <Step title="Ramasse les trois morceaux de métal">
+    Dans l'ordre que tu veux. Chaque morceau ramassé fait apparaître **trois Cryptids**.
+
+    - **Cargo Bay** : tout en bas, à gauche de l'escalier, dans le coin près d'un conteneur.
+    - **Medical Bay** : à droite de la machine **Blue Bolts**, dans le coin sombre en bas de l'escalier.
+    - **Cinéma** : sur une **voiture en feu** dans la rue, à droite du portail.
+
+    <Shots>
+      <Screenshot src={m + 'pap/metal_cargo_bay.webp'} alt="Morceau de métal dans le Cargo Bay" credit={by} source={src} />
+      <Screenshot src={m + 'pap/metal_med_bay.webp'} alt="Morceau de métal près de Blue Bolts" credit={by} source={src} />
+      <Screenshot src={m + 'pap/metal_theatre.webp'} alt="Morceau de métal sur la voiture en feu" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Répare le pont cassé">
+    Dehors, dans la neige, pose les trois morceaux sur le **pont cassé**. Traverse et utilise le grand portail de l'autre côté.
+
+    <Screenshot src={m + 'pap/broken_bridge.webp'} alt="Le pont cassé à l'extérieur" credit={by} source={src} />
+  </Step>
+
+  <Step title="Améliore ton arme dans la salle du projecteur">
+    Le Pack-a-Punch coûte **5 000 points**. Tu as **30 secondes** sur place, puis tu es renvoyé dans la base. Le portail se recharge ensuite pendant environ **une minute**.
+  </Step>
+
+  <Step title="Prépare-toi au retour">
+    La première fois que tu es renvoyé dans une manche, un **Phantom** (gros Cryptid bleu) ou **trois Cryptids** apparaissent. Le premier Phantom que tu tues lâche une **disquette** de l'Easter Egg principal : retiens où il meurt.
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Le Phantom est costaud : garde une bonne arme sur toi en sortant du Pack-a-Punch.
+      </Tip>
+      <Tip type="faster" author="mmmrkennedy" source={src}>
+        Tue ce premier Phantom près de N31L, dans la zone de départ : la disquette reste au sol et tu n'auras pas à revenir la chercher.
+      </Tip>
+    </Tips>
+  </Step>
+</Checklist>
+
+## Le double Pack-a-Punch
+
+Il permet d'améliorer une **deuxième fois** une arme déjà améliorée, pour **10 000 points**, jusqu'à la fin de la partie en cours. Il demande l'**Entangler** (voir [Obtenir l'Entangler](../entangler/)). En mode Director's Cut, les fusibles sont déjà dans le projecteur.
+
+<Checklist>
+  <Step title="Récupère les fusibles alien">
+    Dans le couloir de l'arme murale **Proteus**, entre la cafétéria et le Cargo Bay, tire sur le boîtier électrique au mur pour l'ouvrir. Prends les fusibles à l'intérieur.
+
+    <Shots>
+      <Screenshot src={m + 'double_pap/fuse_box.webp'} alt="Le boîtier électrique fermé" credit={by} source={src} />
+      <Screenshot src={m + 'double_pap/fuse_box_open.webp'} alt="Le boîtier ouvert avec les fusibles" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose les fusibles dans la main du Sasquatch">
+    Au cinéma, dans le couloir entre la grande salle et le hall, mets les fusibles dans la main de la **silhouette en carton du Sasquatch**.
+
+    <Screenshot src={m + 'double_pap/sasquatch.webp'} alt="La silhouette du Sasquatch" credit={by} source={src} />
+  </Step>
+
+  <Step title="Change la bobine du projecteur">
+    Prends la **bobine de film** sur le côté droit du comptoir de friandises, dans le hall du cinéma. Dans la salle du projecteur, utilise les bobines à l'avant du projecteur pour la mettre en place : il projette maintenant des images de Zombies in Spaceland.
+
+    <Shots>
+      <Screenshot src={m + 'double_pap/film_reel.webp'} alt="La bobine sur le comptoir" credit={by} source={src} />
+      <Screenshot src={m + 'double_pap/projector.webp'} alt="Les bobines à l'avant du projecteur" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Sors un casque de Brute de l'écran">
+    Lance le **piège Movie Wormhole** du cinéma. Pendant qu'il tourne, tire avec l'Entangler sur le vortex de l'écran : il en sort un **casque de Brute**. Lâche-le par terre, puis ramasse-le.
+
+    <Shots>
+      <Screenshot src={m + 'double_pap/wormhole_trap.webp'} alt="Le piège Movie Wormhole" credit={by} source={src} />
+      <Screenshot src={m + 'double_pap/vortex.webp'} alt="Le vortex sur l'écran" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose la tête sur la silhouette de Brute">
+    Elle est à côté du Sasquatch. Si les fusibles sont déjà dans sa main, la tête de Brute tire un laser dessus et les **charge**.
+
+    <Screenshot src={m + 'double_pap/brute.webp'} alt="La silhouette de Brute près du Sasquatch" credit={by} source={src} />
+  </Step>
+
+  <Step title="Mets les fusibles chargés dans le projecteur">
+    Rapporte-les dans la salle du projecteur. Le double Pack-a-Punch est prêt.
+  </Step>
+</Checklist>
+
+## Sources
+
+- [mmmrkennedy : The Beast From Beyond Guide](https://mmmrkennedyzombiesguides.pages.dev/games/IW/the_beast_from_beyond/the_beast_from_beyond_guide) (étapes, prix et captures d'écran)
+- Guide de Zenato (morceaux de métal, 30 secondes, Phantom au retour)
+- [Gameranx : How To Unlock Pack-a-Punch](https://gameranx.com/features/id/119821/article/cod-zombies-the-beast-from-beyond-how-to-unlock-pack-a-punch) (bouton du Cargo Bay, morceaux de métal, prix de 5 000)
+- [Player.One : Power & Pack-A-Punch Guide](https://www.player.one/call-duty-infinite-warfare-zombies-beast-beyond-power-pack-punch-guide-119981) (morceaux de métal recoupés)
+- [codzombiesguides.com : The Beast from Beyond](https://codzombiesguides.com/main-quests/infinite-warfare/the-beast-from-beyond/) (30 secondes, recharge d'environ une minute)
+- [Mejoress : Doble Pack a Punch en The Beast From Beyond](https://www.mejoress.com/es/?p=12175) (double Pack-a-Punch recoupé)
+- [NoodlesRuns : BFB Notes](https://noodlesruns.notion.site/BFB-Notes-2624f728f8f680e19a35c142715920d2) (fusibles et bobine recoupés)
+- [NGTZombies : Double Feature Trophy Guide](https://www.youtube.com/watch?v=epdDyHB9LXc) (succès « Double Feature » au premier passage)
