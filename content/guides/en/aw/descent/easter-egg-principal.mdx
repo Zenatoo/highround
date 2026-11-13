@@ -1,0 +1,235 @@
+---
+title: Main Easter Egg (Reunion)
+category: main-quest
+order: 1
+draft: false
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=jUomntphVoY
+    title: "[TUTO] Descent | Le Secret Complet !"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/jUomntphVoY.jpg
+  - url: https://www.youtube.com/watch?v=Ui4NuZpmhWI
+    title: "Le SECRET de DESCENT sur ADVANCED WARFARE ZOMBIE! 🤿 (Retour Secrets Zombie Old School)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/Ui4NuZpmhWI.jpg
+  - url: https://www.youtube.com/watch?v=UzjLwAIA_hA
+    title: "COD AW \"DESCENT\" Le Secret de A à Z! + Mode Séance Double! (Easter Egg DLC 4)"
+    creator: "Call of Duty: Quartier Général"
+    lang: fr
+    thumbnail: ../../../../media/videos/UzjLwAIA_hA.jpg
+  - url: https://www.youtube.com/watch?v=t9vDMfSyjcg
+    title: "EXO ZOMBIES \"DESCENT\" EASTER EGG TUTORIAL - FULL \"REUNION\" ACHIEVEMENT (Advanced Warfare DLC 4)"
+    creator: "NoahJ456"
+    lang: en
+    thumbnail: ../../../../media/videos/t9vDMfSyjcg.jpg
+  - url: https://www.youtube.com/watch?v=NOHNnLoAeE0
+    title: "DESCENT EASTER EGG GUIDE | ULTIMATE UPDATED GUIDE"
+    creator: "DIG_DUG7"
+    lang: en
+    thumbnail: ../../../../media/videos/NOHNnLoAeE0.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/AW/descent/descent_guide';
+export const m = 'aw/descent/main_ee/';
+
+The goal: beat all of Oz's challenges, then survive inside one of his memories. The "Reunion" achievement unlocks at the end, the game stops and the map restarts in Double Feature mode.
+
+**Before you start:**
+
+- Plan for **70 to 90 minutes** in solo.
+- The pattern repeats: a task on the map, then an **Oz challenge during the next round**. A failed challenge starts again at the beginning of the round after.
+- Doable in solo or in co-op. In solo, AI-controlled teammates show up for the friendly fire challenge and for the final memory.
+- The Oz fights in rounds 13 and 20 still happen along the way. See [The Oz fights](../combats-contre-oz/).
+- Buy **Exo Slam** before the number panel: you need it there.
+
+## Open the secret room
+
+<Checklist>
+  <Step title="Get an Exo suit">
+    It is free, in the Galleria. See [Get the Exo suit and turn on the power](../courant/).
+
+    <Screenshot src={m + 'exo_suit.webp'} alt="The Exo suit machine in the Galleria" credit={by} source={src} />
+  </Step>
+
+  <Step title="Turn the three Tidal Generator valves">
+    Along the spiral staircase, three small valves are fixed to the wall. Shoot each one until a **blue light** turns on above it. It takes a lot of bullets.
+
+    - Left of the power generator.
+    - Above the yellow door on the right.
+    - Right of the AMR9 wall weapon.
+
+    <Shots>
+      <Screenshot src={m + 'valve_disabled.webp'} alt="A valve not turned yet" credit={by} source={src} />
+      <Screenshot src={m + 'valve_enabled.webp'} alt="A turned valve, blue light on" credit={by} source={src} />
+      <Screenshot src={m + 'valve_power.webp'} alt="Valve left of the generator" credit={by} source={src} />
+      <Screenshot src={m + 'valve_yellow_door.webp'} alt="Valve above the yellow door" credit={by} source={src} />
+      <Screenshot src={m + 'valve_wallbuy.webp'} alt="Valve right of the AMR9" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Use the terminal twice">
+    A door opens halfway up the staircase. In the small room, use the terminal: Angie offers to break the encryption. Use it a second time: Angie answers "Access Denied". That's normal.
+
+    <Shots>
+      <Screenshot src={m + 'open_door.webp'} alt="The open door halfway up the staircase" credit={by} source={src} />
+      <Screenshot src={m + 'terminal.webp'} alt="The terminal in the secret room" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Depressurize the Lounge airlock">
+    In the Lounge, next to the 3D printer, a door leads outside, underwater. Stand in front of it and hold the action button: it takes **about 45 seconds to a minute**. You can let go and come back later, the progress is kept.
+
+    {/* TO CHECK: time to depressurise: about 45 s (mmmrkennedy) vs about 1 min (GameCraves). */}
+
+    <Screenshot src={m + 'depressurise_door.webp'} alt="The airlock door in the Lounge" credit={by} source={src} />
+
+    <Tips>
+      <Tip type="mistake" author="GameCraves" source="https://gamecraves.com/call-of-duty-advanced-warfare-reckoning-dlc-trophy-guide/">
+        While you hold the button, you can't shoot and every zombie comes for you. Do it at the end of a round, or while a teammate covers you.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Hit the underwater switch in a Goliath">
+    You need a **Goliath suit**, an orbital care package that drops at random, usually between rounds 8 and 12. See [Pilot the Goliath](../goliath/).
+
+    In the Goliath, open the airlock door and follow the lit path along the bottom of the sea. A zombie floats on the path: punch it out of the way. At the end, activate the **red switch**: it turns blue. Come back the same way. Oz announces a challenge for the next round.
+
+    <Shots>
+      <Screenshot src={m + 'goliath_suit.webp'} alt="A Goliath suit" credit={by} source={src} />
+      <Screenshot src={m + 'red_switch.webp'} alt="The underwater switch, red" credit={by} source={src} />
+      <Screenshot src={m + 'blue_switch.webp'} alt="The switch turned blue" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Oz's challenges
+
+<Checklist>
+  <Step title="Challenge: destroy five drones">
+    At the start of the round, an **empty treasure drone** appears somewhere. Destroy it: another one appears elsewhere. You need **five** in the same round. The text next to your credits turns green: "Challenge Success".
+
+    - A drone flies off toward an exit as soon as you get close or hit it. **If it escapes, the challenge fails.**
+    - Ending the round before the fifth drone also fails the challenge.
+    - A "full" drone can appear: you don't need to destroy it.
+
+    Common spots: Spa (near the 3D printer and on the stairs), near the Exo suits, two spots in the Lounge, Reception (near the 3D printer and the terminals), the lower passage between the Lounge door and the Reception printer, and between the upper Spa door and the Reception.
+
+    <Shots>
+      <Screenshot src={m + 'empty_drone.webp'} alt="An empty treasure drone" credit={by} source={src} />
+      <Screenshot src={m + 'challenge_success.webp'} alt="The Challenge Success message" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="faster" author="FOC gaming" source="https://focgaming.wordpress.com/2015/09/04/advanced-warfare-exo-zombies-descent-tips-and-tricks/">
+        A point-blank Blunderbuss shot destroys a drone in one hit.
+      </Tip>
+      <Tip type="mistake" author="GameCraves" source="https://gamecraves.com/call-of-duty-advanced-warfare-reckoning-dlc-trophy-guide/">
+        In co-op, stay together: a player off on their own can scare a drone away without seeing it.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Charge the Galleria capacitor">
+    A machine with a counter appears in the Galleria, near the Exo suits. Lure **electric zombies** (EMZ) and let them hit you right next to it: the machine absorbs the charge. Every electric variant works, dogs included. You need to get the counter to **100**, which takes several hits (about 16 to 20 depending on the source).
+
+    {/* TO CHECK: hits needed: about 16 (mmmrkennedy, 4 per 25 %) vs about 20 (GameCraves) vs "about three EMZ" (Escapist, jeuxvideo.com). Location: Galleria (mmmrkennedy, GameCraves, COD Zombified, Escapist, jeuxvideo.com) vs Concierge (Video Games Blogger): Galleria kept. */}
+
+    Angie then says "Capacitor is Charged. Power Diverted to Tidal Generator".
+
+    <Shots>
+      <Screenshot src={m + 'capacitor.webp'} alt="The Galleria capacitor" credit={by} source={src} />
+      <Screenshot src={m + 'emz.webp'} alt="An electric zombie" credit={by} source={src} />
+      <Screenshot src={m + 'cap_progress.webp'} alt="The capacitor counter" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source="https://mmmrkennedyzombiesguides.pages.dev/games/AW/descent/descent_guide">
+        An EMZ hit shuts down your Exo suit and this spot is narrow: you can quickly get trapped. Kill the other zombies first and only go to the capacitor when few are left.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Challenge: grenades only">
+    For the whole round, you have **unlimited grenades** and you can only kill with them: no weapons, no tactical grenades, no orbital care packages. Take Contact grenades, they explode on impact. This challenge can't fail, but be careful not to down yourself with your own grenades.
+  </Step>
+
+  <Step title="Finish the jump course">
+    Blue platforms appear around the starting area (Landing Area). You have to complete **9 courses** in a row. Everything is explained in [The jump course](../parcours-de-sauts/).
+
+    <Screenshot src={m + 'jumping_plates.webp'} alt="The blue platforms of the course" credit={by} source={src} />
+  </Step>
+
+  <Step title="Challenge: move as little as possible">
+    During the round, **every move costs you credits**. If you hit zero, the challenge fails. Buy what you need beforehand, then camp in one spot, for example in the corner of the Spa behind the snack bar.
+
+    {/* TO CHECK: at 0 credits: the challenge fails (GameCraves, Escapist) vs "you cannot move" (mmmrkennedy). */}
+  </Step>
+
+  <Step title="Simon Says at the Reception">
+    At the Reception's Self Check-In counter, there are **four screens**. The one on the right glows: use it. The screens light up one by one: use them **in the same order**. There are several sequences in a row. The order changes every game. A short happy sound and a line from Angie confirm you got it.
+
+    {/* TO CHECK: Video Games Blogger / GamingBolt give a fixed order "1, 3, 1, 2, 4, 2"; mmmrkennedy says the colours are random each game. GameCraves counts about 8 sequences. */}
+
+    <Screenshot src={m + 'reception_desk.webp'} alt="The four screens of the Reception counter" credit={by} source={src} />
+  </Step>
+
+  <Step title="Challenge: friendly fire">
+    During the round, friendly fire is on: **don't down any teammate**. In co-op, the easiest way is for each player to stay in a different area. In solo, AI copies of the other characters appear and **shoot at you**: avoid them and don't hit them.
+  </Step>
+
+  <Step title="The Tidal Generator number panel">
+    On the second floor, near the terminal, a panel shows **two rows of four digits**. The bottom row has to match the top row. From left to right, each digit counts:
+
+    1. Zombies hit by an **Exo Slam** (you need the Exo Slam upgrade).
+    2. **Jumps**.
+    3. **Wall purchases**: the safest is to buy **grenades** from the wall.
+    4. **Zombies killed**, in any way.
+
+    {/* TO CHECK: 3rd digit: any wall purchase except weapon ammo (mmmrkennedy, and jeuxvideo.com "acheter une arme sur un mur") vs grenade purchases (GameCraves, Escapist, COD Zombified) vs equipment purchases (se7ensins, Video Games Blogger). Buying grenades at a wall fits every version. Also: past 9 the board resets (GameCraves) / goes back to 0 (COD Zombified) / to 1 (Escapist). */}
+
+    If a digit goes past 9, it starts over: take it slow. The counters are **shared by all players**: in co-op, have one player do everything while the others don't jump and don't kill anything. The step completes on its own as soon as all four digits are right.
+
+    <Screenshot src={m + 'number_display.webp'} alt="The number panel" credit={by} source={src} />
+  </Step>
+
+  <Step title="Challenge: MAHEM only">
+    Each player gets a **MAHEM Mk 25** rocket launcher with unlimited ammo. You can only kill with it for the whole round. Watch out for self-damage: don't shoot at your feet.
+  </Step>
+</Checklist>
+
+## Oz's memory
+
+<Checklist>
+  <Step title="Use the Tidal Generator terminal again">
+    Use the second-floor terminal again. Angie announces "Power Diversion Complete" and the machine to the right of the terminal turns **red**. Use the terminal one last time: the machine turns blue and you are teleported.
+
+    {/* TO CHECK: GameCraves says every player must use the panel in co-op; mmmrkennedy describes two presses with the machine going red then blue. */}
+
+    <Screenshot src={m + 'red_machine.webp'} alt="The machine turned red to the right of the terminal" credit={by} source={src} />
+  </Step>
+
+  <Step title="Survive in the memory">
+    You arrive in a piece of memory that looks like the start of Outbreak. Missing characters are played by the AI. Hold out for **two waves** of zombies: between waves, Oz and the team talk about their secrets. Use everything you saved: orbital care packages, drones, best weapons.
+
+    {/* TO CHECK: 2 waves (mmmrkennedy) vs "2-3 rounds' worth" (GameCraves). */}
+
+    Then you come back to the map, the game ends and "Reunion" unlocks. The map restarts in Double Feature mode: see [Double Feature mode](../seance-double/). The silver trident also appears in the Reception: see [The Reception trophies](../trophees-de-la-reception/).
+  </Step>
+</Checklist>
+
+## Sources
+
+Guide written by HighRound from:
+
+- [mmmrkennedy: Descent Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/AW/descent/descent_guide) (steps, locations and screenshots)
+- [Game Craves: Call of Duty: Advanced Warfare – Reckoning DLC Trophy Guide](https://gamecraves.com/call-of-duty-advanced-warfare-reckoning-dlc-trophy-guide/) (steps cross-checked, drone spots, co-op tips)
+- [The Escapist: Solve the Descent Easter Egg in the Last Advanced Warfare Exo Zombies DLC](https://www.escapistmagazine.com/solve-the-descent-easter-egg-in-the-last-advanced-warfare-exo-zombies-dlc/) (steps cross-checked)
+- [jeuxvideo.com: Exo Zombies, Les Secrets de Descent](https://www.jeuxvideo.com/dossier/442215/exo-zombies-les-secrets-de-descent-le-guide-du-survivant-advanced-warfare/442246.htm) (steps cross-checked)
+- [COD Zombified: Descent Full Easter Egg Walkthrough](https://codzombified.blogspot.com/2015/08/descent-full-easter-egg-walkthrough.html) (steps cross-checked)
+- [FOC gaming: Exo Zombies Descent Tips and Tricks](https://focgaming.wordpress.com/2015/09/04/advanced-warfare-exo-zombies-descent-tips-and-tricks/) (Blunderbuss trick against the drones)

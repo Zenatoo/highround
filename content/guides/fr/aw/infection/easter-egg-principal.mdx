@@ -1,0 +1,245 @@
+---
+title: Easter Egg principal (Meat Is Murder)
+category: main-quest
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=5283DH2g4do
+    title: "[TUTO] Infection | Le Secret Complet | Exo-Zombie"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/5283DH2g4do.jpg
+  - url: https://www.youtube.com/watch?v=ZCYaPTvjORc
+    title: "Le SECRET de \"INFECTION\" en SOLO sur ADVANCED WARFARE ZOMBIE 🧟‍♂️"
+    creator: "FlapixTV"
+    lang: fr
+    thumbnail: ../../../../media/videos/ZCYaPTvjORc.jpg
+  - url: https://www.youtube.com/watch?v=xT3CsHA37b4
+    title: "Exo zombie Infection  | secret complet FR | Advanced Warfare ( Succès/trophées Tuer pour manger )"
+    creator: "Coemgen"
+    lang: fr
+    thumbnail: ../../../../media/videos/xT3CsHA37b4.jpg
+  - url: https://www.youtube.com/watch?v=exckMt7ZWHg
+    title: "Exo Zombies INFECTION Easter Egg Guide! Full MEAT IS MURDER Achievement Tutorial (How To/Easy)"
+    creator: "MrRoflWaffles"
+    lang: en
+    thumbnail: ../../../../media/videos/exckMt7ZWHg.jpg
+  - url: https://www.youtube.com/watch?v=x1Ve_4lxndI
+    title: "EASY INFECTION - SOLO EASTER EGG IN 9 MINUTES - (MEAT IS MURDER ACHIEVMENT)(EXO ZOMBIES)(2024)"
+    creator: "SchleyerZ"
+    lang: en
+    thumbnail: ../../../../media/videos/x1Ve_4lxndI.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/AW/infection/infection_guide';
+export const m = 'aw/infection/main_ee/';
+
+Le but : cuisiner un burger pour **Bubby**, la mascotte de Burger Town, recharger sa batterie, puis lancer la fusée cachée dans le burger géant du toit. Le succès « MEAT IS MURDER » (argent) se débloque à la fin.
+
+**Avant de commencer :**
+
+- Compte **30 à 45 minutes**. Ça se fait en solo comme jusqu'à quatre joueurs.
+- Ouvre **toutes les portes** de la carte : tu vas traverser toutes les zones plusieurs fois (prix dans [Récupérer la combinaison Exo et rétablir le courant](../courant/)).
+- Il te faut le **Magnetron**, qui sort au hasard de l'imprimante 3D. C'est la seule part de chance. Voir [Le Magnetron](../magnetron/).
+- Prends **Exo Health** pour mieux encaisser, et garde **250 crédits** pour la décontamination.
+- En fin de manche, laisse un ou deux zombies **sans jambes** en vie : tu avances tranquille sans que la manche suivante démarre. Garde un œil sur eux pour qu'ils ne meurent pas tout seuls.
+
+## Partie 1 : la poêle en or
+
+<Checklist>
+  <Step title="Prends la combinaison Exo">
+    Elle est dans les Sewers sud (les égouts). Il faut ouvrir une porte de Hoard More (1 500), puis une grille des Sewers (2 000). Détails dans [Récupérer la combinaison Exo et rétablir le courant](../courant/).
+
+    <Screenshot src={m + 'exo_suit.webp'} alt="La station des combinaisons Exo dans les Sewers" credit={by} source={src} />
+  </Step>
+
+  <Step title="Récupère la poêle en or dans Hoard More">
+    Retourne dans l'entrepôt du départ. Grimpe sur la caisse la plus haute, puis fais un saut boosté vers le toit fissuré, côté nord : la **poêle en or** est posée sur une poutre. Ramasse-la.
+
+    <Screenshot src={m + 'golden_pan.webp'} alt="La poêle en or sur le toit fissuré de Hoard More" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tourne les quatre vannes des Sewers">
+    Dans les égouts, cherche **quatre vannes orange** posées sur des tuyaux jaunes. Elles apparaissent au hasard parmi 32 emplacements. Tourne chacune : de la vapeur en sort une fois qu'elle est faite. Monte la luminosité si tu ne vois rien.
+
+    {/* TO CHECK: order. IGN, mmmrkennedy and COD Zombified give no order; Millenium says each valve makes the next one appear, VCPost says "in the correct order". */}
+
+    <Screenshot src={m + 'valve_example.webp'} alt="Une vanne orange sur un tuyau" credit={by} source={src} />
+
+    Les 32 emplacements sont dans [Emplacements des viandes et des vannes](../emplacements-des-viandes/).
+  </Step>
+
+  <Step title="Passe derrière la cascade">
+    Après la quatrième vanne, un passage secret s'ouvre **derrière la petite cascade**, au sud des Sewers, entre le piège Insta-Gator et la station d'alimentation. Il mène à un **autel**.
+
+    <Shots>
+      <Screenshot src={m + 'secret_passage.webp'} alt="Le passage secret derrière la cascade" credit={by} source={src} />
+      <Screenshot src={m + 'altar.webp'} alt="L'autel" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Remplis la poêle de sang">
+    Pose la poêle sur l'autel : il s'enfonce. Tue des zombies **dans la partie basse** de la salle, jusqu'à ce que la poêle soit pleine de sang. L'autel remonte alors : reprends la poêle.
+
+    <Screenshot src={m + 'lower_area.webp'} alt="La partie basse de la salle, où les éliminations comptent" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pose la poêle sur les fourneaux de Burger Town">
+    Va dans la cuisine du restaurant et pose la poêle sur les fourneaux.
+
+    <Screenshot src={m + 'stoves.webp'} alt="Les fourneaux de la cuisine de Burger Town" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Partie 2 : le burger
+
+<Checklist>
+  <Step title="Ramasse les quatre morceaux de viande">
+    Un morceau apparaît dans chacune de ces zones : **Burger Town, Sewers, Value Voltage et Atlas Command** (aucun dans Hoard More). Tu ne peux en porter **qu'un à la fois** : rapporte chaque morceau dans la poêle avant d'aller chercher le suivant.
+
+    <Screenshot src={m + 'meat_example.webp'} alt="Un morceau de viande" credit={by} source={src} />
+
+    Les 36 emplacements possibles, avec photos : [Emplacements des viandes et des vannes](../emplacements-des-viandes/).
+  </Step>
+
+  <Step title="Cuis la viande au Magnetron">
+    Quand les quatre morceaux sont dans la poêle, tire dessus au **Magnetron** jusqu'à entendre un **« ding »**. La viande devient un steak haché.
+  </Step>
+
+  <Step title="Récupère le pain">
+    Tue les zombies en **uniforme de Burger Town** (avec la casquette), surtout autour du restaurant. L'un d'eux finit par lâcher un **pain à burger** : marche dessus pour le ramasser. Ils ne le lâchent pas tous : insiste.
+
+    <Screenshot src={m + 'bun.webp'} alt="Le pain à burger lâché par un employé zombie" credit={by} source={src} />
+  </Step>
+
+  <Step title="Assemble et prends le burger">
+    Utilise le pain sur le steak dans la poêle, puis ramasse le burger terminé.
+
+    <Tips>
+      <Tip type="mistake" author="IGN" source="https://www.ign.com/wikis/call-of-duty-advanced-warfare/Infection">
+        Dès que tu prends le burger, **tu es infecté**. Tu as 60 secondes pour te soigner, et chaque coup reçu en enlève 5.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Décontamine-toi (et le burger)">
+    Cours à la **décontamination** de The Pit, dans les Sewers, et paie 250 crédits. Le plus rapide : la **goulotte** sur le côté de Burger Town, qui descend dans les égouts. Le burger reste dans ton inventaire, désinfecté lui aussi.
+  </Step>
+
+  <Step title="Donne le burger à Bubby">
+    Bubby est la mascotte devant Burger Town, au haut-parleur du drive. Donne-lui le burger : il le mange, puis se plaint que ses **batteries sont vides**.
+
+    <Screenshot src={m + 'bubby.webp'} alt="Bubby, la mascotte de Burger Town" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Partie 3 : la batterie de Bubby
+
+<Checklist>
+  <Step title="Fais sortir la batterie à Atlas Command">
+    Entre dans le **Command Center** d'Atlas Command (le préfabriqué). Un écran montre maintenant le schéma de Bubby : utilise-le. Cours aussitôt vers l'**autre bâtiment**, celui de la station d'alimentation, près de l'entrée des Sewers. Un petit boîtier mural s'ouvre avec la **batterie** : prends-la.
+
+    <Shots>
+      <Screenshot src={m + 'command_unit_1.webp'} alt="Le Command Center d'Atlas Command" credit={by} source={src} />
+      <Screenshot src={m + 'bubby_screen.webp'} alt="L'écran avec le schéma de Bubby" credit={by} source={src} />
+      <Screenshot src={m + 'command_unit_2.webp'} alt="Le bâtiment de la station d'alimentation" credit={by} source={src} />
+      <Screenshot src={m + 'battery_box.webp'} alt="Le boîtier de la batterie" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Le boîtier se referme si tu traînes. Dans ce cas, réutilise l'écran et recommence.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Recharge la batterie à Value Voltage">
+    Pose la batterie sur une **borne de recharge** pour voitures électriques, à Value Voltage. Les zombies sont attirés par la borne et peuvent faire tomber la batterie : remets-la en place. Quand la lumière passe du **bleu au rouge**, elle est pleine : reprends-la.
+
+    <Screenshot src={m + 'charging_station.webp'} alt="La borne de recharge de Value Voltage" credit={by} source={src} />
+
+    <Tips>
+      <Tip type="faster" author="COD Zombified" source="https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide_9.html">
+        Fais la recharge entre deux manches, quand il n'y a presque plus de zombies.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Donne la batterie à Bubby">
+    Il te donne une **clé** : ramasse-la.
+  </Step>
+</Checklist>
+
+## Partie 4 : la fusée
+
+<Checklist>
+  <Step title="Entre dans le burger géant">
+    Monte l'échelle jusqu'au **burger géant**, sur le toit de Burger Town, et ouvre la trappe avec la clé. À l'intérieur, utilise l'écran de Bubby : il devient rouge, **« Access Denied »**. C'est normal.
+
+    Dans le burger, il y a aussi une station qui améliore les armes au-delà du Mk 20 : voir [Améliorer ses armes (Mk 20 et Mk 25)](../pack-a-punch/).
+
+    <Shots>
+      <Screenshot src={m + 'hatch.webp'} alt="La trappe du burger géant" credit={by} source={src} />
+      <Screenshot src={m + 'bubby_screen_burger.webp'} alt="L'écran de Bubby dans le burger" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Récupère un bras de zombie grâce à l'Insta-Gator">
+    Descends dans les Sewers sud et active le piège **Insta-Gator** (500 crédits), près de The Pit. Quand un alligator sort de l'eau pour attraper un zombie, **tire-lui dessus** vite : il explose et laisse un **bras de zombie** qui flotte. Ramasse-le avant qu'il coule.
+
+    <Shots>
+      <Screenshot src={m + 'insta_gator_trap.webp'} alt="Le panneau du piège Insta-Gator" credit={by} source={src} />
+      <Screenshot src={m + 'arm.webp'} alt="Le bras de zombie qui flotte" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: toilet fallback, COD Zombified only. */}
+
+    <Tips>
+      <Tip type="tech" author="COD Zombified" source="https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide_3.html">
+        Si le bras n'apparaît pas, tire la chasse des toilettes à l'anneau vert, à l'étage au fond de Burger Town, puis relance le piège.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Ouvre le coffre de Hoard More">
+    Monte l'escalier de l'entrepôt du départ jusqu'au **lecteur d'empreintes**. Utilise le bras dessus : le coffre à côté s'ouvre. Prends la **tablette rouge**.
+
+    <Screenshot src={m + 'fingerprint_reader.webp'} alt="Le lecteur d'empreintes à l'étage de Hoard More" credit={by} source={src} />
+  </Step>
+
+  <Step title="Lance la fusée">
+    Retourne dans le burger géant et utilise la tablette rouge sur l'écran « Access Denied ». Tu es éjecté dehors. Le burger crache des **bombes**, puis une **fusée** décolle après un court compte à rebours.
+
+    <Tips>
+      <Tip type="mistake" author="mmmrkennedy" source={src}>
+        Tu peux ramasser les bombes en marchant dessus et les lancer sur les zombies. Mais elles te blessent si elles explosent près de toi, et celles que personne ne ramasse finissent par exploser.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Donne la tablette bleue à Bubby">
+    Remonte dans le burger : une **tablette bleue** t'attend sous l'écran de Bubby. Prends-la et donne-la à Bubby. Le succès se débloque.
+
+    <Screenshot src={m + 'blue_tablet.webp'} alt="La tablette bleue sous l'écran de Bubby" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## La récompense
+
+Bubby se réveille. Selon les parties, il explose tout de suite en laissant des **bonus**, ou il prend un panneau et se bat à tes côtés un moment (environ une manche), puis explose en laissant **quatre bonus**.
+
+{/* TO CHECK: "one full round, then four power-ups" is mmmrkennedy only; IGN says "a few rounds", COD Zombified and IGN say he may also explode at once. */}
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : Infection Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/AW/infection/infection_guide) (étapes, durée, captures d'écran)
+- [IGN : MEAT IS MURDER](https://www.ign.com/wikis/call-of-duty-advanced-warfare/MEAT_IS_MURDER) (étapes recoupées, solo ou coop, zombies sans jambes, emplacement de la cascade, récompense)
+- [COD Zombified : Exo Zombies Infection Easter Egg Guide and Walkthrough](https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide.html), [Part 2](https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide_9.html) et [Part 3](https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide_3.html) (étapes recoupées, bâtiment de la batterie, recharge entre deux manches, toilettes)
+- [Millenium : Infection - Secret complet](https://www.millenium.org/guide/167503.html?page=19) (étapes recoupées)
+- [Video Games Blogger : Call of Duty: Advanced Warfare Ascendance Infection Guide](https://www.videogamesblogger.com/2015/03/31/call-of-duty-advanced-warfare-ascendance-infection-guide.htm) (Insta-Gator à 500, coffre du lecteur d'empreintes)
+- [IGN : Infection](https://www.ign.com/wikis/call-of-duty-advanced-warfare/Infection) (60 secondes d'infection, 5 secondes perdues par coup, décontamination à 250 dans The Pit)

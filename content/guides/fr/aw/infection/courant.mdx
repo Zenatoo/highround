@@ -1,0 +1,141 @@
+---
+title: Récupérer la combinaison Exo et rétablir le courant
+category: power
+order: 1
+draft: false
+difficulty: easy
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=SXhNCtSAIZk
+    title: "Trucs et astuces infection exo zombie | Advanced Wardare"
+    creator: "Coemgen"
+    lang: fr
+    thumbnail: ../../../../media/videos/SXhNCtSAIZk.jpg
+  - url: https://www.youtube.com/watch?v=s0REJ83hjn8
+    title: "\"Exo Zombies\" \"Infection\" EXO SUIT Location Tutorial! (Ascendence DLC Exo Zombies Infection)"
+    creator: "jakefully1"
+    lang: en
+    thumbnail: ../../../../media/videos/s0REJ83hjn8.jpg
+  - url: https://www.youtube.com/watch?v=xm2zu5qgHug
+    title: "Infection: EXO SUIT Location! Quick TIP to Find it! (Infection \"How To\" Guide)"
+    creator: "ActionPacked"
+    lang: en
+    thumbnail: ../../../../media/videos/xm2zu5qgHug.jpg
+  - url: https://www.youtube.com/watch?v=FUVdQY5a-ig
+    title: "Ultimate Guide to Exo Zombies: Infection - Walkthrough, Strategy, Tutorial (COD Advanced Warfare )"
+    creator: "TheSmithPlays"
+    lang: en
+    thumbnail: ../../../../media/videos/FUVdQY5a-ig.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/AW/infection/infection_guide';
+export const m = 'aw/infection/';
+
+Infection se passe dans une petite ville autour d'un fast-food **Burger Town**. La carte a six zones :
+
+- **Hoard More** : l'entrepôt du départ.
+- **Value Voltage** : la station-service et ses bornes de recharge, au nord.
+- **Atlas Command** : le camp militaire d'Atlas, au sud.
+- **Sewers** : les égouts, qui relient tout. Ils sont coupés en deux par une grille : le sud et le nord.
+- **The Pit** : un petit coin des égouts, avec la décontamination.
+- **Burger Town** : le restaurant, qu'on atteint seulement par les égouts.
+
+Comme sur Outbreak, il n'y a **pas d'interrupteur général** : chaque zone a sa propre **station d'alimentation**. L'allumer est gratuit. Elle alimente les améliorations Exo et les pièges de sa zone. Les portes et les armes murales marchent sans courant.
+
+## Le prix des portes
+
+| Porte | Prix |
+| --- | --- |
+| Hoard More vers Value Voltage | 1 500 |
+| Hoard More vers Atlas Command | 1 500 |
+| Value Voltage vers les Sewers | 2 000 |
+| Atlas Command vers les Sewers | 2 000 |
+| Sewers sud vers Sewers nord (grille) | 2 000 |
+| Sewers nord vers Burger Town | 2 000 |
+| Intérieur de la station-service (Value Voltage) | 1 000 |
+| Command Center (Atlas Command) | 1 000 |
+| Réserve de Burger Town (Burger Town Storage) | 1 000 |
+
+The Pit est ouvert, sans porte à payer.
+
+{/* Every door price is cross-checked: IGN + COD Zombified's annotated maps (Burger Town map: buying one 1,000 door opens all of them). */}
+
+## Aller chercher la combinaison
+
+La combinaison Exo est **gratuite**. Elle se trouve dans la salle de la combinaison (Exo Suit room), dans les **Sewers sud**. Il faut ouvrir deux portes : **3 500 crédits** en tout.
+
+<Checklist>
+  <Step title="Ouvre une porte de Hoard More (1 500)">
+    Prends la porte nord vers Value Voltage, ou la porte sud vers Atlas Command. Les deux mènent aux égouts.
+  </Step>
+
+  <Step title="Ouvre la grille des Sewers (2 000)">
+    À Value Voltage, elle est au sud-est. À Atlas Command, elle est au sud-ouest. Les deux arrivent dans les Sewers sud.
+  </Step>
+
+  <Step title="Prends ta combinaison">
+    Suis le couloir vers le nord jusqu'à la station des combinaisons. Prends-en une.
+
+    Elle te donne le double saut, le boost, la glissade boostée et le coup de poing Exo. Elle permet aussi d'acheter les améliorations Exo : voir [Les améliorations Exo et leurs emplacements](../atouts/).
+
+    <Screenshot src={m + 'main_ee/exo_suit.webp'} alt="La station des combinaisons Exo dans les Sewers" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Les six stations d'alimentation
+
+Pour trouver une station, suis les **câbles** qui partent d'une amélioration Exo ou d'un piège.
+
+{/* Value Voltage, Atlas Command, Sewers south (Insta-Gator), Sewers north (Exo Reload + camouflage spray) and Burger Town: IGN + COD Zombified (+ mmmrkennedy for Atlas). TO CHECK: Hoard More = IGN only (COD Zombified has no Hoard More map). */}
+
+| Zone | Où | Ce qu'elle alimente |
+| --- | --- | --- |
+| **Hoard More** | Côté sud de l'entrepôt | Exo Medic et le sol électrique |
+| **Value Voltage** | Dans la station-service (porte à 1 000) | Exo Soldier et l'ambulance |
+| **Atlas Command** | Dans le bâtiment voisin du Command Center, près de l'entrée des Sewers | Exo Slam et les tourelles de tir |
+| **Sewers sud** | Depuis l'arme murale Tac-19, va vers l'ouest puis descends d'un niveau | L'Insta-Gator |
+| **Sewers nord** | Après le coin, au nord d'Exo Reload | Exo Reload et le spray de camouflage |
+| **Burger Town** | Dans la réserve, à l'arrière du restaurant (porte à 1 000) | Exo Health et la frappe orbitale |
+
+Les pièges sont détaillés dans [Les pièges de la carte](../pieges/).
+
+<Tips>
+  <Tip type="mistake" author="IGN" source="https://www.ign.com/wikis/call-of-duty-advanced-warfare/Infection">
+    Si un survivant meurt, toutes les stations s'éteignent pendant 60 secondes. Ensuite, il faut **les rallumer une par une**. Voir [Sauvetage des survivants](../sauvetage-des-survivants/).
+  </Tip>
+</Tips>
+
+## Les armes murales
+
+{/* Prices of MP11, Tac-19, Explosive Drone and HBRa3: IGN + COD Zombified. Contact Grenade: COD Zombified's in-game photo shows "COST: 500" (IGN says 750). TO CHECK: MK14, Bulldog and AMR9 prices = IGN only. */}
+
+| Arme | Où | Prix |
+| --- | --- | --- |
+| **MK14** | Hoard More, côté ouest | 500 |
+| **Bulldog** | Hoard More, côté est | 500 |
+| **MP11** | Value Voltage, sur le toit de la station-service (échelle à l'arrière du camion-citerne) | 1 000 |
+| **AMR9** | Atlas Command, sur un mur au milieu de la zone | 1 000 |
+| **Tac-19** | Sewers sud, près de l'entrée côté Atlas Command | 1 500 |
+| **Explosive Drone** | Sewers sud, près de la grille vers Value Voltage | 1 000 |
+| **Contact Grenade** | Sewers nord, près du spray de camouflage | 500 |
+| **HBRa3** | Burger Town, sur le toit (rampe sur le côté du restaurant) | 1 250 |
+
+## Bon à savoir
+
+- **Décontamination** : elle est dans The Pit. Si tu es infecté, tu as **60 secondes** pour y aller et payer **250 crédits**. Chaque coup reçu enlève 5 secondes.
+- **Zones toxiques** : de temps en temps, une zone entière se remplit de gaz vert pendant environ une manche. Sors-en, sinon tu es infecté.
+- **Toboggan à ordures** : sur le côté de Burger Town, une goulotte descend directement dans les Sewers.
+- **Terminaux de crédits** : les boîtiers muraux avec une lumière verte donnent des crédits gratuits, puis se rechargent.
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [COD Zombified : plans annotés d'Infection](https://codzombified.blogspot.com/2015/04/atlas-command-centre-map-layout-for.html) ([Atlas Command](https://codzombified.blogspot.com/2015/04/atlas-command-centre-map-layout-for.html), [Value Voltage](https://codzombified.blogspot.com/2015/04/value-voltage-map-layout-infection-exo.html), [Sewers, niveau bas](https://codzombified.blogspot.com/2015/04/sewer-area-map-layout-lower-level.html), [Sewers, niveau haut](https://codzombified.blogspot.com/2015/04/sewer-area-map-layout-upper-level.html), [Burger Town](https://codzombified.blogspot.com/2015/04/burger-town-map-layout-for-infection.html) ; prix des portes, stations de courant, prix des armes murales)
+- [IGN : Infection](https://www.ign.com/wikis/call-of-duty-advanced-warfare/Infection) (zones, prix des portes, combinaison, stations d'alimentation, armes murales, zones toxiques, décontamination)
+- [COD Zombified : Atlas Command Centre Map Layout for INFECTION Exo Zombies](https://codzombified.blogspot.com/2015/04/atlas-command-centre-map-layout-for.html) (grille des Sewers à 2 000)
+- [COD Zombified : "Value Voltage" Map Layout INFECTION](https://codzombified.blogspot.com/2015/04/value-voltage-map-layout-infection-exo.html) (station de Value Voltage, zone toxique)
+- [COD Zombified : Exo Zombies Infection Easter Egg Guide and Walkthrough Part 2](https://codzombified.blogspot.com/2015/04/exo-zombies-infection-easter-egg-guide_9.html) (station d'Atlas Command près de l'entrée des Sewers)
+- [Video Games Blogger : Call of Duty: Advanced Warfare Ascendance Infection Guide](https://www.videogamesblogger.com/2015/03/31/call-of-duty-advanced-warfare-ascendance-infection-guide.htm) (combinaison dans les égouts, zones toxiques)
+- [mmmrkennedy : Infection Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/AW/infection/infection_guide) (combinaison, toboggan, capture d'écran)

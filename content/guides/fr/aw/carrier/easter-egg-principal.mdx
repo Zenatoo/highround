@@ -1,0 +1,278 @@
+---
+title: Easter Egg principal (Flotsam & Jetsam)
+category: main-quest
+order: 1
+draft: false
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=lO_56hmTQtk
+    title: "[TUTO] Carrier | Le Secret Complet ! Exo-Zombies"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/lO_56hmTQtk.jpg
+  - url: https://www.youtube.com/watch?v=hQZcXpgj4sg
+    title: "Secret complet Carrier [FR] Etape par étape | Exo zombie"
+    creator: "Coemgen"
+    lang: fr
+    thumbnail: ../../../../media/videos/hQZcXpgj4sg.jpg
+  - url: https://www.youtube.com/watch?v=VVOJk2oFsSs
+    title: "Explications étapes des grenades Secret Carrier | Exo zombie"
+    creator: "Coemgen"
+    lang: fr
+    thumbnail: ../../../../media/videos/VVOJk2oFsSs.jpg
+  - url: https://www.youtube.com/watch?v=eO990cFe5rY
+    title: "Exo Zombies \"CARRIER\" Full Easter Egg Tutorial - Complete Easter Egg Guide (Advanced Warfare)"
+    creator: "NoahJ456"
+    lang: en
+    thumbnail: ../../../../media/videos/eO990cFe5rY.jpg
+  - url: https://www.youtube.com/watch?v=Kw33B-41a_Y
+    title: "EXO ZOMBIES \"CARRIER\" EASTER EGG - FULL Easter Egg Guide! \"FLOTSAM & JETSAM\" - (Exo Zombies Carrier)"
+    creator: "MrDalekJD"
+    lang: en
+    thumbnail: ../../../../media/videos/Kw33B-41a_Y.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/AW/carrier/carrier_guide';
+export const m = 'aw/carrier/main_ee/';
+
+Le but : rapporter **quatre tablettes** à la grande porte ronde du Gun Deck (la **Vault Door**), puis la faire sauter au C4 pour couler le navire. La partie se termine sur une cinématique et le succès « Flotsam & Jetsam » se débloque.
+
+**Avant de commencer :**
+
+- Compte **une heure à une heure vingt** en solo. Les étapes sont les mêmes en solo et en coop, mais la coop aide beaucoup pour les grenades et pour le téléporteur.
+- Beaucoup de hasard : la canne à pêche donne ses objets au hasard.
+- La Vault Door a **cinq voyants** : le premier passe au vert avec l'étape du générateur, puis un par tablette.
+- Elle se trouve en haut du Gun Deck, sur ta droite juste avant la porte de l'Armory.
+
+<Screenshot src={m + 'vault_door.webp'} alt="La Vault Door sur le Gun Deck" credit={by} source={src} />
+
+## Préparation
+
+<Checklist>
+  <Step title="Allume le générateur caché derrière Chompy">
+    Achète des **Teleport Grenades** dans l'Armory (750 crédits). Va dans le **Cargo** et lance Chompy (500 crédits, voir [Chompy et les autres pièges](../pieges/)). Quand le mur s'ouvre pour laisser sortir ou rentrer Chompy, lance une Teleport Grenade dans le petit local derrière, avant qu'il se referme.
+
+    Tu es téléporté dedans : allume le **générateur** (à ta gauche, dans le coin). Quelques secondes plus tard, tu es renvoyé dehors. Le Weapon Disposal s'allume, et le Grenade Disposal gagne trois voyants rouges sur sa droite.
+
+    <Shots>
+      <Screenshot src={m + 'teleport_grenade.webp'} alt="L'achat mural des Teleport Grenades" credit={by} source={src} />
+      <Screenshot src={m + 'chompy.webp'} alt="Chompy dans le Cargo" credit={by} source={src} />
+      <Screenshot src={m + 'chompy_room.webp'} alt="Le local de Chompy quand le mur s'ouvre" credit={by} source={src} />
+      <Screenshot src={m + 'chompy_power.webp'} alt="Le générateur dans le local de Chompy" credit={by} source={src} />
+      <Screenshot src={m + 'weapon_disposal.webp'} alt="Le Weapon Disposal allumé" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Récupère la bouteille et construis la canne à pêche">
+    Donne des armes (murales ou de l'imprimante 3D) au **Weapon Disposal**, le bras de zombie de l'Armory. Environ toutes les deux armes, il donne un objet, dans cet ordre : une **bouteille** (elle tombe par terre à côté), puis le **moulinet**, le **fil** et l'**hameçon**. Une arme déjà donnée ne compte pas.
+
+    Pose chaque pièce sur la canne du **Gun Deck**, en face de la Vault Door, dès que tu l'as : une nouvelle pièce remplace celle que tu portais. Ensuite, chaque pêche coûte **100 crédits**. Laisse la bouteille par terre pour l'instant.
+
+    {/* TO CHECK: fixed order = mmmrkennedy + COD Zombified; GameCraves and The Escapist say the parts come at random. */}
+
+    <Shots>
+      <Screenshot src={m + 'bottle.webp'} alt="La bouteille à côté du Weapon Disposal" credit={by} source={src} />
+      <Screenshot src={m + 'fishing_rod.webp'} alt="La canne vide sur le Gun Deck" credit={by} source={src} />
+      <Screenshot src={m + 'fishing_rod_finished.webp'} alt="La canne terminée" credit={by} source={src} />
+    </Shots>
+  </Step>
+</Checklist>
+
+## Tablette 1 : l'énigme des grenades
+
+<Checklist>
+  <Step title="Lance une Teleport Grenade dans le Grenade Disposal">
+    Le Grenade Disposal est le grand panneau à grenades du bas de l'Armory. Lance (ou tire) une Teleport Grenade dans la fente du haut : le distributeur se décale et une icône change en boucle : **drone de diversion**, **grenade à fragmentation**, **drone explosif**, **nuée de nanorobots** (Nano Swarm).
+
+    Si le distributeur revient à la normale pendant l'énigme, relance une Teleport Grenade.
+
+    {/* TO CHECK: mmmrkennedy, COD Zombified, The Escapist and Cod Zombie Info use one Teleport Grenade at the start; Game Rant throws another after the first row; GameCraves throws one before each row. */}
+
+    <Screenshot src={m + 'activated_grenade_disposal.webp'} alt="Le Grenade Disposal en mode énigme" credit={by} source={src} />
+  </Step>
+
+  <Step title="Remplis les trois lignes">
+    Lance une **grenade à fragmentation** ou **à contact** dans la fente au moment où la bonne icône s'affiche : ta grenade devient ce type-là. Chaque ligne réussie fait passer un voyant rouge au vert.
+
+    - **Ligne 1** : drone de diversion, grenade à fragmentation.
+    - **Ligne 2** : drone explosif, drone de diversion, drone explosif, grenade à fragmentation.
+    - **Ligne 3** : drone explosif, Nano Swarm, drone explosif, drone de diversion, drone explosif, grenade à fragmentation.
+
+    Pour la dernière icône de chaque ligne, une Nano Swarm marche aussi.
+
+    <Shots>
+      <Screenshot src={m + 'distraction_drone.webp'} alt="Icône du drone de diversion" credit={by} source={src} />
+      <Screenshot src={m + 'frag_grenade.webp'} alt="Icône de la grenade à fragmentation" credit={by} source={src} />
+      <Screenshot src={m + 'explosive_drone.webp'} alt="Icône du drone explosif" credit={by} source={src} />
+      <Screenshot src={m + 'nano_swarm.webp'} alt="Icône de la Nano Swarm" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="Game Rant" source="https://gamerant.com/call-duty-advanced-warfare-carrier-floatsam-jetsam-guide/">
+        Ne tue pas le dernier zombie de la manche avec une grenade : la manche se termine et l'énigme repart de zéro. Garde un zombie en vie, loin de la machine.
+      </Tip>
+      <Tip type="faster" author="Game Rant" source="https://gamerant.com/call-duty-advanced-warfare-carrier-floatsam-jetsam-guide/">
+        Les grenades à fragmentation rentrent plus facilement que les grenades à contact. Avec une grenade à contact, vise juste un peu sous la fente. Chaque joueur porte 4 grenades (5 avec Exo Stockpile) : en coop, vous en avez plus.
+      </Tip>
+    </Tips>
+  </Step>
+
+  <Step title="Pose la tablette dans la Vault Door">
+    La tablette sort d'une fente à droite du panneau. Apporte-la à la Vault Door et interagis. Si elle refuse, attends qu'Oz ait fini de parler, puis réessaie.
+
+    <Screenshot src={m + 'tablet_1.webp'} alt="La première tablette à droite du Grenade Disposal" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Tablette 2 : le labyrinthe laser
+
+<Checklist>
+  <Step title="Ouvre tout le chemin">
+    Il faut que les portes **Cargo → Lift → Moon Pool → Hangar** soient ouvertes.
+  </Step>
+
+  <Step title="Bois la bouteille et lance le chrono">
+    Interagis avec la bouteille, à côté du Weapon Disposal : tu es ivre. Va ensuite côté **Bio Lab**, devant la porte du Cargo : appuie sur le **clavier vert**. Un chrono démarre et des lasers apparaissent sur tout le parcours.
+
+    <Shots>
+      <Screenshot src={m + 'bottle.webp'} alt="La bouteille" credit={by} source={src} />
+      <Screenshot src={m + 'drunk_button.webp'} alt="Le clavier qui lance le labyrinthe" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Traverse jusqu'au téléporteur du Hangar">
+    Passe par le **Cargo**, le **Lift** et le **Moon Pool** jusqu'au téléporteur du **Hangar**, sans toucher un laser. Ivre, tu ne peux que faire des sauts Exo et des glissades. Il y a plusieurs chemins dans chaque salle : le plus long est souvent le plus simple.
+
+    Si tu touches un laser, le chrono s'arrête et les lasers disparaissent : appuie à nouveau sur le clavier pour recommencer tout de suite.
+
+    {/* TO CHECK: in co-op, mmmrkennedy says all players must reach the teleporter; GameCraves says only the drunk player runs the maze. Timer: 2 min per COD Zombified and VGB; GameCraves says it depends on the number of players. */}
+  </Step>
+
+  <Step title="Ramasse la tablette">
+    Elle est par terre devant le téléporteur du Hangar. Apporte-la à la Vault Door.
+
+    <Shots>
+      <Screenshot src={m + 'hangar_teleporter.webp'} alt="Le téléporteur du Hangar, fin du labyrinthe" credit={by} source={src} />
+      <Screenshot src={m + 'tablet_2.webp'} alt="La deuxième tablette devant le téléporteur" credit={by} source={src} />
+    </Shots>
+
+    <Tips>
+      <Tip type="mistake" author="se7ensins" source="https://www.se7ensins.com/forums/threads/exo-zombies-carrier-full-easter-egg-video-and-text-tutorial.1334183/">
+        Garde un camouflage (récompense de série) en réserve : si une nouvelle manche commence pendant que tu es dans le labyrinthe, active-le pour que les zombies te laissent tranquille.
+      </Tip>
+    </Tips>
+  </Step>
+</Checklist>
+
+## Tablette 3 : le téléporteur et l'île
+
+<Checklist>
+  <Step title="Récupère 20 pièces de téléporteur">
+    À partir de maintenant, les **zombies et chiens téléporteurs** lâchent une pièce en mourant. Marche dessus pour la ramasser : tu n'en portes qu'une à la fois, et elle disparaît vite. Ils apparaissent vers la manche 10, et régulièrement vers la manche 15.
+
+    Apporte chaque pièce au **téléporteur en panne du Bio Lab**, à côté du générateur et des cellules vitrées. Au bout de **20 pièces**, il marche.
+
+    <Shots>
+      <Screenshot src={m + 'telefrag_piece.webp'} alt="Une pièce de téléporteur par terre" credit={by} source={src} />
+      <Screenshot src={m + 'inactive_teleporter.webp'} alt="Le téléporteur en panne du Bio Lab" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pêche une pelle">
+    Pêche jusqu'à obtenir une **pelle**. En coop, donnez une pelle à plusieurs joueurs : vous creuserez plus vite.
+  </Step>
+
+  <Step title="Creuse sur l'île">
+    Avec la pelle, prends le téléporteur du Bio Lab : la première fois coûte **100 crédits**. Tu arrives sur une **île**. Maintiens la touche d'action sur le sable pour creuser, jusqu'à trouver une **boîte** avec la tablette. Son emplacement change à chaque partie.
+
+    Au bout d'environ **30 secondes**, tu es renvoyé sur le navire. Pas trouvé ? Attends que le téléporteur se recharge et retournes-y.
+
+    {/* TO CHECK: GameCraves alone says the teleporter price rises up to 1,000 with each use and resets each round. */}
+
+    <Screenshot src={m + 'tablet_3.webp'} alt="La boîte avec la troisième tablette sur l'île" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pose la tablette">
+    Apporte-la à la Vault Door. Cela débloque aussi la **station Mk 25** à côté de la canne à pêche : voir [Améliorer ses armes (Mk 20 et Mk 25)](../pack-a-punch/).
+  </Step>
+</Checklist>
+
+## Tablette 4 : le casier de Captain DJ
+
+<Checklist>
+  <Step title="Trouve le casier de Captain DJ">
+    Dans le **Hangar**, monte au vestiaire (près d'Exo Medic). Interagis avec le casier de **Captain DJ** : les personnages disent qu'il a un **scanner oculaire**.
+
+    <Screenshot src={m + 'captain_djs_locker.webp'} alt="Le casier de Captain DJ" credit={by} source={src} />
+  </Step>
+
+  <Step title="Abats le drone vide">
+    Quelques manches plus tard (entre 2 et 5), **deux drones à trésor** volent ensemble quelque part sur la carte. L'un porte un power-up, l'autre a l'air vide. Abats le **drone vide** avant qu'il s'en aille : il encaisse beaucoup de balles. Il lâche un **levier bleu**.
+
+    <Screenshot src={m + 'empty_drone.webp'} alt="Le drone vide" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pose le levier dans le Moon Pool">
+    Pose le levier sur le **boîtier électrique** du Moon Pool, à côté de l'imprimante 3D. **Ne l'active pas encore.** L'activer coûtera **1 000 crédits**.
+
+    <Screenshot src={m + 'electrical_box.webp'} alt="Le boîtier électrique du Moon Pool" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pêche un poisson">
+    Retourne à la canne à pêche jusqu'à obtenir un **poisson**. Le requin l'échangera contre l'œil.
+  </Step>
+
+  <Step title="Attire le requin">
+    Tue des zombies sur les **trois grilles** autour du bassin du Moon Pool : leur sang coule dans l'eau et attire un **requin** sous le sol.
+
+    <Screenshot src={m + 'three_squares.webp'} alt="Les trois grilles du Moon Pool" credit={by} source={src} />
+  </Step>
+
+  <Step title="Descends dans la cage">
+    Quand le requin passe sous le **cercle du milieu**, active le boîtier (1 000 crédits) : le sol s'ouvre et la cage descend. Le joueur qui a le poisson saute sur la cage pour entrer dedans. Sous l'eau, le requin mord la cage : maintiens la touche d'action sur sa gueule. Ton poisson devient l'**œil de Captain DJ**.
+
+    <Screenshot src={m + 'shark.webp'} alt="Le requin qui mord la cage" credit={by} source={src} />
+  </Step>
+
+  <Step title="Ouvre le casier">
+    Utilise l'œil sur le casier de Captain DJ : il s'ouvre sur la dernière tablette. Apporte-la à la Vault Door.
+
+    <Screenshot src={m + 'tablet_4.webp'} alt="La quatrième tablette dans le casier" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## La fin
+
+<Checklist>
+  <Step title="Récupère le C4">
+    Donne encore des armes au Weapon Disposal jusqu'à obtenir du **C4**. Il arrive vite.
+
+    <Screenshot src={m + 'c4.webp'} alt="Le C4" credit={by} source={src} />
+  </Step>
+
+  <Step title="Fais sauter la Vault Door">
+    Pose le C4 sur la Vault Door. La partie se termine, la cinématique de fin se lance et le succès « Flotsam & Jetsam » se débloque.
+  </Step>
+</Checklist>
+
+## Le trophée d'or de Carrier
+
+Pendant cet Easter Egg, tu peux aussi gagner le **trophée d'or de Carrier**, exposé dans la réception de la carte Descent. Pêche un **poisson rouge** et garde-le, puis termine le labyrinthe laser (tablette 2) en **moins d'une minute**. Si tu sens que tu n'y arriveras pas, touche un laser exprès et recommence. Tous les détails : [Les trophées de la réception](../../descent/trophees-de-la-reception/).
+
+{/* TO CHECK: gold = Red Fish + maze under 1 min (mmmrkennedy + jeuxvideo.com forum per the Descent research). NGTZombies wEuKdq7yv7w: 54 s gave silver; StarrBurrst Z_E4ZA62y3g: "under 50 seconds, maybe even 1 minute", unsure the fish is needed. Aim well under a minute. */}
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : Carrier Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/AW/carrier/carrier_guide) (toutes les étapes, ordre des objets, trophée d'or, captures d'écran)
+- [Game Rant : Carrier Easter Egg Guide](https://gamerant.com/call-duty-advanced-warfare-carrier-floatsam-jetsam-guide/) (étapes recoupées, pièges de l'énigme des grenades, drone, coop)
+- [GameCraves : Supremacy DLC Trophy Guide](https://gamecraves.com/call-of-duty-advanced-warfare-supremacy-dlc-trophy-guide/) (voyants de la porte, île, prix du téléporteur)
+- [The Escapist : Sink the Carrier in Advanced Warfare](https://www.escapistmagazine.com/sink-the-carrier-in-advanced-warfare-with-our-full-easter-egg-guide/) (étapes recoupées)
+- [COD Zombified : Easter Egg Walkthrough Part 1](https://codzombified.blogspot.com/2015/06/carrier-exo-zombies-easter-egg.html), [Part 2](https://codzombified.blogspot.com/2015/06/carrier-exo-zombies-easter-egg_9.html) et [Part 3](https://codzombified.blogspot.com/2015/06/carrier-exo-zombies-easter-egg_48.html) (Vault Door, labyrinthe ivre, téléporteur, prix de la cage)
+- [Millenium : Carrier, le secret](https://www.millenium.org/guide/167503.html?page=29) (étapes recoupées)
+- [se7ensins : Carrier Full Easter Egg Video and Text Tutorial](https://www.se7ensins.com/forums/threads/exo-zombies-carrier-full-easter-egg-video-and-text-tutorial.1334183/) (emplacement de la Vault Door, conseils de joueurs)
+- [Cod Zombie Info : Carrier](https://codzombieinformation.weebly.com/carrier.html) (générateur à gauche, site de fan)
+- [NGTZombies : Gold Carrier Trophy](https://www.youtube.com/watch?v=wEuKdq7yv7w) et [StarrBurrst : Carrier Gold Trophy Tutorial](https://www.youtube.com/watch?v=Z_E4ZA62y3g) (temps du labyrinthe pour l'or)

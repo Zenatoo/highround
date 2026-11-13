@@ -56,3 +56,47 @@ the-beast-from-beyond:
     image: ./media/iw/the-beast-from-beyond/banner.webp
     credit: Call of Duty
     source: https://www.youtube.com/watch?v=7GXQVGkevg4
+outbreak:
+  game: aw
+  name: Outbreak
+  order: 1
+  status: complete
+  color: blue
+  banner:
+    # Thumbnail of the official Havoc DLC trailer.
+    image: ./media/aw/outbreak/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=dvBK3IWkYyM
+infection:
+  game: aw
+  name: Infection
+  order: 2
+  status: complete
+  color: amber
+  banner:
+    # Thumbnail of the official trailer.
+    image: ./media/aw/infection/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=U_eCAPuMK3c
+carrier:
+  game: aw
+  name: Carrier
+  order: 3
+  status: complete
+  color: teal
+  banner:
+    # Thumbnail of the official trailer.
+    image: ./media/aw/carrier/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=UAb01_QHtpk
+descent:
+  game: aw
+  name: Descent
+  order: 4
+  status: complete
+  color: red
+  banner:
+    # Thumbnail of the official trailer.
+    image: ./media/aw/descent/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=qKtE-iMUzLA
