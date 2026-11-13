@@ -1,9 +1,9 @@
 ---
-import type { Locale } from '../i18n/config';
+import { currentLang } from '../i18n/config';
 import { t } from '../i18n/ui';
 import Icon from './Icon.astro';
 
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 ---
 
 <div class="checklist" data-checklist data-confirm={t(lang, 'checklist.resetConfirm')}>
@@ -21,44 +21,40 @@ const lang = (Astro.currentLocale ?? 'fr') as Locale;
 </div>
 
 <script>
-  // Progress is stored on the device only (localStorage), one entry per checklist.
+  import { readJSON, removeKey, writeJSON } from '../lib/storage';
+
+  // Progress is stored on the device only: the ids of the ticked steps, one entry per guide.
+  // Ids, not positions, so a step added to a published guide does not shift the saved ticks.
   const PREFIX = 'highround:checklist:';
-
-  function load(key: string): number[] {
-    try {
-      return JSON.parse(localStorage.getItem(key) ?? '[]');
-    } catch {
-      return [];
-    }
-  }
-
-  function save(key: string, value: number[]) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch {
-      // Storage blocked (private mode): the checklist still works for this visit.
-    }
-  }
 
   const lists = [...document.querySelectorAll<HTMLElement>('[data-checklist]')];
   if (lists.length) {
     const guide = lists[0].closest<HTMLElement>('[data-guide-id]')?.dataset.guideId ?? location.pathname;
-    const groups = lists.map((list, index) => ({
-      key: `${PREFIX}${guide}:${index}`,
-      boxes: [...list.querySelectorAll<HTMLInputElement>(':scope > ol > li input[data-step]')],
-    }));
-    const boxes = groups.flatMap((g) => g.boxes);
+    const key = `${PREFIX}${guide}`;
+    const groups = lists.map((list) => [...list.querySelectorAll<HTMLInputElement>(':scope > ol > li input[data-step]')]);
+    const boxes = groups.flat();
+    const steps = boxes.map((box) => box.closest('li')!);
+    const ids = steps.map((step) => step.id);
 
-    groups.forEach(({ key, boxes }) => {
-      const saved = new Set(load(key));
-      boxes.forEach((box, i) => (box.checked = saved.has(i)));
-    });
+    const stored = readJSON<string[]>(key);
+    // Older format: positions per checklist ("<guide>:<index>"). Converted once to ids, then dropped.
+    const saved =
+      stored ??
+      groups.flatMap((group, index) => {
+        const oldKey = `${key}:${index}`;
+        const old = readJSON<number[]>(oldKey) ?? [];
+        removeKey(oldKey);
+        return old.flatMap((i) => (group[i] ? [group[i].closest('li')!.id] : []));
+      });
+    if (!stored && saved.length) writeJSON(key, saved);
+    const ticked = new Set(saved);
+    boxes.forEach((box, i) => (box.checked = ticked.has(ids[i])));
 
     // Step list in the side panel, built from the step titles.
     const toc = document.querySelector<HTMLOListElement>('[data-progress-toc]');
     // Each entry: a number that ticks or unticks the step, and the title that scrolls to it.
     const tocItems = boxes.map((box, i) => {
-      const step = box.closest('li')!;
+      const step = steps[i];
       const title = step.querySelector('.step-title-text')?.textContent ?? '';
       const toggle = document.createElement('button');
       toggle.type = 'button';
@@ -78,7 +74,7 @@ const lang = (Astro.currentLocale ?? 'fr') as Locale;
       return { li, toggle };
     });
 
-    const update = () => {
+    const show = () => {
       const done = boxes.filter((b) => b.checked).length;
       document.querySelectorAll<HTMLProgressElement>('[data-progress-bar]').forEach((bar) => {
         bar.max = Math.max(boxes.length, 1);
@@ -92,7 +88,11 @@ const lang = (Astro.currentLocale ?? 'fr') as Locale;
         tocItems[i].toggle.setAttribute('aria-pressed', String(b.checked));
         tocItems[i].toggle.textContent = b.checked ? '✓' : String(i + 1);
       });
-      groups.forEach(({ key, boxes }) => save(key, boxes.flatMap((b, i) => (b.checked ? [i] : []))));
+    };
+    // A tick or a reset: show it and save it. The first display only shows what was saved.
+    const update = () => {
+      show();
+      writeJSON(key, ids.filter((_, i) => boxes[i].checked));
     };
 
     lists.forEach((list) => list.addEventListener('change', update));
@@ -107,7 +107,7 @@ const lang = (Astro.currentLocale ?? 'fr') as Locale;
     document
       .querySelectorAll<HTMLElement>('[data-js-only], [data-progress-panel]')
       .forEach((el) => (el.hidden = false));
-    update();
+    show();
   }
 </script>
 

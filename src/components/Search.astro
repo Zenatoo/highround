@@ -67,16 +67,19 @@ const { lang } = Astro.props;
   input.addEventListener('focus', load, { once: true });
   input.addEventListener('input', async () => {
     const query = input.value.trim();
+    // The reader may type more while a search runs: results for an older query are dropped.
+    const stale = () => input.value.trim() !== query;
     list.hidden = query.length === 0;
     if (!query) return;
 
     const engine = await load();
     if (!engine) return message(root.dataset.unavailable!);
     const search = await engine.debouncedSearch(query);
-    if (!search || input.value.trim() !== query) return;
+    if (!search || stale()) return;
     if (search.results.length === 0) return message(root.dataset.empty!);
 
     const items = await Promise.all(search.results.slice(0, 8).map((r) => r.data()));
+    if (stale()) return;
     list.replaceChildren(
       ...items.map((item) => {
         const li = document.createElement('li');

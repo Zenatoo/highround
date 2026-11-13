@@ -1,8 +1,8 @@
 ---
-import type { Locale } from '../i18n/config';
+import { currentLang, type Locale } from '../i18n/config';
 import { CALC_ID, FINALS, O_VALUES, PRODUCTS } from '../lib/chemistry';
 
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 const L = {
   fr: {
     title: 'Calculatrice de chimie',
@@ -120,8 +120,8 @@ const L = {
 </section>
 
 <script>
-  import { BOARDS, CHEM_EVENT, CHEM_STORE as KEY, chainOf, ingredientsOf, PRODUCTS, REACTIONS, reactionNumber, type ProductKey } from '../lib/chemistry';
-  import type { Locale } from '../i18n/config';
+  import { BOARDS, CHEM_EVENT, chainOf, ingredientsOf, loadChem, PRODUCTS, REACTIONS, reactionNumber, saveChem, type ChemState, type ProductKey } from '../lib/chemistry';
+  import { currentLang, type Locale } from '../i18n/config';
 
   for (const root of document.querySelectorAll<HTMLElement>('[data-chem]')) {
     const lang = root.dataset.lang as Locale;
@@ -132,16 +132,8 @@ const L = {
     const stepsBox = root.querySelector<HTMLElement>('[data-steps]')!;
 
     // The numbers change every match: kept on this device only, until "Clear", so a reload mid-game loses nothing.
-    type State = { final?: string; o?: string; m?: string; d: Record<string, [string, string]> };
-    let state: State = { d: {} };
-    try {
-      state = { d: {}, ...JSON.parse(localStorage.getItem(KEY) ?? '{}') };
-    } catch {}
-    const save = () => {
-      try {
-        localStorage.setItem(KEY, JSON.stringify(state));
-      } catch {}
-    };
+    let state: ChemState = loadChem();
+    const save = () => saveChem(state);
 
     const name = (key: ProductKey) => PRODUCTS[key].name[lang];
     const value = (key: ProductKey): [number, number] | null => {
@@ -327,44 +319,10 @@ const L = {
     color: var(--muted);
     font-size: var(--fs-sm);
   }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .chip {
-    position: relative;
-  }
-  .chip input {
-    position: absolute;
-    opacity: 0;
-    inset: 0;
-    margin: 0;
-    cursor: pointer;
-  }
-  .chip span {
-    display: block;
-    padding: 0.5rem 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    background: var(--raised);
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    overflow-wrap: anywhere;
-  }
   .chips-num .chip span {
     min-width: 2.75rem;
     text-align: center;
     font-variant-numeric: tabular-nums;
-  }
-  .chip input:checked + span {
-    border-color: var(--accent);
-    background: color-mix(in oklab, var(--accent) 14%, var(--raised));
-    color: var(--text);
-  }
-  .chip input:focus-visible + span {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
   }
   .m-row {
     display: flex;

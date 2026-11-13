@@ -1,5 +1,5 @@
 ---
-import type { Locale, TipType } from '../i18n/config';
+import { currentLang, type TipType } from '../i18n/config';
 import { tipLabel } from '../i18n/ui';
 import { tipIcon } from '../lib/icons';
 import Icon from './Icon.astro';
@@ -13,7 +13,7 @@ interface Props {
 const { type, author, source } = Astro.props;
 if (!author?.trim()) throw new Error('Every tip must credit its author.');
 
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 ---
 
 <aside class={`tip tip-${type}`}>

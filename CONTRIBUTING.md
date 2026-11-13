@@ -36,7 +36,7 @@ A Windows release is published by pushing a tag: `git tag v0.2.0 && git push --t
 
 ### When is a map complete?
 
-A map is marked `complete` in `content/maps.yaml` when it has everything below that exists on that map. Zombies in Spaceland is the reference.
+A map is marked `complete` in `content/maps.yaml`, with the day it goes live as `published: YYYY-MM-DD`, when it has everything below that exists on that map. Zombies in Spaceland is the reference.
 
 - [ ] Main Easter Egg
 - [ ] Power, Pack-a-Punch, perks (all machines with location and price)

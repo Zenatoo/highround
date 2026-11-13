@@ -1,9 +1,9 @@
 ---
-import type { Locale } from '../i18n/config';
+import { currentLang } from '../i18n/config';
 import { t } from '../i18n/ui';
 import Icon from './Icon.astro';
 
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 ---
 
 <!-- Collapsed by default: the main steps must work without tips. -->

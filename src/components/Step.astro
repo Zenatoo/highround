@@ -4,12 +4,20 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const id = `step-${title
+const base = `step-${title
   .toLowerCase()
   .normalize('NFD')
   .replace(/[̀-ͯ]/g, '')
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-|-$/g, '')}`;
+
+// Two steps with the same title on one page would share an id (and a checkbox label):
+// the second one gets "-2", the third "-3". Astro.locals is fresh for each page render.
+const locals = Astro.locals as { stepIds?: Map<string, number> };
+const used = (locals.stepIds ??= new Map());
+const count = (used.get(base) ?? 0) + 1;
+used.set(base, count);
+const id = count === 1 ? base : `${base}-${count}`;
 ---
 
 <li class="step" id={id}>

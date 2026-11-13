@@ -13,7 +13,7 @@ const { lang, mapName, guideTitle } = Astro.props;
 ---
 
 <!-- Phones: the play button stays at the bottom of the screen. -->
-<button type="button" class="button button-primary play-fab" data-play-open hidden>
+<button type="button" class="button button-primary fab play-fab" data-play-open hidden>
   <Icon name="play" /> {t(lang, 'play.start')}
 </button>
 
@@ -145,14 +145,9 @@ const { lang, mapName, guideTitle } = Astro.props;
 
 <style>
   .play-fab {
-    position: fixed;
     left: 1rem;
     right: 1rem;
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    z-index: 15;
-    min-height: 3.25rem;
-    border-radius: var(--r-lg);
-    box-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+    min-height: var(--play-fab-h);
   }
   @media (min-width: 40.01rem) {
     .play-fab {

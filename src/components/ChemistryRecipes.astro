@@ -1,25 +1,25 @@
 ---
-import type { Locale } from '../i18n/config';
+import { currentLang } from '../i18n/config';
 import { chainOf, FINALS, PRODUCTS, REACTIONS, WHERE, type ProductKey } from '../lib/chemistry';
 
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 const L = {
   fr: {
     pick: 'Choisis un produit final : seule sa recette s’affiche.',
     reaction: 'Réaction',
     makes: 'donne',
-    put: 'À poser sur la table',
+    put: 'À poser sur la table :',
     made: 'Fabriqué par une réaction plus haut : il sort à droite du garage',
-    board: 'Losange sur le tableau',
+    board: 'Losange sur le tableau : ',
     bomb: 'Porte le produit final à la bombe.',
   },
   en: {
     pick: 'Pick a final chemical: only its recipe shows.',
     reaction: 'Reaction',
     makes: 'makes',
-    put: 'Put on the table',
+    put: 'Put on the table:',
     made: 'Made by a reaction above: it comes out on the right of the garage',
-    board: 'Diamond on the board',
+    board: 'Diamond on the board: ',
     bomb: 'Take the final chemical to the bomb.',
   },
 }[lang];
@@ -69,14 +69,14 @@ const recipes = FINALS.map((final) => ({
                   {L.makes} <strong>{name(step.made)}</strong>
                 </span>
               </p>
-              <p class="put">{L.put} :</p>
+              <p class="put">{L.put}</p>
               <ul class="inputs">
                 {step.inputs.map((input) => (
                   <li>
                     <strong>{name(input.key)}</strong>
                     <span class="where">{input.where}</span>
                     <span class="board">
-                      {L.board} : {input.board}
+                      {L.board}{input.board}
                     </span>
                   </li>
                 ))}
@@ -91,40 +91,33 @@ const recipes = FINALS.map((final) => ({
 </section>
 
 <script>
-  import { CHEM_EVENT, CHEM_STORE, FINALS } from '../lib/chemistry';
+  import { CHEM_EVENT, FINALS, loadChem, saveChem } from '../lib/chemistry';
 
   for (const root of document.querySelectorAll<HTMLElement>('[data-recipes]')) {
     const pick = root.querySelector<HTMLElement>('[data-pick]')!;
     const radios = [...root.querySelectorAll<HTMLInputElement>('input[name=chem-recipe]')];
     const recipes = [...root.querySelectorAll<HTMLElement>('[data-recipe]')];
 
-    const read = (): Record<string, unknown> => {
-      try {
-        return JSON.parse(localStorage.getItem(CHEM_STORE) ?? '{}');
-      } catch {
-        return {};
-      }
-    };
     const show = (final: string) => {
       for (const radio of radios) radio.checked = radio.value === final;
       for (const recipe of recipes) recipe.hidden = recipe.dataset.recipe !== final;
     };
 
-    for (const radio of radios) {
-      radio.addEventListener('change', () => {
-        show(radio.value);
-        // Saved with the calculator's numbers, so the calculator lower down uses the same recipe.
-        try {
-          localStorage.setItem(CHEM_STORE, JSON.stringify({ d: {}, ...read(), final: radio.value }));
-        } catch {}
-        window.dispatchEvent(new CustomEvent(CHEM_EVENT, { detail: radio.value }));
-      });
-    }
+    // Saved with the calculator's numbers and announced, so the calculator lower down uses the same recipe.
+    const choose = (final: string) => {
+      show(final);
+      saveChem({ ...loadChem(), final });
+      window.dispatchEvent(new CustomEvent(CHEM_EVENT, { detail: final }));
+    };
+
+    for (const radio of radios) radio.addEventListener('change', () => choose(radio.value));
     window.addEventListener(CHEM_EVENT, (event) => show((event as CustomEvent<string>).detail));
 
-    const saved = read().final;
+    const saved = loadChem().final;
     pick.hidden = false;
-    show(typeof saved === 'string' && FINALS.includes(saved as never) ? saved : FINALS[0]);
+    // First visit: the recipe shown by default also becomes the calculator's, so both agree from the start.
+    if (saved && FINALS.includes(saved as never)) show(saved);
+    else choose(FINALS[0]);
   }
 </script>
 
@@ -140,39 +133,6 @@ const recipes = FINALS.map((final) => ({
   .pick legend {
     margin-bottom: 0.55rem;
     font-weight: 700;
-  }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .chip {
-    position: relative;
-  }
-  .chip input {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .chip span {
-    display: block;
-    padding: 0.5rem 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    background: var(--raised);
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    overflow-wrap: anywhere;
-  }
-  .chip input:checked + span {
-    border-color: var(--accent);
-    background: color-mix(in oklab, var(--accent) 14%, var(--raised));
-  }
-  .chip input:focus-visible + span {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
   }
   .recipe {
     padding: clamp(1rem, 0.7rem + 1vw, 1.4rem);

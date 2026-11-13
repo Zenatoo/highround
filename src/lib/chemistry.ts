@@ -1,6 +1,7 @@
 // Attack of the Radioactive Thing: what each chemical is called, which board shows its diamond,
 // and what each reaction takes. From Zenato's own guide (credited in the chemistry guide).
 import type { Locale } from '../i18n/config';
+import { readJSON, writeJSON } from './storage';
 
 type Text = Record<Locale, string>;
 
@@ -75,6 +76,11 @@ export const CALC_ID = { fr: 'calculatrice', en: 'calculator' } as const;
 /** Shared by the recipe picker and the calculator, so choosing a recipe in one selects it in the other. */
 export const CHEM_STORE = 'highround:chemistry';
 export const CHEM_EVENT = 'highround:chemistry-final';
+
+/** What the calculator keeps on the device: the recipe being made, O, M and each diamond's two numbers. */
+export type ChemState = { final?: string; o?: string; m?: string; d: Record<string, [string, string]> };
+export const loadChem = (): ChemState => ({ d: {}, ...readJSON<Partial<ChemState>>(CHEM_STORE) });
+export const saveChem = (state: ChemState) => writeJSON(CHEM_STORE, state);
 
 /** What each reaction takes, by the chemical it makes. */
 export const REACTIONS: Partial<Record<ProductKey, ProductKey[]>> = {

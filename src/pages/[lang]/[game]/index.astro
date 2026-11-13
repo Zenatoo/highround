@@ -5,11 +5,11 @@ import Icon from '../../../components/Icon.astro';
 import MapArt from '../../../components/MapArt.astro';
 import { LOCALES, type Locale } from '../../../i18n/config';
 import { colon, count, fill, t } from '../../../i18n/ui';
-import { getGames, getGuides, getMaps, otherLocale } from '../../../lib/content';
+import { getGuides, getMaps, getPlayableGames, otherLocale } from '../../../lib/content';
 import { href } from '../../../lib/url';
 
 export async function getStaticPaths() {
-  const games = (await getGames()).filter((g) => g.data.status !== 'soon');
+  const games = await getPlayableGames();
   return LOCALES.flatMap((lang) =>
     games.map((game) => ({ params: { lang, game: game.id }, props: { game } })),
   );

@@ -5,24 +5,12 @@ import GuideHeader from '../../../../../../components/GuideHeader.astro';
 import GuideRail from '../../../../../../components/GuideRail.astro';
 import Icon from '../../../../../../components/Icon.astro';
 import { t } from '../../../../../../i18n/ui';
-import { getGames, getGuides, getMaps } from '../../../../../../lib/content';
+import { guideAlternate, guidePaths } from '../../../../../../lib/content';
 import { href } from '../../../../../../lib/url';
 
-export async function getStaticPaths() {
-  const guides = await getGuides();
-  const maps = await getMaps();
-  const games = await getGames();
-  return guides.map((guide) => ({
-    params: { lang: guide.lang, game: guide.game, map: guide.map, guide: guide.slug },
-    props: {
-      guide,
-      map: maps.find((m) => m.id === guide.map)!,
-      game: games.find((g) => g.id === guide.game)!,
-    },
-  }));
-}
+export const getStaticPaths = guidePaths;
 
-const { guide, map, game } = Astro.props;
+const { guide, map, game, translation } = Astro.props;
 const gameName = game.data.name;
 const { lang } = guide;
 const videos = guide.data.videos;
@@ -36,6 +24,7 @@ const groups = [
 <BaseLayout
   lang={lang}
   title={`${t(lang, 'guide.tab.videos')} – ${guide.data.title}`}
+  {...guideAlternate(guide, translation, 'videos')}
   crumbs={[
     { label: gameName, href: href(lang, guide.game) },
     { label: map.data.name, href: href(lang, guide.game, map.id) },
@@ -105,10 +94,6 @@ const groups = [
 </BaseLayout>
 
 <style>
-  .guide-layout {
-    display: grid;
-    gap: 1.5rem;
-  }
   .videos-body {
     display: grid;
     gap: 2rem;
@@ -207,12 +192,5 @@ const groups = [
     border: 1px dashed var(--border);
     border-radius: var(--r-md);
     color: var(--muted);
-  }
-  @media (min-width: 75rem) {
-    .guide-layout {
-      grid-template-columns: minmax(0, 1fr) 18rem;
-      gap: 2rem;
-      align-items: start;
-    }
   }
 </style>

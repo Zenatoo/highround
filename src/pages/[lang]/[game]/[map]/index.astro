@@ -3,13 +3,13 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Icon from '../../../../components/Icon.astro';
 import MapArt from '../../../../components/MapArt.astro';
 import { LOCALES, type Locale } from '../../../../i18n/config';
-import { categoryLabel, count, fill, t } from '../../../../i18n/ui';
-import { getGames, getMapGuides, getMaps, otherLocale, stepCount, type Guide } from '../../../../lib/content';
+import { categoryLabel, count, fill, formatDate, t } from '../../../../i18n/ui';
+import { getMapGuides, getMaps, getPlayableGames, otherLocale, stepCount, type Guide } from '../../../../lib/content';
 import { categoryIcon } from '../../../../lib/icons';
 import { href } from '../../../../lib/url';
 
 export async function getStaticPaths() {
-  const games = (await getGames()).filter((g) => g.data.status !== 'soon');
+  const games = await getPlayableGames();
   const maps = (await getMaps()).filter((m) => games.some((g) => g.id === m.data.game));
   return LOCALES.flatMap((lang) =>
     maps.map((map) => ({
@@ -27,7 +27,6 @@ const main = guides.find((g) => g.data.category === 'main-quest');
 const rest = guides.filter((g) => g !== main);
 // getMapGuides already sorts by category, so groups come out in the site's category order.
 const groups = [...Map.groupBy(rest, (g) => g.data.category)];
-const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: 'medium' });
 
 // Short facts shown under a guide title.
 function facts(g: Guide) {
@@ -36,7 +35,7 @@ function facts(g: Guide) {
     g.data.difficulty && { cls: `badge-${g.data.difficulty}`, icon: 'gauge', text: t(lang, `difficulty.${g.data.difficulty}`) },
     g.data.players && { cls: '', icon: g.data.players === 'solo' ? 'user' : 'users', text: t(lang, `players.${g.data.players}`) },
     steps > 0 && { cls: '', icon: 'list-checks', text: count(lang, steps, 'step') },
-    g.data.verified && { cls: 'badge-complete', icon: 'badge-check', text: `${t(lang, 'guide.verified')} ${dateFormat.format(g.data.verified.date)}` },
+    g.data.verified && { cls: 'badge-complete', icon: 'badge-check', text: `${t(lang, 'guide.verified')} ${formatDate(lang, g.data.verified.date, 'medium')}` },
     g.lang !== lang && { cls: 'badge-hard', icon: 'languages', text: `${t(lang, 'guide.notTranslated')} (${g.lang.toUpperCase()})` },
   ].filter(Boolean) as { cls: string; icon: 'gauge' | 'user' | 'users' | 'list-checks' | 'badge-check' | 'languages'; text: string }[];
 }

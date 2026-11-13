@@ -214,6 +214,18 @@ export const fill = (lang: Locale, key: Key, values: Record<string, string>) =>
 export const categoryLabel = (lang: Locale, category: Category) => categories[lang][category];
 export const tipLabel = (lang: Locale, type: TipType) => tipTypes[lang][type];
 /** French puts a (non-breaking) space before a colon, English doesn't. */
+const dateFormats = new Map<string, Intl.DateTimeFormat>();
+/** Dates come from YAML as UTC midnight: formatted in UTC so they never shift by a day. */
+export function formatDate(lang: Locale, date: Date, style: 'long' | 'medium' = 'long') {
+  const key = `${lang}:${style}`;
+  let format = dateFormats.get(key);
+  if (!format) {
+    format = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: style, timeZone: 'UTC' });
+    dateFormats.set(key, format);
+  }
+  return format.format(date);
+}
+
 export const colon = (lang: Locale) => (lang === 'fr' ? ' : ' : ': ');
 
 const units = {

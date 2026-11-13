@@ -50,8 +50,15 @@ const { lang } = Astro.props;
     dialog.showModal();
   });
 
+  // A swipe ends with a click on the dialog itself: it must not count as a backdrop click.
+  let swiped = false;
+
   dialog.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
+    if (swiped) {
+      swiped = false;
+      return;
+    }
     if (target.closest('[data-prev]')) return show(index - 1);
     if (target.closest('[data-next]')) return show(index + 1);
     // Click on the backdrop or the close button.
@@ -64,10 +71,16 @@ const { lang } = Astro.props;
   });
 
   let startX = 0;
-  dialog.addEventListener('pointerdown', (e) => (startX = e.clientX));
+  dialog.addEventListener('pointerdown', (e) => {
+    startX = e.clientX;
+    swiped = false;
+  });
   dialog.addEventListener('pointerup', (e) => {
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > 60 && group.length > 1) show(index + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 60 && group.length > 1) {
+      swiped = true;
+      show(index + (dx < 0 ? 1 : -1));
+    }
   });
 
   dialog.addEventListener('close', () => {
@@ -87,6 +100,8 @@ const { lang } = Astro.props;
     border: 0;
     background: transparent;
     color: var(--text);
+    /* Horizontal swipes go to the script (next/previous image) instead of panning the page. */
+    touch-action: pan-y pinch-zoom;
   }
   .lightbox::backdrop {
     background: rgb(5 7 10 / 0.92);

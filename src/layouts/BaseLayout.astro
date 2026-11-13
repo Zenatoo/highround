@@ -15,6 +15,7 @@ import Search from '../components/Search.astro';
 import Settings from '../components/Settings.astro';
 import type { Locale } from '../i18n/config';
 import { t } from '../i18n/ui';
+import { otherLocale } from '../lib/content';
 import { href } from '../lib/url';
 
 interface Props {
@@ -41,8 +42,7 @@ const shareSource = share?.image ?? logo;
 const shareWidth = Math.min(1200, shareSource.width);
 const shareHeight = Math.round((shareSource.height * shareWidth) / shareSource.width);
 const shareImage = await getImage({ src: shareSource, width: shareWidth, format: share ? 'jpg' : 'png' });
-const other: Locale = lang === 'fr' ? 'en' : 'fr';
-const alternateHref = alternate?.href ?? fallbackHref ?? href(other);
+const alternateHref = alternate?.href ?? fallbackHref ?? href(otherLocale(lang));
 const repo = 'https://github.com/Zenatoo/highround/blob/main';
 ---
 

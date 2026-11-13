@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { categoryLabel, count, t } from '../i18n/ui';
+import { categoryLabel, colon, count, formatDate, t } from '../i18n/ui';
 import { stepCount, type Guide } from '../lib/content';
 import { categoryIcon } from '../lib/icons';
 import { href } from '../lib/url';
@@ -17,7 +17,6 @@ const { lang, game, slug } = guide;
 const { difficulty, players, verified, category, videos } = guide.data;
 const base = href(lang, game, map.id, slug);
 const steps = stepCount(guide);
-const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { dateStyle: 'long' });
 ---
 
 <div class="head">
@@ -41,7 +40,7 @@ const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { 
     {
       difficulty && (
         <span class={`badge badge-${difficulty}`}>
-          <Icon name="gauge" /> {t(lang, 'guide.difficulty')} : {t(lang, `difficulty.${difficulty}`)}
+          <Icon name="gauge" /> {t(lang, 'guide.difficulty')}{colon(lang)}{t(lang, `difficulty.${difficulty}`)}
         </span>
       )
     }
@@ -63,7 +62,7 @@ const dateFormat = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { 
       verified && (
         <span class="badge badge-complete">
           <Icon name="badge-check" /> {t(lang, 'guide.verified')}{' '}
-          <time datetime={verified.date.toISOString().slice(0, 10)}>{dateFormat.format(verified.date)}</time>
+          <time datetime={verified.date.toISOString().slice(0, 10)}>{formatDate(lang, verified.date)}</time>
         </span>
       )
     }

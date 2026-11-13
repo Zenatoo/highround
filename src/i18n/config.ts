@@ -2,6 +2,9 @@ export const LOCALES = ['fr', 'en'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'fr';
 
+/** The page language, for components that only get `Astro`. */
+export const currentLang = (astro: { currentLocale?: string }) => (astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+
 // Order matters: it is the tab order on a map page.
 export const CATEGORIES = [
   'main-quest',

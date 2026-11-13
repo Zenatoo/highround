@@ -1,27 +1,29 @@
 ---
-import type { Locale } from '../i18n/config';
+import { currentLang } from '../i18n/config';
 import { CALC_ID } from '../lib/chemistry';
 import Icon from './Icon.astro';
 
 // Players who already know the method only want the calculator: send them straight to it.
-const lang = (Astro.currentLocale ?? 'fr') as Locale;
+const lang = currentLang(Astro);
 const L = {
   fr: {
     title: 'Tu connais déjà la méthode ?',
     text: 'Va directement à la calculatrice. Entre le produit final, O, M et les losanges : elle te donne le code de chaque réaction.',
     go: 'Ouvrir la calculatrice',
     first: 'Première fois : lis le guide dans l’ordre, juste en dessous.',
+    fab: 'Calculatrice',
   },
   en: {
     title: 'Already know how it works?',
     text: 'Go straight to the calculator. Enter the final chemical, O, M and the diamonds: it gives you the code for each reaction.',
     go: 'Open the calculator',
     first: 'First time: read the guide in order, just below.',
+    fab: 'Calculator',
   },
 }[lang];
 ---
 
-<aside class="shortcut" aria-label={L.go}>
+<aside class="shortcut" aria-label={L.go} data-calc-shortcut>
   <span class="shortcut-icon" aria-hidden="true"><Icon name="calculator" /></span>
   <div class="shortcut-text">
     <p class="shortcut-title">{L.title}</p>
@@ -32,6 +34,39 @@ const L = {
     <Icon name="calculator" /> {L.go}
   </a>
 </aside>
+
+<!-- Same jump, kept on screen while the reader is deep in the guide. -->
+<a class="button fab calc-fab" href={`#${CALC_ID[lang]}`} aria-label={L.go} data-calc-fab data-pagefind-ignore>
+  <Icon name="calculator" />
+  <span>{L.fab}</span>
+</a>
+
+<script>
+  // Shown only when it adds something: past the shortcut card, with the calculator and the footer off screen.
+  const fab = document.querySelector<HTMLAnchorElement>('[data-calc-fab]');
+  const card = document.querySelector('[data-calc-shortcut]');
+  const calc = fab && document.querySelector<HTMLElement>(fab.hash);
+  if (fab && card && calc) {
+    let cardPassed = false;
+    const onScreen = new Set<Element>();
+    // What the reader sees starts under the sticky top bar.
+    const topbar = document.querySelector('.topbar')?.getBoundingClientRect().height ?? 0;
+    const io = new IntersectionObserver(
+      (entries) => {
+        // Entries come in order: when one element has several, the last one wins.
+        for (const e of entries) {
+          // The card only counts once it has scrolled away upwards, not before the reader reaches it.
+          if (e.target === card) cardPassed = !e.isIntersecting && e.boundingClientRect.top < topbar;
+          else if (e.isIntersecting) onScreen.add(e.target);
+          else onScreen.delete(e.target);
+        }
+        fab.toggleAttribute('data-shown', cardPassed && onScreen.size === 0 && !calc.hidden);
+      },
+      { rootMargin: `-${Math.round(topbar)}px 0px 0px 0px` },
+    );
+    for (const el of [card, calc, document.querySelector('.footer')]) if (el) io.observe(el);
+  }
+</script>
 
 <style>
   .shortcut {
@@ -80,10 +115,6 @@ const L = {
     grid-column: 1 / -1;
     justify-content: center;
     min-height: 2.9rem;
-    text-decoration: none;
-  }
-  .shortcut-go:hover {
-    text-decoration: none;
   }
   @media (min-width: 48rem) {
     .shortcut {
@@ -94,6 +125,53 @@ const L = {
     }
     .shortcut-go {
       grid-column: auto;
+    }
+  }
+
+  /* Secondary look on purpose: the filled red button stays the play-mode one. */
+  .calc-fab {
+    right: max(1rem, env(safe-area-inset-right));
+    min-height: var(--fab-h);
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    background: var(--raised);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.5rem);
+    transition:
+      opacity 0.18s ease-out,
+      transform 0.18s ease-out,
+      visibility 0s 0.18s;
+  }
+  .calc-fab[data-shown] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .calc-fab :global(.icon) {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--accent);
+  }
+  .calc-fab:hover {
+    background: var(--hover);
+  }
+  /* Phones: when the play-mode bar sits at the bottom, stack above it. */
+  @media (max-width: 40rem) {
+    :global(body:has(.play-fab:not([hidden]))) .calc-fab {
+      bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--play-fab-h) + 0.6rem);
+    }
+  }
+  /* Wide screens: bottom of the reading column, clear of the guide rail (see .guide-layout in global.css). */
+  @media (min-width: 75rem) {
+    .calc-fab {
+      right: calc(var(--gutter) + var(--rail) + var(--rail-gap));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .calc-fab {
+      transform: none;
+      transition: none;
     }
   }
 </style>

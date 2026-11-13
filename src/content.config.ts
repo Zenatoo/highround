@@ -30,6 +30,8 @@ const maps = defineCollection({
       name: z.string(),
       order: z.number().int(),
       status,
+      // Day the map went live as complete: the home page features the most recent one.
+      published: z.coerce.date().optional(),
       color,
       // Same rule as screenshots: a banner always shows its source.
       banner: z

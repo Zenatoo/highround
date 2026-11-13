@@ -1,4 +1,5 @@
 # Key = map id used in URLs and in content/guides/<lang>/<game>/<map>/.
+# published = day the map went live as complete (the home page features the most recent one).
 # color = generated banner color until a real banner image is added:
 #   banner: { image: ./media/<game>/<map>/banner.webp, credit: Author, source: https://… }
 zombies-in-spaceland:
@@ -6,6 +7,7 @@ zombies-in-spaceland:
   name: Zombies in Spaceland
   order: 1
   status: complete
+  published: 2026-11-09
   color: pink
   banner:
     image: ./media/iw/zombies-in-spaceland/banner.webp
@@ -17,6 +19,7 @@ rave-in-the-redwoods:
   name: Rave in the Redwoods
   order: 2
   status: complete
+  published: 2026-11-11
   color: green
   banner:
     # Frame of the official trailer.
@@ -28,6 +31,7 @@ shaolin-shuffle:
   name: Shaolin Shuffle
   order: 3
   status: complete
+  published: 2026-11-11
   color: amber
   banner:
     # Frame of the official trailer.
@@ -39,6 +43,7 @@ attack-of-the-radioactive-thing:
   name: Attack of the Radioactive Thing
   order: 4
   status: complete
+  published: 2026-11-11
   color: teal
   banner:
     # Frame of the official trailer.
@@ -50,6 +55,7 @@ the-beast-from-beyond:
   name: The Beast from Beyond
   order: 5
   status: complete
+  published: 2026-11-11
   color: blue
   banner:
     # Frame of the official trailer.
@@ -61,6 +67,7 @@ outbreak:
   name: Outbreak
   order: 1
   status: complete
+  published: 2026-11-13
   color: blue
   banner:
     # Thumbnail of the official Havoc DLC trailer.
@@ -72,6 +79,7 @@ infection:
   name: Infection
   order: 2
   status: complete
+  published: 2026-11-13
   color: amber
   banner:
     # Thumbnail of the official trailer.
@@ -83,6 +91,7 @@ carrier:
   name: Carrier
   order: 3
   status: complete
+  published: 2026-11-13
   color: teal
   banner:
     # Thumbnail of the official trailer.
@@ -94,6 +103,7 @@ descent:
   name: Descent
   order: 4
   status: complete
+  published: 2026-11-13
   color: red
   banner:
     # Thumbnail of the official trailer.

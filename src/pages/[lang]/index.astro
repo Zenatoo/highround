@@ -20,9 +20,14 @@ const games = [
   ...byYear.filter((g) => g.data.status === 'soon'),
 ];
 const maps = await getMaps();
-// The map being written, otherwise the last finished one.
+// The map being written, otherwise the most recently published one (the last of its batch).
+const published = (m: (typeof maps)[number]) => m.data.published?.getTime() ?? 0;
 const featured =
-  maps.find((m) => m.data.status === 'in-progress') ?? maps.findLast((m) => m.data.status === 'complete');
+  maps.find((m) => m.data.status === 'in-progress') ??
+  maps
+    .filter((m) => m.data.status === 'complete')
+    .sort((a, b) => published(a) - published(b) || a.data.order - b.data.order)
+    .at(-1);
 const done = featured?.data.status === 'complete';
 const featuredGame = featured && games.find((g) => g.id === featured.data.game);
 const featuredCount = featured ? (await getMapGuides(lang, featured.data.game, featured.id)).length : 0;
