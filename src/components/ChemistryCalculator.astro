@@ -1,5 +1,5 @@
 ---
-import { currentLang, type Locale } from '../i18n/config';
+import { currentLang } from '../i18n/config';
 import { CALC_ID, FINALS, O_VALUES, PRODUCTS } from '../lib/chemistry';
 
 const lang = currentLang(Astro);
@@ -121,7 +121,7 @@ const L = {
 
 <script>
   import { BOARDS, CHEM_EVENT, chainOf, ingredientsOf, loadChem, PRODUCTS, REACTIONS, reactionNumber, saveChem, type ChemState, type ProductKey } from '../lib/chemistry';
-  import { currentLang, type Locale } from '../i18n/config';
+  import type { Locale } from '../i18n/config';
 
   for (const root of document.querySelectorAll<HTMLElement>('[data-chem]')) {
     const lang = root.dataset.lang as Locale;
