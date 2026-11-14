@@ -1,0 +1,110 @@
+---
+title: La salle d'arcade et ses mini-jeux
+category: side-quests
+order: 4
+draft: false
+difficulty: easy
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=cKDNhIAKXJg
+    title: "[TUTO] NACHT DER UNTOTEN, MATÉRIAUX, POINTS et ATOUT GRATUIT sur FORSAKEN (Cold War Zombies)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/cKDNhIAKXJg.jpg
+  - url: https://www.youtube.com/watch?v=LMtk2bmUcrI
+    title: "[TUTO] L'EASTER EGG de la COURSE d'ARC-XD sur FORSAKEN (Black Ops Cold War Zombies)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/LMtk2bmUcrI.jpg
+  - url: https://www.youtube.com/watch?v=pHo_o9BOqmU
+    title: "FORSAKEN - ARCADE CHALLENGES GUIDE (Cold War Zombies Tutorial)"
+    creator: "Fast Guides Glitch"
+    lang: en
+    thumbnail: ../../../../media/videos/pHo_o9BOqmU.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/forsaken/forsaken_guide';
+export const m = 'bocw/forsaken/main_ee/';
+export const g = 'bocw/forsaken/grand_prix/';
+
+L'**Arcade** est dans le bâtiment du **Video Store**, dans Anytown West. Ses bornes sont jouables : chacune t'envoie dans un mini-jeu, et tu gagnes un coffre de butin ou de l'Essence. Il te faut un **Arcade Token** (jeton) par partie de borne.
+
+<Shots>
+  <Screenshot src={m + 'arcade.webp'} alt="L'entrée de l'Arcade dans Anytown West" credit={by} source={src} />
+  <Screenshot src={m + 'grandprix_machine.webp'} alt="Les bornes de l'Arcade" credit={by} source={src} />
+</Shots>
+
+## Les jetons
+
+Le **changeur de jetons** est dans l'Arcade, à côté de la porte de la réserve du Video Store (celle avec l'escalier).
+
+- **Gratuit** : frappe le changeur au couteau. Il lâche un jeton, **une fois par partie**.
+- **Acheté** : **10 000 Essence** le jeton au changeur. C'est cher.
+- **Au hasard** : un zombie tué peut lâcher un jeton.
+
+<Screenshot src={m + 'arcadetoken_buy.webp'} alt="Le changeur de jetons de l'Arcade" credit={by} source={src} />
+
+{/* TO CHECK: tracker.gg lists "Unlock the Pack-a-Punch" as a prerequisite for the arcade machines (single source). */}
+
+Selon un guide, les bornes ne marchent qu'une fois le confinement levé : voir [Lever le confinement et débloquer le Pack-a-Punch](../pack-a-punch/).
+
+## Les trois bornes
+
+| Borne | Le mini-jeu | Récompense |
+| --- | --- | --- |
+| **World at War** | Tu es téléporté dans **Nacht der Untoten**, la toute première carte Zombies (2008), avec des armes imposées. Survis quelques vagues. | Un **gros coffre** de butin à la fin |
+| **Der Eisendrache** | Une arène qui rappelle la carte de Black Ops III. Reste dans le **cercle de feu** et tue les zombies qui sortent des portails pour nourrir le **dragon**, avant la fin du temps. | Un **gros coffre** (souvent doré) : atouts, armes Legendary, Salvage, parfois le **Chrysalax** |
+| **Enduro** | Tu pilotes un **ARC-XD** sur un parcours d'obstacles mobiles et tu ramasses de l'Essence. | L'**Essence** ramassée |
+
+{/* World at War: "survive for two minutes" (tracker.gg) vs "survive 3 waves, a crate each level" (COD Zombified). Der Eisendrache chest contents: COD Zombified (perks, legendary weapons, Chrysalax), GamesRadar (Chrysalax). Enduro: tracker.gg, COD Zombified (about 5,000 points when completed). */}
+
+Pour le Chrysalax, voir [Le Chrysalax](../chrysalax/).
+
+## Les bornes cachées
+
+### Grand Prix (Arcade)
+
+Une quatrième borne de l'Arcade, **Grand Prix**, sert à la quête principale : elle s'allume en électrocutant un zombie à côté avec la munition Dead Wire, puis te fait piloter un ARC-XD jusqu'au TV Store. Tout est dans [Easter Egg principal (Pyrrhic Victory)](../easter-egg-principal/).
+
+### Anytown Grand Prix (Bar)
+
+Une course d'ARC-XD cachée à l'**étage du Bar**, dans Anytown East.
+
+<Checklist>
+  <Step title="Allume la borne avec PhD Slider">
+    Achète **PhD Slider** (Observation Tower, n'importe quel tier). Monte à l'étage du Bar : la borne est sous une **bâche poussiéreuse**, à droite de l'arme murale. Tue un zombie juste à côté avec l'**explosion d'une glissade** : son âme part dans la machine et l'allume.
+
+    <Shots>
+      <Screenshot src={g + 'bar.webp'} alt="Le Bar dans Anytown East" credit={by} source={src} />
+      <Screenshot src={g + 'grandprix_arcade_machine_bar.webp'} alt="La borne Anytown Grand Prix à l'étage du Bar" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Mets un jeton par joueur">
+    **Chaque joueur** de la partie met un Arcade Token dans la borne, puis lance la course.
+  </Step>
+
+  <Step title="Fais les 3 tours">
+    Pilote l'ARC-XD sur **3 tours** en suivant les **flèches violettes** au sol. Il y a quelques raccourcis. Tu peux ramasser de l'Essence en route. La récompense dépend de ton temps :
+
+    | Temps | Récompense |
+    | --- | --- |
+    | Moins de 1 min 40 | Legendary : 5 000 points |
+    | De 1 min 40 à 2 min 10 | Epic : 4 000 points |
+    | Plus de 2 min 10 | Rare : 3 000 points |
+
+    {/* Times and points: COD Zombified; points by tier also mmmrkennedy. tracker.gg only says "rewards up to Legendary, including Salvage and Essence". */}
+  </Step>
+</Checklist>
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [COD Zombified : Forsaken All Arcade Machine Easter Eggs and free Arcade Token](https://codzombified.blogspot.com/2021/11/forsaken-all-arcade-machine-easter-eggs.html) (jetons, changeur, les quatre bornes, temps de la course)
+- [Cold War Tracker : Arcade Guide for Forsaken](https://cod.tracker.gg/cold-war/articles/black-ops-cold-war-zombies-forsaken-arcade-guide) (jetons à 10 000, les trois bornes)
+- [Cold War Tracker : Anytown Grand Prix Guide for Forsaken](https://cod.tracker.gg/cold-war/articles/black-ops-cold-war-zombies-forsaken-anytown-grand-prix-guide) (un jeton par joueur, PhD Slider)
+- [mmmrkennedy : Forsaken Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/forsaken/forsaken_guide) (jeton gratuit, récompenses de la course, captures d'écran)
+- [COD Zombified : Forsaken Map Layout, Anytown West / Video Store / Cinema / TV Store](https://codzombified.blogspot.com/2021/10/forsaken-map-layout-anytown-west-video.html) (bornes et changeur dans l'Arcade)
+- [GamesRadar : Black Ops Cold War Forsaken Easter Egg guide](https://www.gamesradar.com/black-ops-cold-war-forsaken-easter-egg-guide) (Chrysalax dans le coffre de Der Eisendrache)

@@ -110,3 +110,51 @@ descent:
     image: ./media/aw/descent/banner.webp
     credit: Call of Duty
     source: https://www.youtube.com/watch?v=qKtE-iMUzLA
+die-maschine:
+  game: bocw
+  name: Die Maschine
+  order: 1
+  status: complete
+  published: 2026-11-14
+  color: violet
+  banner:
+    # Frame of the official Zombies reveal trailer (PlayStation Europe upload).
+    image: ./media/bocw/die-maschine/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=ZQGXZ5auE2g
+firebase-z:
+  game: bocw
+  name: Firebase Z
+  order: 2
+  status: complete
+  published: 2026-11-14
+  color: green
+  banner:
+    # Thumbnail of Treyarch's "Inside Firebase Z" video.
+    image: ./media/bocw/firebase-z/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=af7NSZrH1ZA
+mauer-der-toten:
+  game: bocw
+  name: Mauer der Toten
+  order: 3
+  status: complete
+  published: 2026-11-14
+  color: pink
+  banner:
+    # Thumbnail of Treyarch's "Inside Mauer der Toten" video.
+    image: ./media/bocw/mauer-der-toten/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=vLBaNJje3b4
+forsaken:
+  game: bocw
+  name: Forsaken
+  order: 4
+  status: complete
+  published: 2026-11-14
+  color: red
+  banner:
+    # Thumbnail of the official Forsaken trailer.
+    image: ./media/bocw/forsaken/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=3lXcetccN8o

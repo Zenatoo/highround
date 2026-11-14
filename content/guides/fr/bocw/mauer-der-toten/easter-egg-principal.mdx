@@ -1,0 +1,282 @@
+---
+title: Easter Egg principal (Tin Man Heart)
+category: main-quest
+order: 1
+draft: false
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=IQzsNXkzVgE
+    title: "[TUTO] Faire le SECRET COMPLET de MAUER DER TOTEN (Cold War Zombie)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/IQzsNXkzVgE.jpg
+  - url: https://www.youtube.com/watch?v=f0tsq3QdwCU
+    title: "Le SECRET de \"MAUER DER TOTEN\" en SOLO sur BLACK OPS COLD WAR ZOMBIE 🧟‍♂️"
+    creator: "FlapixTV"
+    lang: fr
+    thumbnail: ../../../../media/videos/f0tsq3QdwCU.jpg
+  - url: https://www.youtube.com/watch?v=dPai8xhp9nw
+    title: "MAUER DER TOTEN EASTER EGG GUIDE - Full Cold War Zombies Easter Egg Tutorial"
+    creator: "MrDalekJD"
+    lang: en
+    thumbnail: ../../../../media/videos/dPai8xhp9nw.jpg
+  - url: https://www.youtube.com/watch?v=KLHziC8D428
+    title: "ULTIMATE MAUER DER TOTEN EASTER EGG GUIDE: Cold War Zombies Easter Egg (ALL SPAWNS, SOLO & COOP)"
+    creator: "MrRoflWaffles"
+    lang: en
+    thumbnail: ../../../../media/videos/KLHziC8D428.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/mauer_der_toten/mauer_der_toten_guide';
+export const m = 'bocw/mauer-der-toten/main_ee/';
+
+Le but de **Tin Man Heart** : préparer une ogive dans le laboratoire secret d'Endstation, capturer la traîtresse **Valentina**, puis aider Klaus à porter l'ogive dans le portail.
+
+**Avant de commencer :**
+
+- Compte **40 minutes à 1 heure** en solo, une fois bien équipé.
+- Faisable en solo comme en coop. Cold War n'a **pas de mode guidé** : la quête est la même pour tous.
+- **Pas de succès ni de trophée** : comme toutes les cartes sorties après le lancement de Cold War, Mauer der Toten n'en a aucun. La quête débloque le défi Dark Ops **« Tin Man Heart »** (XP et carte de visite), la cinématique de fin et un bonus de cristaux d'Aetherium.
+- L'étape de l'uranium a un **chrono de 5 minutes** : si tu le rates, la partie s'arrête. Lis-la en entier avant de la lancer.
+- Pour souffler entre deux étapes, laisse un seul zombie en vie à la fin d'une manche (par exemple un rampant).
+
+{/* Reward: tracker.gg (Dark Ops challenge, calling card, cutscene). Crystals: Treyarch 20 May 2021 notes (main quest gives the crystals of the last exfil). No achievement: see the shared achievements research (PowerPyx, platpursuit, tracker.gg). 40 min - 1 h: mmmrkennedy. */}
+
+## Préparer la quête
+
+<Checklist>
+  <Step title="Rétablis le courant et débloque le Pack-a-Punch">
+    Voir [Rétablir le courant](../courant/) et [Débloquer le Pack-a-Punch](../pack-a-punch/).
+  </Step>
+
+  <Step title="Construis Klaus et prends le CRBR-S">
+    Klaus fait plusieurs étapes à ta place, et le CRBR-S sert à faire tomber des pièces et à ouvrir le laboratoire. Voir [Klaus, le robot allié](../klaus/) et [Le CRBR-S et ses 3 kits](../crbr-s/).
+  </Step>
+
+  <Step title="Fais la première amélioration de Klaus">
+    L'antenne parabolique et la défense d'une minute dans la Garment Factory suffisent : **les disquettes ne sont pas nécessaires**. Klaus doit être amélioré avant l'étape du train. Fais-le tôt, la défense devient dure aux manches élevées.
+  </Step>
+</Checklist>
+
+{/* Only the first Klaus upgrade is needed: chapter titles of MrRoflWaffles (KLHziC8D428, "No Floppy Disks Needed") and Fast Guides Glitch (JASHNOsuSCw, "Floppy Discs not needed"), PC Gamer. */}
+
+## Ouvrir le laboratoire secret
+
+<Checklist>
+  <Step title="Fabrique le casque de piratage">
+    Le **Hacking Helm** a trois pièces. Tire sur chaque objet avec le CRBR-S pour faire tomber la pièce, puis ramasse-la.
+
+    - **Antenna** : le pylône radio sur l'Apartment Rooftop, le toit de départ.
+    - **Electronic Boards** : le petit boîtier à lumière verte au-dessus du guichet de la Ghost Station, près de l'arme murale M16 et du panneau « Weinmeisterstraße ».
+    - **Transistor** : une des trois radios de l'Electronics Store (près de la télé, près de la chaise de bureau ou sur une étagère). La bonne change à chaque partie.
+
+    Va ensuite à la Safe House et interagis avec Klaus dans sa chaise pour lui fabriquer le casque.
+
+    <Shots>
+      <Screenshot src={m + 'helm_rooftop.webp'} alt="Le pylône radio du toit de départ" credit={by} source={src} />
+      <Screenshot src={m + 'helm_station.webp'} alt="Le boîtier au-dessus du guichet de la Ghost Station" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc1.webp'} alt="Electronics Store : première radio possible" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc2.webp'} alt="Electronics Store : deuxième radio possible" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc3.webp'} alt="Electronics Store : troisième radio possible" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: order. mmmrkennedy / tracker.gg do the helm first; GameSpot and Charlie Intel do it later. It is needed before the satellite computer at the latest. */}
+  </Step>
+
+  <Step title="Fais casser le mur de briques par Klaus">
+    Dans le **Sewer Access**, monte le petit escalier jusqu'au mur de briques nu. Envoie Klaus devant avec la télécommande : il le défonce et révèle un **mur de métal**.
+
+    <Screenshot src={m + 'brickwall.webp'} alt="Le mur de briques en haut du petit escalier du Sewer Access" credit={by} source={src} />
+  </Step>
+
+  <Step title="Fais fondre le mur de métal avec le Blazer">
+    Il faut le kit **Blazer** du CRBR-S, qui tombe au hasard sur les zombies tués avec l'arme. Tire sur le mur de métal avec le rayon jusqu'à ce qu'il fonde.
+  </Step>
+
+  <Step title="Survis au verrouillage du laboratoire">
+    Dès qu'un joueur entre, la manche se termine et une **manche de Tormentors** commence. Deux machines sont protégées par des boucliers rouges : ils tombent à la manche suivante.
+  </Step>
+</Checklist>
+
+## Remplir les trois bidons
+
+<Checklist>
+  <Step title="Prends les bidons et un leurre">
+    Prends les **trois bidons vides** sur la machine centrale, la **Conversion Unit**.
+
+    Tire sur l'autre machine (écrans verts, à l'étage du bas) avec le CRBR-S : elle donne un **Endstation Lure**, un leurre qui prend la place de ton équipement tactique. On n'en porte qu'un à la fois. S'il n'y en a plus, attends la manche suivante. En coop, que chaque joueur en prenne un.
+
+    {/* TO CHECK: lure availability. tracker.gg: next round if none is available; GamesRadar: one per round; GameSpot: each player can take one. */}
+
+    <Shots>
+      <Screenshot src={m + 'conversionunit.webp'} alt="La Conversion Unit au centre du laboratoire" credit={by} source={src} />
+      <Screenshot src={m + 'luremachine.webp'} alt="La machine qui donne les leurres" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose les bidons dans trois collecteurs">
+    Les **Essence Harvesters** sont de grosses boîtes vertes. Sept emplacements existent, mais **seulement trois** apparaissent dans chaque partie. Elles se voient bien : repère-les à l'avance.
+
+    - West Berlin Street, contre une petite cabane près du Death Strip.
+    - Destroyed Penthouse, dans la pièce en ruine sous Quick Revive.
+    - East Berlin Streets, sous l'arche entre le Bar et l'Electronics Store.
+    - Korber Rooftop, à côté du pilier devant Speed Cola.
+    - Alley, à côté de la benne, au pied de la corde.
+    - Sewer Access, à gauche de l'arme murale XM4, près du laboratoire.
+    - Ghost Station, sur un quai près de l'arme murale M16.
+
+    Interagis avec chaque collecteur pour y mettre un bidon.
+
+    <Shots>
+      <Screenshot src={m + 'harvesters_westberlin.webp'} alt="Collecteur de West Berlin Street" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_penthouse.webp'} alt="Collecteur du Destroyed Penthouse" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_eastberlin.webp'} alt="Collecteur des East Berlin Streets" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_korber.webp'} alt="Collecteur du Korber Rooftop" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_alley.webp'} alt="Collecteur de l'Alley" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_sewer.webp'} alt="Collecteur du Sewer Access" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_ghost.webp'} alt="Collecteur de la Ghost Station" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Remplis les bidons avec des Tempests">
+    Lance un leurre à côté d'un collecteur : des **Tempests** apparaissent. Tue-les près du collecteur. Quand le bidon brille en **violet**, il est plein : prends-le. Sinon, lance un autre leurre.
+
+    Rapporte chaque bidon plein à la Conversion Unit. Avec un bidon plein, tu ne peux **ni sprinter ni escalader**, et des ennemis arrivent pour t'arrêter : fais-toi couvrir en coop. Recommence pour les trois bidons.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="mistake" author="PC Gamer" source="https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/">
+    Vérifie que le bidon est bien dans le collecteur avant de lancer le leurre : sinon, les Tempests tués ne remplissent rien.
+  </Tip>
+</Tips>
+
+## Arrêter le train
+
+<Checklist>
+  <Step title="Actionne l'aiguillage">
+    Sors Klaus. Dans la **Switch Control Room**, actionne l'aiguillage (Railway Switch) sur le grand pupitre.
+
+    <Screenshot src={m + 'railwayswitch.webp'} alt="L'aiguillage de la Switch Control Room" credit={by} source={src} />
+  </Step>
+
+  <Step title="Place Klaus sur la voie">
+    Dans la Ghost Station, envoie Klaus sur la voie **la plus éloignée de Mule Kick**, côté guichet et arme murale M16. Un train arrive et Klaus l'arrête.
+
+    Si ça rate, attends la manche suivante et actionne à nouveau l'aiguillage : une seule tentative par manche.
+
+    <Screenshot src={m + 'klaus_on_tracks.webp'} alt="Klaus sur la bonne voie" credit={by} source={src} />
+  </Step>
+
+  <Step title="Prends la carte et la bombe dans le train">
+    Monte vite à bord, avant que le train reparte. Prends la **carte d'accès de Rico** (Rico's Keycard) sur le corps assis, et la **bombe** (l'ogive) dans la caisse.
+
+    <Shots>
+      <Screenshot src={m + 'train_keycard.webp'} alt="La carte d'accès de Rico sur un corps assis" credit={by} source={src} />
+      <Screenshot src={m + 'train_bomb.webp'} alt="La bombe dans le train" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose la bombe dans le laboratoire">
+    Retourne au laboratoire et pose la bombe sur la Conversion Unit, avec les trois bidons.
+  </Step>
+</Checklist>
+
+## L'uranium (deux fois)
+
+Cette partie se fait **deux fois**, sur deux manches. Prépare-toi avant : le chrono de 5 minutes démarre dès que le Megaton meurt, et un échec **termine la partie**.
+
+<Checklist>
+  <Step title="Active le satellite">
+    Dans la **Safe House**, utilise l'ordinateur de la table centrale avec la carte de Rico. Choisis « Browse Files » jusqu'à ce que l'option « Activate the Disruptor Satellite » apparaisse, puis suis le marqueur à l'écran.
+
+    Selon la plupart des guides, il faut ensuite utiliser l'ordinateur d'une tente : celle de **West Berlin Street** (à côté des Trials) la première fois, la **tente militaire** des East Berlin Streets la seconde fois.
+
+    {/* TO CHECK: GameSpot, PC Gamer, EarlyGame and KeenGamer use the West Berlin tent computer, then the East Berlin one the 2nd time; DizzyOP's description uses only the Safe House computer twice; mmmrkennedy says "follow the objective marker". */}
+
+    <Screenshot src={m + 'safehouse_computer.webp'} alt="L'ordinateur de la Safe House" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tue le Megaton">
+    Un rayon tombe du ciel et des ennemis d'élite apparaissent, dont un **Megaton HVT** et des Mimics. Tue les autres d'abord et garde le Megaton pour la fin. Comme toujours, il se coupe en deux (Blaster et Bomber) : chaque moitié lâche une **Uranium Rock**. Le chrono de 5 minutes démarre.
+
+    Depuis le 29 juillet 2021, les pierres tombent même si un train fantôme tue le Megaton.
+  </Step>
+
+  <Step title="Fabrique les deux engins à uranium">
+    Prends une pierre et porte-la au plus proche des deux établis de quête : dans la tente de **West Berlin Street** ou dans la **tente militaire** des East Berlin Streets. Fabrique un **engin à uranium** (Uranium Device). Fais pareil avec la seconde pierre.
+
+    Porter l'uranium te fait perdre de la vie petit à petit. Healing Aura aide beaucoup.
+
+    <Shots>
+      <Screenshot src={m + 'west_bench.webp'} alt="L'établi de quête de West Berlin Street" credit={by} source={src} />
+      <Screenshot src={m + 'east_bench.webp'} alt="L'établi de quête de la tente militaire" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Fais-les se percuter sur la tyrolienne">
+    Accroche un engin au bout de la tyrolienne du **Destroyed Penthouse**, et l'autre au bout de celle du **Korber Rooftop** (la tyrolienne qui passe dans le « O » de KORBER). Les deux glissent, se percutent au milieu et une **pierre purifiée** (Cleansed Rock) tombe dans les East Berlin Streets. Le chrono s'arrête.
+
+    En solo, fais les deux engins l'un après l'autre. En coop, partagez-vous les deux pierres.
+
+    {/* Penthouse and Korber ziplines: mmmrkennedy / tracker.gg, PC Gamer, KeenGamer, EarlyGame, DizzyOP, COD Zombified. GameSpot alone says the Apartment Rooftop. */}
+
+    <Shots>
+      <Screenshot src={m + 'penthouse_zipline.webp'} alt="La tyrolienne du Destroyed Penthouse" credit={by} source={src} />
+      <Screenshot src={m + 'korber_zipline.webp'} alt="La tyrolienne du Korber Rooftop" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose la pierre purifiée dans l'ogive">
+    Ramasse la pierre dans la rue et pose-la sur l'ogive, dans le laboratoire.
+  </Step>
+
+  <Step title="Recommence à la manche suivante">
+    Passe à la manche suivante et refais toute l'étape pour une **deuxième pierre purifiée**.
+
+    **Attention :** poser la deuxième pierre lance **tout de suite** le combat de boss. Lâche-la près de l'ogive, puis équipe-toi : atouts, armes améliorées, armure, auto-réanimations, séries de points.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="faster" author="GameSpot" source="https://www.gamespot.com/articles/how-to-complete-mauer-der-toten-main-easter-egg-in-cod-black-ops-cold-wars-zombies/1100-6494140/">
+    Prends Healing Aura comme amélioration de terrain pour cette étape : tu soignes les dégâts de l'uranium sans lâcher l'engin et sans perdre de temps.
+  </Tip>
+  <Tip type="mistake" author="PC Gamer" source="https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/">
+    N'oublie pas l'établi : sans engin à uranium, la pierre ne sert à rien sur la tyrolienne, et en solo chaque seconde compte.
+  </Tip>
+</Tips>
+
+## Le combat contre Valentina
+
+Valentina apparaît dans le laboratoire. Elle change d'arène quatre fois avant de revenir au laboratoire. Ses attaques et la stratégie sont détaillées dans [Battre Valentina](../boss-valentina/).
+
+<Checklist>
+  <Step title="Bats Valentina">
+    Casse son bouclier (barre bleue), puis vide sa vie (barre rouge). Tue tout de suite les zombies qui flottent autour d'elle : ils la soignent. Quand l'écran devient bleu et tremble, cache-toi hors de sa vue.
+  </Step>
+
+  <Step title="Protège Klaus jusqu'au portail">
+    Interagis avec Valentina à terre : une cinématique se lance. Ensuite, **défends Klaus** pendant qu'il porte l'ogive jusqu'au portail. Une fois Klaus dans le portail, la partie se termine sur la cinématique de fin.
+  </Step>
+</Checklist>
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : Mauer der Toten Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/mauer_der_toten/mauer_der_toten_guide) (étapes, collecteurs, durée, captures d'écran)
+- [Tracker : Tin Man Heart Main Quest guide](https://tracker.gg/cold-war/articles/black-ops-cold-war-zombies-mauer-der-toten-tin-man-heart-main-quest-guide) (étapes, récompenses, une tentative de train par manche, boss lancé par la deuxième pierre)
+- [GameSpot : How To Complete Mauer Der Toten Main Easter Egg In CoD: Black Ops Cold War's Zombies](https://www.gamespot.com/articles/how-to-complete-mauer-der-toten-main-easter-egg-in-cod-black-ops-cold-wars-zombies/1100-6494140/) (étapes recoupées, chrono de 5 minutes, Healing Aura, tentes)
+- [PC Gamer : How to beat the Mauer Der Toten Easter Egg in Call of Duty: Cold War](https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/) (étapes recoupées, bidons, pas de sprint, un zombie en vie)
+- [KeenGamer : Mauer Der Toten Easter Egg Guide](https://www.keengamer.com/articles/guides/mauer-der-toten-easter-egg-guide-black-ops-cold-war-zombies/) (échec du chrono, Mimics, tyroliennes)
+- [EarlyGame : How to Complete Black Ops Cold War Mauer Der Toten Easter Egg](https://earlygame.com/call-of-duty/how-to-complete-bocw-mauer-der-toten-easter-egg-guide-walkthrough) (ordinateurs, tyroliennes)
+- [COD Zombified : Mauer der Toten, souterrains](https://codzombified.blogspot.com/2021/07/mauer-der-toten-map-layout-service.html) et [Korber Rooftop](https://codzombified.blogspot.com/2021/07/mauer-der-toten-map-layout-korber.html) (boîtier de la Ghost Station, voie de Klaus, tyroliennes de l'uranium)
+- [Dexerto : Ultimate Mauer der Toten quest guide](https://dexerto.com/call-of-duty/ultimate-mauer-der-toten-quest-guide-1612889) (chrono, deuxième pierre)
+- [MrDalekJD : Mauer Der Toten Easter Egg Guide](https://www.youtube.com/watch?v=dPai8xhp9nw) (description : emplacements des collecteurs)
+- [MrRoflWaffles : Ultimate Mauer der Toten Easter Egg Guide](https://www.youtube.com/watch?v=KLHziC8D428) (chapitres : amélioration de Klaus sans disquettes, fin après le boss)
+- [DizzyOP : Mauer Der Toten, Getting to Final Boss Valentina SOLO](https://www.youtube.com/watch?v=_CX1EKjAB4U) (description : déroulé complet en solo)
+- [Charlie Intel : Cold War July 29 update patch notes](https://www.charlieintel.com/cold-war-july-29-update-patch-notes-zombie-improvements-season-5-teaser-more/118629) (pierres lâchées même si un train tue le Megaton)
+- [Treyarch : New Content Arrives with 80s Action Heroes](https://www.treyarch.com/game-intel/2021/05/New_Content_Arrives_with_80s_Action_Heroes) (cristaux d'Aetherium pour une quête principale terminée)

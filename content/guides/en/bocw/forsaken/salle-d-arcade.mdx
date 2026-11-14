@@ -1,0 +1,110 @@
+---
+title: The arcade and its mini-games
+category: side-quests
+order: 4
+draft: false
+difficulty: easy
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=cKDNhIAKXJg
+    title: "[TUTO] NACHT DER UNTOTEN, MATÉRIAUX, POINTS et ATOUT GRATUIT sur FORSAKEN (Cold War Zombies)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/cKDNhIAKXJg.jpg
+  - url: https://www.youtube.com/watch?v=LMtk2bmUcrI
+    title: "[TUTO] L'EASTER EGG de la COURSE d'ARC-XD sur FORSAKEN (Black Ops Cold War Zombies)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/LMtk2bmUcrI.jpg
+  - url: https://www.youtube.com/watch?v=pHo_o9BOqmU
+    title: "FORSAKEN - ARCADE CHALLENGES GUIDE (Cold War Zombies Tutorial)"
+    creator: "Fast Guides Glitch"
+    lang: en
+    thumbnail: ../../../../media/videos/pHo_o9BOqmU.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/forsaken/forsaken_guide';
+export const m = 'bocw/forsaken/main_ee/';
+export const g = 'bocw/forsaken/grand_prix/';
+
+The **Arcade** is in the **Video Store** building, in Anytown West. Its machines are playable: each one sends you into a mini-game, and you win a loot chest or Essence. You need one **Arcade Token** per game on a machine.
+
+<Shots>
+  <Screenshot src={m + 'arcade.webp'} alt="The Arcade entrance in Anytown West" credit={by} source={src} />
+  <Screenshot src={m + 'grandprix_machine.webp'} alt="The Arcade machines" credit={by} source={src} />
+</Shots>
+
+## Tokens
+
+The **token changer** is in the Arcade, next to the door to the Video Store storeroom (the one with the stairs).
+
+- **Free**: knife the changer. It drops a token, **once per game**.
+- **Bought**: **10,000 Essence** per token at the changer. That's expensive.
+- **Random**: a zombie you kill can drop a token.
+
+<Screenshot src={m + 'arcadetoken_buy.webp'} alt="The Arcade token changer" credit={by} source={src} />
+
+{/* TO CHECK: tracker.gg lists "Unlock the Pack-a-Punch" as a prerequisite for the arcade machines (single source). */}
+
+According to one guide, the machines only work once the lockdown is lifted: see [Lift the lockdown and unlock Pack-a-Punch](../pack-a-punch/).
+
+## The three machines
+
+| Machine | The mini-game | Reward |
+| --- | --- | --- |
+| **World at War** | You are teleported into **Nacht der Untoten**, the very first Zombies map (2008), with set weapons. Survive a few waves. | A **big chest** of loot at the end |
+| **Der Eisendrache** | An arena that looks like the Black Ops III map. Stay in the **ring of fire** and kill the zombies coming out of the portals to feed the **dragon**, before time runs out. | A **big chest** (often gold): perks, Legendary weapons, Salvage, sometimes the **Chrysalax** |
+| **Enduro** | You drive an **ARC-XD** on a course of moving obstacles and pick up Essence. | The **Essence** you picked up |
+
+{/* World at War: "survive for two minutes" (tracker.gg) vs "survive 3 waves, a crate each level" (COD Zombified). Der Eisendrache chest contents: COD Zombified (perks, legendary weapons, Chrysalax), GamesRadar (Chrysalax). Enduro: tracker.gg, COD Zombified (about 5,000 points when completed). */}
+
+For the Chrysalax, see [The Chrysalax](../chrysalax/).
+
+## The hidden machines
+
+### Grand Prix (Arcade)
+
+A fourth Arcade machine, **Grand Prix**, is used for the main quest: it turns on when you electrocute a zombie next to it with the Dead Wire ammo mod, then has you drive an ARC-XD to the TV Store. It's all in [Main Easter Egg (Pyrrhic Victory)](../easter-egg-principal/).
+
+### Anytown Grand Prix (Bar)
+
+A hidden ARC-XD race **upstairs in the Bar**, in Anytown East.
+
+<Checklist>
+  <Step title="Turn on the machine with PhD Slider">
+    Buy **PhD Slider** (Observation Tower, any tier). Go upstairs in the Bar: the machine is under a **dusty tarp**, to the right of the wall buy. Kill a zombie right next to it with a **slide explosion**: its soul goes into the machine and turns it on.
+
+    <Shots>
+      <Screenshot src={g + 'bar.webp'} alt="The Bar in Anytown East" credit={by} source={src} />
+      <Screenshot src={g + 'grandprix_arcade_machine_bar.webp'} alt="The Anytown Grand Prix machine upstairs in the Bar" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Put in one token per player">
+    **Every player** in the game puts an Arcade Token into the machine, then starts the race.
+  </Step>
+
+  <Step title="Do the 3 laps">
+    Drive the ARC-XD for **3 laps**, following the **purple arrows** on the ground. There are a few shortcuts. You can pick up Essence along the way. The reward depends on your time:
+
+    | Time | Reward |
+    | --- | --- |
+    | Under 1:40 | Legendary: 5,000 points |
+    | From 1:40 to 2:10 | Epic: 4,000 points |
+    | Over 2:10 | Rare: 3,000 points |
+
+    {/* Times and points: COD Zombified; points by tier also mmmrkennedy. tracker.gg only says "rewards up to Legendary, including Salvage and Essence". */}
+  </Step>
+</Checklist>
+
+## Sources
+
+Guide written by HighRound from:
+
+- [COD Zombified: Forsaken All Arcade Machine Easter Eggs and free Arcade Token](https://codzombified.blogspot.com/2021/11/forsaken-all-arcade-machine-easter-eggs.html) (tokens, changer, the four machines, race times)
+- [Cold War Tracker: Arcade Guide for Forsaken](https://cod.tracker.gg/cold-war/articles/black-ops-cold-war-zombies-forsaken-arcade-guide) (tokens at 10,000, the three machines)
+- [Cold War Tracker: Anytown Grand Prix Guide for Forsaken](https://cod.tracker.gg/cold-war/articles/black-ops-cold-war-zombies-forsaken-anytown-grand-prix-guide) (one token per player, PhD Slider)
+- [mmmrkennedy: Forsaken Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/forsaken/forsaken_guide) (free token, race rewards, screenshots)
+- [COD Zombified: Forsaken Map Layout, Anytown West / Video Store / Cinema / TV Store](https://codzombified.blogspot.com/2021/10/forsaken-map-layout-anytown-west-video.html) (machines and changer in the Arcade)
+- [GamesRadar: Black Ops Cold War Forsaken Easter Egg guide](https://www.gamesradar.com/black-ops-cold-war-forsaken-easter-egg-guide) (Chrysalax in the Der Eisendrache chest)

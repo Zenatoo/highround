@@ -1,0 +1,282 @@
+---
+title: Main Easter Egg (Tin Man Heart)
+category: main-quest
+order: 1
+draft: false
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=IQzsNXkzVgE
+    title: "[TUTO] Faire le SECRET COMPLET de MAUER DER TOTEN (Cold War Zombie)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/IQzsNXkzVgE.jpg
+  - url: https://www.youtube.com/watch?v=f0tsq3QdwCU
+    title: "Le SECRET de \"MAUER DER TOTEN\" en SOLO sur BLACK OPS COLD WAR ZOMBIE 🧟‍♂️"
+    creator: "FlapixTV"
+    lang: fr
+    thumbnail: ../../../../media/videos/f0tsq3QdwCU.jpg
+  - url: https://www.youtube.com/watch?v=dPai8xhp9nw
+    title: "MAUER DER TOTEN EASTER EGG GUIDE - Full Cold War Zombies Easter Egg Tutorial"
+    creator: "MrDalekJD"
+    lang: en
+    thumbnail: ../../../../media/videos/dPai8xhp9nw.jpg
+  - url: https://www.youtube.com/watch?v=KLHziC8D428
+    title: "ULTIMATE MAUER DER TOTEN EASTER EGG GUIDE: Cold War Zombies Easter Egg (ALL SPAWNS, SOLO & COOP)"
+    creator: "MrRoflWaffles"
+    lang: en
+    thumbnail: ../../../../media/videos/KLHziC8D428.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/mauer_der_toten/mauer_der_toten_guide';
+export const m = 'bocw/mauer-der-toten/main_ee/';
+
+The goal of **Tin Man Heart**: prepare a warhead in the Endstation secret lab, capture the traitor **Valentina**, then help Klaus carry the warhead into the portal.
+
+**Before you start:**
+
+- Expect **40 minutes to 1 hour** in solo, once you are well equipped.
+- Doable in solo or in co-op. Cold War has **no guided mode**: the quest is the same for everyone.
+- **No achievement or trophy**: like every map released after Cold War's launch, Mauer der Toten has none. The quest unlocks the **"Tin Man Heart"** Dark Ops challenge (XP and calling card), the ending cutscene and a bonus of Aetherium crystals.
+- The uranium step has a **5-minute timer**: if you miss it, the game ends. Read the whole step before you start it.
+- To take a breather between two steps, leave a single zombie alive at the end of a round (a crawler, for example).
+
+{/* Reward: tracker.gg (Dark Ops challenge, calling card, cutscene). Crystals: Treyarch 20 May 2021 notes (main quest gives the crystals of the last exfil). No achievement: see the shared achievements research (PowerPyx, platpursuit, tracker.gg). 40 min - 1 h: mmmrkennedy. */}
+
+## Get ready for the quest
+
+<Checklist>
+  <Step title="Turn on the power and unlock the Pack-a-Punch">
+    See [Turn on the power](../courant/) and [Unlock Pack-a-Punch](../pack-a-punch/).
+  </Step>
+
+  <Step title="Build Klaus and get the CRBR-S">
+    Klaus does several steps for you, and the CRBR-S is used to knock down parts and to open the lab. See [Klaus, the robot ally](../klaus/) and [The CRBR-S and its 3 kits](../crbr-s/).
+  </Step>
+
+  <Step title="Do Klaus's first upgrade">
+    The satellite dish and the one-minute defense in the Garment Factory are enough: **you don't need the floppy disks**. Klaus has to be upgraded before the train step. Do it early: the defense gets hard in high rounds.
+  </Step>
+</Checklist>
+
+{/* Only the first Klaus upgrade is needed: chapter titles of MrRoflWaffles (KLHziC8D428, "No Floppy Disks Needed") and Fast Guides Glitch (JASHNOsuSCw, "Floppy Discs not needed"), PC Gamer. */}
+
+## Open the secret lab
+
+<Checklist>
+  <Step title="Build the Hacking Helm">
+    The **Hacking Helm** has three parts. Shoot each object with the CRBR-S to knock the part down, then pick it up.
+
+    - **Antenna**: the radio tower on the Apartment Rooftop, the starting rooftop.
+    - **Electronic Boards**: the small box with a green light above the Ghost Station ticket booth, near the M16 wall buy and the "Weinmeisterstraße" sign.
+    - **Transistor**: one of the three radios in the Electronics Store (near the TV, near the office chair or on a shelf). The right one changes every game.
+
+    Then go to the Safe House and interact with Klaus in his chair to build him the helm.
+
+    <Shots>
+      <Screenshot src={m + 'helm_rooftop.webp'} alt="The radio tower on the starting rooftop" credit={by} source={src} />
+      <Screenshot src={m + 'helm_station.webp'} alt="The box above the Ghost Station ticket booth" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc1.webp'} alt="Electronics Store: first possible radio" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc2.webp'} alt="Electronics Store: second possible radio" credit={by} source={src} />
+      <Screenshot src={m + 'helm_store_loc3.webp'} alt="Electronics Store: third possible radio" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: order. mmmrkennedy / tracker.gg do the helm first; GameSpot and Charlie Intel do it later. It is needed before the satellite computer at the latest. */}
+  </Step>
+
+  <Step title="Have Klaus break the brick wall">
+    In the **Sewer Access**, go up the small staircase to the bare brick wall. Send Klaus in front of it with the remote: he smashes it and reveals a **metal wall**.
+
+    <Screenshot src={m + 'brickwall.webp'} alt="The brick wall at the top of the small staircase in the Sewer Access" credit={by} source={src} />
+  </Step>
+
+  <Step title="Melt the metal wall with the Blazer">
+    You need the CRBR-S **Blazer** kit, which drops at random from zombies killed with the weapon. Shoot the metal wall with the beam until it melts.
+  </Step>
+
+  <Step title="Survive the lab lockdown">
+    As soon as a player goes in, the round ends and a **Tormentor round** starts. Two machines are protected by red shields: they drop the next round.
+  </Step>
+</Checklist>
+
+## Fill the three canisters
+
+<Checklist>
+  <Step title="Take the canisters and a lure">
+    Take the **three empty canisters** from the central machine, the **Conversion Unit**.
+
+    Shoot the other machine (green screens, on the lower floor) with the CRBR-S: it gives you an **Endstation Lure**, a lure that takes the place of your tactical equipment. You can only carry one at a time. If there are none left, wait for the next round. In co-op, each player should take one.
+
+    {/* TO CHECK: lure availability. tracker.gg: next round if none is available; GamesRadar: one per round; GameSpot: each player can take one. */}
+
+    <Shots>
+      <Screenshot src={m + 'conversionunit.webp'} alt="The Conversion Unit in the middle of the lab" credit={by} source={src} />
+      <Screenshot src={m + 'luremachine.webp'} alt="The machine that gives the lures" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Put the canisters in three harvesters">
+    The **Essence Harvesters** are big green boxes. There are seven spots, but **only three** show up in each game. They are easy to see: find them ahead of time.
+
+    - West Berlin Street, against a small shack near the Death Strip.
+    - Destroyed Penthouse, in the ruined room under Quick Revive.
+    - East Berlin Streets, under the arch between the Bar and the Electronics Store.
+    - Korber Rooftop, next to the pillar in front of Speed Cola.
+    - Alley, next to the dumpster, at the foot of the rope.
+    - Sewer Access, left of the XM4 wall buy, near the lab.
+    - Ghost Station, on a platform near the M16 wall buy.
+
+    Interact with each harvester to put a canister in it.
+
+    <Shots>
+      <Screenshot src={m + 'harvesters_westberlin.webp'} alt="West Berlin Street harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_penthouse.webp'} alt="Destroyed Penthouse harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_eastberlin.webp'} alt="East Berlin Streets harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_korber.webp'} alt="Korber Rooftop harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_alley.webp'} alt="Alley harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_sewer.webp'} alt="Sewer Access harvester" credit={by} source={src} />
+      <Screenshot src={m + 'harvesters_ghost.webp'} alt="Ghost Station harvester" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Fill the canisters with Tempests">
+    Throw a lure next to a harvester: **Tempests** spawn. Kill them near the harvester. When the canister glows **purple**, it's full: take it. If not, throw another lure.
+
+    Bring each full canister back to the Conversion Unit. With a full canister, you can **neither sprint nor climb**, and enemies come to stop you: get covered in co-op. Do it again for all three canisters.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="mistake" author="PC Gamer" source="https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/">
+    Make sure the canister is in the harvester before you throw the lure: otherwise, the Tempests you kill fill nothing.
+  </Tip>
+</Tips>
+
+## Stop the train
+
+<Checklist>
+  <Step title="Pull the railway switch">
+    Bring Klaus out. In the **Switch Control Room**, pull the Railway Switch on the big console.
+
+    <Screenshot src={m + 'railwayswitch.webp'} alt="The railway switch in the Switch Control Room" credit={by} source={src} />
+  </Step>
+
+  <Step title="Put Klaus on the track">
+    In the Ghost Station, send Klaus onto the track **farthest from Mule Kick**, on the ticket booth and M16 wall buy side. A train comes and Klaus stops it.
+
+    If it fails, wait for the next round and pull the switch again: only one try per round.
+
+    <Screenshot src={m + 'klaus_on_tracks.webp'} alt="Klaus on the right track" credit={by} source={src} />
+  </Step>
+
+  <Step title="Take the keycard and the bomb from the train">
+    Get on board quickly, before the train leaves again. Take **Rico's Keycard** from the seated body, and the **bomb** (the warhead) from the crate.
+
+    <Shots>
+      <Screenshot src={m + 'train_keycard.webp'} alt="Rico's Keycard on a seated body" credit={by} source={src} />
+      <Screenshot src={m + 'train_bomb.webp'} alt="The bomb in the train" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Put the bomb in the lab">
+    Go back to the lab and put the bomb on the Conversion Unit, with the three canisters.
+  </Step>
+</Checklist>
+
+## The uranium (twice)
+
+You do this part **twice**, over two rounds. Get ready beforehand: the 5-minute timer starts as soon as the Megaton dies, and failing **ends the game**.
+
+<Checklist>
+  <Step title="Activate the satellite">
+    In the **Safe House**, use the computer on the central table with Rico's keycard. Pick "Browse Files" until the "Activate the Disruptor Satellite" option shows up, then follow the marker on screen.
+
+    According to most guides, you then have to use the computer in a tent: the one on **West Berlin Street** (next to the Trials) the first time, the **Military Tent** in the East Berlin Streets the second time.
+
+    {/* TO CHECK: GameSpot, PC Gamer, EarlyGame and KeenGamer use the West Berlin tent computer, then the East Berlin one the 2nd time; DizzyOP's description uses only the Safe House computer twice; mmmrkennedy says "follow the objective marker". */}
+
+    <Screenshot src={m + 'safehouse_computer.webp'} alt="The Safe House computer" credit={by} source={src} />
+  </Step>
+
+  <Step title="Kill the Megaton">
+    A beam comes down from the sky and elite enemies spawn, including an **HVT Megaton** and Mimics. Kill the others first and save the Megaton for last. As always, it splits in two (Blaster and Bomber): each half drops a **Uranium Rock**. The 5-minute timer starts.
+
+    Since July 29, 2021, the rocks drop even if a ghost train kills the Megaton.
+  </Step>
+
+  <Step title="Build the two uranium devices">
+    Take a rock and carry it to the closer of the two quest workbenches: in the tent on **West Berlin Street** or in the **Military Tent** in the East Berlin Streets. Build a **Uranium Device**. Do the same with the second rock.
+
+    Carrying uranium slowly drains your health. Healing Aura helps a lot.
+
+    <Shots>
+      <Screenshot src={m + 'west_bench.webp'} alt="The West Berlin Street quest workbench" credit={by} source={src} />
+      <Screenshot src={m + 'east_bench.webp'} alt="The Military Tent quest workbench" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Crash them into each other on the zipline">
+    Hook one device to the end of the **Destroyed Penthouse** zipline, and the other to the end of the **Korber Rooftop** one (the zipline that goes through the "O" of KORBER). Both slide, crash into each other in the middle and a **Cleansed Rock** falls into the East Berlin Streets. The timer stops.
+
+    In solo, do the two devices one after the other. In co-op, split the two rocks.
+
+    {/* Penthouse and Korber ziplines: mmmrkennedy / tracker.gg, PC Gamer, KeenGamer, EarlyGame, DizzyOP, COD Zombified. GameSpot alone says the Apartment Rooftop. */}
+
+    <Shots>
+      <Screenshot src={m + 'penthouse_zipline.webp'} alt="The Destroyed Penthouse zipline" credit={by} source={src} />
+      <Screenshot src={m + 'korber_zipline.webp'} alt="The Korber Rooftop zipline" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Put the Cleansed Rock in the warhead">
+    Pick up the rock in the street and put it on the warhead, in the lab.
+  </Step>
+
+  <Step title="Do it again the next round">
+    Move on to the next round and do the whole step again for a **second Cleansed Rock**.
+
+    **Warning:** putting in the second rock starts the boss fight **right away**. Drop it near the warhead, then gear up: perks, upgraded weapons, armor, Self-Revives, scorestreaks.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="faster" author="GameSpot" source="https://www.gamespot.com/articles/how-to-complete-mauer-der-toten-main-easter-egg-in-cod-black-ops-cold-wars-zombies/1100-6494140/">
+    Take Healing Aura as your field upgrade for this step: you heal the uranium damage without dropping the device and without losing time.
+  </Tip>
+  <Tip type="mistake" author="PC Gamer" source="https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/">
+    Don't forget the workbench: without a Uranium Device, the rock is useless on the zipline, and in solo every second counts.
+  </Tip>
+</Tips>
+
+## The fight against Valentina
+
+Valentina shows up in the lab. She changes arenas four times before coming back to the lab. Her attacks and the strategy are covered in [Beat Valentina](../boss-valentina/).
+
+<Checklist>
+  <Step title="Beat Valentina">
+    Break her shield (blue bar), then empty her health (red bar). Kill the zombies floating around her right away: they heal her. When the screen turns blue and shakes, hide out of her sight.
+  </Step>
+
+  <Step title="Protect Klaus to the portal">
+    Interact with Valentina once she is down: a cutscene plays. Then **defend Klaus** while he carries the warhead to the portal. Once Klaus is in the portal, the game ends on the ending cutscene.
+  </Step>
+</Checklist>
+
+## Sources
+
+Guide written by HighRound from:
+
+- [mmmrkennedy: Mauer der Toten Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/mauer_der_toten/mauer_der_toten_guide) (steps, harvesters, duration, screenshots)
+- [Tracker: Tin Man Heart Main Quest guide](https://tracker.gg/cold-war/articles/black-ops-cold-war-zombies-mauer-der-toten-tin-man-heart-main-quest-guide) (steps, rewards, one train try per round, boss started by the second rock)
+- [GameSpot: How To Complete Mauer Der Toten Main Easter Egg In CoD: Black Ops Cold War's Zombies](https://www.gamespot.com/articles/how-to-complete-mauer-der-toten-main-easter-egg-in-cod-black-ops-cold-wars-zombies/1100-6494140/) (steps cross-checked, 5-minute timer, Healing Aura, tents)
+- [PC Gamer: How to beat the Mauer Der Toten Easter Egg in Call of Duty: Cold War](https://www.pcgamer.com/cod-cold-war-mauer-der-toten-easter-egg-wonder-weapon/) (steps cross-checked, canisters, no sprinting, one zombie left alive)
+- [KeenGamer: Mauer Der Toten Easter Egg Guide](https://www.keengamer.com/articles/guides/mauer-der-toten-easter-egg-guide-black-ops-cold-war-zombies/) (timer failure, Mimics, ziplines)
+- [EarlyGame: How to Complete Black Ops Cold War Mauer Der Toten Easter Egg](https://earlygame.com/call-of-duty/how-to-complete-bocw-mauer-der-toten-easter-egg-guide-walkthrough) (computers, ziplines)
+- [COD Zombified: Mauer der Toten, underground](https://codzombified.blogspot.com/2021/07/mauer-der-toten-map-layout-service.html) and [Korber Rooftop](https://codzombified.blogspot.com/2021/07/mauer-der-toten-map-layout-korber.html) (Ghost Station box, Klaus's track, uranium ziplines)
+- [Dexerto: Ultimate Mauer der Toten quest guide](https://dexerto.com/call-of-duty/ultimate-mauer-der-toten-quest-guide-1612889) (timer, second rock)
+- [MrDalekJD: Mauer Der Toten Easter Egg Guide](https://www.youtube.com/watch?v=dPai8xhp9nw) (description: harvester spots)
+- [MrRoflWaffles: Ultimate Mauer der Toten Easter Egg Guide](https://www.youtube.com/watch?v=KLHziC8D428) (chapters: Klaus upgrade without floppy disks, end after the boss)
+- [DizzyOP: Mauer Der Toten, Getting to Final Boss Valentina SOLO](https://www.youtube.com/watch?v=_CX1EKjAB4U) (description: full solo run)
+- [Charlie Intel: Cold War July 29 update patch notes](https://www.charlieintel.com/cold-war-july-29-update-patch-notes-zombie-improvements-season-5-teaser-more/118629) (rocks drop even if a train kills the Megaton)
+- [Treyarch: New Content Arrives with 80s Action Heroes](https://www.treyarch.com/game-intel/2021/05/New_Content_Arrives_with_80s_Action_Heroes) (Aetherium crystals for a completed main quest)

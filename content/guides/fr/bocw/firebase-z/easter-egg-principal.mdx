@@ -1,0 +1,257 @@
+---
+title: Easter Egg principal (Maxis Potential)
+category: main-quest
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=mDM77GobQQM
+    title: "[TUTO] FAIRE LE SECRET COMPLET DE FIREBASE Z ! (Cold War Zombie FR)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/mDM77GobQQM.jpg
+  - url: https://www.youtube.com/watch?v=yIghqWYODjY
+    title: "TUTO SECRET COMPLET FIREBASE Z COLD WAR ZOMBIE, ASTUCE POUR FAIRE L'EASTER EGG PRINCIPALE FIREBASE Z"
+    creator: "Soiscool Mec"
+    lang: fr
+    thumbnail: ../../../../media/videos/yIghqWYODjY.jpg
+  - url: https://www.youtube.com/watch?v=LlGeC6qA7tw
+    title: "Le SECRET de \"FIREBASE Z\" en SOLO sur BLACK OPS COLD WAR ZOMBIE 🧟‍♂️"
+    creator: "FlapixTV"
+    lang: fr
+    thumbnail: ../../../../media/videos/LlGeC6qA7tw.jpg
+  - url: https://www.youtube.com/watch?v=HgN6lRcp-rA
+    title: "COLD WAR ZOMBIES - FULL FIREBASE Z EASTER EGG GUIDE TUTORIAL!"
+    creator: "NoahJ456"
+    lang: en
+    thumbnail: ../../../../media/videos/HgN6lRcp-rA.jpg
+  - url: https://www.youtube.com/watch?v=4ZGX-5cLqeg
+    title: "FULL SOLO EASTER EGG GUIDE! FIREBASE Z Cold War Zombies EE Tutorial"
+    creator: "Ch0pper"
+    lang: en
+    thumbnail: ../../../../media/videos/4ZGX-5cLqeg.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/firebase_z/firebase_z_guide';
+export const m = 'bocw/firebase-z/main_ee/';
+
+Le but : faire parler le Dr Peck, récupérer trois cristaux d'Éther, réparer la brèche vers le Dark Aether et battre l'**Orda** pour libérer Samantha Maxis.
+
+**Avant de commencer :**
+
+- Compte **40 minutes à 1 heure** en solo. Le gros du travail peut être fini vers la manche 20.
+- Faisable en solo comme en coop : les étapes sont les mêmes.
+- Il faut le **courant** : voir [Rétablir le courant (les 3 réacteurs)](../courant/).
+- Il faut le **RAI K-84** pour un des trois cristaux. Commence à le chercher tôt : voir [Construire le RAI K-84](../rai-k-84/).
+- Firebase Z n'a **aucun succès ni trophée**, même pour cette quête. La récompense est un défi Dark Ops, « Maxis Potential » (XP et carte de visite), la cinématique de fin, et depuis mai 2021 des cristaux d'Aetherium en bonus.
+
+## Le badge de Ravenov
+
+<Checklist>
+  <Step title="Parle à Ravenov, puis au Dr Peck">
+    Dans l'**Atrium** (Village), parle à Ravenov. Va ensuite à **Mission Control**, dans la base : le Dr Peck est enfermé au rez-de-chaussée, dans une pièce bleue derrière une vitre. Parle-lui à travers la vitre.
+
+    <Screenshot src={m + 'pecksroom.webp'} alt="La pièce du Dr Peck, derrière la vitre de Mission Control" credit={by} source={src} />
+  </Step>
+
+  <Step title="Récupère le badge">
+    Retourne voir Ravenov dans l'Atrium. Il pose son **badge** (ID Badge) dans la boîte sous sa fenêtre : prends-le.
+  </Step>
+</Checklist>
+
+## Le sérum de vérité
+
+<Checklist>
+  <Step title="Ouvre trois casiers avec le badge">
+    Chaque casier à clavier contient un composé. Ordre libre.
+
+    - **Equipment Storage** (Village) : dans la pièce à droite de Quick Revive. Compound S16.
+    - **Engineering** (base) : en sortant du téléporteur, la zone de gauche, au rez-de-chaussée sous les Planning Offices. Compound 36.
+    - **Colonel's Office** : le bureau au-dessus de Jugger-Nog, dans Military Command. Compound P65.
+
+    <Shots>
+      <Screenshot src={m + 'chem_spawn.webp'} alt="Le casier de l'Equipment Storage" credit={by} source={src} />
+      <Screenshot src={m + 'chem_eng.webp'} alt="Le casier d'Engineering" credit={by} source={src} />
+      <Screenshot src={m + 'chem_office.webp'} alt="Le casier du Colonel's Office" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Mélange le sérum au Field Hospital">
+    Au **Field Hospital** (près des Barracks), utilise le **Chemical Mixer**. Des **Hellhounds** (chiens de l'enfer) apparaissent : tue-les tous. Utilise le mélangeur une deuxième fois, puis prends l'**Agent Delivery System** (le diffuseur), à gauche du mélangeur.
+
+    <Shots>
+      <Screenshot src={m + 'chem_mixer.webp'} alt="Le Chemical Mixer du Field Hospital" credit={by} source={src} />
+      <Screenshot src={m + 'agent_delivery_system.webp'} alt="L'Agent Delivery System à gauche du mélangeur" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Gaze le Dr Peck">
+    Monte en haut de Mission Control, côté **OPC** (Omega Portal Chamber, la grande sphère). Pose le diffuseur sur le **climatiseur** (Air Conditioner Unit) : le gaz remplit la pièce de Peck.
+
+    Retourne parler à Peck, plusieurs fois, jusqu'à ce que Weaver dise « Alright, Peck. You've had your fun… ». Peck t'envoie au Data Center.
+
+    <Screenshot src={m + 'chem_acunit.webp'} alt="Le climatiseur près de l'OPC" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Les souvenirs des Mimics
+
+<Checklist>
+  <Step title="Prends un Essence Trap au Data Center">
+    À l'étage du **Data Center**, près de Speed Cola, utilise la **Memory Transference Station**. Elle donne des **Essence Traps** (pièges à essence) : prends-en un. Il remplace ton équipement tactique.
+
+    <Screenshot src={m + 'mimic_trapstation.webp'} alt="La Memory Transference Station du Data Center" credit={by} source={src} />
+  </Step>
+
+  <Step title="Trouve un Mimic déguisé">
+    Le **Mimic** est un ennemi qui se cache en objet par terre. Il faut un Mimic caché, pas un Mimic qui arrive avec la vague. Ils se cachent à **trois endroits** :
+
+    - **Motor Pool** : devant le garage, en sortant du téléporteur, la zone de droite ;
+    - **Sky Bridge et Colonel's Office** : la salle de Jugger-Nog et la passerelle au-dessus ;
+    - **Peck's Quarters** : au-dessus du Pack-a-Punch, dans la pièce de droite.
+
+    Cherche un **tas de plusieurs objets** posés par terre (armure, munitions, Supports…) que tu ne peux pas ramasser. Un seul objet isolé ne compte pas. Approche : un des objets se transforme en Mimic. Un seul endroit a un Mimic à chaque manche, et chacun des trois endroits donne un souvenir.
+
+    {/* Three fixed areas: mmmrkennedy and NoahJ456's "UPDATED STEP" (video description). GameSpot: Motor Pool and the Village. GamesRadar and Charlie Intel describe random clusters anywhere: launch-day state, before the Feb 5, 2021 patch cut the number of Mimic trap spawns. */}
+
+    <Shots>
+      <Screenshot src={m + 'mimic_motorpool.webp'} alt="La route du Motor Pool" credit={by} source={src} />
+      <Screenshot src={m + 'mimic_jugroom.webp'} alt="La salle de Jugger-Nog et le Sky Bridge" credit={by} source={src} />
+      <Screenshot src={m + 'mimic_spawnlocation.webp'} alt="Peck's Quarters, au-dessus du Pack-a-Punch" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Piège-le">
+    Abîme le Mimic jusqu'à **environ 10 % de vie**, sans le tuer. Lance le piège par terre. Quand le Mimic marche dessus, **appuie deux fois vite sur la touche d'action**. S'il est assez faible, il reste prisonnier : ramasse le piège. S'il a trop de vie, il s'échappe et il te faut un nouveau piège.
+  </Step>
+
+  <Step title="Rapporte le souvenir">
+    Tu as **3 minutes** pour remettre le piège dans la Memory Transference Station. Si c'est le bon Mimic, on entend le souvenir de **Brahms**, **Sokolov** ou **Zhabin**. Sinon, tu entends d'autres bouts d'histoire, puis « memory corrupted ».
+
+    Recommence pour les trois noms. Après le troisième, la machine éjecte une **disquette** (floppy disk).
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="mistake" author="mmmrkennedy" source="https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/firebase_z/firebase_z_guide">
+    Le Mimic caché n'apparaît que si personne n'est à côté au début de la manche. Si tu l'as tué par erreur ou si tu ne trouves rien, finis la manche loin de ces endroits et reviens à la suivante.
+  </Tip>
+  <Tip type="tech" author="NoahJ456" source="https://www.youtube.com/watch?v=HgN6lRcp-rA">
+    Les objets se remettent en place à chaque manche. Une fois le Mimic sorti, ne quitte pas la zone pendant que tu l'affaiblis.
+  </Tip>
+</Tips>
+
+## La brèche et les trois cristaux
+
+<Checklist>
+  <Step title="Mets la disquette dans le Quantum Main Frame">
+    À l'étage des **Planning Offices**, contre le mur le plus proche de la sphère, mets la disquette dans l'ordinateur **Quantum Main Frame**. La porte de l'OPC s'ouvre. Entre : une **brèche** dimensionnelle apparaît.
+
+    <Screenshot src={m + 'breach_floppyinsert.webp'} alt="L'ordinateur Quantum Main Frame des Planning Offices" credit={by} source={src} />
+  </Step>
+
+  <Step title="Récupère l'Aethermeter">
+    Quand les haut-parleurs annoncent « Attention: membrane instability detected. Stabilization required », va parler au Dr Peck. Ensuite, Ravenov donne un code. Ouvre le **casier à gauche de la vitre de Peck** et prends l'**Aethermeter**, un détecteur qui bipe près des cristaux enterrés.
+
+    <Screenshot src={m + 'locker_peck.webp'} alt="Le casier à gauche de la pièce de Peck" credit={by} source={src} />
+  </Step>
+
+  <Step title="Prends la pelle dans la Scorched Defense">
+    La **pelle** est dans un petit abri (bunker) sur la gauche de la **Scorched Defense**, juste derrière Mission Control.
+
+    <Shots>
+      <Screenshot src={m + 'shovel_room.webp'} alt="L'abri de gauche dans la Scorched Defense" credit={by} source={src} />
+      <Screenshot src={m + 'shovel.webp'} alt="La pelle" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Cristal de l'Open Lot : le bon conteneur">
+    Dans l'**Open Lot**, creuse près de la fenêtre qui donne sur Engineering. Plein de conteneurs apparaissent autour. Presque tous ont des **particules noires** dans leur fumée. Trouve le seul qui n'a que de la **fumée blanche** et prends-le.
+
+    Si tu prends le mauvais, des Mimics sortent. Tue-les et attends la manche suivante pour recommencer.
+
+    <Shots>
+      <Screenshot src={m + 'container_lot.webp'} alt="L'endroit où creuser dans l'Open Lot" credit={by} source={src} />
+      <Screenshot src={m + 'container_noblack.webp'} alt="Le bon conteneur, sans particules noires" credit={by} source={src} />
+      <Screenshot src={m + 'container_black.webp'} alt="Un mauvais conteneur, avec des particules noires" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Cristal de la Jungle Defense : survis dans le dôme">
+    Dans la **Jungle Defense**, creuse dans l'allée du milieu, là d'où viennent les zombies pendant les Assault Rounds. Un **dôme** t'enferme et des ennemis arrivent : zombies, Mimics, Manglers, Hellhounds. Tiens jusqu'à ce que le dôme disparaisse, puis prends le conteneur.
+
+    Viens avec tes atouts, de l'armure, un Self-Revive et le RAI K-84 : c'est l'étape la plus dure.
+
+    <Screenshot src={m + 'container_jungle.webp'} alt="L'endroit où creuser dans la Jungle Defense" credit={by} source={src} />
+  </Step>
+
+  <Step title="Cristal des Barracks : attrape-le avec le RAI K-84">
+    Creuse devant la porte du **Field Hospital** la plus proche de l'escalier du Data Center. Le conteneur se téléporte quelque part dans les Barracks ou le Field Hospital. **Ne t'approche pas**, sinon il repart.
+
+    Repère-le de loin et tire dessus avec le **tir secondaire du RAI K-84** (la mine d'énergie). Pendant que le vortex le retient, cours le ramasser. Trop lent ou trop loin : il se téléporte encore, recommence.
+
+    <Screenshot src={m + 'container_hospital.webp'} alt="L'endroit où creuser devant le Field Hospital" credit={by} source={src} />
+  </Step>
+
+  <Step title="Mets un cristal dans chaque réacteur">
+    Pose un cristal dans chacun des trois Aether Reactors : **Military Command**, **Mission Control** et **Data Center**. Ordre libre.
+
+    <Shots>
+      <Screenshot src={m + 'container_militarycommand.webp'} alt="Le réacteur de Military Command" credit={by} source={src} />
+      <Screenshot src={m + 'container_missioncontrol.webp'} alt="Le réacteur de Mission Control" credit={by} source={src} />
+      <Screenshot src={m + 'container_datacenter.webp'} alt="Le réacteur du Data Center" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Retourne à l'OPC, puis chez Peck">
+    Dans l'OPC, une scène se lance et la brèche se referme. Va ensuite parler au Dr Peck une dernière fois : les stores sont baissés, mais tu peux lui parler.
+  </Step>
+</Checklist>
+
+## Le satellite et le combat final
+
+<Checklist>
+  <Step title="Réaligne le satellite">
+    À l'étage des Planning Offices, utilise l'ordinateur du satellite. Déplace le curseur sur les points jaunes : chacun montre un drapeau (États-Unis ou URSS). Choisis le seul qui montre un **point d'interrogation** et valide.
+
+    <Screenshot src={m + 'sat.webp'} alt="L'écran du satellite, avec les points jaunes" credit={by} source={src} />
+  </Step>
+
+  <Step title="Prépare-toi, puis lance le terminal de l'OPC">
+    **Attention : pas de retour en arrière.** Le terminal à droite dans l'OPC lance une cinématique, puis tu es envoyé dans la cour du Village face à l'Orda. Avant d'appuyer : atouts, armure, Pack-a-Punch, Supports, RAI K-84 amélioré.
+
+    <Screenshot src={m + 'terminal.webp'} alt="Le terminal de l'OPC" credit={by} source={src} />
+  </Step>
+
+  <Step title="Bats l'Orda">
+    Tire sur le trou à la place de sa tête quand il brille en orange, et reste loin de lui. Toute la stratégie est dans [Battre l'Orda](../boss-orda/).
+
+    Quand l'Orda tombe, la cinématique de fin se lance : Samantha sort du Dark Aether. La quête est finie.
+
+    {/* TO CHECK: whether the match ends or goes on after the final cutscene: no source says. */}
+  </Step>
+</Checklist>
+
+## Si ça bloque
+
+- **Le Mimic s'échappe du piège** : il avait trop de vie. Reprends un piège à la Memory Transference Station.
+- **Mauvais conteneur dans l'Open Lot** : attends la manche suivante.
+- **Le conteneur des Barracks fuit** : tu t'es trop approché, ou le vortex était trop loin de lui.
+- Un bug qui empêchait d'attraper un Mimic en solo a été corrigé en février 2021, avec la saison 2.
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : Firebase Z Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/firebase_z/firebase_z_guide) (étapes, endroits des Mimics, délai de 3 minutes, captures d'écran)
+- [GamesRadar : Firebase Z Easter egg guide](https://www.gamesradar.com/cold-war-zombies-firebase-z-easter-egg-guide/) (étapes recoupées, dôme de la Jungle Defense, vortex du RAI K-84, Peck après l'OPC)
+- [tracker.gg : 'Maxis Potential' Main Quest Guide for Firebase Z](https://tracker.gg/cold-war/articles/black-ops-cold-war-zombies-firebase-z-main-quest-guide) (étapes, noms des composés, récompenses)
+- [Charlie Intel : How to complete the Firebase Z Easter Egg](https://www.charlieintel.com/black-ops-cold-war/how-to-complete-the-firebase-z-easter-egg-in-black-ops-cold-war-zombies-82950/) (étapes recoupées, carte de visite)
+- [PC Gamer : How to get the Cold War Zombies Firebase Z Easter egg](https://www.pcgamer.com/cod-cold-war-firebase-z-easter-egg/) (badge, noms des composés, « memory corrupted »)
+- [GameSpot : Firebase Z Easter Egg Guide](https://www.gamespot.com/articles/firebase-z-easter-egg-guide-black-ops-cold-war-zombies/1100-6487152/) (Mimics déguisés, un par manche)
+- [NoahJ456 : Full Firebase Z Easter Egg Guide](https://www.youtube.com/watch?v=HgN6lRcp-rA) (description : les trois endroits des Mimics)
+- [Treyarch : Feb. 5 Patch Notes](https://www.treyarch.com/game-intel/2021/02/Feb_5_Patch_Notes) (moins d'emplacements de Mimics cachés)
+- [Treyarch : Season Two Details and Patch Notes](https://www.treyarch.com/game-intel/2021/02/Season_Two_Details_and_Patch_Notes) (bug du Mimic en solo corrigé)
+- [Treyarch : New Content Arrives with 80s Action Heroes](https://www.treyarch.com/game-intel/2021/05/New_Content_Arrives_with_80s_Action_Heroes) (cristaux d'Aetherium en fin de quête)

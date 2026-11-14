@@ -1,0 +1,116 @@
+---
+title: Rétablir le courant (les 3 réacteurs)
+category: power
+order: 1
+draft: false
+difficulty: easy
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=HX-oplwUUSo
+    title: "[TUTO] Avoir le PACK-A-PUNCH, le COURANT & emplacements des ATOUTS de FireBase Z (Cold War Zombie)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/HX-oplwUUSo.jpg
+  - url: https://www.youtube.com/watch?v=9fmzuve2esI
+    title: "[TUTO] - Activer le COURANT sur FIREBASE Z - COD BOCW Zombies"
+    creator: "Doogy_San"
+    lang: fr
+    thumbnail: ../../../../media/videos/9fmzuve2esI.jpg
+  - url: https://www.youtube.com/watch?v=Hjyf6j063cc
+    title: "FIREBASE Z - POWER & PACK A PUNCH GUIDE (Cold War Zombies Tutorial)"
+    creator: "Fast Guides Glitch"
+    lang: en
+    thumbnail: ../../../../media/videos/Hjyf6j063cc.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/firebase_z/firebase_z_guide';
+export const m = 'bocw/firebase-z/main_ee/';
+
+Sur Firebase Z, il n'y a **pas d'interrupteur**. Le courant vient de trois **Aether Reactors** (réacteurs d'Éther) cachés dans la base, de l'autre côté du téléporteur. Il faut les activer et les défendre tous les trois. Ensuite, le Pack-a-Punch et les portes électriques du Village marchent.
+
+La carte a deux moitiés :
+
+- le **Village**, où tu commences : la cour (Courtyard), l'**Atrium** avec Ravenov et le Pack-a-Punch, la Radio Room et l'Equipment Storage ;
+- la **base** (Outpost 25), qu'on rejoint par un téléporteur : l'**Helipad** au centre, et trois portails (nord, est, sud) vers le reste.
+
+<Checklist>
+  <Step title="Ouvre la porte de l'Equipment Storage">
+    Fais quelques points dans le Village, puis ouvre la porte qui mène à l'**Equipment Storage**, à côté de Quick Revive : **1 250 Essence**. Monte l'escalier jusqu'à la passerelle sur le toit. Le **téléporteur** est au bout : il t'emmène à l'Helipad, au pied d'un hélicoptère écrasé.
+  </Step>
+
+  <Step title="Rejoins un réacteur">
+    Trois icônes marquent les réacteurs sur ton écran, et des flèches violettes du Dark Aether montrent le chemin. Il faut acheter les portes pour y arriver.
+
+    | Réacteur | Où | Depuis l'Helipad |
+    | --- | --- | --- |
+    | **Mission Control** | Au nord, dans le bâtiment de Stamin-Up | Portail nord, puis Open Lot et passerelle |
+    | **Data Center** | À l'est, en bas de l'escalier en colimaçon | Portail est, puis Barracks et escalier |
+    | **Military Command** | Au sud, dans une petite cour dehors, à côté des accès à la Jungle Defense | Portail sud, puis Motor Pool |
+
+    Mission Control a deux entrées : en acheter une ouvre aussi l'autre. Military Command se rejoint aussi par le **Sky Bridge**, depuis les Planning Offices.
+
+    {/* TO CHECK: PC Gamer says the blue door into the Motor Pool costs 1,250 (single source). No source lists the other door prices. */}
+  </Step>
+
+  <Step title="Active-le et défends-le">
+    Activer un réacteur coûte **500 Essence**. Une vague de zombies arrive : tue-les **près du réacteur** pour le charger. De chaque côté, une **Collection Unit** (collecteur) doit rester debout : protège-les. Deux jauges s'affichent, la charge et les dégâts. Si le réacteur prend trop de dégâts, il faut payer de nouveau.
+
+    Fais le plein de munitions et d'équipement avant d'activer : la vague est longue.
+
+    <Shots>
+      <Screenshot src={m + 'container_missioncontrol.webp'} alt="L'Aether Reactor de Mission Control" credit={by} source={src} />
+      <Screenshot src={m + 'container_datacenter.webp'} alt="L'Aether Reactor du Data Center" credit={by} source={src} />
+      <Screenshot src={m + 'container_militarycommand.webp'} alt="L'Aether Reactor de Military Command" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Recommence avec les deux autres">
+    Quand les trois réacteurs sont chargés, tout le monde est prévenu : le courant est rétabli. Les trois réacteurs coûtent **1 500 Essence** en tout.
+
+    Le Pack-a-Punch de l'Atrium marche, ainsi que Der Wunderfizz, un Arsenal et de nouvelles pièces dans le Village. Retourne voir Ravenov dans l'Atrium : c'est aussi le début de l'[Easter Egg principal (Maxis Potential)](../easter-egg-principal/).
+  </Step>
+</Checklist>
+
+Les captures d'écran ci-dessus ont été prises plus tard dans la quête : le cristal violet dans le réacteur n'est pas là au début.
+
+## Après le courant : les Assault Rounds
+
+Une fois le courant rétabli, certaines manches deviennent des **Assault Rounds** (manches d'assaut). Des failles du Dark Aether s'ouvrent dans une des trois zones fortifiées, et une grosse vague en sort :
+
+- **Scorched Defense**, au nord, derrière Mission Control ;
+- **Rocky Defense**, à l'est, par les portes du bas du Data Center ;
+- **Jungle Defense**, au sud, derrière Military Command.
+
+Chaque zone a un terminal de tir avec un **Support** (Napalm Strike, Cruise Missile ou Artillery) : c'est lui qu'il faut protéger. Des tourelles automatiques aident, mais elles ne suffisent pas. Pendant la manche, tu peux acheter d'autres exemplaires de ce Support au terminal. Si tu tiens, des bonus tombent au terminal : Double Points, Max Ammo, Salvage…
+
+{/* TO CHECK: which Support sits at which Defense. Only Rocky Defense = Artillery is sourced (Dexerto box guide, reworded by GGRecon). */}
+
+Pour arriver vite, prends les **tremplins** (jump pads) : 500 Essence le saut. Voir [Tremplins gratuits](../tremplins-gratuits/) pour ne plus les payer.
+
+Dès la manche 30, l'**Orda**, le boss géant de la carte, peut apparaître pendant une Assault Round. Voir [Battre l'Orda](../boss-orda/).
+
+<Tips>
+  <Tip type="tech" author="Call of Duty" source="https://www.callofduty.com/blog/2021/02/Guide-to-Surviving-Firebase-Z">
+    Garde tes Supports, ton arme la plus forte et ta Field Upgrade pour les Assault Rounds. Les zombies sortent des failles en groupe : un fusil de précision ou un lance-roquettes est enfin utile ici.
+  </Tip>
+  <Tip type="faster" author="Call of Duty" source="https://www.callofduty.com/blog/2021/02/Guide-to-Surviving-Firebase-Z">
+    Avant le courant, tourne autour de l'hélicoptère écrasé de l'Helipad : c'est un grand espace dégagé, pratique pour entraîner les zombies.
+  </Tip>
+</Tips>
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [Call of Duty : Surviving "Firebase Z" – A Guide to the Newest Black Ops Cold War Zombies Map](https://www.callofduty.com/blog/2021/02/Guide-to-Surviving-Firebase-Z) (zones de la carte, réacteurs, entrées de Mission Control, Assault Rounds, conseils)
+- [GameSpot : Firebase Z Easter Egg Guide](https://www.gamespot.com/articles/firebase-z-easter-egg-guide-black-ops-cold-war-zombies/1100-6487152/) (première porte à 1 250, réacteurs à 500 chacun)
+- [PC Gamer : How to get the Cold War Zombies Firebase Z Easter egg](https://www.pcgamer.com/cod-cold-war-firebase-z-easter-egg/) (première porte, Collection Units, porte du Motor Pool)
+- [GamesRadar : Cold War Zombies Firebase Z Wonder Weapon](https://www.gamesradar.com/cold-war-zombies-firebase-z-wonder-weapon/) (jauges de charge et de dégâts, réacteur à repayer)
+- [Charlie Intel : How to Pack-a-Punch fast in Firebase Z](https://charlieintel.com/how-to-pack-a-punch-fast-in-black-ops-cold-war-zombies-firebase-z/82248) (flèches violettes, 500 par réacteur, retour chez Ravenov)
+- [Inverse : Firebase Z Pack-a-Punch location and how to use it](https://www.inverse.com/gaming/call-of-duty-firebase-z-pack-a-punch-location-power-black-ops-cold-war) (500 par réacteur, collecteurs)
+- [tracker.gg : How to Pack-a-Punch on Firebase Z](https://tracker.gg/checkpoint/articles/black-ops-cold-war-zombies-firebase-z-pack-a-punch) (les trois réacteurs)
+- [Charlie Intel : All Firebase Z Jump Pad locations](https://www.charlieintel.com/black-ops-cold-war/all-firebase-z-jump-pad-locations-in-black-ops-cold-war-zombies-83292/) (500 par saut)
+- [Dexerto : All Mystery Box locations on Firebase Z](https://www.dexerto.com/call-of-duty/all-mystery-box-locations-on-firebase-z-in-black-ops-cold-war-zombies-1508088/) (Artillery à la Rocky Defense)
+- [Gameranx : How To Kill The Giant Boss Orda Fast](https://gameranx.com/features/id/216778/article/black-ops-cold-war-zombies-how-to-kill-the-giant-boss-orda-fast-firebase-z-guide/) (Orda en Assault Round à la manche 30)
+- [mmmrkennedy : Firebase Z Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/BO_CW/firebase_z/firebase_z_guide) (captures d'écran des réacteurs)
