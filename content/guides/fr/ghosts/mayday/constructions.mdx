@@ -1,0 +1,112 @@
+---
+title: Les plans et les objets à fabriquer
+category: buildables
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=F8b9heZ-MOo
+    title: "[TUTO] Mayday | Les 5 Constructions !"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/F8b9heZ-MOo.jpg
+  - url: https://www.youtube.com/watch?v=MtKF0yAOTOM
+    title: "All Buildable/Schematics Locations: Mayday (Call of Duty ghosts Extinction)"
+    creator: "TheSmithPlays"
+    lang: en
+    thumbnail: ../../../../media/videos/MtKF0yAOTOM.jpg
+  - url: https://www.youtube.com/watch?v=AuZGpp5GtfU
+    title: "\"Mayday\" Ultimate Buildable Guide (Hypno Trap, Pipe Bombs, Sticky Flare, Telsa Trap, Venom X)"
+    creator: "NoahJ456"
+    lang: en
+    thumbnail: ../../../../media/videos/AuZGpp5GtfU.jpg
+---
+
+export const by = 'Millenium';
+export const src = 'https://www.millenium.org/guide/140015.html?page=6';
+export const c = 'ghosts/mayday/constructions/';
+
+Mayday est la première carte d'Extinction avec de la **fabrication**. Sur la carte, tu trouves des **plans** (schematics, « compositions » dans les guides français) pour **5 objets**. Chaque objet demande son plan et **trois pièces**. Une fois fabriqué, l'objet ne te coûte pas d'argent.
+
+{/* Free crafting: Attack of the Fanboy only ("they don't cost anything for you to make"). */}
+
+## Comment ça marche
+
+<Checklist>
+  <Step title="Prends un plan">
+    Les plans sont des feuilles posées sur des **établis rouges**, deux par établi. Ils sont toujours aux mêmes endroits. Tu ne peux porter **qu'un plan à la fois**.
+
+    <Screenshot src={c + 'workbench.webp'} alt="Un établi rouge où sont posés les plans" credit={by} source={src} />
+  </Step>
+
+  <Step title="Fouille les boîtes à outils rouges">
+    Les pièces sont dans des **boîtes à outils rouges**, placées au hasard à chaque partie. Une boîte ne s'ouvre que si tu portes un plan, et elle donne une pièce de **ce plan**.
+
+    <Screenshot src={c + 'toolbox.webp'} alt="Une boîte à outils rouge à fouiller pour trouver une pièce" credit={by} source={src} />
+  </Step>
+
+  <Step title="Fabrique l'objet">
+    Avec les trois pièces, ouvre le menu des compétences (**Back** sur Xbox, **Select** sur PlayStation) et appuie sur **X** (Xbox) ou **Carré** (PlayStation).
+  </Step>
+</Checklist>
+
+## Les 5 objets
+
+**À vérifier :** les listes de pièces viennent d'un seul guide (Attack of the Fanboy), sauf celle du Hypno Trap, confirmée par un second. Les emplacements des plans sont confirmés par deux guides au plus.
+
+| Objet | Plan | Pièces | Ce qu'il fait |
+| --- | --- | --- | --- |
+| **Sticky Flare** (Fusée collante) | Entrance : en haut de l'escalier à droite, sur la boîte à outils | Fuse, TNT, Resin | Une fusée qui colle et **attire les aliens**. Le plan en donne **2**. |
+| **Pipe Bomb** (Bombe artisanale) | Même endroit que la Sticky Flare ; un autre sur le Top Deck | Fuse, TNT, Pipe | Une grenade à fragmentation artisanale. Le plan en donne **5**. |
+| **Hypno Trap** (Piège hypnotique) | Juste après le tentacule, sur une table près du balcon du renseignement Encrypted | Biolum, Cell Battery, Pressure Plate | Un petit piège carré : les Cryptids qui marchent dessus deviennent **tes alliés**. |
+| **Tesla Trap** (Tesla) | Même table que le Hypno Trap | Amolecular Magnet, Wires, une batterie | Un piège électrique portable qui électrocute les aliens qui s'approchent. |
+| **Venom-X** (Venom) | Cargo Area ; un autre sur le Top Deck | Nucleic Battery, Deactivated Venom-X, Biolum | L'arme alien, en quatre variantes. Voir [Le Venom-X et ses variantes](../venom-x/). |
+
+{/* Schematic spots: Attack of the Fanboy (Entrance stairs; "just after the Kraken tentacles"), Maka91Productions / VideoGamesBlogger (Tesla/Hypno table near the Encrypted balcony), Digital Trends (Cargo Area Venom; Top Deck = Pipe Bomb + Venom only). Effects: Millenium "Guide du mode Extinction" p.6, Digital Trends, Accelerated Ideas. Counts 2 and 5: Attack of the Fanboy only. */}
+
+## Les pièges en détail
+
+<Checklist>
+  <Step title="Hypno Trap : garde-le pour les Rhinos">
+    Le Hypno Trap marche sur **tous les Cryptids**, mais le mieux est de le garder pour les **Rhinos**. Pose-le **devant un Rhino qui arrive**, ou attire le Rhino vers le piège avec tes coéquipiers. C'est aussi le succès **Big Game Trapper** (Gros gibier).
+
+    Il sert aussi pendant le Kraken. Voir [Battre le Kraken](../kraken/).
+  </Step>
+
+  <Step title="Tesla Trap : la batterie fait la puissance">
+    La batterie que tu trouves décide du niveau du piège :
+
+    - **Cell Battery** : piège de base ;
+    - **Liquid Battery** : piège moyen ;
+    - **Nucleic Battery** : piège avancé.
+
+    Selon un guide, il lui faut environ **3 secondes** pour se recharger entre deux décharges.
+
+    {/* TO CHECK: battery tiers = Digital Trends only; 3-second recharge and "kills small aliens" = Accelerated Ideas only (cross-check source). */}
+
+    Plusieurs Tesla Traps proches se relient entre eux. Avec 3 ou 4 pièges, il se passe quelque chose de spécial : voir [Les secrets de la carte](../secrets/).
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="tech" author="Digital Trends" source="https://www.digitaltrends.com/gaming/tips-tricks-surviving-call-duty-ghosts-extinction-mayday/">
+    Si tu ne vises pas le succès, tu peux laisser de côté la Sticky Flare et la Pipe Bomb.
+  </Tip>
+</Tips>
+
+## Bon à savoir
+
+- Construire **les 5 objets** débloque **The Architect** (L'architecte). Voir [Les succès et trophées de la carte](../succes/).
+- La relique **Earn Your Keep** interdit la fabrication. Voir [Les bases d'Extinction](../../point-of-contact/bases-extinction/).
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [Attack of the Fanboy : Call of Duty: Ghosts – Mayday Extinction Tips](https://attackofthefanboy.com/guides/call-duty-ghosts-mayday-extinction-tips/) (emplacements des plans, pièces, nombre d'objets fabriqués, objets gratuits, pièces au hasard)
+- [Millenium : Mayday - Ghosts : Guide du mode Extinction](https://www.millenium.org/guide/140015.html?page=6) (noms français, établis rouges, touches, effets, captures d'écran)
+- [Digital Trends : Tips and tricks for surviving Call of Duty: Ghosts Extinction 'Mayday'](https://www.digitaltrends.com/gaming/tips-tricks-surviving-call-duty-ghosts-extinction-mayday/) (5 plans, boîtes à outils, batteries du Tesla Trap, Hypno Trap et Rhinos, plans du Top Deck)
+- [Video Games Blogger : Call of Duty: Ghosts Devastation Trophies Guide](https://www.videogamesblogger.com/2014/04/03/call-of-duty-ghosts-devastation-trophies-guide.htm) (pièces du Hypno Trap, un seul plan à la fois, Big Game Trapper)
+- [Accelerated Ideas : Extinction Mayday Schematics - Pipe Bomb, Sticky Flare](https://www.accelerated-ideas.com/news/extinction-mayday-schematics--pipe-bomb-sticky-flare.aspx) (recoupement : boîtes rouges, touches, Tesla et Hypno Trap)
+- [YouTube, Maka91Productions : COD: Ghosts - All Mayday Intel Locations](https://www.youtube.com/watch?v=vKalW3bRf2Y) (description : table des plans Tesla et Hypno Trap)

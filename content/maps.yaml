@@ -158,3 +158,63 @@ forsaken:
     image: ./media/bocw/forsaken/banner.webp
     credit: Treyarch
     source: https://www.youtube.com/watch?v=3lXcetccN8o
+point-of-contact:
+  game: ghosts
+  name: Point of Contact
+  order: 1
+  status: complete
+  published: 2026-11-18
+  color: teal
+  banner:
+    # Frame of the official Extinction reveal trailer.
+    image: ./media/ghosts/point-of-contact/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=eNm5CmnYBzU
+nightfall:
+  game: ghosts
+  name: Nightfall
+  order: 2
+  status: complete
+  published: 2026-11-18
+  color: blue
+  banner:
+    # Thumbnail of the official Nightfall trailer.
+    image: ./media/ghosts/nightfall/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=qy4Nm3LukMY
+mayday:
+  game: ghosts
+  name: Mayday
+  order: 3
+  status: complete
+  published: 2026-11-18
+  color: amber
+  banner:
+    # Thumbnail of the official Mayday trailer.
+    image: ./media/ghosts/mayday/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=Ju9NkPLeb9o
+awakening:
+  game: ghosts
+  name: Awakening
+  order: 4
+  status: complete
+  published: 2026-11-18
+  color: violet
+  banner:
+    # Frame of the official Invasion DLC preview (Extinction part).
+    image: ./media/ghosts/awakening/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=g6TVU1_txeA
+exodus:
+  game: ghosts
+  name: Exodus
+  order: 5
+  status: complete
+  published: 2026-11-18
+  color: red
+  banner:
+    # Frame of the official Exodus intro cutscene.
+    image: ./media/ghosts/exodus/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=yaEWseeM5I8
