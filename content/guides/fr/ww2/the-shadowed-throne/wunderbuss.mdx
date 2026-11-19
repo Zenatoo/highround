@@ -1,0 +1,161 @@
+---
+title: Construire le Wunderbuss
+category: wonder-weapons
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=xay0eMBT2TI
+    title: "[TUTO] The Shadowed Throne | AVOIR L'ARME SPÉCIALE ! [FR]"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/xay0eMBT2TI.jpg
+  - url: https://www.youtube.com/watch?v=JCOOBpgFEVw
+    title: "[TUTO] AVOIR L'ARME SPÉCIALE : THE SHADOWED THRONE ! (WUNDERBUSS)"
+    creator: "Varky Gaming"
+    lang: fr
+    thumbnail: ../../../../media/videos/JCOOBpgFEVw.jpg
+  - url: https://www.youtube.com/watch?v=BFwKwDTjkAs
+    title: "[WWII] TUTO comment assembler le Wunderbuss dans Le Trône Sombre (DLC2) The Shadowed Throne"
+    creator: "SCHORSCH Gaming"
+    lang: fr
+    thumbnail: ../../../../media/videos/BFwKwDTjkAs.jpg
+  - url: https://www.youtube.com/watch?v=jouoLbsetq8
+    title: "SHADOWED THRONE WONDER WEP GUIDE!! (How to build WUNDERBUSS Tutorial WW2 Zombies DLC2)"
+    creator: "MrRoflWaffles"
+    lang: en
+    thumbnail: ../../../../media/videos/jouoLbsetq8.jpg
+  - url: https://www.youtube.com/watch?v=NroYMSoVuJM
+    title: "THE SHADOWED THRONE \"WUNDERBUSS\" GUIDE! - How To Build WUNDERBUSS Tutorial (WW2 Zombies DLC 2)"
+    creator: "MrDalekJD"
+    lang: en
+    thumbnail: ../../../../media/videos/NroYMSoVuJM.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_shadowed_throne/the_shadowed_throne_guide';
+export const m = 'ww2/the-shadowed-throne/wunderbuss/';
+
+Le **Wunderbuss** est l'arme spéciale (wonder weapon) de The Shadowed Throne. Elle tire un **rayon d'électricité**. Pour la recharger, tu envoies un tir d'aspiration (la touche de visée) sur un zombie : elle lui vole son énergie, et plus il y a de zombies près de lui, plus elle se remplit. En pratique, ses munitions sont presque infinies.
+
+{/* TO CHECK: the description of the Wunderbuss (electric beam, suction recharge) was partly sourced from a Steam guide that was dropped; re-confirm with mmmrkennedy/Gameranx. */}
+
+Elle est **obligatoire** : sans elle, pas de Pack-a-Punch, pas d'ancres, pas de projecteur, et pas de dernière phase du boss. Elle ne peut **pas** être améliorée. Ses quêtes (radio, fusée éclairante, zombie Sizzler, batterie) sont la première partie de l'Easter Egg : voir [Easter Egg principal : Stadtjäger Down](../easter-egg-principal/).
+
+Le succès **Something Wunderful** (C'est merveilleux !) demande de tuer 50 Gekocht avec cette arme dans une partie. Voir [Les succès et trophées de la carte](../succes/).
+
+## Étape 1 : contacte les Russes par radio
+
+<Checklist>
+  <Step title="Lis le code sur la radio">
+    Sur **Main Street**, regarde le dessus de la **radio**. Un code s'y affiche : **deux lettres, un tiret, un chiffre** (par exemple « TX-3 »). Il change à chaque partie.
+
+    <Shots>
+      <Screenshot src={m + 'radio.webp'} alt="La radio de Main Street" credit={by} source={src} />
+      <Screenshot src={m + 'radio_code.webp'} alt="Le code inscrit sur le dessus de la radio" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Lis la carte et le tableau à l'église">
+    À la **Church**, à droite de la boîte mystère, deux feuilles sont accrochées au mur : une **carte** avec une épingle sur le nom d'une région, et un **tableau de fréquences** par région. Le tableau ne change jamais, seule l'épingle change.
+
+    <Screenshot src={m + 'papers_church.webp'} alt="La carte et le tableau de fréquences accrochés dans l'église" credit={by} source={src} />
+  </Step>
+
+  <Step title="Trouve tes deux nombres">
+    Cherche dans le tableau la région de l'épingle. Prends ensuite le nombre qui correspond aux **deux lettres** du code, puis celui qui correspond au **chiffre**.
+
+    Exemple : code « TX-3 », épingle sur « Barnim ». Dans la section Barnim, TX donne **26,5** et le chiffre 3 donne **50,1**.
+
+    <Screenshot src={m + 'frequencies.webp'} alt="Le tableau de fréquences de l'église" credit={by} source={src} />
+  </Step>
+
+  <Step title="Règle les deux cadrans">
+    Interagis avec la radio. Le cadran de **gauche** reçoit le premier nombre, celui de **droite** le second. Sur manette, tourne les sticks ; sur PC, déplace l'aiguille avec les touches de côté (A, D) et les boutons de tir et de visée de la souris. Tu as une marge d'environ 1 à 2 unités.
+
+    Si c'est bon, un voyant passe au vert, une voix répond, et « Contacted the Russians » s'affiche.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="faster" author="Gameranx" source="https://gameranx.com/features/id/146531/">
+    En solo, le camouflage est pratique pour régler la radio sans qu'un zombie te colle.
+  </Tip>
+</Tips>
+
+## Étape 2 : appelle le zeppelin
+
+<Checklist>
+  <Step title="Tire la fusée éclairante">
+    À la **Plaza**, à gauche de la porte du Museum, il y a une **caisse en bois**. Tire sur son cadenas pour l'ouvrir, puis tire encore (ou frappe-la) : une fusée éclairante part et attire le **zeppelin** de Straub.
+
+    <Screenshot src={m + 'wooden_box.webp'} alt="La caisse en bois de la Plaza" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Étape 3 : prends un Geistbolt
+
+Une fois accroché, le zeppelin tire un **Geistbolt** sur un zombie sans dégâts. Il devient un **Gekocht** (les joueurs disent « Sizzler »), rouge et lumineux. Il est **environ deux fois plus rapide**, mais il a la vie d'un zombie normal.
+
+<Checklist>
+  <Step title="Tue un Sizzler au corps à corps">
+    Un coup de mêlée spécial le tue et te donne le **Geistbolt**. Il en apparaît un toutes les quelques minutes. La batte à pointes est idéale.
+
+    <Screenshot src={m + 'sizzlers.webp'} alt="Un Sizzler, zombie rouge créé par le zeppelin" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="tech" author="mmmrkennedy" source={src}>
+    Un zombie déjà blessé ne peut plus devenir un Sizzler. Blesse-les si tu veux éviter d'en créer.
+  </Tip>
+</Tips>
+
+## Étape 4 : trouve la batterie
+
+Une **batterie** apparaît à un seul de ces trois endroits, au hasard, sur une caisse de mur d'armes cassée :
+
+- **Museum**, à gauche de l'Armour stand ;
+- **Museum**, à droite de la machine de mêlée (Faustblitz) ;
+- **Cabaret**, à droite du mur d'armes M1927 (M1928 dans d'autres sources).
+
+<Shots>
+  <Screenshot src={m + 'battery_armour.webp'} alt="La batterie au Museum, à gauche de l'Armour stand" credit={by} source={src} />
+  <Screenshot src={m + 'battery_melee.webp'} alt="La batterie au Museum, à droite de la machine de mêlée" credit={by} source={src} />
+  <Screenshot src={m + 'battery_m1927.webp'} alt="La batterie au Cabaret, à droite du mur d'armes" credit={by} source={src} />
+</Shots>
+
+## Étape 5 : construis l'arme dans les Apartments
+
+<Checklist>
+  <Step title="Ouvre la grille">
+    Descends dans le **sous-sol des Apartments**. Mets la batterie dans le **générateur** de la grille : elle s'ouvre. Entre, et prends la batterie à l'intérieur : la grille **se referme derrière toi**.
+
+    <Screenshot src={m + 'generator.webp'} alt="Le générateur de la grille, au sous-sol des Apartments" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pose les pièces et prends le Wunderbuss">
+    Interagis avec le Wunderbuss sur la table pour poser le Geistbolt et la batterie, puis interagis encore pour le prendre.
+  </Step>
+
+  <Step title="Sors de la pièce">
+    Tire sur le **générateur** avec le Wunderbuss jusqu'à ce que la grille s'ouvre.
+
+    <Screenshot src={m + 'wunderbuss.webp'} alt="Le Wunderbuss sur la table du sous-sol" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Armes gratuites en plus
+
+Le jeu du pendu au Cabaret peut donner une **Tesla Gun** et un **Ripsaw** gratuits : voir [Le pendu, les chapeaux et autres secrets](../secrets/).
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : The Shadowed Throne Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_shadowed_throne/the_shadowed_throne_guide) (radio, fréquences, fusée, batterie, construction, captures d'écran)
+- [Gameranx : Shadowed Throne, Wunderbuss](https://gameranx.com/features/id/146531/) (étapes recoupées, camouflage en solo)
+- [Accelerated Ideas : The Shadowed Throne, All Easter Egg Steps](https://www.accelerated-ideas.com/news/the-shadowed-throne-all-easter-egg-steps.aspx) (étapes recoupées)
+- [Newsweek : Call of Duty WW2 Shadowed Throne Easter Egg guide](https://www.newsweek.com/entertainment/video-games/call-duty-ww2-shadowed-throne-easter-egg-dlc-2-guide-walkthrough-882054) (étapes recoupées)
+- [Call of Duty : The Shadowed Throne, Six Things to Do Before Wave 10](https://www.callofduty.com/blog/archives/the-shadowed-throne-six-things-to-do-before-wave-10) (Sizzlers créés par le zeppelin)

@@ -1,0 +1,102 @@
+---
+title: Construire le Tesla
+category: wonder-weapons
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=UvJ_YCPMilU
+    title: "[TUTO] WWII ZOMBIES | Avoir l'arme spéciale (FR)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/UvJ_YCPMilU.jpg
+  - url: https://www.youtube.com/watch?v=q9sboMqOIfc
+    title: "[Tuto] \"Zombie WW2\" Avoir l'Arme Speciale sur Le dernier Reich"
+    creator: "Darkogeo800"
+    lang: fr
+    thumbnail: ../../../../media/videos/q9sboMqOIfc.jpg
+  - url: https://www.youtube.com/watch?v=PSlg_-whWk8
+    title: "Tuto WW2 Zombie Le Dernier Reich : Construire l'arme spécial"
+    creator: "leclerc family"
+    lang: fr
+    thumbnail: ../../../../media/videos/PSlg_-whWk8.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide';
+export const m = 'ww2/the-final-reich/tesla_gun/';
+
+Le **Tesla Gun** est l'arme spéciale de The Final Reich. Il tire de l'électricité qui **saute d'un zombie à l'autre** : elle les étourdit et en tue plusieurs d'un coup. Le construire donne le succès **Lightning Handler (Dieu de la foudre)**. C'est aussi l'étape « The Weaponsmith » de la quête guidée : voir [Easter Egg principal : Fireworks](../easter-egg-principal/).
+
+Il faut avoir ouvert la **Salt Mine** : voir [Rétablir le courant](../courant/). En coop, un seul joueur ramasse l'arme.
+
+## Les étapes
+
+<Checklist>
+  <Step title="Charge l'appareil Geistkraft dans l'Emperor's Chamber">
+    Tout en bas de la Salt Mine, devant la statue de Barberousse, utilise le grand **appareil Geistkraft**. Tue des zombies **dans le cercle rouge** au sol pour le charger. Quand il est chargé, il monte dans le plafond.
+
+    {/* TO CHECK: kills needed: PowerPyx says 15-20, all zombie types count; mmmrkennedy gives no number. */}
+
+    <Screenshot src={m + 'hilt.webp'} alt="L'appareil Geistkraft devant la statue de Barberousse" credit={by} source={src} />
+  </Step>
+
+  <Step title="Tourne la manivelle de la Command Room">
+    Dans la **Command Room**, tourne la **manivelle** de l'appareil en forme de pyramide jusqu'à ce qu'elle s'arrête.
+
+    <Screenshot src={m + 'crank.webp'} alt="La manivelle de la Command Room" credit={by} source={src} />
+  </Step>
+
+  <Step title="Appuie sur le bouton de la plateforme">
+    Monte sur la **plateforme du haut** et appuie sur le **bouton**. Les lumières s'éteignent et l'appareil part sur un rail au plafond vers le **Laboratory**.
+
+    <Screenshot src={m + 'tesla_button.webp'} alt="Le bouton de la plateforme du haut" credit={by} source={src} />
+  </Step>
+
+  <Step title="Escorte l'appareil dans le Laboratory">
+    Il s'arrête de temps en temps. Pour qu'il reparte, tue des zombies **dans le cercle rouge** au sol sous lui. Au générateur du Laboratory (près du **Schnellblitz**), il entre dedans. Attends environ **15 à 20 secondes** : le générateur éjecte une **pièce du Tesla** (le canon). Ramasse-la. Des Wüstlings sortent de leurs cellules ici.
+
+    <Shots>
+      <Screenshot src={m + 'tesla_lab_generator.webp'} alt="Le générateur du Laboratory" credit={by} source={src} />
+      <Screenshot src={m + 'tesla_part_lab.webp'} alt="La pièce du Tesla au Laboratory" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Escorte-le dans la Morgue">
+    Même chose : suis-le, charge-le avec des kills dans le cercle rouge. Au générateur de la Morgue, attends environ **30 secondes** et ramasse la **deuxième pièce** (le noyau).
+
+    <Screenshot src={m + 'tesla_part_morgue.webp'} alt="La pièce du Tesla à la Morgue" credit={by} source={src} />
+
+    {/* TO CHECK: waiting times. mmmrkennedy: ~15-20 s (Lab) and ~30 s (Morgue); PowerPyx (Nov 2017): 45-60 s each. Final state follows mmmrkennedy. Part names (barrel / core) from PowerPyx and Accelerated Ideas. */}
+  </Step>
+
+  <Step title="Tue le Brenner">
+    En revenant dans la Command Room, un **Brenner** apparaît sur la plateforme du haut. Tue-le. Garde sa **tête** : elle sert plus tard pour [Les quatre améliorations du Tesla](../ameliorations-tesla/) et pour [L'épée Red Talon](../epee-red-talon/).
+  </Step>
+
+  <Step title="Assemble le Tesla">
+    Sur la plateforme du haut, au centre, pose les deux pièces dans la forge. Attends la fin de l'assemblage, puis ramasse le **Tesla Gun**.
+
+    <Screenshot src={m + 'tesla_build_loc.webp'} alt="L'endroit où se fabrique le Tesla" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="tech" author="mmmrkennedy" source={src}>
+    Défi du personnage **B.A.T. Agent** : fabriquer le Tesla **avant la manche 6**. C'est possible en solo avec de la chance, mais beaucoup plus simple en coop.
+  </Tip>
+</Tips>
+
+## Pour aller plus loin
+
+Le Tesla se transforme en quatre variantes : [Les quatre améliorations du Tesla](../ameliorations-tesla/). Les fabriquer toutes dans la même partie donne **Dark Arts (Forces des ténèbres)**.
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : The Final Reich Guide](https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide) (étapes, durées, captures d'écran)
+- [PowerPyx : The Final Reich Easter Egg Guide](https://www.powerpyx.com/call-of-duty-ww2-zombies-the-final-reich-easter-egg-guide/) (étapes recoupées, nombre de kills)
+- [Accelerated Ideas : The Final Reich, All Quest Steps](https://www.accelerated-ideas.com/news/the-final-reich-ww2-zombies-all-quest-steps.aspx) (étapes recoupées)
+- [PlayStation LifeStyle : The Final Reich Full Walkthrough](https://www.playstationlifestyle.net/2017/11/03/call-of-duty-wwii-nazi-zombies-guide-the-final-reich/2) (étapes recoupées)

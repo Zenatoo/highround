@@ -1,0 +1,223 @@
+---
+title: "Easter Egg principal : Fireworks"
+category: main-quest
+order: 1
+draft: false
+difficulty: medium
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=wfQRlBTKHpM
+    title: "L'HISTOIRE de WWII Zombies #2 | Le Dernier Reich : TUTO SECRET"
+    creator: "Le Protagoniste"
+    lang: fr
+    thumbnail: ../../../../media/videos/wfQRlBTKHpM.jpg
+  - url: https://www.youtube.com/watch?v=1IBJ1MMzIb8
+    title: "Guide ultime : Le dernier Reich"
+    creator: "Kenshin9977"
+    lang: fr
+    thumbnail: ../../../../media/videos/1IBJ1MMzIb8.jpg
+  - url: https://www.youtube.com/watch?v=UAri1O6EEnQ
+    title: "Call of Duty WW2 - The Final Reich Easter Egg Guide - Retrieve the Artifact (Fireworks Trophy)"
+    creator: "PowerPyx"
+    lang: en
+    thumbnail: ../../../../media/videos/UAri1O6EEnQ.jpg
+  - url: https://www.youtube.com/watch?v=iY2yoknG7pg
+    title: "THE FINAL REICH FULL EASY EASTER EGG GUIDE / TUTORIAL (Casual Easter Egg Walkthrough WW2 Zombies)"
+    creator: "MrRoflWaffles"
+    lang: en
+    thumbnail: ../../../../media/videos/iY2yoknG7pg.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide';
+export const m = 'ww2/the-final-reich/main_ee_casual/';
+
+La quête **Fireworks** est le chemin **guidé** de The Final Reich. Dans le **village de Mittelburg**, l'équipe veut récupérer la **poignée** (Hilt) de l'épée de l'empereur Barberousse, cachée dans le bunker du Dr Straub. À la fin, tu bats le **Panzermörder**, un géant recousu avec Klaus dans la poitrine.
+
+**Avant de commencer :**
+
+- Compte **40 à 55 minutes** en solo. Difficulté : 5 sur 10 selon mmmrkennedy.
+- Récompense : le succès **Fireworks (Feux d'artifice)** (argent) et la première cinématique de fin. Voir [Les succès et trophées de la carte](../succes/).
+- Faisable en solo comme en coop.
+- Le jeu t'aide : ouvre le menu du tableau des scores. Le **carnet** montre ton étape et **surligne l'objectif à travers les murs**.
+- Si tu veux sauver Klaus plus tard, **ne tire pas sur l'orbe qui entoure la poignée et ne prends pas la poignée** avant d'avoir tout préparé : voir [Easter Egg complet : Dark Reunion](../easter-egg-complet/).
+
+{/* TO CHECK: the lead-in story (Hilt, Panzermörder with Klaus in the chest) is from the shared story section (Wikipedia / official page), not from the step guides. */}
+
+## Premières étapes
+
+<Checklist>
+  <Step title="Courant, bunker et Salt Mine">
+    Allume le courant, ouvre le bunker, puis la Salt Mine : tout est dans [Rétablir le courant](../courant/).
+  </Step>
+
+  <Step title="Charge l'appareil Geistkraft et fabrique le Tesla">
+    Dans l'Emperor's Chamber, charge l'appareil Geistkraft. Puis escorte-le jusqu'au Laboratory et à la Morgue, tue le Brenner et forge le **Tesla Gun** : voir [Construire le Tesla](../tesla/).
+  </Step>
+</Checklist>
+
+## La main droite de Dieu (Right Hand of God)
+
+<Checklist>
+  <Step title="Lance la grille électrique">
+    Dans la **Command Room**, plateforme du haut, derrière la forge du Tesla, interagis avec la machine **Power Grid**. Dans les quatre colonnes, **une lumière** s'allume (rouge, verte ou bleue). **Note la couleur de chaque colonne, dans l'ordre.**
+
+    <Shots>
+      <Screenshot src={m + 'power_grid.webp'} alt="La machine Power Grid" credit={by} source={src} />
+      <Screenshot src={m + 'grid_lights.webp'} alt="Les lumières des quatre colonnes" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Règle les quatre boîtes électriques, vite">
+    Chaque boîte a trois choix : **Rot** (rouge), **Grün** (vert), **Blau** (bleu). Mets-les dans l'ordre noté, **dans un temps limité** (environ 45 secondes selon PowerPyx).
+
+    1. **Command Room**, à droite de la machine Power Grid.
+    2. **Sewers**, côté piège à feu de la salle du Pack-a-Punch.
+    3. **Sewers**, à l'autre bout de cette salle, près de la porte vers Riverside.
+    4. **Pub**, près de la porte de la Tower, au fond.
+
+    <Shots>
+      <Screenshot src={m + 'box_command_room.webp'} alt="La boîte électrique de la Command Room" credit={by} source={src} />
+      <Screenshot src={m + 'box_sewers_1.webp'} alt="La boîte électrique du côté piège à feu des Sewers" credit={by} source={src} />
+      <Screenshot src={m + 'box_sewers_2.webp'} alt="La boîte électrique au bout de la salle du Pack-a-Punch" credit={by} source={src} />
+      <Screenshot src={m + 'box_pub.webp'} alt="La boîte électrique du Pub" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: time limit: PowerPyx ~45 s; mmmrkennedy says only "a time limit". Accelerated Ideas shows the power grid step twice (launch day), mmmrkennedy / PowerPyx / PSLS only once. */}
+  </Step>
+
+  <Step title="Défends le paratonnerre central">
+    Va à la **Tower**. Interagis avec le **levier** sous le milieu : un **paratonnerre monte lentement**. Une manche commence, avec des zombies sans fin. **Défends le levier environ 70 secondes**, jusqu'à ce que la barre de vie à l'écran disparaisse. S'il subit trop de dégâts, recommence dès que le paratonnerre est redescendu.
+
+    <Screenshot src={m + 'lightning_rod.webp'} alt="Le paratonnerre central de la Tower" credit={by} source={src} />
+
+    {/* TO CHECK: duration: mmmrkennedy ~70 s, PowerPyx ~70 s, Accelerated Ideas 60 s, an older Accelerated Ideas page 30 s (launch state). */}
+  </Step>
+
+  <Step title="Défends les deux autres leviers">
+    Ensuite, défends les **deux leviers**, un de chaque côté de la Tower. Il faut les **activer en même temps**.
+
+    <Screenshot src={m + 'two_levers.webp'} alt="Les deux leviers de chaque côté de la Tower" credit={by} source={src} />
+  </Step>
+
+  <Step title="Active la main droite">
+    Les trois paratonnerres levés, retourne dans l'**Emperor's Chamber** et active la **main droite de Dieu**. C'est la machine **à gauche** quand tu entres, car elle est à la droite de la statue.
+
+    <Screenshot src={m + 'right_hand_of_god.webp'} alt="La main droite de Dieu" credit={by} source={src} />
+
+    <Tips>
+      <Tip type="faster" author="mmmrkennedy" source={src}>
+        Cette étape (et la suivante) se triche avec **Frontline** : lance le levier, cours vers la porte du bunker et, quand la barre du paratonnerre devient rouge, active Frontline. Tous les zombies courent vers toi et le paratonnerre finit à temps.
+      </Tip>
+    </Tips>
+  </Step>
+</Checklist>
+
+## Le Zeppelin et la main gauche de Dieu (Left Hand of God)
+
+<Checklist>
+  <Step title="Fais tomber un générateur du Zeppelin">
+    Un **Zeppelin** vole au-dessus du village. Quand il te tire dessus, **quatre lumières jaunes** apparaissent en dessous. Tire sur **une** de ces lumières : elle devient rouge. Quand elle est détruite, un **générateur** tombe. Regarde où il atterrit.
+
+    <Screenshot src={m + 'zeppelin_lights.webp'} alt="Les quatre lumières jaunes sous le Zeppelin" credit={by} source={src} />
+  </Step>
+
+  <Step title="Charge le générateur">
+    Tue des zombies **dans son cercle rouge**. Chargé, il explose et laisse une **batterie** (l'Überschnalle).
+
+    <Screenshot src={m + 'generator.webp'} alt="Le générateur tombé du Zeppelin" credit={by} source={src} />
+  </Step>
+
+  <Step title="Porte-la à la main gauche, trois fois">
+    Apporte la batterie à la **main gauche de Dieu**, la machine **à droite** dans l'Emperor's Chamber. Tu peux la poser et la reprendre quand tu veux. **Répète trois fois.** Le Zeppelin revient aussitôt. À la troisième batterie, il peut **aspirer le générateur** : tire de nouveau sur ses lumières. Quand les trois batteries sont dans la main gauche, interagis avec elle.
+
+    <Screenshot src={m + 'left_hand_of_god.webp'} alt="La main gauche de Dieu" credit={by} source={src} />
+
+    {/* TO CHECK: PowerPyx and Accelerated Ideas say a new Zeppelin only comes at the next round (finish the round first); mmmrkennedy says it returns as soon as you give the battery. */}
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="tech" author="PowerPyx" source="https://www.powerpyx.com/call-of-duty-ww2-zombies-the-final-reich-easter-egg-guide/">
+    Tu ne peux pas tirer en portant la batterie. En solo, la **Camouflage** te donne du calme pour la porter.
+  </Tip>
+</Tips>
+
+## La voix de Dieu (Voice of God)
+
+<Checklist>
+  <Step title="Scanne les quatre tableaux avec la tête du Brenner">
+    Prends la **tête d'un Brenner** et vise chaque **tableau** : la lumière violette montre un **oiseau** (un corbeau) et un **chiffre romain** (I à V). Note quel oiseau va avec quel chiffre.
+
+    - **Pub**, à l'étage, près du gramophone.
+    - **Courtyard**, dans la zone du piège S-Mine.
+    - **Sewers**, à droite de la porte vers Riverside.
+    - **Morgue**, dans la salle du piège à pointes.
+
+    <Shots>
+      <Screenshot src={m + 'painting_pub.webp'} alt="Le tableau du Pub" credit={by} source={src} />
+      <Screenshot src={m + 'painting_courtyard.webp'} alt="Le tableau du Courtyard" credit={by} source={src} />
+      <Screenshot src={m + 'painting_sewers.webp'} alt="Le tableau des Sewers" credit={by} source={src} />
+      <Screenshot src={m + 'painting_morgue.webp'} alt="Le tableau de la Morgue" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: the four areas agree across mmmrkennedy, PSLS, Accelerated Ideas and PowerPyx, but the exact walls differ (PowerPyx: Morgue lowest floor, Pub 2nd floor, Pack-a-Punch room, outside the church near the M1928). Raven names: PowerPyx only. */}
+  </Step>
+
+  <Step title="Règle les quatre piliers">
+    Dans l'**Emperor's Chamber**, la machine devant la statue a quatre **piliers**, chacun marqué d'un **oiseau** sur le dessus. Mets chaque pilier sur le **chiffre** de son oiseau, puis appuie sur le **gros bouton rouge**.
+
+    <Screenshot src={m + 'voice_of_god.webp'} alt="La machine Voice of God" credit={by} source={src} />
+
+    Si c'est juste, tu entends des bruitages et une **orbe d'énergie** entoure la poignée. Si c'est faux, un message dit que la machine redémarre.
+  </Step>
+</Checklist>
+
+## La poignée et le boss
+
+<Checklist>
+  <Step title="Tire sur l'orbe et prends la poignée">
+    Tire sur l'**orbe** avec le **Tesla Gun** (en coop, tirez ensemble). Puis interagis avec la **poignée** : le combat commence.
+
+    <Screenshot src={m + 'energy_orb.webp'} alt="L'orbe d'énergie autour de la poignée" credit={by} source={src} />
+  </Step>
+
+  <Step title="Bats le Panzermörder">
+    Tous les joueurs sont téléportés dans une **version un peu changée du village**. Le **Panzermörder** te suit lentement. De temps en temps il **charge** en balançant les bras : énormes dégâts. Le Zeppelin tourne au-dessus.
+
+    Recommence **trois fois** :
+
+    1. **Fais tomber un générateur** du Zeppelin (tire sur une de ses lumières).
+    2. **Charge-le** en tuant des zombies près de lui.
+    3. **Attire le Panzermörder** près de la batterie et **tire sur lui** jusqu'à ce qu'il soit **étourdi** et mette un genou à terre. Prends la batterie et fixe-la sur lui.
+
+    Après chaque batterie, le boss s'en va et des zombies arrivent. Tu n'as pas besoin de les tuer : il revient après quelques minutes. À la troisième batterie, le combat est fini.
+
+    {/* TO CHECK: a search summary says each boss hit removes one armour point (not fetched, not used). */}
+  </Step>
+</Checklist>
+
+Tu gagnes **Fireworks (Feux d'artifice)**.
+
+<Tips>
+  <Tip type="mistake" author="mmmrkennedy" source={src}>
+    Dans l'arène du boss, seules les armes murales **Type 100**, **M1928** et **SVT** sont là pour les munitions : sers-toi-en pendant le combat.
+  </Tip>
+  <Tip type="mistake" author="PowerPyx" source="https://www.powerpyx.com/call-of-duty-ww2-zombies-the-final-reich-easter-egg-guide/">
+    En solo, vide la manche en laissant **un seul zombie** avant de porter une batterie : tu portes la batterie sans foule autour de toi.
+  </Tip>
+</Tips>
+
+Le défi **Slayer** (Big Game) demande de battre le Panzermörder avant la manche 12 : voir [Débloquer les personnages secrets](../personnages-secrets/).
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : The Final Reich Guide](https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide) (étapes, emplacements, boss, captures d'écran)
+- [PowerPyx : The Final Reich Easter Egg Guide](https://www.powerpyx.com/call-of-duty-ww2-zombies-the-final-reich-easter-egg-guide/) (étapes recoupées, temps limites, conseils solo)
+- [Accelerated Ideas : The Final Reich, All Quest Steps](https://www.accelerated-ideas.com/news/the-final-reich-ww2-zombies-all-quest-steps.aspx) (étapes recoupées)
+- [Accelerated Ideas : All Inventory Items and Quests](https://www.accelerated-ideas.com/news/the-final-reich-zombies-all-inventory-items-and-quests.aspx) (noms des étapes du carnet)
+- [PlayStation LifeStyle : The Final Reich Full Walkthrough](https://www.playstationlifestyle.net/2017/11/03/call-of-duty-wwii-nazi-zombies-guide-the-final-reich/2) (étapes recoupées)
+- [Activision : Tips and Tricks for Surviving Call of Duty: WWII Nazi Zombies](https://blog.activision.com/call-of-duty/archives/tips-and-tricks-for-surviving-call-of-duty-wwii-nazi-zombies) (le carnet)
+- [Le Protagoniste : Le Dernier Reich, TUTO SECRET](https://www.youtube.com/watch?v=wfQRlBTKHpM) (ordre des étapes : courant, mine de sel, Geistkraft, Tesla, main droite, main gauche, voix, poignée, boss)

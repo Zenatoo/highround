@@ -1,0 +1,413 @@
+---
+title: "Easter Egg principal : Making History"
+category: main-quest
+order: 1
+draft: false
+difficulty: hard
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=FdoFL7Yd3NE
+    title: "[TUTO] The Darkest Shore | LE SECRET COMPLET (WWII ZOMBIES FR)"
+    creator: "Flapix"
+    lang: fr
+    thumbnail: ../../../../media/videos/FdoFL7Yd3NE.jpg
+  - url: https://www.youtube.com/watch?v=pxPaHRKiLuM
+    title: "[TUTO FR] COD WW2 ZOMBIES - SECRET COMPLET \" THE DARKEST SHORE\""
+    creator: "DDB"
+    lang: fr
+    thumbnail: ../../../../media/videos/pxPaHRKiLuM.jpg
+  - url: https://www.youtube.com/watch?v=UsoUFgvXN4g
+    title: "Rivage Obscur | Tutoriel - Secret principal"
+    creator: "Kenshin9977"
+    lang: fr
+    thumbnail: ../../../../media/videos/UsoUFgvXN4g.jpg
+  - url: https://www.youtube.com/watch?v=QHsJTkYrKP8
+    title: "DARKEST SHORE EASTER EGG GUIDE | ULTIMATE UPDATED GUIDE"
+    creator: "DIG_DUG7"
+    lang: en
+    thumbnail: ../../../../media/videos/QHsJTkYrKP8.jpg
+  - url: https://www.youtube.com/watch?v=8W8gal4Dc4s
+    title: "The Darkest Shore - SOLO \"MEISTERMEUCHLERS\" BOSS FIGHT GUIDE/TUTORIAL (Best Solo Strategy)"
+    creator: "MysteryHQ"
+    lang: en
+    thumbnail: ../../../../media/videos/8W8gal4Dc4s.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_darkest_shore/the_darkest_shore_guide';
+export const m = 'ww2/the-darkest-shore/';
+
+The Darkest Shore se passe sur une île couverte de brouillard, au nord de l'Allemagne. L'équipe (Marie, Drostan, Olivia et Jefferson) y suit la piste du docteur Straub. Elle cache une salle de rituels païens liée à la déesse **Nerthus**. La quête : récupérer le **Pommel** (pommeau) de l'épée de Barberousse, appeler un bombardement britannique par radio, puis battre quatre **Meistermeuchlers** et **fuir l'île avant le bombardement**.
+
+**Avant de commencer :**
+
+- Compte **1 h 10 à 1 h 30** en solo. La quête est longue et dure (9 sur 10 en solo selon mmmrkennedy) : PowerPyx conseille quatre joueurs.
+- Elle se fait en solo comme en coop. Des vidéos le prouvent (voir plus bas).
+- La récompense : le succès **Making History (Écrire l'Histoire)**, plus **Black Winds to Darker Lands (Les ténèbres s'épaississent)** en route pour le Pommel. À la fin, chaque joueur reçoit **les six Blitz** et voit une cinématique. Voir [Les succès et trophées de la carte](../succes/).
+- Prépare l'**électricité** et la **Ripsaw à distance** : [Rétablir le courant](../courant/) et [La Ripsaw et la R.I.P. Saw](../scie-ripsaw/).
+- Prends des **grenades à fragmentation** (ou un explosif proche) dans ta classe.
+- **Ne prends pas la Jack-in-the-Box** avant d'avoir utilisé le Pommel sur la radio : le Pommel prend sa place de tactique (voir [Les secrets de la carte](../secrets/)).
+
+**Choix de classe (conseil de PowerPyx) :** **Shellshock** avec les mods **Exploit Weakness** (dégâts triplés sur les Meistermeuchlers) et **Sustain Zone** est le bon choix en groupe. Les capacités sont expliquées dans [Les bases de WWII Zombies](../../the-final-reich/systemes-ww2/).
+
+{/* TO CHECK: class advice limited to what PowerPyx says (Shellshock + Exploit Weakness + Sustain Zone). Freefire/SVT-40, Frontline and Camouflage advice was removed (no remaining source). */}
+
+## Étape 1 : le Corpse Gate
+
+<Checklist>
+  <Step title="Fais tomber la tête du pendu">
+    Dans le **Bunker 3**, un cadavre est pendu au-dessus de l'escalier du Pack-a-Punch. Tire sur son **cou** avec la **Ripsaw à distance** : la tête tombe sur l'escalier. Ramasse-la.
+
+    <Screenshot src={m + 'main_ee/hanging_man.webp'} alt="Le cadavre pendu du Bunker 3" credit={by} source={src} />
+  </Step>
+
+  <Step title="Pose la tête sur le cadavre sans tête">
+    Il est au fond des **U-Boat Pens**. Tue environ **10 zombies** à côté. Straub parle, la porte se ferme et des dalles du sol crachent du feu : c'est un **verrouillage**.
+
+    <Screenshot src={m + 'main_ee/corpse_gate.webp'} alt="Le cadavre sans tête, le Corpse Gate" credit={by} source={src} />
+  </Step>
+
+  <Step title="Ferme les trois vannes de gaz">
+    Les vannes sont de chaque côté du Corpse Gate et à gauche de l'escalier. Le feu sous une vanne s'éteint au hasard (bruit de gaz coupé) : ferme alors cette vanne. Si tu es trop lent, le feu revient : attends. Laisse un joueur dehors pour réanimer, si tu joues en groupe.
+
+    <Screenshot src={m + 'main_ee/gas_valve.webp'} alt="Une vanne de gaz dans les U-Boat Pens" credit={by} source={src} />
+  </Step>
+
+  <Step title="Interagis avec le cadavre">
+    Il est coupé en deux et la porte du **Freezer** s'ouvre. Un **Brenner** apparaît : tue-le. Il laisse un **Max Ammo qui ne disparaît pas** : garde-le pour le combat final.
+  </Step>
+</Checklist>
+
+La quête se sépare ensuite en **deux branches indépendantes**, à faire dans l'ordre que tu veux : la **branche de guerre** (Bomber, radio, navires) et la **branche païenne** (salle secrète, statues, rituels). Le carnet (Notebook) du jeu les montre séparément.
+
+## Branche de guerre
+
+### Abattre les avions
+
+Sors dehors, vers les **Bunkers**. Des avions arrivent et te tirent dessus. Utilise les **canons antiaériens** pour les abattre jusqu'au message « Shot down the German Fighter Planes ». Un seul avion s'écrase contre la falaise au-dessus de Schildblitz et laisse son pilote pendu avec une radio.
+
+{/* TO CHECK: number of plane waves: mmmrkennedy "about three", PowerPyx and Accelerated Ideas "about 10", Gameranx "10-15". Use the on-screen message. Gameranx and Accelerated Ideas also say an AA gun costs 750 points to use: not confirmed by the others. */}
+
+Les canons peuvent être attaqués par les zombies : tire dessus avec le canon.
+
+<Screenshot src={m + 'main_ee/aa_gun.webp'} alt="Un canon antiaérien près des Bunkers" credit={by} source={src} />
+
+### Escorter le Bomber jusqu'au canon
+
+<Checklist>
+  <Step title="Appelle le Bomber ami">
+    Utilise la machine de **droite** dans le Freezer. Un Bomber ami apparaît avec une batterie. Il faut l'escorter jusqu'à l'**Artillery Bunker**. Tu ne peux pas le blesser, mais les zombies, si. Il n'a pas beaucoup de vie.
+
+    <Screenshot src={m + 'main_ee/bomber_spawner.webp'} alt="La machine du Bomber à droite dans le Freezer" credit={by} source={src} />
+  </Step>
+
+  <Step title="Charge le canon">
+    Arrivé à l'Artillery Bunker, le Bomber pose la batterie et meurt. Tue des zombies près de la batterie pour la charger : environ **5 tués par coup** de canon, et il en faut **au moins deux**.
+
+    {/* TO CHECK: kills per shot and cannon capacity: mmmrkennedy about 5 kills per shot, holds 6 shots (single source). */}
+  </Step>
+</Checklist>
+
+Si le Bomber meurt avant d'arriver, attends la manche suivante et recommence. Si un Bomber a déjà livré sa batterie, tu ne peux pas en appeler un autre. Garde bien les avions abattus avant l'escorte : sinon ils le tuent.
+
+### Assembler la radio
+
+<Checklist>
+  <Step title="Première pièce : dans les Bunkers">
+    Elle est par terre à côté d'un cadavre, à droite de l'arme murale **Combat Shotgun**.
+
+    <Screenshot src={m + 'main_ee/radio_corpse.webp'} alt="La première pièce de radio à côté du cadavre" credit={by} source={src} />
+  </Step>
+
+  <Step title="Deuxième pièce : le pilote pendu">
+    Dans les **Bluffs**, au-dessus de la porte du **Bunker 3** (au-dessus de Schildblitz), un homme est suspendu avec une radio. Tire sur son **bras** (ou sa corde) avec la Ripsaw : la radio tombe.
+
+    <Screenshot src={m + 'main_ee/radio_pilot.webp'} alt="Le pilote pendu avec la radio" credit={by} source={src} />
+  </Step>
+
+  <Step title="Assemble la radio à l'Overlook">
+    Utilise la radio sur la **table à droite de la boîte mystère** de l'**Overlook** (dehors, devant l'Artillery Bunker). Un long dialogue se joue, puis des **destroyers** arrivent devant le canon.
+
+    <Screenshot src={m + 'main_ee/radio_mystery_box.webp'} alt="La table de la radio à côté de la boîte mystère de l'Overlook" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+{/* TO CHECK: radio table place: mmmrkennedy "right of the Overlook mystery box"; PowerPyx "beside the mystery box location outside the Artillery Bunker"; Accelerated Ideas "outside Bunker 2". Same area. */}
+
+### Couler les navires
+
+Les navires arrivent **un par un**. Utilise le canon : le **panneau de gauche** règle l'**élévation**, celui de **droite** l'**angle**, le **bouton du milieu** tire. Une image d'aide donne les réglages selon la place du navire. Sans elle, utilise les cartes sur le mur à droite du canon : celle du haut donne l'angle et la distance en mètres, celle du bas convertit la distance en valeur du panneau (+05, -10…). Si tu rates, une voix te guide (« Aim lower! »). Chaque tir demande de **recharger** le canon en tuant des zombies.
+
+<Shots>
+  <Screenshot src={m + 'main_ee/cannon_aiming_guide.webp'} alt="L'image d'aide pour viser avec le canon" credit={by} source={src} />
+  <Screenshot src={m + 'main_ee/cannon_elevation.webp'} alt="Le panneau d'élévation du canon" credit={by} source={src} />
+  <Screenshot src={m + 'main_ee/cannon_angle.webp'} alt="Le panneau d'angle du canon" credit={by} source={src} />
+</Shots>
+
+{/* TO CHECK: number of ships: mmmrkennedy two, PowerPyx three. */}
+
+Selon les sources, il y a **deux ou trois** navires. Si tu as déjà fait la R.I.P. Saw, tu connais le canon.
+
+## Branche païenne : la salle secrète
+
+### Ouvre la salle antique et prends la tête du moine
+
+<Checklist>
+  <Step title="Fais sauter le mur dans les tunnels">
+    Au **premier trajet** de wagonnet d'une manche, va entre **Graben** (Bunker 1) et **Strand** (la plage). À mi-chemin, un **mur à moitié cassé** se trouve à côté de la voie. Laisse un **Bomber** de la voie exploser à côté : le mur s'ouvre. Tiens la touche d'action pour entrer.
+
+    <Screenshot src={m + 'main_ee/wall_in_minecart.webp'} alt="Le mur à moitié cassé dans le tunnel de wagonnet" credit={by} source={src} />
+  </Step>
+
+  <Step title="Prends la tête du moine (Monk Head)">
+    La salle est **très petite** et les zombies y apparaissent vite : fais-le entre deux manches. Prends la **Monk Head** à droite de la porte antique, puis sors par la **fissure** en face de la porte.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/monk_head.webp'} alt="La Monk Head dans la salle secrète" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/crack_in_wall_secret_room.webp'} alt="La fissure dans le mur pour sortir de la salle" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Pose la tête sur la machine de gauche du Freezer">
+    Dans le **Freezer** des U-Boat Pens. Tu apportes ensuite à la tête les colonnes des rituels.
+
+    <Screenshot src={m + 'main_ee/monk_head_machine.webp'} alt="La machine de gauche du Freezer où poser la tête" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+Si la tentative rate, la tête réapparaît la manche suivante.
+
+### Les trois Fils de Nerthus (statues)
+
+Il faut **trois petites statues** (les « Sons of Nerthus »), à placer dans la porte antique. Tu peux les prendre **dans l'ordre que tu veux**.
+
+<Checklist>
+  <Step title="Statue 1 : le rocher du canon antiaérien">
+    Monte dans le **canon antiaérien de l'Overlook**, tourné vers la plage, et tire sur un gros **rocher** sur le côté de la falaise. Il explose et la statue tombe sur la plage.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/son1_aa_gun.webp'} alt="Le canon antiaérien de l'Overlook" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son1_rock.webp'} alt="Le rocher à abattre sur la falaise" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son1.webp'} alt="La statue tombée sur la plage" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Statue 2 : le zombie ami">
+    Prends la **colonne d'un zombie normal** et donne-la à la **Monk Head** du Freezer. Un zombie ami part vers la plage, entre dans l'eau et revient avec une statue. **Protège-le** : les zombies peuvent le tuer. Il pose la statue sur la plage.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/monk_machine_with_head.webp'} alt="La Monk Head sur la machine du Freezer" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son2.webp'} alt="La statue déposée par le zombie ami" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Statue 3 : les rochers couverts de mousse">
+    Des rochers couverts de mousse sont placés haut sur les falaises. **Tire dessus avec la Ripsaw** jusqu'à ce que l'un d'eux libère une statue. Les endroits :
+
+    - Plage : au-dessus de **Lebenblitz**, et au-dessus de l'arme murale **Machine Pistol**.
+    - Bluffs : au-dessus de la porte vers le passage de la plage, au-dessus du **SVT-40**, au-dessus du **Waffe 28**.
+    - Bunker 3 : au-dessus de la porte vers les Bluffs, au-dessus du premier escalier du Pack-a-Punch, au-dessus de l'escalier qui descend à côté du Pack-a-Punch.
+    - Bunkers : au-dessus de la porte vers les Bluffs.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/son_rocks/beach_quick.webp'} alt="Rocher au-dessus de Lebenblitz" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/beach_machine_pistol.webp'} alt="Rocher au-dessus du Machine Pistol" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bluffs_door_to_beach_passage.webp'} alt="Rocher au-dessus de la porte du passage de la plage" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bluffs_svt_40.webp'} alt="Rocher au-dessus du SVT-40" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bluffs_waffe_28.webp'} alt="Rocher au-dessus du Waffe 28" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bunker_3_door_to_bluffs.webp'} alt="Rocher au-dessus de la porte du Bunker 3 vers les Bluffs" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bunker_3_above_stairs.webp'} alt="Rocher au-dessus du premier escalier du Pack-a-Punch" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bunker_3_pap.webp'} alt="Rocher au-dessus de l'escalier à côté du Pack-a-Punch" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/son_rocks/bunkers_door_to_bluffs.webp'} alt="Rocher au-dessus de la porte des Bunkers vers les Bluffs" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: rock count and which one frees the statue: mmmrkennedy nine places; PowerPyx eight; Accelerated Ideas "7-8". */}
+  </Step>
+</Checklist>
+
+Quand les trois statues sont posées, la porte s'ouvre : **trois Meuchlers** « prient » devant une statue de Nerthus. Tue-les ou pars (ils disparaissent si la carte n'est pas dans le brouillard).
+
+## Les trois rituels
+
+Il faut **trois rituels**, un par type d'ennemi, dans l'ordre que tu veux et **un à la fois**. Pour chacun : arrache une **colonne chargée** (voir [La Ripsaw et la R.I.P. Saw](../scie-ripsaw/)) et donne-la à la **Monk Head** du Freezer. Quand le rituel est réussi, va dans la salle secrète avec **tous les joueurs** : la porte se ferme, un combat se lance et tu ramasses une **tête** (Anointed Head). Si l'ennemi ami meurt, il faut une autre colonne.
+
+### Rituel du Meuchler
+
+<Checklist>
+  <Step title="Donne une colonne de Meuchler à la Monk Head">
+    Des Meuchlers apparaissent d'eux-mêmes toutes les quelques minutes dans la salle secrète : c'est un bon moyen d'avoir la colonne. Un Meuchler ami sort du Freezer et part : le **brouillard** arrive.
+  </Step>
+
+  <Step title="Trouve-le et touche-le, trois fois">
+    Il se cache dehors, roulé en boule, et **crie**. Écoute ses cris et suis les zombies : ils vont vers lui. Touche-le avant que les zombies le tuent ou que le brouillard disparaisse. Il repart ailleurs : **trois** fois en tout. Un vrai Meuchler peut aussi apparaître dans ce brouillard.
+
+    Lieux possibles : près de la baleine (plage), sur le rebord en bas de l'escalier du Pack-a-Punch, devant le Pack-a-Punch, près du canon antiaérien à côté de Kugelblitz, à gauche de l'arme murale Lee-Enfield (Bunker 1), à droite du SVT-40 (Bluffs). La liste n'est pas forcément complète.
+  </Step>
+
+  <Step title="Combat dans la salle secrète">
+    Tous les joueurs entrent. Un Meuchler tombe du plafond : il a plus de vie qu'un normal. Tue-le et prends la tête.
+  </Step>
+</Checklist>
+
+### Rituel du Wüstling
+
+<Checklist>
+  <Step title="Donne une colonne de Wüstling à la Monk Head">
+    Un Wüstling ami sort du Freezer. Il suit le joueur le plus proche, sauf si une machine Blitz est plus près. **Tire-lui dessus** (il ne charge pas) : il ne suit plus que toi un moment.
+  </Step>
+
+  <Step title="Mène-le aux Blitz dans cet ordre">
+    1. **Kugelblitz** (près du Pack-a-Punch)
+    2. **Faustblitz** (Artillery Bunker)
+    3. **Laufenblitz** (dehors, devant l'Artillery Bunker)
+    4. **Lebenblitz** (plage)
+
+    Le chemin vers Faustblitz passe tout près de Laufenblitz : garde-le collé à toi. S'il prend un mauvais Blitz, laisse-le mourir et recommence avec une autre colonne. Des ampoules de couleur sur son dos montrent les Blitz déjà pris. Après Lebenblitz, il passe par le **trou dans le mur** à côté de la machine et disparaît.
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/double_tap.webp'} alt="Kugelblitz, premier Blitz du Wüstling" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/melee_perk.webp'} alt="Faustblitz, deuxième Blitz" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/stamin_up.webp'} alt="Laufenblitz, troisième Blitz" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/quick_revive.webp'} alt="Lebenblitz, dernier Blitz" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/wustling_hole_in_wall.webp'} alt="Le trou dans le mur à côté de Lebenblitz" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Combat dans la salle secrète">
+    Trois Wüstlings tombent du plafond, dont un avec plus de vie. Tue-les et prends la tête.
+  </Step>
+</Checklist>
+
+### Rituel du Pest
+
+<Checklist>
+  <Step title="Ouvre les boîtiers à fusibles avec des grenades">
+    Fais sauter à la grenade les couvercles de ces boîtiers pour voir les bobines de couleur :
+
+    - U-Boat Pens : à gauche de l'interrupteur de courant, à gauche de l'arme murale M1927, à droite de l'escalier.
+    - Bunker 3 : au-dessus de la porte vers l'intérieur.
+    - Overlook : au-dessus de l'arme murale M1941, sur le mur de côté de l'Artillery Bunker, au-dessus de l'emplacement de la boîte mystère.
+  </Step>
+
+  <Step title="Donne une colonne de Pest à la Monk Head">
+    Un Pest ami sort du Freezer. Il suit un chemin. Il faut le **charger cinq fois** : tire une lame de Ripsaw sur une bobine précise, pendant que le Pest et toi êtes à des places précises. La lame rebondit sur la bobine et touche le Pest. Attends qu'il soit en place avant de tirer. Si le Pest meurt ou si tu rates, il faut une nouvelle colonne.
+
+    | Charge | Où est le Pest | Où es-tu | Bobine à viser |
+    | --- | --- | --- | --- |
+    | 1 | Près de l'arme murale M1927 | À gauche du Pest | Bobine bleue, hors de la carte, près du M1927 |
+    | 2 | Devant la passerelle | À côté du Pest, vers la station de wagonnet | Bobine jaune en haut du mur, à droite de la station |
+    | 3 | Dans la porte qui monte aux Bluffs (porte ouverte) | Sur le rebord, en haut de la première volée de marches | Bobine bleue en haut, au-dessus de la porte des Bluffs |
+    | 4 | À droite de l'arme murale STG44 | Contre les barils entre la porte (près de Faustblitz) et le canon antiaérien | Bobine jaune au-dessus du M1941 |
+    | 5 | Sur la longue passerelle aux hélices | Devant l'établi de la Ripsaw | Bobine jaune à côté de l'interrupteur de courant |
+
+    {/* TO CHECK: all five charge spots come from mmmrkennedy (with video examples); PowerPyx gives the same five steps with some differences in which panel and colour. Test in game. */}
+
+    <Shots>
+      <Screenshot src={m + 'main_ee/pest_ritual/player_loc_1.webp'} alt="Charge 1 : ta position" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/panel_1.webp'} alt="Charge 1 : la bobine à viser" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/player_loc_2.webp'} alt="Charge 2 : ta position" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/panel_2.webp'} alt="Charge 2 : la bobine à viser" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/player_loc_3.webp'} alt="Charge 3 : ta position" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/panel_3.webp'} alt="Charge 3 : la bobine à viser" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/player_loc_4.webp'} alt="Charge 4 : ta position" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/panel_4.webp'} alt="Charge 4 : la bobine à viser" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/player_loc_5.webp'} alt="Charge 5 : ta position" credit={by} source={src} />
+      <Screenshot src={m + 'main_ee/pest_ritual/panel_5.webp'} alt="Charge 5 : la bobine à viser" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Combat dans la salle secrète">
+    Après la cinquième charge, le Pest tombe mort. Va avec tous les joueurs dans la salle : **5 à 10 Pests** tombent du plafond. Tue-les et prends la tête.
+  </Step>
+</Checklist>
+
+## Obtenir le Pommel
+
+<Checklist>
+  <Step title="Accroche les têtes">
+    Prends la **Monk Head** sur la machine du Freezer. Dans la salle secrète, accroche-la avec les trois têtes aux **quatre crochets** du plafond.
+
+    <Screenshot src={m + 'main_ee/hooks.webp'} alt="Les quatre crochets de la salle secrète" credit={by} source={src} />
+  </Step>
+
+  <Step title="Remplis la mare de sang">
+    La porte se ferme. Tue des zombies n'importe où dans la salle pour remplir de sang le creux au milieu : environ **50 à 75 tués**. Les zombies apparaissent sans fin.
+
+    {/* TO CHECK: 50-75 kills = mmmrkennedy only. */}
+  </Step>
+
+  <Step title="Prends le Pommel">
+    Le crâne d'animal tenu par la statue explose : le **Pommel de Barberousse** apparaît.
+
+    <Screenshot src={m + 'main_ee/pommel.webp'} alt="Le Pommel de Barberousse" credit={by} source={src} />
+
+    C'est une **tactique** : elle crée une explosion et une bulle d'énergie. Les zombies dans la bulle explosent quelques secondes plus tard. Elle revient toute seule toutes les **10 à 15 secondes**.
+  </Step>
+</Checklist>
+
+Le patch 1.10 a corrigé la sortie de la salle du Pommel, et le patch 1.11 la recharge du Pommel. Si le Pommel bugue, un **Max Ammo** règle souvent le problème (PowerPyx).
+
+## Le combat final : les Meistermeuchlers
+
+<Checklist>
+  <Step title="Lance le combat">
+    Lance le **Pommel** sur la **radio** de l'Overlook (celle de la branche de guerre). Une invite apparaît. **N'appuie pas** avant d'être prêt : prends les Jack-in-the-Box si tu veux (voir [Les secrets de la carte](../secrets/)). Quand tous les joueurs sont prêts, **tous appuient sur la radio en même temps**.
+  </Step>
+</Checklist>
+
+Une cinématique présente **quatre Meistermeuchlers**, chacun avec une capacité qui imite celles des joueurs :
+
+- **violet** (Frontline) : donne une armure électrique aux zombies proches ; il arrive en premier et a plus de vie ;
+- **vert** (Camouflage) : aveugle un moment les joueurs touchés ;
+- **rouge** (Shellshock) : envoie une attaque d'étourdissement, sur un minuteur ;
+- **jaune** (Freefire) : tire une lame de scie qui rebondit sur les murs.
+
+Pour **mettre K.O.** l'un d'eux, tire jusqu'à ne plus avoir de marqueurs de touche : il s'enfuit. S'il est trop lent, il part tout seul et un autre prend sa place ; celui que tu n'as pas mis K.O. revient après les autres.
+
+<Checklist>
+  <Step title="Phase 1 : la plage, dans le brouillard">
+    Un seul Meistermeuchler à la fois. Quand les quatre sont K.O., le brouillard se lève. Monte dans le **wagonnet** vers l'arène suivante : tu reçois un **Max Ammo** pendant le trajet.
+  </Step>
+
+  <Step title="Phase 2 : les U-Boat Pens">
+    Un **Brenner** apparaît. La porte de sortie est fermée et des dalles crachent du feu. **Deux** Meistermeuchlers à la fois. Après les K.O., la porte s'ouvre et le feu s'arrête. Tu trouves un power-up **Überladen** en haut de l'escalier. Wagonnet, avec un Max Ammo.
+  </Step>
+
+  <Step title="Phase 3 : la zone des Bunkers, dans le brouillard">
+    Tu as accès à toute la zone du haut, du Pack-a-Punch à l'Artillery Bunker. **Trois** Meistermeuchlers à la fois. Wagonnet, avec un Max Ammo.
+  </Step>
+
+  <Step title="Phase 4 : la plage, sans brouillard">
+    Les **quatre** en même temps. Cette fois, ils **meurent** au lieu de fuir : concentre-toi sur un seul. Quand le quatrième tombe, la cinématique de fin se lance.
+  </Step>
+</Checklist>
+
+<Tips>
+  <Tip type="tech" author="PowerPyx" source="https://www.powerpyx.com/call-of-duty-ww2-zombies-the-darkest-shore-easter-egg-guide/">
+    Utilise **Shellshock** avec **Sustain Zone** et **Exploit Weakness**, deux joueurs au maximum par place, en tournant. Quand tu n'as plus d'énergie, prends un power-up **Überladen**.
+  </Tip>
+</Tips>
+
+{/* TO CHECK: the shop details of the four boss-fight phases (Blitz and armour purchases) were removed with the Steam guide; the rest of the phases comes from the remaining sources. */}
+
+## Ce qui peut rater
+
+<Tips>
+  <Tip type="mistake" author="PowerPyx" source="https://www.powerpyx.com/call-of-duty-ww2-zombies-the-darkest-shore-easter-egg-guide/">
+    Les erreurs fréquentes : mauvais ordre des Blitz pour le Wüstling ; trop lent sur la colonne du Meuchler (un deuxième apparaît) ; le Bomber, le zombie ou le Wüstling ami qui meurt ; être enfermé dans un verrouillage sans joueur dehors ; ne laisser personne dans les U-Boat Pens pendant l'étape des avions ; le feu dans la salle des vannes et les arènes du combat.
+  </Tip>
+</Tips>
+
+En solo, **Lebenblitz** sert de réanimation. Des joueurs l'ont réussi en solo : un record du monde de 30 min 25 avec consommables (CienkaRentaFX), un run sans mourir (iSlaymii) et un sans consommables (Mikee B Gaming).
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : The Darkest Shore Easter Egg Guide](https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_darkest_shore/the_darkest_shore_guide) (toutes les étapes, lieux, captures d'écran)
+- [PowerPyx : Call of Duty WW2 Zombies: The Darkest Shore Easter Egg Guide](https://www.powerpyx.com/call-of-duty-ww2-zombies-the-darkest-shore-easter-egg-guide/) (recoupement, conseils, erreurs possibles)
+- [Accelerated Ideas : The Darkest Shore - All Easter Egg Steps](https://www.accelerated-ideas.com/news/the-darkest-shore-all-easter-egg-steps.aspx) (recoupement)
+- [Gameranx : WW2 Zombies Darkest Shore DLC: The Complete Easter Egg Guide](https://gameranx.com/features/id/136787/article/ww2-zombies-darkest-shore-dlc-the-complete-easter-egg-guide/) (nombre de vagues d'avions, prix du canon antiaérien, à recouper)
+- [Call of Duty : Darkest Shore: 6 Things to do Before Wave 10](https://www.callofduty.com/blog/archives/darkest-shore-6-things-to-do-before-wave-10) (Bomber, wagonnets)
+- [Call of Duty : Survive the Latest Nazi Zombies Onslaught in Call of Duty: WWII - The Darkest Shore](https://blog.activision.com/call-of-duty/archives/survive-the-latest-nazi-zombies-onslaught-in-call-of-duty-wwii---the-darkest-shore) (présentation de la carte, brouillard, Meuchler)
+- [PowerPyx : WW2 DLC 1 The Resistance Trophy Guide & Roadmap](https://www.powerpyx.com/call-of-duty-ww2-dlc-1-the-resistance-trophy-guide-roadmap/) (bug du Pommel)

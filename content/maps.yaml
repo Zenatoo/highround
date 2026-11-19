@@ -218,3 +218,65 @@ exodus:
     image: ./media/ghosts/exodus/banner.webp
     credit: Call of Duty
     source: https://www.youtube.com/watch?v=yaEWseeM5I8
+the-final-reich:
+  game: ww2
+  name: The Final Reich
+  order: 1
+  status: complete
+  published: 2026-11-19
+  color: red
+  banner:
+    # Frame of the official Nazi Zombies reveal trailer.
+    image: ./media/ww2/the-final-reich/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=CSYUQDRTQ6s
+groesten-haus:
+  game: ww2
+  name: Gröesten Haus
+  order: 2
+  status: complete
+  published: 2026-11-19
+  color: amber
+the-darkest-shore:
+  game: ww2
+  name: The Darkest Shore
+  order: 3
+  status: complete
+  published: 2026-11-19
+  color: teal
+  banner:
+    # Frame of the official The Darkest Shore trailer.
+    image: ./media/ww2/the-darkest-shore/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=88CeoDLxebg
+the-shadowed-throne:
+  game: ww2
+  name: The Shadowed Throne
+  order: 4
+  status: complete
+  published: 2026-11-19
+  color: violet
+the-tortured-path:
+  game: ww2
+  name: The Tortured Path
+  order: 5
+  status: complete
+  published: 2026-11-19
+  color: pink
+  banner:
+    # Frame of the official The Tortured Path trailer.
+    image: ./media/ww2/the-tortured-path/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=nzOJICO2sh4
+the-frozen-dawn:
+  game: ww2
+  name: The Frozen Dawn
+  order: 6
+  status: complete
+  published: 2026-11-19
+  color: blue
+  banner:
+    # Frame of the official Shadow War DLC 4 trailer (zombies part).
+    image: ./media/ww2/the-frozen-dawn/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=tEyk28g2hj8

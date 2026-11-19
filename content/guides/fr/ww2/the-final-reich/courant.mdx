@@ -1,0 +1,125 @@
+---
+title: Rétablir le courant
+category: power
+order: 1
+draft: false
+difficulty: easy
+players: both
+videos:
+  - url: https://www.youtube.com/watch?v=wfQRlBTKHpM
+    title: "L'HISTOIRE de WWII Zombies #2 | Le Dernier Reich : TUTO SECRET"
+    creator: "Le Protagoniste"
+    lang: fr
+    thumbnail: ../../../../media/videos/wfQRlBTKHpM.jpg
+  - url: https://www.youtube.com/watch?v=1IBJ1MMzIb8
+    title: "Guide ultime : Le dernier Reich"
+    creator: "Kenshin9977"
+    lang: fr
+    thumbnail: ../../../../media/videos/1IBJ1MMzIb8.jpg
+---
+
+export const by = 'mmmrkennedy';
+export const src = 'https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide';
+export const m = 'ww2/the-final-reich/power/';
+
+Sur The Final Reich, le courant ouvre le **bunker** : sans lui, pas de boîte mystère, de Laboratory, de Morgue ni de Pack-a-Punch. C'est la première étape de la quête guidée. Compte quelques minutes. Les règles générales sont dans [Les bases de WWII Zombies](../systemes-ww2/).
+
+Tu peux suivre l'objectif dans le **carnet** (menu du tableau des scores) : le jeu le surligne à travers les murs.
+
+## Allumer le générateur
+
+<Checklist>
+  <Step title="Active les trois valves de gaz">
+    Maintiens la touche d'action sur chaque valve jusqu'à ce que le cadran soit **vert et monte à 60**. Si tu lâches avant, il retombe à 0. Pour les trouver, suis les tuyaux qui partent du « générateur » à trois lumières, à gauche de la station d'armure de la Village Square. Il montre aussi les valves déjà actives.
+
+    - **Village Square**, derrière la station d'armure (Geistschild).
+    - **Village Square**, à gauche de l'entrée du bunker.
+    - **Riverside**, près de l'entrée du Pub.
+
+    <Shots>
+      <Screenshot src={m + 'valve_armour.webp'} alt="La valve derrière la station d'armure, Village Square" credit={by} source={src} />
+      <Screenshot src={m + 'valve_bunker.webp'} alt="La valve à gauche de l'entrée du bunker" credit={by} source={src} />
+      <Screenshot src={m + 'valve_riverside.webp'} alt="La valve de Riverside, près du Pub" credit={by} source={src} />
+    </Shots>
+  </Step>
+
+  <Step title="Allume la Pilot Light">
+    Au milieu de la **Village Square**, utilise la **Pilot Light**. Des flammes jaillissent du trou, avec quelques **Pests**. Le couvercle de bois saute.
+
+    <Screenshot src={m + 'pilot_light.webp'} alt="La Pilot Light au milieu de la Village Square" credit={by} source={src} />
+  </Step>
+
+  <Step title="Descends dans le trou et lance le générateur">
+    Saute dans le trou, remonte la pente jusqu'au **générateur** et maintiens la touche d'action : le **courant est en marche**. Le **Laufenblitz** est juste à côté.
+
+    <Screenshot src={m + 'power.webp'} alt="Le générateur au bout de la pente" credit={by} source={src} />
+  </Step>
+</Checklist>
+
+## Ouvrir le bunker
+
+<Checklist>
+  <Step title="Achète la porte du bunker">
+    Elle est dans la Village Square. Dans la **Command Room**, tu peux ensuite acheter les portes de la **Morgue** et du **Laboratory**.
+
+    <Screenshot src={m + 'bunker_door.webp'} alt="La porte du bunker" credit={by} source={src} />
+  </Step>
+
+  <Step title="Active les deux interrupteurs en moins d'une minute">
+    Pour la **porte de la Salt Mine**, il y a deux interrupteurs. Active-les **à moins d'environ une minute d'écart**, sinon ils se remettent à zéro.
+
+    - **Laboratory** : à l'étage, tout au fond.
+    - **Morgue** : sur le côté droit, près de l'arme murale **STG-44**.
+
+    <Shots>
+      <Screenshot src={m + 'switch_lab.webp'} alt="L'interrupteur du Laboratory" credit={by} source={src} />
+      <Screenshot src={m + 'switch_morgue.webp'} alt="L'interrupteur de la Morgue" credit={by} source={src} />
+    </Shots>
+
+    {/* TO CHECK: time between the two switches: mmmrkennedy "about 1 minute", PowerPyx (Nov 2017) "within 30 seconds". Final state = mmmrkennedy. */}
+  </Step>
+
+  <Step title="Achète la porte de la Salt Mine">
+    **1 500 Jolts**. Elle libère **3 à 4 Bombers** dans le tunnel : sois prêt. La Salt Mine mène à l'**Emperor's Chamber** et à la suite de la quête : voir [Construire le Tesla](../tesla/).
+
+    <Screenshot src={m + 'salt_mine_door.webp'} alt="La porte de la Salt Mine" credit={by} source={src} />
+
+    {/* TO CHECK: 3-4 Bombers when opening the Salt Mine door: WZH + PowerPyx Tesla guide; PP Tesla guide says 4. */}
+  </Step>
+</Checklist>
+
+## Les portes et leurs prix
+
+**À vérifier :** les prix de portes viennent d'une seule source (un site de fans). Seuls les prix marqués d'une étoile sont recoupés.
+
+| Porte | Prix |
+| --- | --- |
+| Village Entrance vers Village Square | 750 Jolts |
+| Village Square vers Riverside (deux portes) | 1 000 Jolts chacune |
+| Riverside vers Courtyard | 1 500 Jolts |
+| Pub* | 1 500 Jolts |
+| Pub vers Tower | 1 500 Jolts |
+| Village Square vers bunker (courant requis) | 1 250 Jolts |
+| Command Room vers Laboratory* et Morgue* | 1 500 Jolts chacune |
+| Command Room vers Salt Mine* | 1 500 Jolts |
+| Sewers : porte près du Laufenblitz et porte du dock | 1 250 Jolts chacune |
+| Sewers vers Morgue | 1 500 Jolts |
+
+{/* TO CHECK: all door prices from brand-andrew.github.io (WZH) only, except Lab/Pub (+ Accelerated Ideas perk page), Morgue/Lab (PowerPyx), Salt Mine (Accelerated Ideas). WZH contradicts itself on the back Riverside door (1000 vs 1500). Treasure Zombies start only after "all 16 doors" (mmmrkennedy): door count not reconciled. */}
+
+<Tips>
+  <Tip type="faster" author="mmmrkennedy" source={src}>
+    Tu peux jouer sans courant (c'est exigé par un défi du Survivalist). Active les valves : la Pilot Light te lance hors du trou, et le **Laufenblitz** reste achetable.
+  </Tip>
+</Tips>
+
+## Sources
+
+Guide écrit par HighRound à partir de :
+
+- [mmmrkennedy : The Final Reich Guide](https://mmmrkennedyzombiesguides.pages.dev/games/WW2/the_final_reich/the_final_reich_guide) (étapes, emplacements, captures d'écran)
+- [PowerPyx : The Final Reich Easter Egg Guide](https://www.powerpyx.com/call-of-duty-ww2-zombies-the-final-reich-easter-egg-guide/) (étapes recoupées, prix Morgue et Laboratory)
+- [Accelerated Ideas : The Final Reich, All Quest Steps](https://www.accelerated-ideas.com/news/the-final-reich-ww2-zombies-all-quest-steps.aspx) (étapes recoupées, prix de la Salt Mine)
+- [Accelerated Ideas : All Perk Machine Locations](https://www.accelerated-ideas.com/news/cod-ww2-zombies-final-reich-all-perk-machine-locations.aspx) (prix des portes du Laboratory et du Pub)
+- [PlayStation LifeStyle : The Final Reich Full Walkthrough](https://www.playstationlifestyle.net/2017/11/03/call-of-duty-wwii-nazi-zombies-guide-the-final-reich/2) (étapes recoupées)
+- [The WW2 Zombies Hub : The Final Reich](https://brand-andrew.github.io/TFR.html) (autres prix de portes, source unique)
