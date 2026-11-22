@@ -280,3 +280,51 @@ the-frozen-dawn:
     image: ./media/ww2/the-frozen-dawn/banner.webp
     credit: Call of Duty
     source: https://www.youtube.com/watch?v=tEyk28g2hj8
+nacht-der-untoten:
+  game: waw
+  name: Nacht der Untoten
+  order: 1
+  status: complete
+  published: 2026-11-22
+  color: red
+  banner:
+    # Frame of the official World at War Zombies bonus mode trailer.
+    image: ./media/waw/nacht-der-untoten/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=neao27bSRW0
+verruckt:
+  game: waw
+  name: Verrückt
+  order: 2
+  status: complete
+  published: 2026-11-22
+  color: teal
+  banner:
+    # Frame of the official Verruckt trailer.
+    image: ./media/waw/verruckt/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=cvArR7CFXLs
+shi-no-numa:
+  game: waw
+  name: Shi No Numa
+  order: 3
+  status: complete
+  published: 2026-11-22
+  color: green
+  banner:
+    # Frame of the official Map Pack 2 trailer (Shi No Numa part).
+    image: ./media/waw/shi-no-numa/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=t6OzHuinA_E
+der-riese:
+  game: waw
+  name: Der Riese
+  order: 4
+  status: complete
+  published: 2026-11-22
+  color: blue
+  banner:
+    # Thumbnail of the official Map Pack 3 trailer (Der Riese).
+    image: ./media/waw/der-riese/banner.webp
+    credit: Treyarch
+    source: https://www.youtube.com/watch?v=UkpmRstFVbE

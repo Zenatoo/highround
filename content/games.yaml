@@ -1,7 +1,7 @@
 # Key = game id used in URLs and in content/guides/<lang>/<game>/.
 # short = badge text, color = generated art color (amber, violet, teal, red, blue, green, pink).
 # cover = official box art, 600x900 WebP in content/media/games/ (Steam library art; Black Ops 4 is not on Steam).
-waw: { name: World at War, short: WaW, year: 2008, status: soon, color: red, cover: { image: ./media/games/waw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/10090/' } }
+waw: { name: World at War, short: WaW, year: 2008, status: complete, color: red, cover: { image: ./media/games/waw.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/10090/' } }
 bo1: { name: Black Ops, short: BO1, year: 2010, status: soon, color: amber, cover: { image: ./media/games/bo1.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/42700/' } }
 bo2: { name: Black Ops II, short: BO2, year: 2012, status: soon, color: blue, cover: { image: ./media/games/bo2.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/202970/' } }
 ghosts: { name: Ghosts, short: GH, year: 2013, status: complete, color: green, cover: { image: ./media/games/ghosts.webp, credit: Call of Duty, source: 'https://store.steampowered.com/app/209160/' } }
