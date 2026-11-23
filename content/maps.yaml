@@ -328,3 +328,65 @@ der-riese:
     image: ./media/waw/der-riese/banner.webp
     credit: Treyarch
     source: https://www.youtube.com/watch?v=UkpmRstFVbE
+kino-der-toten:
+  game: bo1
+  name: Kino der Toten
+  order: 1
+  status: complete
+  published: 2026-11-23
+  color: red
+  banner:
+    # Frame of the official Kino der Toten music video.
+    image: ./media/bo1/kino-der-toten/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=B7b6EkTNOPA
+five:
+  game: bo1
+  name: "Five"
+  order: 2
+  status: complete
+  published: 2026-11-23
+  color: amber
+ascension:
+  game: bo1
+  name: Ascension
+  order: 3
+  status: complete
+  published: 2026-11-23
+  color: blue
+  banner:
+    # Frame of the official Ascension trailer.
+    image: ./media/bo1/ascension/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=p8IT1p3xXOU
+call-of-the-dead:
+  game: bo1
+  name: Call of the Dead
+  order: 4
+  status: complete
+  published: 2026-11-23
+  color: teal
+  banner:
+    # Frame of the official Call of the Dead trailer.
+    image: ./media/bo1/call-of-the-dead/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=3_Cx82OFXM0
+shangri-la:
+  game: bo1
+  name: Shangri-La
+  order: 5
+  status: complete
+  published: 2026-11-23
+  color: green
+  banner:
+    # Frame of the official Annihilation trailer (Shangri-La).
+    image: ./media/bo1/shangri-la/banner.webp
+    credit: Call of Duty
+    source: https://www.youtube.com/watch?v=Z34RTO2BKM4
+moon:
+  game: bo1
+  name: Moon
+  order: 6
+  status: complete
+  published: 2026-11-23
+  color: violet
